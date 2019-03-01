@@ -4,28 +4,28 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 import com.CAKESHOP.POJO.SpecialSectors;
-import dao.SpecialSectorsMapper;
+import dao.SpecialSectorsDao;
 
 @Service
 public class SpecialSectorsService {
 
     @Resource
-    private SpecialSectorsMapper specialSectorsMapper;
+    private SpecialSectorsDao specialSectorsDao;
 
     public int insert(SpecialSectors pojo){
-        return specialSectorsMapper.insert(pojo);
+        return specialSectorsDao.insert(pojo);
     }
 
     public int insertList(List< SpecialSectors> pojos){
-        return specialSectorsMapper.insertList(pojos);
+        return specialSectorsDao.insertList(pojos);
     }
 
     public List<SpecialSectors> select(SpecialSectors pojo){
-        return specialSectorsMapper.select(pojo);
+        return specialSectorsDao.select(pojo);
     }
 
     public int update(SpecialSectors pojo){
-        return specialSectorsMapper.update(pojo);
+        return specialSectorsDao.update(pojo);
     }
 
 }

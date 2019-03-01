@@ -4,28 +4,28 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 import com.CAKESHOP.POJO.ProductsByStore;
-import dao.ProductsByStoreMapper;
+import dao.ProductsByStoreDao;
 
 @Service
 public class ProductsByStoreService {
 
     @Resource
-    private ProductsByStoreMapper productsByStoreMapper;
+    private ProductsByStoreDao productsByStoreDao;
 
     public int insert(ProductsByStore pojo){
-        return productsByStoreMapper.insert(pojo);
+        return productsByStoreDao.insert(pojo);
     }
 
     public int insertList(List< ProductsByStore> pojos){
-        return productsByStoreMapper.insertList(pojos);
+        return productsByStoreDao.insertList(pojos);
     }
 
     public List<ProductsByStore> select(ProductsByStore pojo){
-        return productsByStoreMapper.select(pojo);
+        return productsByStoreDao.select(pojo);
     }
 
     public int update(ProductsByStore pojo){
-        return productsByStoreMapper.update(pojo);
+        return productsByStoreDao.update(pojo);
     }
 
 }
