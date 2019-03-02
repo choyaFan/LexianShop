@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE jsp>
+<jsp>
 <head>
     <!-- Basic page needs -->
     <meta charset="utf-8">
@@ -34,10 +34,10 @@
                 </form>
             </div>
         </li>
-        <li><a href="index.html">Home</a> </li>
+        <li><a href="index.jsp">Home</a> </li>
         <li><a href="#">Pages</a>
             <ul>
-                <li><a href="shop_grid.html"><span>Shop Grid</span></a>
+                <li><a href="shop_grid.jsp"><span>Shop Grid</span></a>
                     <ul>
                         <li> <a href="#"> <span>Shop Grid Right Sidebar</span> </a> </li>
                         <li> <a href="#"> <span>Shop Grid Fullwidth</span> </a> </li>
@@ -48,7 +48,7 @@
                         <li> <a href="#"> <span>Shop List Right Sidebar</span> </a> </li>
                     </ul>
                 </li>
-                <li> <a href="single_product.html"> <span>Single Product</span> </a> </li>
+                <li> <a href="single_product.jsp"> <span>Single Product</span> </a> </li>
                 <li> <a href="#"> <span>Shopping Cart</span> </a> </li>
                 <li><a href="#"><span>Checkout</span></a> </li>
                 <li> <a href="#"> <span>Wishlist</span> </a> </li>
@@ -59,110 +59,110 @@
         </li>
         <li><a href="#">Fruits</a>
             <ul>
-                <li> <a href="shop_grid.html"><span>Apples</span></a>
+                <li> <a href="shop_grid.jsp"><span>Apples</span></a>
                     <ul>
-                        <li> <a href="shop_grid.html"><span>Aurore Grape</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Super Sweet</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Gravenstein</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Orange Pippin</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Aurore Grape</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Super Sweet</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Gravenstein</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Orange Pippin</span></a> </li>
                     </ul>
                 </li>
-                <li> <a href="shop_grid.html"><span>Grapes</span></a>
+                <li> <a href="shop_grid.jsp"><span>Grapes</span></a>
                     <ul>
-                        <li> <a href="shop_grid.html"><span>Raw Honey</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Flavored Honey</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Propolis</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Exotic Honey</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Raw Honey</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Flavored Honey</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Propolis</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Exotic Honey</span></a> </li>
                     </ul>
                 </li>
-                <li> <a href="shop_grid.html"><span>Citruses</span></a>
+                <li> <a href="shop_grid.jsp"><span>Citruses</span></a>
                     <ul>
-                        <li> <a href="shop_grid.html"><span>Potatoes</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Tomatoes</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Pickles</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Cauliflowers</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Potatoes</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Tomatoes</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Pickles</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Cauliflowers</span></a> </li>
                     </ul>
                 </li>
-                <li> <a href="shop_grid.html"><span>Exotic Fruits</span></a>
+                <li> <a href="shop_grid.jsp"><span>Exotic Fruits</span></a>
                     <ul>
-                        <li> <a href="shop_grid.html"><span>Spinach</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Pumpkin</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Kohlrabi</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Green Cabbage</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Spinach</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Pumpkin</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Kohlrabi</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Green Cabbage</span></a> </li>
                     </ul>
                 </li>
-                <li> <a href="shop_grid.html"><span>Summer Berries</span></a>
+                <li> <a href="shop_grid.jsp"><span>Summer Berries</span></a>
                     <ul>
-                        <li> <a href="shop_grid.html"><span>Avocado</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Paprika</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Cheese Holand</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Cheese</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Avocado</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Paprika</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Cheese Holand</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Cheese</span></a> </li>
                     </ul>
                 </li>
-                <li> <a href="shop_grid.html"><span>Green Cabbage</span></a>
+                <li> <a href="shop_grid.jsp"><span>Green Cabbage</span></a>
                     <ul>
-                        <li> <a href="shop_grid.html"><span>Сauliflower</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Tomato</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Oranges</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Carrots</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Сauliflower</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Tomato</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Oranges</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Carrots</span></a> </li>
                     </ul>
                 </li>
             </ul>
         </li>
-        <li><a href="shop_grid.html">Vegetables</a>
+        <li><a href="shop_grid.jsp">Vegetables</a>
             <ul>
-                <li> <a href="shop_grid.html"><span>Herbs and spices</span></a>
+                <li> <a href="shop_grid.jsp"><span>Herbs and spices</span></a>
                     <ul>
-                        <li> <a href="shop_grid.html"><span>Lemon Grass</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Rosemary</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Chamomile</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Oregano</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Lemon Grass</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Rosemary</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Chamomile</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Oregano</span></a> </li>
                     </ul>
                 </li>
-                <li> <a href="shop_grid.html"><span>Root vegetables</span></a>
+                <li> <a href="shop_grid.jsp"><span>Root vegetables</span></a>
                     <ul>
-                        <li> <a href="shop_grid.html"><span>Celeriac</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Daikon</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Rutabaga</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Parsnip</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Celeriac</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Daikon</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Rutabaga</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Parsnip</span></a> </li>
                     </ul>
                 </li>
-                <li> <a href="shop_grid.html"><span>Onion family</span></a>
+                <li> <a href="shop_grid.jsp"><span>Onion family</span></a>
                     <ul>
-                        <li> <a href="shop_grid.html"><span>Chives</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Shallot</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Onion</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Garlic</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Chives</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Shallot</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Onion</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Garlic</span></a> </li>
                     </ul>
                 </li>
-                <li> <a href="shop_grid.html"><span>Legumes</span></a>
+                <li> <a href="shop_grid.jsp"><span>Legumes</span></a>
                     <ul>
-                        <li> <a href="shop_grid.html"><span>Black beans</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Kidney beans</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Green beans</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Soy beans</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Black beans</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Kidney beans</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Green beans</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Soy beans</span></a> </li>
                     </ul>
                 </li>
-                <li> <a href="shop_grid.html"><span>Haricot bean</span></a>
+                <li> <a href="shop_grid.jsp"><span>Haricot bean</span></a>
                     <ul>
-                        <li> <a href="shop_grid.html"><span>Nectarine</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Charles & Keith</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Fruits</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Rhubarb</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Nectarine</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Charles & Keith</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Fruits</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Rhubarb</span></a> </li>
                     </ul>
                 </li>
-                <li> <a href="shop_grid.html"><span>Kiwi fruit</span></a>
+                <li> <a href="shop_grid.jsp"><span>Kiwi fruit</span></a>
                     <ul>
-                        <li> <a href="shop_grid.html"><span>Mango</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Orange</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Pepper</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Quince</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Mango</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Orange</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Pepper</span></a> </li>
+                        <li> <a href="shop_grid.jsp"><span>Quince</span></a> </li>
                     </ul>
                 </li>
             </ul>
         </li>
-        <li><a href="shop_grid.html">Healthy Eating</a> </li>
-        <li><a href="shop_grid.html">Drinks</a> </li>
+        <li><a href="shop_grid.jsp">Healthy Eating</a> </li>
+        <li><a href="shop_grid.jsp">Drinks</a> </li>
         <li><a href="#">Blog</a> </li>
         <li><a href="#">Contact us</a> </li>
     </ul>
@@ -224,7 +224,7 @@
                                         <li>
                                             <div class="dropdown block-company-wrapper hidden-xs"> <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#"> More <span class="caret"></span></a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="about_us.html"> About Us </a> </li>
+                                                    <li><a href="about_us.jsp"> About Us </a> </li>
                                                     <li><a href="#"> Customer Service </a> </li>
                                                     <li><a href="#"> Privacy Policy </a> </li>
                                                     <li><a href="#">Site Map </a> </li>
@@ -255,7 +255,7 @@
                                         <!--block-subtitle-->
                                         <ul class="mini-products-list" id="cart-sidebar">
                                             <li class="item first">
-                                                <div class="item-inner"> <a class="product-image" title="Product Title Here" href="single_product.html"><img alt="Product Title Here" src="images/products/img01.jpg"> </a>
+                                                <div class="item-inner"> <a class="product-image" title="Product Title Here" href="single_product.jsp"><img alt="Product Title Here" src="images/products/img01.jpg"> </a>
                                                     <div class="product-details">
                                                         <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
                                                         <p class="product-name"><a href="#">Product Title Here</a> </p>
@@ -263,7 +263,7 @@
                                                 </div>
                                             </li>
                                             <li class="item">
-                                                <div class="item-inner"> <a class="product-image" title="Product Title Here" href="single_product.html"><img alt="Product Title Here" src="images/products/img02.jpg"> </a>
+                                                <div class="item-inner"> <a class="product-image" title="Product Title Here" href="single_product.jsp"><img alt="Product Title Here" src="images/products/img02.jpg"> </a>
                                                     <div class="product-details">
                                                         <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
                                                         <p class="product-name"><a href="#">Product Title Here</a> </p>
@@ -271,7 +271,7 @@
                                                 </div>
                                             </li>
                                             <li class="item last">
-                                                <div class="item-inner"> <a class="product-image" title="Product Title Here" href="single_product.html"><img alt="Product Title Here" src="images/products/img04.jpg"> </a>
+                                                <div class="item-inner"> <a class="product-image" title="Product Title Here" href="single_product.jsp"><img alt="Product Title Here" src="images/products/img04.jpg"> </a>
                                                     <div class="product-details">
                                                         <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
                                                         <p class="product-name"><a href="#">Product Title Here</a> </p>
@@ -291,7 +291,7 @@
                     </div>
                     <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12 jtv-logo-box">
                         <!-- Header Logo -->
-                        <div class="logo"> <h1><a title="eCommerce" href="index.html"><img alt="eCommerce" src="images/logo.png"> </a></h1> </div>
+                        <div class="logo"> <h1><a title="eCommerce" href="index.jsp"><img alt="eCommerce" src="images/logo.png"> </a></h1> </div>
                         <!-- End Header Logo -->
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 hidden-xs">
@@ -318,10 +318,10 @@
             <div class="nav-inner">
                 <!-- BEGIN NAV -->
                 <ul id="nav" class="hidden-xs">
-                    <li class="drop-menu"><a href="index.html" class="level-top active"><span>Home</span></a> </li>
+                    <li class="drop-menu"><a href="index.jsp" class="level-top active"><span>Home</span></a> </li>
                     <li class="drop-menu"> <a href="#"> <span>Pages</span> </a>
                         <ul>
-                            <li class="sub-cat"><a href="shop_grid.html"><span>Shop Grid</span></a>
+                            <li class="sub-cat"><a href="shop_grid.jsp"><span>Shop Grid</span></a>
                                 <ul>
                                     <li> <a href="#"> <span>Shop Grid Right Sidebar</span> </a> </li>
                                     <li> <a href="#"> <span>Shop Grid Fullwidth</span> </a> </li>
@@ -332,7 +332,7 @@
                                     <li> <a href="#"> <span>Shop List Right Sidebar</span> </a> </li>
                                 </ul>
                             </li>
-                            <li> <a href="single_product.html"> <span>Single Product</span> </a> </li>
+                            <li> <a href="single_product.jsp"> <span>Single Product</span> </a> </li>
                             <li> <a href="#"> <span>Shopping Cart</span> </a> </li>
                             <li><a href="#"><span>Checkout</span></a> </li>
                             <li> <a href="#"> <span>Wishlist</span> </a> </li>
@@ -341,58 +341,58 @@
                             <li><a href="#"><span>404 Error Page</span></a> </li>
                         </ul>
                     </li>
-                    <li class="mega-menu"> <a class="level-top" href="shop_grid.html"><span>Fruits</span></a>
+                    <li class="mega-menu"> <a class="level-top" href="shop_grid.jsp"><span>Fruits</span></a>
                         <div class="jtv-menu-block-wrapper">
                             <div class="jtv-menu-block-wrapper2">
                                 <div class="nav-block jtv-nav-block-center">
                                     <div class="col-1">
                                         <ul class="level0">
-                                            <li class="parent item"> <a href="shop_grid.html"><span>Apples</span></a>
+                                            <li class="parent item"> <a href="shop_grid.jsp"><span>Apples</span></a>
                                                 <ul class="level1">
-                                                    <li> <a href="shop_grid.html"><span>Aurore Grape</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Super Sweet</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Gravenstein</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Orange Pippin</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Aurore Grape</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Super Sweet</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Gravenstein</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Orange Pippin</span></a> </li>
                                                 </ul>
                                             </li>
-                                            <li class="parent item"> <a href="shop_grid.html"><span>Grapes</span></a>
+                                            <li class="parent item"> <a href="shop_grid.jsp"><span>Grapes</span></a>
                                                 <ul class="level1">
-                                                    <li> <a href="shop_grid.html"><span>Raw Honey</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Flavored Honey</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Propolis</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Exotic Honey</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Raw Honey</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Flavored Honey</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Propolis</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Exotic Honey</span></a> </li>
                                                 </ul>
                                             </li>
-                                            <li class="parent item"> <a href="shop_grid.html"><span>Citruses</span></a>
+                                            <li class="parent item"> <a href="shop_grid.jsp"><span>Citruses</span></a>
                                                 <ul class="level1">
-                                                    <li> <a href="shop_grid.html"><span>Potatoes</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Tomatoes</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Pickles</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Cauliflowers</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Potatoes</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Tomatoes</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Pickles</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Cauliflowers</span></a> </li>
                                                 </ul>
                                             </li>
-                                            <li class="parent item"> <a href="shop_grid.html"><span>Exotic Fruits</span></a>
+                                            <li class="parent item"> <a href="shop_grid.jsp"><span>Exotic Fruits</span></a>
                                                 <ul class="level1">
-                                                    <li> <a href="shop_grid.html"><span>Spinach</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Pumpkin</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Kohlrabi</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Green Cabbage</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Spinach</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Pumpkin</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Kohlrabi</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Green Cabbage</span></a> </li>
                                                 </ul>
                                             </li>
-                                            <li class="parent item"> <a href="shop_grid.html"><span>Summer Berries</span></a>
+                                            <li class="parent item"> <a href="shop_grid.jsp"><span>Summer Berries</span></a>
                                                 <ul class="level1">
-                                                    <li> <a href="shop_grid.html"><span>Avocado</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Paprika</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Cheese Holand</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Cheese</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Avocado</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Paprika</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Cheese Holand</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Cheese</span></a> </li>
                                                 </ul>
                                             </li>
-                                            <li class="parent item"> <a href="shop_grid.html"><span>Green Cabbage</span></a>
+                                            <li class="parent item"> <a href="shop_grid.jsp"><span>Green Cabbage</span></a>
                                                 <ul class="level1">
-                                                    <li> <a href="shop_grid.html"><span>Сauliflower</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Tomato</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Oranges</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Carrots</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Сauliflower</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Tomato</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Oranges</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Carrots</span></a> </li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -404,57 +404,57 @@
                             </div>
                         </div>
                     </li>
-                    <li class="mega-menu"> <a class="level-top" href="shop_grid.html"><span>Vegetables</span></a>
+                    <li class="mega-menu"> <a class="level-top" href="shop_grid.jsp"><span>Vegetables</span></a>
                         <div class="jtv-menu-block-wrapper">
                             <div class="jtv-menu-block-wrapper2">
                                 <div class="nav-block jtv-nav-block-center">
                                     <ul class="level0">
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Herbs and spices</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Herbs and spices</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Lemon Grass</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Rosemary</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Chamomile</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Oregano</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Lemon Grass</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Rosemary</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Chamomile</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Oregano</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Root vegetables</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Root vegetables</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Celeriac</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Daikon</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Rutabaga</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Parsnip</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Celeriac</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Daikon</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Rutabaga</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Parsnip</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Onion family</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Onion family</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Chives</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Shallot</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Onion</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Garlic</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Chives</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Shallot</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Onion</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Garlic</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Legumes</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Legumes</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Black beans</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Kidney beans</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Green beans</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Soy beans</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Black beans</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Kidney beans</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Green beans</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Soy beans</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Haricot bean</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Haricot bean</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Nectarine</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Charles & Keith</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Fruits</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Rhubarb</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Nectarine</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Charles & Keith</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Fruits</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Rhubarb</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Kiwi fruit</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Kiwi fruit</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Mango</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Orange</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Pepper</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Quince</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Mango</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Orange</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Pepper</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Quince</span></a> </li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -473,57 +473,57 @@
                             </div>
                         </div>
                     </li>
-                    <li class="mega-menu"> <a class="level-top" href="shop_grid.html"><span>Healthy Eating</span></a>
+                    <li class="mega-menu"> <a class="level-top" href="shop_grid.jsp"><span>Healthy Eating</span></a>
                         <div class="jtv-menu-block-wrapper">
                             <div class="jtv-menu-block-wrapper2">
                                 <div class="nav-block jtv-nav-block-center">
                                     <ul class="level0">
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Vegetables</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Vegetables</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Tomatoes</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Potatoes</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Carrots</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Cauliflowers</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Tomatoes</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Potatoes</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Carrots</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Cauliflowers</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Fruit</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Fruit</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Mango</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Orange</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Pepper</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Quince</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Mango</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Orange</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Pepper</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Quince</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Whole Grains</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Whole Grains</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Cereals</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Noodles</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Rice</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Pasta</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Cereals</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Noodles</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Rice</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Pasta</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Protein</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Protein</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Nutrition</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Biosynthesis</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Enzymes</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Chronic Diseases</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Nutrition</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Biosynthesis</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Enzymes</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Chronic Diseases</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Low-Fat Dairy</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Low-Fat Dairy</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Skim milk</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Fat-free cheese</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Strawberries</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Salad with olives</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Skim milk</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Fat-free cheese</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Strawberries</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Salad with olives</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Healthy Snack Food</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Healthy Snack Food</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Pumpkin Seeds</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>String Cheese</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Celery</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Cottage Cheese</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Pumpkin Seeds</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>String Cheese</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Celery</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Cottage Cheese</span></a> </li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -531,41 +531,41 @@
                             </div>
                         </div>
                     </li>
-                    <li class="mega-menu"> <a class="level-top" href="shop_grid.html"><span>Drinks</span></a>
+                    <li class="mega-menu"> <a class="level-top" href="shop_grid.jsp"><span>Drinks</span></a>
                         <div class="jtv-menu-block-wrapper">
                             <div class="jtv-menu-block-wrapper2">
                                 <div class="nav-block jtv-nav-block-center jtv-menu-box-left">
                                     <ul class="level0">
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Cold drinks</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Cold drinks</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Fayrouz</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Mirinda</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>AMP Energy</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Mountain Dew</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Fayrouz</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Mirinda</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>AMP Energy</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Mountain Dew</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Hot drinks</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Hot drinks</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Apple cider</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Butter tea</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Irish coffee</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Mate cocido</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Apple cider</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Butter tea</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Irish coffee</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Mate cocido</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Fruit drinks</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Fruit drinks</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Strawberry Lemonade</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Apple Cider</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Watermelontinis</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Sparkling Sangria</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Strawberry Lemonade</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Apple Cider</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Watermelontinis</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Sparkling Sangria</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Mixed drinks</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Mixed drinks</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Like Hand Grenade</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Miami Vice</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Blue Lagoon</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Jungle Juice</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Like Hand Grenade</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Miami Vice</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Blue Lagoon</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Jungle Juice</span></a> </li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -667,7 +667,7 @@
                                     <div class="info">
                                         <div class='tp-caption jtv-sub-title sft slide2  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:2;max-width:auto;max-height:auto;white-space:nowrap;padding-right:0px'><span>Save up to 35% off</span> </div>
                                         <div class='tp-caption jtv-large-title sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:3;max-width:auto;max-height:auto;white-space:nowrap;'>Fruit Flavoured</div>
-                                        <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;max-width:auto;max-height:auto;white-space:nowrap;'>Most Popular Ecommerce HTML Template.</div>
+                                        <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;max-width:auto;max-height:auto;white-space:nowrap;'>Most Popular Ecommerce jsp Template.</div>
                                         <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;max-width:auto;max-height:auto;white-space:nowrap;'><a href='#' class="jtv-shop-now-btn">Order now</a> </div>
                                     </div>
                                 </li>
@@ -719,7 +719,7 @@
                             <h3>Best Selling</h3>
                         </div>
                         <div class="jtv-decs-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</div>
-                        <a href="shop_grid.html" class="jtv-more-bnt">More Products</a>
+                        <a href="shop_grid.jsp" class="jtv-more-bnt">More Products</a>
                         <div class="jtv-box-timer">
                             <div class="countbox_1 timer-grid"></div>
                         </div>
@@ -729,7 +729,7 @@
                             <div class="item">
                                 <div class="item-inner">
                                     <div class="item-img">
-                                        <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img12.jpg"> </a>
+                                        <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img12.jpg"> </a>
                                             <div class="jtv-box-hover">
                                                 <ul class="add-to-links">
                                                     <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -741,7 +741,7 @@
                                     </div>
                                     <div class="item-info">
                                         <div class="info-inner">
-                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                             <div class="item-content">
                                                 <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                 <div class="item-price">
@@ -758,7 +758,7 @@
                             <div class="item">
                                 <div class="item-inner">
                                     <div class="item-img">
-                                        <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img15.jpg"> </a>
+                                        <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img15.jpg"> </a>
                                             <div class="jtv-box-hover">
                                                 <ul class="add-to-links">
                                                     <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -770,7 +770,7 @@
                                     </div>
                                     <div class="item-info">
                                         <div class="info-inner">
-                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                             <div class="item-content">
                                                 <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                 <div class="item-price">
@@ -787,7 +787,7 @@
                             <div class="item">
                                 <div class="item-inner">
                                     <div class="item-img">
-                                        <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img05.jpg"> </a>
+                                        <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img05.jpg"> </a>
                                             <div class="jtv-box-hover">
                                                 <ul class="add-to-links">
                                                     <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -799,7 +799,7 @@
                                     </div>
                                     <div class="item-info">
                                         <div class="info-inner">
-                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                             <div class="item-content">
                                                 <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                 <div class="item-price">
@@ -816,7 +816,7 @@
                             <div class="item">
                                 <div class="item-inner">
                                     <div class="item-img">
-                                        <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img06.jpg"> </a>
+                                        <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img06.jpg"> </a>
                                             <div class="new-label new-top-left">new</div>
                                             <div class="jtv-box-hover">
                                                 <ul class="add-to-links">
@@ -829,7 +829,7 @@
                                     </div>
                                     <div class="item-info">
                                         <div class="info-inner">
-                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                             <div class="item-content">
                                                 <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                 <div class="item-price">
@@ -880,7 +880,7 @@
                                 <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img10.jpg"> </a>
+                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img10.jpg"> </a>
                                                 <div class="jtv-box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -892,7 +892,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                                 <div class="item-content">
                                                     <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
@@ -909,7 +909,7 @@
                                 <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img01.jpg"> </a>
+                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img01.jpg"> </a>
                                                 <div class="jtv-box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -921,7 +921,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                                 <div class="item-content">
                                                     <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
@@ -938,7 +938,7 @@
                                 <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img02.jpg"> </a>
+                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img02.jpg"> </a>
                                                 <div class="jtv-box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -950,7 +950,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                                 <div class="item-content">
                                                     <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
@@ -967,7 +967,7 @@
                                 <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img03.jpg"> </a>
+                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img03.jpg"> </a>
                                                 <div class="new-label new-top-left">new</div>
                                                 <div class="jtv-box-hover">
                                                     <ul class="add-to-links">
@@ -980,7 +980,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                                 <div class="item-content">
                                                     <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
@@ -1007,7 +1007,7 @@
                                 <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img12.jpg"> </a>
+                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img12.jpg"> </a>
                                                 <div class="jtv-box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -1019,7 +1019,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                                 <div class="item-content">
                                                     <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
@@ -1036,7 +1036,7 @@
                                 <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img11.jpg"> </a>
+                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img11.jpg"> </a>
                                                 <div class="jtv-box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -1048,7 +1048,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                                 <div class="item-content">
                                                     <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
@@ -1065,7 +1065,7 @@
                                 <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img05.jpg"> </a>
+                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img05.jpg"> </a>
                                                 <div class="jtv-box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -1077,7 +1077,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                                 <div class="item-content">
                                                     <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
@@ -1094,7 +1094,7 @@
                                 <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img06.jpg"> </a>
+                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img06.jpg"> </a>
                                                 <div class="new-label new-top-left">new</div>
                                                 <div class="jtv-box-hover">
                                                     <ul class="add-to-links">
@@ -1107,7 +1107,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                                 <div class="item-content">
                                                     <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
@@ -1133,7 +1133,7 @@
                                 <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img11.jpg"> </a>
+                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img11.jpg"> </a>
                                                 <div class="jtv-box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -1145,7 +1145,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                                 <div class="item-content">
                                                     <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
@@ -1162,7 +1162,7 @@
                                 <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img12.jpg"> </a>
+                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img12.jpg"> </a>
                                                 <div class="jtv-box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -1174,7 +1174,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                                 <div class="item-content">
                                                     <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
@@ -1191,7 +1191,7 @@
                                 <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img13.jpg"> </a>
+                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img13.jpg"> </a>
                                                 <div class="jtv-box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -1203,7 +1203,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                                 <div class="item-content">
                                                     <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
@@ -1220,7 +1220,7 @@
                                 <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img14.jpg"> </a>
+                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img14.jpg"> </a>
                                                 <div class="new-label new-top-left">new</div>
                                                 <div class="jtv-box-hover">
                                                     <ul class="add-to-links">
@@ -1233,7 +1233,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                                 <div class="item-content">
                                                     <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
@@ -1259,7 +1259,7 @@
                                 <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img10.jpg"> </a>
+                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img10.jpg"> </a>
                                                 <div class="jtv-box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -1271,7 +1271,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                                 <div class="item-content">
                                                     <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
@@ -1288,7 +1288,7 @@
                                 <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img01.jpg"> </a>
+                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img01.jpg"> </a>
                                                 <div class="jtv-box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -1300,7 +1300,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                                 <div class="item-content">
                                                     <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
@@ -1317,7 +1317,7 @@
                                 <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img02.jpg"> </a>
+                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img02.jpg"> </a>
                                                 <div class="jtv-box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -1329,7 +1329,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                                 <div class="item-content">
                                                     <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
@@ -1346,7 +1346,7 @@
                                 <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img03.jpg"> </a>
+                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img03.jpg"> </a>
                                                 <div class="new-label new-top-left">new</div>
                                                 <div class="jtv-box-hover">
                                                     <ul class="add-to-links">
@@ -1359,7 +1359,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                                 <div class="item-content">
                                                     <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
@@ -1385,7 +1385,7 @@
                                 <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img02.jpg"> </a>
+                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img02.jpg"> </a>
                                                 <div class="jtv-box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -1397,7 +1397,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                                 <div class="item-content">
                                                     <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
@@ -1414,7 +1414,7 @@
                                 <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img06.jpg"> </a>
+                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img06.jpg"> </a>
                                                 <div class="jtv-box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -1426,7 +1426,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                                 <div class="item-content">
                                                     <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
@@ -1443,7 +1443,7 @@
                                 <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img10.jpg"> </a>
+                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img10.jpg"> </a>
                                                 <div class="jtv-box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -1455,7 +1455,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                                 <div class="item-content">
                                                     <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
@@ -1472,7 +1472,7 @@
                                 <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img07.jpg"> </a>
+                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img07.jpg"> </a>
                                                 <div class="new-label new-top-left">new</div>
                                                 <div class="jtv-box-hover">
                                                     <ul class="add-to-links">
@@ -1485,7 +1485,7 @@
                                         </div>
                                         <div class="item-info">
                                             <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                                 <div class="item-content">
                                                     <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                     <div class="item-price">
@@ -1630,40 +1630,40 @@
                     </div>
                     <div class="blog-inner">
                         <div class="col-sm-4">
-                            <div class="entry-thumb"> <a href="blog_single_post.html"> <img alt="Blog" src="images/blog-img1.jpg"> </a> </div>
+                            <div class="entry-thumb"> <a href="blog_single_post.jsp"> <img alt="Blog" src="images/blog-img1.jpg"> </a> </div>
                             <div class="blog-preview_info">
-                                <h4><a href="blog_single_post.html">Winter Morning Organic</a></h4>
+                                <h4><a href="blog_single_post.jsp">Winter Morning Organic</a></h4>
                                 <ul class="post-meta">
                                     <li><i class="fa fa-user"></i><a href="#">admin</a> </li>
                                     <li><i class="fa fa-comments"></i><a href="#">12 comments</a> </li>
                                     <li><i class="fa fa-calendar"></i>2017-02-25</li>
                                 </ul>
                                 <div class="blog-preview_desc">Lorem ipsum dolor sit ame consetur adipisicing elit. Voluptate, consetur adipisicing elit.Lorem ipsum dolor.</div>
-                                <a class="blog-preview_btn" href="blog_single_post.html">Read More <i class="fa fa-long-arrow-right"></i></a> </div>
+                                <a class="blog-preview_btn" href="blog_single_post.jsp">Read More <i class="fa fa-long-arrow-right"></i></a> </div>
                         </div>
                         <div class="col-sm-4">
-                            <div class="entry-thumb"> <a href="blog_single_post.html"> <img alt="Blog" src="images/blog-img2.jpg"> </a> </div>
+                            <div class="entry-thumb"> <a href="blog_single_post.jsp"> <img alt="Blog" src="images/blog-img2.jpg"> </a> </div>
                             <div class="blog-preview_info">
-                                <h4><a href="blog_single_post.html">Perfect for promoting</a></h4>
+                                <h4><a href="blog_single_post.jsp">Perfect for promoting</a></h4>
                                 <ul class="post-meta">
                                     <li><i class="fa fa-user"></i><a href="#">admin</a> </li>
                                     <li><i class="fa fa-comments"></i><a href="#">45 comments</a> </li>
                                     <li><i class="fa fa-calendar"></i>2017-04-05</li>
                                 </ul>
                                 <div class="blog-preview_desc">Lorem ipsum dolor sit ame consetur adipisicing elit. Voluptate, consetur adipisicing elit.Lorem ipsum dolor.</div>
-                                <a class="blog-preview_btn" href="blog_single_post.html">Read More <i class="fa fa-long-arrow-right"></i></a> </div>
+                                <a class="blog-preview_btn" href="blog_single_post.jsp">Read More <i class="fa fa-long-arrow-right"></i></a> </div>
                         </div>
                         <div class="col-sm-4">
-                            <div class="entry-thumb"> <a href="blog_single_post.html"> <img alt="Blog" src="images/blog-img3.jpg"> </a> </div>
+                            <div class="entry-thumb"> <a href="blog_single_post.jsp"> <img alt="Blog" src="images/blog-img3.jpg"> </a> </div>
                             <div class="blog-preview_info">
-                                <h4><a href="blog_single_post.html">Sed do eiusmod sit amet</a></h4>
+                                <h4><a href="blog_single_post.jsp">Sed do eiusmod sit amet</a></h4>
                                 <ul class="post-meta">
                                     <li><i class="fa fa-user"></i><a href="#">admin</a> </li>
                                     <li><i class="fa fa-comments"></i><a href="#">85 comments</a> </li>
                                     <li><i class="fa fa-calendar"></i>2017-05-05</li>
                                 </ul>
                                 <div class="blog-preview_desc">Lorem ipsum dolor sit ame consetur adipisicing elit. Voluptate, consetur adipisicing elit.Lorem ipsum dolor.</div>
-                                <a class="blog-preview_btn" href="blog_single_post.html">Read More <i class="fa fa-long-arrow-right"></i></a> </div>
+                                <a class="blog-preview_btn" href="blog_single_post.jsp">Read More <i class="fa fa-long-arrow-right"></i></a> </div>
                         </div>
                     </div>
                 </div>
@@ -1724,7 +1724,7 @@
         <div class="footer-top">
             <div class="container">
                 <div class="row">
-                    <div style="text-align:center"> <a href="index.html"><img src="images/footer-logo.png" alt="logo"> </a> </div>
+                    <div style="text-align:center"> <a href="index.jsp"><img src="images/footer-logo.png" alt="logo"> </a> </div>
                     <address>
                         <p> <i class="fa fa-map-marker"></i>Company, 12/34 - West 21st Street, New York, USA </p>
                         <p><i class="fa fa-mobile"></i><span>+ (800) 0123 456 789</span> </p>
@@ -1769,8 +1769,8 @@
                                 <li><a href="#">Sites Map </a></li>
                                 <li><a href="#">News</a></li>
                                 <li><a href="#">Trends</a></li>
-                                <li><a href="about_us.html">About Us</a></li>
-                                <li><a href="contact_us.html">Contact Us</a></li>
+                                <li><a href="about_us.jsp">About Us</a></li>
+                                <li><a href="contact_us.jsp">Contact Us</a></li>
                                 <li><a href="#">My Orders</a></li>
                             </ul>
                         </div>
@@ -1946,4 +1946,4 @@
 <!--End of Newsletter Popup-->
 
 </body>
-</html>
+</jsp>

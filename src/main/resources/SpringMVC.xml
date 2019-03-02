@@ -60,4 +60,6 @@
     </bean>
 
     <mvc:default-servlet-handler/>
+
+    <mvc:resources location="../webapp/css/" mapping="/css/**" />
 </beans>

@@ -1,5 +1,6 @@
 package com.CAKESHOP.dao;
 
+
 public class Product {
     public int ID = 0;//商品ID
     private String name = "";//商品名
