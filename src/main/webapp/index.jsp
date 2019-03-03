@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 <!DOCTYPE jsp>
 <jsp>
+=======
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="en">
+>>>>>>> c6bb3383c025530913dfa1db49a02809202ba1c4
 <head>
     <!-- Basic page needs -->
     <meta charset="utf-8">
@@ -19,6 +25,7 @@
 </head>
 
 <body class="cms-index-index cms-home-page">
+
 <!-- mobile menu -->
 <div id="jtv-mobile-menu">
     <ul>
@@ -233,7 +240,7 @@
                                                 </ul>
                                             </div>
                                         </li>
-                                        <li> <a href="#"><span class="hidden-xs">Log In</span></a> </li>
+                                        <li> <a href="WEB-INF/jsp/regist.jsp"><span class="hidden-xs">Log In</span></a> </li>
                                     </ul>
                                 </div>
                             </div>
@@ -324,7 +331,7 @@
                             <li class="sub-cat"><a href="shop_grid.jsp"><span>Shop Grid</span></a>
                                 <ul>
                                     <li> <a href="#"> <span>Shop Grid Right Sidebar</span> </a> </li>
-                                    <li> <a href="#"> <span>Shop Grid Fullwidth</span> </a> </li>
+                                    <li> <a href="regist.jsp"> <span>Shop Grid Fullwidth</span> </a> </li>
                                 </ul>
                             </li>
                             <li class="sub-cat"> <a href="#"> <span>Shop List</span> </a>
@@ -652,13 +659,13 @@
                                         <div class='tp-caption jtv-sub-title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:2;max-width:auto;max-height:auto;white-space:nowrap;'><span>Growing Organic Together</span> </div>
                                         <div class='tp-caption jtv-large-title sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:3;max-width:auto;max-height:auto;white-space:nowrap;'><span>100% Natural</span> </div>
                                         <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1450' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;max-width:auto;max-height:auto;white-space:nowrap;'>Quality & Freshness Guaranteed! Good Health.</div>
-                                        <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;white-space:nowrap;'><a href='#' class="jtv-shop-now-btn">Shop Now</a> </div>
+                                        <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;max-width:auto;max-height:auto;white-space:nowrap;'><a href='#' class="jtv-shop-now-btn">Shop Now</a> </div>
                                     </div>
                                 </li>
                                 <li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb='images/slider/slide-img2.jpg'><img src="images/slider/slide-img2.jpg" alt="slide-img" data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' />
                                     <div class="info">
-                                        <div class='tp-caption jtv-sub-title sft slide2  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:2;white-space:nowrap;padding-right:0px'><span>Daily Fresh Organic Food</span> </div>
-                                        <div class='tp-caption jtv-large-title sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:3;white-space:nowrap;'>Fresh Vegetables</div>
+                                        <div class='tp-caption jtv-sub-title sft slide2  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:2;max-width:auto;max-height:auto;white-space:nowrap;padding-right:0px'><span>Daily Fresh Organic Food</span> </div>
+                                        <div class='tp-caption jtv-large-title sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:3;max-width:auto;max-height:auto;white-space:nowrap;'>Fresh Vegetables</div>
                                         <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;max-width:auto;max-height:auto;white-space:nowrap;'>Forn the Greatest Health Benefits! Refreshing & Tasty!</div>
                                         <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;max-width:auto;max-height:auto;white-space:nowrap;'><a href='#' class="jtv-shop-now-btn">Find out more</a> </div>
                                     </div>
@@ -1946,4 +1953,9 @@
 <!--End of Newsletter Popup-->
 
 </body>
+<<<<<<< HEAD
 </jsp>
+=======
+</html>
+
+>>>>>>> c6bb3383c025530913dfa1db49a02809202ba1c4
