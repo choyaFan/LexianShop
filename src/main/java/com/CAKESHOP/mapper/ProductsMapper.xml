@@ -33,4 +33,14 @@
         from products;
     </select>
 
+    <!--通过分页查询商品-->
+    <select id="selectProductsByPage" resultType="java.util.Map">
+    select * from products limit #{startPos},#{pageSize}
+    </select>
+
+    <!-- 查询商品总数 -->
+    <select id="getProductsCount" resultType="int">
+    select count(*) from products;
+</select>
+
 </mapper>

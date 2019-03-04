@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="width" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%@page pageEncoding="utf-8" contentType="text/html;charset=utf-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -705,65 +706,7 @@
             <div class="category-products">
               <ul class="products-grid">
                   <!--依次显示商品-->
-                <li class="item col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                  <div class="item-inner">
-                    <div class="item-img">
-                      <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img10.jpg"> </a>
-                        <div class="jtv-box-hover">
-                          <ul class="add-to-links">
-                            <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                            <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                            <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp">商品1</a></h6> </div>
-                        <div class="item-content">
-                          <div class="rating"> <h6>有货</h6>     </div>
-                          <div class="item-price">
-                            <div class="price-box"> <span class="regular-price"> <span class="price">$155.00</span> </span> </div>
-                          </div>
-                          <div class="action">
-                            <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>加入购物车</span> </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="item col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                  <div class="item-inner">
-                    <div class="item-img">
-                      <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img01.jpg"> </a>
-                        <div class="jtv-box-hover">
-                          <ul class="add-to-links">
-                            <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                            <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                            <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="item-info">
-                      <div class="info-inner">
-                        <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp">商品2</a></h6> </div>
-                        <div class="item-content">
-                          <div class="rating"> <h6>有货</h6>     </div>
-                          <div class="item-price">
-                            <div class="price-box"> <span class="regular-price"> <span class="price">$155.00</span> </span> </div>
-                          </div>
-                          <div class="action">
-                            <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>加入购物车</span> </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div></div>
-                </li>
-                  <c:forEach items="${products}" var="product">
+                  <c:forEach items="${productsList}" var="product">
                       <li class="item col-lg-4 col-md-4 col-sm-4 col-xs-6">
                           <div class="item-inner">
                               <div class="item-img">
@@ -800,13 +743,79 @@
               <div class="row">
                 <div class="col-sm-6 text-left">
                   <ul class="pagination">
+                    <c:choose>
+                      <c:when test="${page.totalPageCount <=10 }">
+                        <c:set var="begin" value="1"/>
+                        <c:set var="end" value="${page.totalPageCount }"/>
+                      </c:when>
+                      <c:otherwise>
+                        <c:set var="begin" value="${page.pageNow-4 }"/>
+                        <c:set var="end" value="${page.totalPageCount }"/>
+                        <c:if test="${begin < 1 }">
+                          <c:set var="begin" value="1"/>
+                          <c:set var="end" value="10"/>
+                        </c:if>
+                        <c:if test="${end > page.totalPageCount }">
+                          <c:set var="begin" value="${page.totalPageCount-5 }"/>
+                          <c:set var="end" value="${page.totalPageCount }"/>
+                        </c:if>
+                      </c:otherwise>
+                    </c:choose>
+                    <%--上一页 --%>
+                    <c:choose>
+                      <c:when test="${page.pageNow eq 1 }">
+                        <%--当前页为第一页，隐藏上一页按钮--%>
+                      </c:when>
+                      <c:otherwise>
+                        <li><a href="?pageNow=${page.pageNow-1}"><</a></li>
+                      </c:otherwise>
+                    </c:choose>
+                    <%--显示第一页的页码--%>
+                    <c:if test="${begin >= 2 }">
+                      <li><a href="?pageNow=1">1</a></li>
+                    </c:if>
+                    <%--显示点点点--%>
+                    <c:if test="${begin  > 2 }">
+                      <li><a>...</a></li>
+                    </c:if>
+                    <%--打印 页码--%>
+                    <c:forEach begin="${begin }" end="${end }" var="i">
+                      <c:choose>
+                        <c:when test="${i eq page.pageNow }">
+                          <li class="active"><span>${i}</span></li>
+                        </c:when>
+                        <c:otherwise>
+                          <li><a href="?pageNow=${i}">${i}</a></li>
+                        </c:otherwise>
+                      </c:choose>
+                    </c:forEach>
+                    <%-- 显示点点点 --%>
+                    <c:if test="${end < page.totalPageCount-1 }">
+                      <li><a>...</a></li>
+                    </c:if>
+                    <%-- 显示最后一页的数字 --%>
+                    <c:if test="${end < page.totalPageCount }">
+                       <li><a href="?pageNow=${page.totalPageCount}">${page.totalPageCount}</a></li>
+                    </c:if>
+                    <%--下一页 --%>
+                    <c:choose>
+                      <c:when test="${page.pageNow eq page.totalPageCount }">
+                        <%--到了尾页隐藏，下一页按钮--%>
+                      </c:when>
+                      <c:otherwise>
+                        <li><a href="?pageNow=${page.pageNow+1}">></a></li>
+                      </c:otherwise>
+                    </c:choose>
+                    <!--
                     <li class="active"><span>1</span></li>
                     <li><a href="#">2</a></li>
                     <li><a href="#">&gt;</a></li>
                     <li><a href="#">&gt;|</a></li>
+                    -->
                   </ul>
                 </div>
-                <div class="col-sm-6 text-right">1-15 件商品, 共 25 件 (2 页)</div>
+                <c:set var="previousNum" value="${(page.pageNow-1)*page.pageSize}"/>
+                <div class="col-sm-6 text-right">${previousNum+1}- ${previousNum+page.productsPerPage} 件商品, 共 ${page.totalCount} 件 (${page.totalPageCount} 页)</div>
               </div>
             </div>
           </article>
