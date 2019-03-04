@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-<!DOCTYPE jsp>
-<jsp>
-=======
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
->>>>>>> c6bb3383c025530913dfa1db49a02809202ba1c4
 <head>
     <!-- Basic page needs -->
     <meta charset="utf-8">
@@ -44,7 +39,7 @@
         <li><a href="index.jsp">Home</a> </li>
         <li><a href="#">Pages</a>
             <ul>
-                <li><a href="shop_grid.jsp"><span>Shop Grid</span></a>
+                <li><a href="shop_grid.action"><span>Shop Grid</span></a>
                     <ul>
                         <li> <a href="#"> <span>Shop Grid Right Sidebar</span> </a> </li>
                         <li> <a href="#"> <span>Shop Grid Fullwidth</span> </a> </li>
@@ -328,7 +323,7 @@
                     <li class="drop-menu"><a href="index.jsp" class="level-top active"><span>Home</span></a> </li>
                     <li class="drop-menu"> <a href="#"> <span>Pages</span> </a>
                         <ul>
-                            <li class="sub-cat"><a href="shop_grid.jsp"><span>Shop Grid</span></a>
+                            <li class="sub-cat"><a href="shop_grid.action"><span>Shop Grid</span></a>
                                 <ul>
                                     <li> <a href="#"> <span>Shop Grid Right Sidebar</span> </a> </li>
                                     <li> <a href="regist.jsp"> <span>Shop Grid Fullwidth</span> </a> </li>
@@ -1953,9 +1948,4 @@
 <!--End of Newsletter Popup-->
 
 </body>
-<<<<<<< HEAD
-</jsp>
-=======
 </html>
-
->>>>>>> c6bb3383c025530913dfa1db49a02809202ba1c4
