@@ -10,4 +10,5 @@ public interface ProductsMapper {
     //Ä£ºýËÑË÷ÉÌÆ·
     List<Products> selectProductsSearch(@Param("searchKey") String searchKey);
     List<Products> selectAllProducts();
+    Products selectById(@Param("id") int id);
 }

@@ -6,7 +6,7 @@ public class PersonalInformation {
     private String user_name = "";//用户名
     private String user_password = "";//密码
     private String email = "";//邮箱
-    private char gender = '男';//性别
+    private char gender = 'F';//性别
     private String last_login = "";//最后登陆时间
     private int active = 1;//状态
     private String imgPath = "";//头像图片路径

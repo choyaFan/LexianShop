@@ -689,7 +689,7 @@ ul.lang {
 	text-align: left;
 	display: block;
 	margin: 0;
-	padding: 0x;
+	padding: 0;
 	list-style: none;
 	float: left;
 	padding: 0px;
@@ -944,7 +944,7 @@ ul#cart-sidebar {
 .button.btn-checkout:hover {
 	background: #339900;
 }
-.button:btn-bag:hover {
+.button:hover {
 background:#f6f6f6
 }
 .jtv-btn-remove {
@@ -3931,7 +3931,7 @@ figure.effect p {
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-image: url(../images/header-shop-men.jpg);
+	/*background-image: url(../images/header-shop-men.jpg);*/
 	background-position-x: 50%;
 }
 .shop_header.has_big_img {
@@ -3957,7 +3957,7 @@ figure.effect p {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background: rgba(0,0,0,0.3) url(../images/category-img-overlay.png) repeat top left;
+	/*background: rgba(0,0,0,0.3) url(../images/category-img-overlay.png) repeat top left;*/
 }
 /*------- 18. Sidebar ---------*/
 
@@ -7975,7 +7975,7 @@ footer p {
 }
 footer .footer-links a {
 	display: inline-block;
-	color: ##717171
+	color: #717171
 }
 footer a {
 	line-height: normal;

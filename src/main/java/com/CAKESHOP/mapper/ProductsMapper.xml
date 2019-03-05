@@ -5,32 +5,38 @@
     <!--auto generated Code-->
     <resultMap id="ProductsMap" type="com.CAKESHOP.dao.Products">
         <result column="id" property="id"/>
-        <result column="productName" property="productName"/>
-        <result column="firstCategory" property="firstCategory"/>
-        <result column="secondCategory" property="secondCategory"/>
-        <result column="thirdCategory" property="thirdCategory"/>
-        <result column="productBriefIntroduction" property="productBriefIntroduction"/>
-        <result column="productDetail" property="productDetail"/>
-        <result column="pic1Url" property="pic1Url"/>
-        <result column="pic2Url" property="pic2Url"/>
-        <result column="pic3Url" property="pic3Url"/>
-        <result column="pic4Url" property="pic4Url"/>
-        <result column="createTime" property="createTime"/>
-        <result column="updatatime" property="updatetime"/>
+        <result column="product_name" property="productName"/>
+        <result column="first_category" property="firstCategory"/>
+        <result column="second_category" property="secondCategory"/>
+        <result column="third_category" property="thirdCategory"/>
+        <result column="product_brief_introduction" property="productBriefIntroduction"/>
+        <result column="product_detail" property="productDetail"/>
+        <result column="pic1_url" property="pic1Url"/>
+        <result column="pic2_url" property="pic2Url"/>
+        <result column="pic3_url" property="pic3Url"/>
+        <result column="pic4_url" property="pic4Url"/>
+        <result column="create_time" property="createTime"/>
+        <result column="updatetime" property="updatetime"/>
         <result column="unit" property="unit"/>
     </resultMap>
 
     <!--模糊商品搜索-->
-    <select id="selectProductsSearch" parameterType="String" resultType="java.util.Map">
+    <select id="selectProductsSearch" parameterType="String" resultMap="ProductsMap">
         select *
         from products
         where name like"%${searchKey}%";<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
     </select>
 
     <!--返回所有商品-->
-    <select id="selectAllProducts" resultType="java.util.Map">
+    <select id="selectAllProducts" resultMap="ProductsMap">
         select *
         from products;
+    </select>
+
+    <select id="selectById" resultMap="ProductsMap">
+        SELECT *
+        FROM products
+        WHERE id=1;
     </select>
 
 </mapper>

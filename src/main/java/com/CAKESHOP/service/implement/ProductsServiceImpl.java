@@ -23,4 +23,9 @@ public class ProductsServiceImpl implements ProductsService {
     public List<Products> queryallProducts() {
         return productsMapper.selectAllProducts();
     }
+
+    @Override
+    public Products searchById(int id){
+        return productsMapper.selectById(id);
+    }
 }

@@ -16,4 +16,7 @@ public interface OrdersMapper {
 
     int update(@Param("pojo") Orders pojo);
 
+    List<Orders> selectAllOrders();
+
+    List<Orders> selectByUserId(@Param("userPhone") String userPhone);
 }
