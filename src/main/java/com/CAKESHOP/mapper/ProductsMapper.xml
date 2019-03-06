@@ -36,7 +36,7 @@
     <select id="selectById" resultMap="ProductsMap">
         SELECT *
         FROM products
-        WHERE id=1;
+        WHERE id=#{id};
     </select>
 
     <!--通过分页查询商品-->
