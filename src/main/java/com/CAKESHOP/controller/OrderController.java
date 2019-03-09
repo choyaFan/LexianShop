@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,8 +63,24 @@ public class OrderController {
         return mv;
     }
 
-//    @RequestMapping("/getOrderProducts")
-//    public ModelAndView getOrderProducts(int orderId){
-//
-//    }
+    @RequestMapping("/getOrderProducts")
+    public ModelAndView getOrderProducts(@RequestParam("orderId") int orderId){
+        ModelAndView mv = new ModelAndView();
+        List<Orders> ordersList = ordersService.selectByOrderId(orderId);
+        List<Products> productsList = new ArrayList<Products>();
+        for(Orders orders : ordersList){
+            productsList.add(productsService.searchById(orders.getProductId()));
+        }
+        mv.addObject("productsList", productsList);
+        mv.addObject("ordersList", ordersList);
+        mv.setViewName("orderPayment.jsp");
+        return mv;
+    }
+
+    @RequestMapping("/getOrderDetail")
+    public ModelAndView getOrderDetail(@RequestParam("orderId") int orderId){
+        ModelAndView mv = getOrderProducts(orderId);
+        mv.setViewName("orderDetail.jsp");
+        return mv;
+    }
 }

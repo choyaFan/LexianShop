@@ -24,4 +24,9 @@ public class OrdersServiceImpl implements OrdersService{
     public List<Orders> selectByUserId(String userPhone){
         return ordersMapper.selectByUserId(userPhone);
     }
+    @Override
+    public List<Orders> selectByOrderId(int orderId){
+        return ordersMapper.selectByOrderId(orderId);
+    }
+
 }

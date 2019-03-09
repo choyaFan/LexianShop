@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 63583
@@ -432,6 +433,42 @@
 </nav>
 <!-- end nav -->
 
+    <!-- our features -->
+    <div class="our-features-box hidden-xs">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-xs-12 col-sm-6">
+                    <div class="feature-box first"> <i class="icon-plane icons"></i>
+                        <div class="content">
+                            <h6>Free & Next Day Delivery</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-12 col-sm-6">
+                    <div class="feature-box"> <i class="icon-earphones-alt icons"></i>
+                        <div class="content">
+                            <h6>Support 24/7 For Clients</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-12 col-sm-6">
+                    <div class="feature-box"> <i class="icon-like icons"></i>
+                        <div class="content">
+                            <h6>100% Satisfaction Guarantee</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-12 col-sm-6">
+                    <div class="feature-box last"> <i class="icon-tag icons"></i>
+                        <div class="content">
+                            <h6>Great Daily Deals Discount</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <!--收货地址body部分开始-->
 <div class="border_top_cart">
     <script type="text/javascript">
@@ -475,20 +512,15 @@
                                 <dl class="item" >
                                     <dt>
                                         <strong class="itemConsignee">潘骏杰</strong>
-                                        <span class="itemTag tag">家</span>
+                                        <span class="itemTag tag">已选择</span>
                                     </dt>
                                     <dd>
                                         <p class="tel itemTel">15961726437</p>
                                         <p class="itemRegion">江苏 无锡市 北塘区</p>
                                         <p class="itemStreet">民丰西苑82号202室(214045)</p>
-                                        <span class="edit-btn J_editAddr">编辑</span>
-                                    </dd>
-                                    <dd style="display:none">
-                                        <input type="radio" name="Checkout[address]" class="addressId"  value="10140916720030323">
                                     </dd>
                                 </dl>
                             </div>
-                            <div class="xm-edit-addr-backdrop" id="J_editAddrBackdrop"></div>
                         </div>                </div>
                     <!-- 收货地址 END-->
                     <div id="checkoutPayment">
@@ -620,61 +652,31 @@
                                         <span class="col col-3">购买数量</span>
                                         <span class="col col-4">小计（元）</span>
                                     </dt>
-                                    <dd class="item clearfix">
-                                        <div class="item-row">
-                                            <div class="col col-1">
-                                                <div class="g-pic">
-                                                    <img src="http://i1.mifile.cn/a1/T11lLgB5YT1RXrhCrK!40x40.jpg" srcset="http://i1.mifile.cn/a1/T11lLgB5YT1RXrhCrK!80x80.jpg 2x" width="40" height="40" />
+                                    <% int i = 0; pageContext.setAttribute("i", i); %>
+                                    <c:forEach items="${productsList}" var="product">
+                                        <dd class="item clearfix">
+                                            <div class="item-row">
+                                                <div class="col col-1">
+                                                    <div class="g-pic">
+                                                        <img src="http://i1.mifile.cn/a1/T11lLgB5YT1RXrhCrK!40x40.jpg" srcset="http://i1.mifile.cn/a1/T11lLgB5YT1RXrhCrK!80x80.jpg 2x" width="40" height="40" />
+                                                    </div>
+                                                    <div class="g-info">
+                                                        <a href="#">
+                                                            <c:out value="${product.productName}"/>                                           </a>
+                                                    </div>
                                                 </div>
-                                                <div class="g-info">
-                                                    <a href="#">
-                                                        小米T恤 忍者米兔双截棍 军绿 XXL                                            </a>
-                                                </div>
-                                            </div>
 
-                                            <div class="col col-2">39元</div>
-                                            <div class="col col-3">1</div>
-                                            <div class="col col-4">39元</div>
-                                        </div>
-                                    </dd>
-                                    <dd class="item clearfix">
-                                        <div class="item-row">
-                                            <div class="col col-1">
-                                                <div class="g-pic">
-                                                    <img src="http://i1.mifile.cn/a1/T14BLvBKJT1RXrhCrK!40x40.jpg" srcset="http://i1.mifile.cn/a1/T14BLvBKJT1RXrhCrK!80x80.jpg 2x" width="40" height="40" />
-                                                </div>
-                                                <div class="g-info">
-                                                    <a href="#">
-                                                        招财猫米兔 白色                                            </a>
-                                                </div>
+                                                <div class="col col-2">${ordersList.get(i).singlePrice}</div>
+                                                <div class="col col-3">${ordersList.get(i).amount}</div>
+                                                <div class="col col-4">${ordersList.get(i).singlePrice * ordersList.get(i).amount}</div>
+                                                <% i++; pageContext.setAttribute("i", i);%>
                                             </div>
-
-                                            <div class="col col-2">49元</div>
-                                            <div class="col col-3">1</div>
-                                            <div class="col col-4">49元</div>
-                                        </div>
-                                    </dd>
-                                    <dd class="item clearfix">
-                                        <div class="item-row">
-                                            <div class="col col-1">
-                                                <div class="g-pic">
-                                                    <img src="http://i1.mifile.cn/a1/T1rrDgB4DT1RXrhCrK!40x40.jpg" srcset="http://i1.mifile.cn/a1/T1rrDgB4DT1RXrhCrK!80x80.jpg 2x" width="40" height="40" />
-                                                </div>
-                                                <div class="g-info">
-                                                    <a href="#">
-                                                        小米圆领纯色T恤 男款 红色 XXL                                            </a>
-                                                </div>
-                                            </div>
-
-                                            <div class="col col-2">39元</div>
-                                            <div class="col col-3">4</div>
-                                            <div class="col col-4">156元</div>
-                                        </div>
-                                    </dd>
+                                        </dd>
+                                    </c:forEach>
                                 </dl>
                                 <div class="checkout-count clearfix">
                                     <div class="checkout-count-extend xm-add-buy">
-                                        <h3 class="title">会员留言</h2></br>
+                                        <h3 class="title">会员留言</h3></br>
                                             <input type="text" />
 
                                     </div>
@@ -683,14 +685,10 @@
                                         <ul>
 
                                             <li>
-                                                订单总额：<span>244元</span>
+                                                订单总额：<span>${ordersList.get(0).totalPrice}</span>
                                             </li>
                                             <li>
                                                 活动优惠：<span>-0元</span>
-                                                <script type="text/javascript">
-                                                    checkoutConfig.activityDiscountMoney=0;
-                                                    checkoutConfig.totalPrice=244.00;
-                                                </script>
                                             </li>
                                             <li>
                                                 优惠券抵扣：<span id="couponDesc">-0元</span>
@@ -699,39 +697,12 @@
                                                 运费：<span id="postageDesc">0元</span>
                                             </li>
                                         </ul>
-                                        <p class="checkout-total">应付总额：<span><strong id="totalPrice">244</strong>元</span></p>
+                                        <p class="checkout-total">应付总额：<span><strong id="totalPrice">${ordersList.get(0).totalPrice}</strong>元</span></p>
                                     </div>
                                     <!--  -->
                                 </div>
                             </div>
                         </div>
-
-                        <!--S 加价购 产品选择弹框 -->
-                        <div class="modal hide modal-choose-pro" id="J_choosePro-664">
-                            <div class="modal-header">
-                                <span class="close" data-dismiss='modal'><i class="iconfont">&#xe617;</i></span>
-                                <h3>选择产品</h3>
-                                <div class="more">
-                                    <div class="xm-recommend-page clearfix">
-                                        <a class="page-btn-prev   J_carouselPrev iconfont" href="javascript: void(0);">&#xe604;</a><a class="page-btn-next  J_carouselNext iconfont" href="javascript: void(0);">&#xe605;</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-body J_chooseProCarousel">
-                                <div class="J_carouselWrap modal-choose-pro-list-wrap">
-                                    <ul class="clearfix J_carouselList">
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="#" class="btn btn-disabled J_chooseProBtn">加入购物车</a>
-                            </div>
-                        </div>
-                        <!--E 加价购 产品选择弹框 -->
-
-                        <!--S 保障计划 产品选择弹框 -->
-
-
                     </div>
                     <!-- 商品清单 END -->
                     <input type="hidden"  id="couponType" name="Checkout[couponsType]">
@@ -742,79 +713,9 @@
                         <input type="submit" class="btn btn-primary" value="立即下单" id="checkoutToPay" />
                     </div>
                 </div>
-        </div>
-
-        </form>
-
-    </div>
-    <!-- 禮品卡提示 S-->
-    <div class="modal hide lipin-modal" id="lipinTip">
-        <div class="modal-header">
-            <h2 class="title">温馨提示</h2>
-            <p> 为保障您的利益与安全，下单后礼品卡将会被使用，<br>
-                且订单信息将不可修改。请确认收货信息：</p>
-        </div>
-        <div class="modal-body">
-            <ul>
-                <li><strong>收&nbsp;&nbsp;货&nbsp;&nbsp;人：</strong><span id="lipin-uname"></span></li>
-                <li><strong>联系电话：</strong><span id="lipin-uphone"></span></li>
-                <li><strong>收货地址：</strong><span id="lipin-uaddr"></span></li>
-            </ul>
-        </div>
-        <div class="modal-footer">
-            <span class="btn btn-primary" id="useGiftCard">确认下单</span><span class="btn btn-dakeLight" id="closeGiftCard">返回修改</span>
+            </form>
         </div>
     </div>
-    <!--  禮品卡提示 E-->
-    <!-- 预售提示 S-->
-    <div class="modal hide yushou-modal" id="yushouTip">
-        <div class="modal-body">
-            <h2>请确认收货地址及发货时间</h2>
-            <ul class="list">
-                <li>
-                    <strong>请确认配送地址，提交后不可变更：</strong>
-                    <p id="yushouAddr"> </p>
-                    <span class="icon-common icon-1"></span>
-                </li>
-                <li>
-                    <strong>支付后发货</strong>
-                    <p>如您随预售商品一起购买的商品，将与预售商品一起发货</p>
-                    <span class="icon-common icon-2"></span>
-                </li>
-                <li>
-                    <strong>以支付价格为准</strong>
-                    <p>如预售产品发生调价，已支付订单价格将不受影响。</p>
-                    <span class="icon-common icon-3"></span>
-                </li>
-            </ul>
-        </div>
-        <div class="modal-footer">
-            <p id="yushouOk" class="yushou-ok">
-                <span class="icon-checkbox"><i class="iconfont">&#xe626;</i></span>
-                我已确认收货地址正确，不再变更</p>
-            <span class="btn btn-lineDakeLight" data-dismiss="modal">返回修改地址</span>
-            <span class="btn btn-primary" id="yushouCheckout">继续下单</span>
-
-        </div>
-    </div>
-    <!--  预售提示 E-->
-
-    <script id="newAddrTemplate" type="text/x-dot-template">
-        <dl class="item selected" data-isnew="true" data-consignee="{{=it.consignee}}" data-tel="{{=it.tel}}" data-province="{{=it.province}}" data-provincename="{{=it.provinceName}}" data-city="{{=it.city}}" data-cityname="{{=it.cityName}}" data-county="{{=it.county}}" data-countyname="{{=it.countyName}}" data-zipcode="{{=it.zipcode}}" data-street="{{=it.street}}" data-tag="{{=it.tag}}">
-            <dt>
-                <strong class="itemConsignee">{{=it.consignee}}</strong>
-                {{? it.tag }}
-                <span  class="itemTag tag">{{=it.tag}}</span>
-                {{?}}
-            </dt>
-            <dd>
-                <p class="tel itemTel">{{=it.tel}}</p>
-                <p  class="itemRegion">{{=it.provinceName}} {{=it.cityName}} {{=it.countyName}}</p>
-                <p  class="itemStreet">{{=it.street}} ({{=it.zipcode}})</p>
-                <span class="edit-btn J_editAddr">编辑</span>
-            </dd>
-        </dl>
-    </script>
     <!-- 保险弹窗 -->
     <!-- 保险弹窗 -->
     <script src="js/base.min.js"></script>
