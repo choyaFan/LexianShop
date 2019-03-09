@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
@@ -52,6 +53,7 @@ public class OrderController {
             }
             mv.addObject("productsMap",productsMap);
             mv.addObject("ordersMap",ordersMap);
+
         }
         catch (Exception e){
             System.out.println("cannot find any product");
@@ -59,4 +61,9 @@ public class OrderController {
         mv.setViewName("OrderList.jsp");
         return mv;
     }
+
+//    @RequestMapping("/getOrderProducts")
+//    public ModelAndView getOrderProducts(int orderId){
+//
+//    }
 }
