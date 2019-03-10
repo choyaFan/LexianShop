@@ -5,38 +5,43 @@
     <!--auto generated Code-->
     <resultMap id="ProductsMap" type="com.CAKESHOP.dao.Products">
         <result column="id" property="id"/>
+        <result column="productName" property="productName"/>
+        <result column="firstCategory" property="firstCategory"/>
+        <result column="secondCategory" property="secondCategory"/>
+        <result column="thirdCategory" property="thirdCategory"/>
+        <result column="productBriefIntroduction" property="productBriefIntroduction"/>
+        <result column="productDetail" property="productDetail"/>
+        <result column="pic1Url" property="pic1Url"/>
+        <result column="pic2Url" property="pic2Url"/>
+        <result column="pic3Url" property="pic3Url"/>
+        <result column="pic4Url" property="pic4Url"/>
+        <result column="createTime" property="createTime"/>
+        <result column="updatatime" property="updatetime"/>
+        <result column="unit" property="unit"/>
+    </resultMap>
+
+    <resultMap id="ProductsDisplayMap" type="com.CAKESHOP.dao.DisplayProducts">
+        <result column="product_id" property="productId"/>
+        <result column="inventory" property="inventory"/>
+        <result column="original_price" property="originalPrice"/>
+        <result column="discount" property="discount"/>
+        <result column="product_status" property="productStatus"/>
         <result column="product_name" property="productName"/>
-        <result column="first_category" property="firstCategory"/>
-        <result column="second_category" property="secondCategory"/>
         <result column="third_category" property="thirdCategory"/>
-        <result column="product_brief_introduction" property="productBriefIntroduction"/>
-        <result column="product_detail" property="productDetail"/>
         <result column="pic1_url" property="pic1Url"/>
-        <result column="pic2_url" property="pic2Url"/>
-        <result column="pic3_url" property="pic3Url"/>
-        <result column="pic4_url" property="pic4Url"/>
-        <result column="create_time" property="createTime"/>
-        <result column="updatetime" property="updatetime"/>
         <result column="unit" property="unit"/>
     </resultMap>
 
     <!--模糊商品搜索-->
-    <select id="selectProductsSearch" parameterType="String" resultMap="ProductsMap">
-        select *
-        from products
-        where name like"%${searchKey}%";<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+    <select id="selectProductsSearch" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1 limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
     </select>
 
     <!--返回所有商品-->
-    <select id="selectAllProducts" resultMap="ProductsMap">
+    <select id="selectAllProducts" resultType="java.util.Map">
         select *
         from products;
-    </select>
-
-    <select id="selectById" resultMap="ProductsMap">
-        SELECT *
-        FROM products
-        WHERE id=#{id};
     </select>
 
     <!--通过分页查询商品-->
@@ -48,5 +53,39 @@
     <select id="getProductsCount" resultType="int">
     select count(*) from products;
 </select>
+
+    <!-- 模糊查询商品总数 -->
+    <select id="getSelectProductsCount" resultType="int">
+        select count(*)
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1;
+    </select>
+
+    <!-- 模糊查询商品总数_类别 -->
+    <select id="getSelectProductsCountCd" resultType="int">
+        select count(*)
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1 and third_category not in
+        <foreach collection="cdclass" open="(" separator="," close=")" item="it">#{it}
+        </foreach>
+    </select>
+
+
+    <!-- 查询商品所有类别 -->
+    <select id="getProductsCategory" resultType="java.util.Map">
+        select distinct third_category
+        from (select * from products_by_store where store_id=#{storeId}) as products_in_store left join products on products_in_store.product_id=products.id
+        where product_name like"%${searchKey}%";
+    </select>
+
+    <select id="getMinMoney" resultType="double">
+        select ifnull(min(original_price*discount),0)
+        from (select * from products_by_store where store_id=#{storeId}) as products_in_store left join products on products_in_store.product_id=products.id
+        where product_name like"%${searchKey}%";
+    </select>
+
+    <select id="getMaxMoney" resultType="double">
+        select ifnull(max(original_price*discount),0)
+        from (select * from products_by_store where store_id=#{storeId}) as products_in_store left join products on products_in_store.product_id=products.id
+        where product_name like"%${searchKey}%";
+    </select>
 
 </mapper>

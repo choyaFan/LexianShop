@@ -138,6 +138,10 @@ header .header-top-links {
 	padding: 3px 6px;
 	width: 170px;
 }
+#search2 {
+	padding: 3px 6px;
+	width: 170px;
+}
 .search-btn-bg {
 	position: absolute;
 	padding: 6px 3px;
@@ -1173,6 +1177,10 @@ header .header-top-links {
 }
 #search {
 	padding: 3px 6px;
+	width: 170px;
+}
+#search2 {
+    padding: 3px 6px;
 	width: 170px;
 }
 .search-btn-bg {
@@ -2547,6 +2555,9 @@ button.button span {
 #search {
 	width: 212px;
 }
+	#search2 {
+		width: 212px;
+	}
 .banner-images li.grid figure.effect h2 {
 	padding: 16px;
 }

@@ -32,7 +32,10 @@ public class Page implements Serializable {
         if(getPageNow()==getTotalPageCount()) {
             System.out.println("page size:"+getPageSize());
             System.out.println("Every page£º"+getTotalCount() % getPageSize());
-            return getTotalCount() % getPageSize();
+            int prodNum = getTotalCount() % getPageSize();
+            if(prodNum==0)
+                prodNum=getPageSize();
+            return prodNum;
         }
         else
             return getPageSize();

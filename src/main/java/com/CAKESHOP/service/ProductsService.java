@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface ProductsService {
-    List<Products> queryselectProducts(String searchKey);
+    void queryselectProducts(HttpServletRequest request, ModelAndView modelAndView);
     List<Products> queryallProducts();
-    Products searchById(int id);
-    void queryshowArticleByPage(HttpServletRequest request, ModelAndView model) throws Exception;
-
+    void queryshowProductsByPage(HttpServletRequest request, ModelAndView model) throws Exception;
 }

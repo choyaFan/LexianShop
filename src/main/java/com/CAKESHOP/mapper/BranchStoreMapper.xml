@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.CAKESHOP.mapper.BranchStoreMapper">
+
+<!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.CAKESHOP.dao.BranchStore">
+        <result column="id" property="id"/>
+        <result column="store_name" property="storeName"/>
+        <result column="store_tel" property="storeTel"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="district" property="district"/>
+        <result column="store_address" property="storeAddress"/>
+        <result column="longitude" property="longitude"/>
+        <result column="latitude" property="latitude"/>
+        <result column="store_introduction" property="storeIntroduction"/>
+        <result column="store_status" property="storeStatus"/>
+    </resultMap>
+
+<!--auto generated Code-->
+    <sql id="all_column">
+        id,
+        store_name,
+        store_tel,
+        province,
+        city,
+        district,
+        store_address,
+        longitude,
+        latitude,
+        store_introduction,
+        store_status
+    </sql>
+
+<!--auto generated Code-->
+    <insert id="insert">
+        INSERT INTO branch_store
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> id, </if>
+            <if test="pojo.storeName != null"> store_name, </if>
+            <if test="pojo.storeTel != null"> store_tel, </if>
+            <if test="pojo.province != null"> province, </if>
+            <if test="pojo.city != null"> city, </if>
+            <if test="pojo.district != null"> district, </if>
+            <if test="pojo.storeAddress != null"> store_address, </if>
+            <if test="pojo.longitude != null"> longitude, </if>
+            <if test="pojo.latitude != null"> latitude, </if>
+            <if test="pojo.storeIntroduction != null"> store_introduction, </if>
+            <if test="pojo.storeStatus != null"> store_status, </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> #{pojo.id}, </if>
+            <if test="pojo.storeName != null"> #{pojo.storeName}, </if>
+            <if test="pojo.storeTel != null"> #{pojo.storeTel}, </if>
+            <if test="pojo.province != null"> #{pojo.province}, </if>
+            <if test="pojo.city != null"> #{pojo.city}, </if>
+            <if test="pojo.district != null"> #{pojo.district}, </if>
+            <if test="pojo.storeAddress != null"> #{pojo.storeAddress}, </if>
+            <if test="pojo.longitude != null"> #{pojo.longitude}, </if>
+            <if test="pojo.latitude != null"> #{pojo.latitude}, </if>
+            <if test="pojo.storeIntroduction != null"> #{pojo.storeIntroduction}, </if>
+            <if test="pojo.storeStatus != null"> #{pojo.storeStatus}, </if>
+        </trim>
+    </insert>
+
+<!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO branch_store(
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.storeName},
+            #{pojo.storeTel},
+            #{pojo.province},
+            #{pojo.city},
+            #{pojo.district},
+            #{pojo.storeAddress},
+            #{pojo.longitude},
+            #{pojo.latitude},
+            #{pojo.storeIntroduction},
+            #{pojo.storeStatus}
+            )
+        </foreach>
+    </insert>
+
+<!--auto generated Code-->
+    <update id="update">
+        UPDATE branch_store
+        <set>
+            <if test="pojo.id != null"> id = #{pojo.id}, </if>
+            <if test="pojo.storeName != null"> store_name = #{pojo.storeName}, </if>
+            <if test="pojo.storeTel != null"> store_tel = #{pojo.storeTel}, </if>
+            <if test="pojo.province != null"> province = #{pojo.province}, </if>
+            <if test="pojo.city != null"> city = #{pojo.city}, </if>
+            <if test="pojo.district != null"> district = #{pojo.district}, </if>
+            <if test="pojo.storeAddress != null"> store_address = #{pojo.storeAddress}, </if>
+            <if test="pojo.longitude != null"> longitude = #{pojo.longitude}, </if>
+            <if test="pojo.latitude != null"> latitude = #{pojo.latitude}, </if>
+            <if test="pojo.storeIntroduction != null"> store_introduction = #{pojo.storeIntroduction}, </if>
+            <if test="pojo.storeStatus != null"> store_status = #{pojo.storeStatus} </if>
+        </set>
+         WHERE id = #{pojo.id}
+    </update>
+
+<!--auto generated Code-->
+    <select id="select" resultMap="AllColumnMap">
+        SELECT <include refid="all_column"/>
+        FROM branch_store
+        <where>
+            <if test="pojo.id != 0"> AND id = #{pojo.id} </if>
+            <if test="pojo.storeName != null"> AND store_name = #{pojo.storeName} </if>
+            <if test="pojo.storeTel != null"> AND store_tel = #{pojo.storeTel} </if>
+            <if test="pojo.province != null"> AND province = #{pojo.province} </if>
+            <if test="pojo.city != null"> AND city = #{pojo.city} </if>
+            <if test="pojo.district != null"> AND district = #{pojo.district} </if>
+            <if test="pojo.storeAddress != null"> AND store_address = #{pojo.storeAddress} </if>
+            <if test="pojo.longitude != 0"> AND longitude = #{pojo.longitude} </if>
+            <if test="pojo.latitude != 0"> AND latitude = #{pojo.latitude} </if>
+            <if test="pojo.storeIntroduction != null"> AND store_introduction = #{pojo.storeIntroduction} </if>
+            <if test="pojo.storeStatus != -1"> AND store_status = #{pojo.storeStatus} </if>
+        </where>
+        LIMIT 1000 
+    </select>
+
+<!--auto generated Code-->
+    <delete id="delete">
+        DELETE FROM branch_store where id = #{id}
+    </delete>
+</mapper>

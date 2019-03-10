@@ -15,7 +15,7 @@ public class BranchStore {
     private String storeIntroduction;
     private Time storeStartTime;
     private Time storeCloseTime;
-    private int storeStatus;
+    private int storeStatus=-1;
 
     public int getId() {
         return id;

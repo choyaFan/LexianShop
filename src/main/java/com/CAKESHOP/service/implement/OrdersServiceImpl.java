@@ -6,22 +6,14 @@ import com.CAKESHOP.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import javax.annotation.Resource;
 
 @Service
 public class OrdersServiceImpl implements OrdersService{
-    @Autowired
+    @Resource
     private OrdersMapper ordersMapper;
     @Override
     public void insertOrders(Orders orders){
         ordersMapper.insert(orders);
-    }
-    @Override
-    public List<Orders> selectOrdersList(){
-        return ordersMapper.selectAllOrders();
-    }
-    @Override
-    public List<Orders> selectByUserId(String userPhone){
-        return ordersMapper.selectByUserId(userPhone);
     }
 }

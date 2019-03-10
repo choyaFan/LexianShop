@@ -118,14 +118,5 @@
         LIMIT 1000 
     </select>
 
-    <select id="selectAllOrders" resultMap="AllColumnMap">
-        SELECT * FROM orders
-    </select>
-
-    <select id="selectByUserId" resultMap="AllColumnMap">
-        SELECT * FROM orders
-        WHERE user_phone=#{userPhone};
-    </select>
-
     <!-- NO DELETE -->
 </mapper>
