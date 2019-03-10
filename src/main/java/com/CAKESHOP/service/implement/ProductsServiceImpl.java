@@ -63,6 +63,11 @@ public class ProductsServiceImpl implements ProductsService {
     }
 
     @Override
+    public Products searchById(int id){
+        return productsMapper.selectById(id);
+    }
+
+    @Override
     public void queryshowProductsByPage(HttpServletRequest request, ModelAndView modelAndView) throws  Exception{
         String pageNow = request.getParameter("pageNow");
         Page page = null;

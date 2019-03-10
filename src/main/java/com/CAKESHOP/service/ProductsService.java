@@ -11,4 +11,6 @@ public interface ProductsService {
     void queryselectProducts(HttpServletRequest request, ModelAndView modelAndView);
     List<Products> queryallProducts();
     void queryshowProductsByPage(HttpServletRequest request, ModelAndView model) throws Exception;
+
+    Products searchById(int id);
 }

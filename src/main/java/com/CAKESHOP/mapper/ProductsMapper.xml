@@ -88,4 +88,10 @@
         where product_name like"%${searchKey}%";
     </select>
 
+    <select id="selectById" resultMap="ProductsMap">
+        SELECT *
+        FROM products
+        WHERE id=#{id};
+    </select>
+
 </mapper>

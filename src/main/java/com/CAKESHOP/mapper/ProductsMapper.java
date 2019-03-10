@@ -26,4 +26,5 @@ public interface ProductsMapper {
     double getMinMoney(@Param(value="searchKey") String searchKey, @Param(value="storeId") String storeId);
     //查询商品最高价格
     double getMaxMoney(@Param(value="searchKey") String searchKey, @Param(value="storeId") String storeId);
+    Products selectById(@Param("id") int id);
 }
