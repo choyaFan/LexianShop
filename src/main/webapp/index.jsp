@@ -21,163 +21,6 @@
 
 <body class="cms-index-index cms-home-page">
 
-<!-- mobile menu -->
-<div id="jtv-mobile-menu">
-    <ul>
-        <li>
-            <div class="jtv-search-mob">
-                <form id="search1" name="search">
-                    <div class="input-group">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i> </button>
-                        </div>
-                        <input type="text" class="form-control simple" placeholder="Search ..." name="srch-term" id="srch-term">
-                    </div>
-                </form>
-            </div>
-        </li>
-        <li><a href="index.jsp">Home</a> </li>
-        <li><a href="#">Pages</a>
-            <ul>
-                <li><a href="shop_grid.action"><span>Shop Grid</span></a>
-                    <ul>
-                        <li> <a href="#"> <span>Shop Grid Right Sidebar</span> </a> </li>
-                        <li> <a href="#"> <span>Shop Grid Fullwidth</span> </a> </li>
-                    </ul>
-                </li>
-                <li> <a href="#"> <span>Shop List</span> </a>
-                    <ul>
-                        <li> <a href="#"> <span>Shop List Right Sidebar</span> </a> </li>
-                    </ul>
-                </li>
-                <li> <a href="single_product.jsp"> <span>Single Product</span> </a> </li>
-                <li> <a href="#"> <span>Shopping Cart</span> </a> </li>
-                <li><a href="#"><span>Checkout</span></a> </li>
-                <li> <a href="#"> <span>Wishlist</span> </a> </li>
-                <li><a href="#"><span>Compare</span></a> </li>
-                <li><a href="#"><span>Quick View</span></a> </li>
-                <li><a href="#"><span>404 Error Page</span></a> </li>
-            </ul>
-        </li>
-        <li><a href="#">Fruits</a>
-            <ul>
-                <li> <a href="shop_grid.jsp"><span>Apples</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.jsp"><span>Aurore Grape</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Super Sweet</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Gravenstein</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Orange Pippin</span></a> </li>
-                    </ul>
-                </li>
-                <li> <a href="shop_grid.jsp"><span>Grapes</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.jsp"><span>Raw Honey</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Flavored Honey</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Propolis</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Exotic Honey</span></a> </li>
-                    </ul>
-                </li>
-                <li> <a href="shop_grid.jsp"><span>Citruses</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.jsp"><span>Potatoes</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Tomatoes</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Pickles</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Cauliflowers</span></a> </li>
-                    </ul>
-                </li>
-                <li> <a href="shop_grid.jsp"><span>Exotic Fruits</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.jsp"><span>Spinach</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Pumpkin</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Kohlrabi</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Green Cabbage</span></a> </li>
-                    </ul>
-                </li>
-                <li> <a href="shop_grid.jsp"><span>Summer Berries</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.jsp"><span>Avocado</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Paprika</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Cheese Holand</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Cheese</span></a> </li>
-                    </ul>
-                </li>
-                <li> <a href="shop_grid.jsp"><span>Green Cabbage</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.jsp"><span>Сauliflower</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Tomato</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Oranges</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Carrots</span></a> </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li><a href="shop_grid.jsp">Vegetables</a>
-            <ul>
-                <li> <a href="shop_grid.jsp"><span>Herbs and spices</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.jsp"><span>Lemon Grass</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Rosemary</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Chamomile</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Oregano</span></a> </li>
-                    </ul>
-                </li>
-                <li> <a href="shop_grid.jsp"><span>Root vegetables</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.jsp"><span>Celeriac</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Daikon</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Rutabaga</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Parsnip</span></a> </li>
-                    </ul>
-                </li>
-                <li> <a href="shop_grid.jsp"><span>Onion family</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.jsp"><span>Chives</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Shallot</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Onion</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Garlic</span></a> </li>
-                    </ul>
-                </li>
-                <li> <a href="shop_grid.jsp"><span>Legumes</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.jsp"><span>Black beans</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Kidney beans</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Green beans</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Soy beans</span></a> </li>
-                    </ul>
-                </li>
-                <li> <a href="shop_grid.jsp"><span>Haricot bean</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.jsp"><span>Nectarine</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Charles & Keith</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Fruits</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Rhubarb</span></a> </li>
-                    </ul>
-                </li>
-                <li> <a href="shop_grid.jsp"><span>Kiwi fruit</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.jsp"><span>Mango</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Orange</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Pepper</span></a> </li>
-                        <li> <a href="shop_grid.jsp"><span>Quince</span></a> </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li><a href="shop_grid.jsp">Healthy Eating</a> </li>
-        <li><a href="shop_grid.jsp">Drinks</a> </li>
-        <li><a href="#">Blog</a> </li>
-        <li><a href="#">Contact us</a> </li>
-    </ul>
-    <div class="jtv-top-link-mob">
-        <ul class="links">
-            <li><a title="My Account" href="#">My Account</a> </li>
-            <li><a title="Wishlist" href="#">Wishlist</a> </li>
-            <li><a title="Checkout" href="#">Checkout</a> </li>
-            <li><a title="Blog" href="#"><span>Blog</span></a> </li>
-            <li class="last"><a title="Login" href="#"><span>Login</span></a> </li>
-        </ul>
-    </div>
-</div>
 <div id="page">
     <!--[if lt IE 8]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -191,8 +34,8 @@
                     <div class="row">
                         <!-- Header Language -->
                         <div class="col-xs-12 col-sm-6">
-                            <div class="welcome-msg">Welcome to Organic! </div>
-                            <div class="dropdown jtv-language-box"> <a role="button" data-toggle="dropdown" data-target="#" class="block-language dropdown-toggle" href="#"> <img src="images/flag-english.jpg" alt="language"> English <span class="caret"></span> </a>
+                            <div class="welcome-msg">欢迎来到派氏乐鲜生活馆</div>
+                            <div class="dropdown jtv-language-box"> <a role="button" data-toggle="dropdown" data-target="#" class="block-language dropdown-toggle" href="#" aria-expanded="false"> <img src="images/flag-english.jpg" alt="language">中软中心店<span class="caret"></span> </a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li> <a class="selected" href="#"> <img src="images/flag-english.jpg" alt="flag"> <span>English</span> </a> </li>
                                     <li> <a href="#"> <img src="images/flag-default.jpg" alt="flag"> <span>French</span> </a> </li>
@@ -205,13 +48,7 @@
                             <!-- End Header Language -->
 
                             <!-- Header Currency -->
-                            <div class="dropdown jtv-currency-box"> <a role="button" data-toggle="dropdown" data-target="#" class="block-currency dropdown-toggle" href="#"> USD <span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#"> $ - Dollar </a> </li>
-                                    <li><a href="#"> £ - Pound </a> </li>
-                                    <li><a href="#"> € - Euro </a> </li>
-                                </ul>
-                            </div>
+
                             <!-- End Header Currency -->
 
                         </div>
@@ -220,13 +57,14 @@
                             <div class="jtv-top-links">
                                 <div class="links">
                                     <ul>
-                                        <li> <a title="My Account" href="#"><span class="hidden-xs">My Account</span></a> </li>
-                                        <li> <a title="Wishlist" href="#">Wishlist</a> </li>
-                                        <li> <a title="Checkout" href="#"><span class="hidden-xs">Checkout</span></a> </li>
+
+                                        <li> <a title="Favorites" href="/getUserOrder">订单</a> </li>
+                                        <li> <a title="Favorites" href="#">收藏夹</a> </li>
+
                                         <li>
-                                            <div class="dropdown block-company-wrapper hidden-xs"> <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#"> More <span class="caret"></span></a>
+                                            <div class="dropdown block-company-wrapper hidden-xs"> <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#">其他功能<span class="caret"></span></a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="about_us.jsp"> About Us </a> </li>
+                                                    <li><a href="about_us.html"> About Us </a> </li>
                                                     <li><a href="#"> Customer Service </a> </li>
                                                     <li><a href="#"> Privacy Policy </a> </li>
                                                     <li><a href="#">Site Map </a> </li>
@@ -235,7 +73,7 @@
                                                 </ul>
                                             </div>
                                         </li>
-                                        <li> <a href="WEB-INF/jsp/regist.jsp"><span class="hidden-xs">Log In</span></a> </li>
+                                        <li> <a href="#"><span class="hidden-xs">登陆</span></a> </li>
                                     </ul>
                                 </div>
                             </div>
@@ -250,7 +88,7 @@
                         <div class="jtv-top-cart-box">
                             <!-- Top Cart -->
                             <div class="mini-cart">
-                                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="#"> <span class="cart_count">2</span><span class="price">My Bag / $259.00</span> </a> </div>
+                                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="#"> <span class="cart_count">2</span><span class="price">购物车 / ¥259.00</span> </a> </div>
                                 <div>
                                     <div class="jtv-top-cart-content">
 
@@ -259,7 +97,7 @@
                                             <li class="item first">
                                                 <div class="item-inner"> <a class="product-image" title="Product Title Here" href="single_product.jsp"><img alt="Product Title Here" src="images/products/img01.jpg"> </a>
                                                     <div class="product-details">
-                                                        <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
+                                                        <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
                                                         <p class="product-name"><a href="#">Product Title Here</a> </p>
                                                         <strong>1</strong> x <span class="price">$79.99</span> </div>
                                                 </div>
@@ -267,7 +105,7 @@
                                             <li class="item">
                                                 <div class="item-inner"> <a class="product-image" title="Product Title Here" href="single_product.jsp"><img alt="Product Title Here" src="images/products/img02.jpg"> </a>
                                                     <div class="product-details">
-                                                        <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
+                                                        <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
                                                         <p class="product-name"><a href="#">Product Title Here</a> </p>
                                                         <strong>1</strong> x <span class="price">$88.89</span> </div>
                                                 </div>
@@ -275,7 +113,7 @@
                                             <li class="item last">
                                                 <div class="item-inner"> <a class="product-image" title="Product Title Here" href="single_product.jsp"><img alt="Product Title Here" src="images/products/img04.jpg"> </a>
                                                     <div class="product-details">
-                                                        <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
+                                                        <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
                                                         <p class="product-name"><a href="#">Product Title Here</a> </p>
                                                         <strong>1</strong> x <span class="price">$85.99</span> </div>
                                                 </div>
@@ -284,8 +122,8 @@
 
                                         <!--actions-->
                                         <div class="actions">
-                                            <button class="btn-checkout" title="Checkout" type="button" onClick="#"><span>Checkout</span> </button>
-                                            <a href="#" class="view-cart"><span>View Cart</span></a> </div>
+                                            <button class="btn-checkout" title="Checkout" type="button" onclick="#"><span>Checkout</span> </button>
+                                            <a href="/getOrderProducts?orderId=1" class="view-cart"><span>View Cart</span></a> </div>
                                     </div>
                                 </div>
                             </div>
@@ -299,7 +137,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 hidden-xs">
                         <div class="search-box">
                             <form action="cat" method="POST" id="search_mini_form" name="Categories">
-                                <input type="text" placeholder="Search here..." value="" maxlength="70" name="search" id="search">
+                                <input type="text" placeholder="搜索商品..." value="" maxlength="70" name="search" id="search">
                                 <button type="button" class="search-btn-bg"><span class="glyphicon glyphicon-search"></span>&nbsp;</button>
                             </form>
                         </div>
@@ -312,7 +150,7 @@
 
     <!-- Navigation -->
 
-    <nav>
+    <nav class="jtv-sticky-header">
         <div class="container">
             <div class="mm-toggle-wrap">
                 <div class="mm-toggle"><i class="fa fa-align-justify"></i><span class="mm-label">Menu</span> </div>
@@ -320,13 +158,15 @@
             <div class="nav-inner">
                 <!-- BEGIN NAV -->
                 <ul id="nav" class="hidden-xs">
-                    <li class="drop-menu"><a href="index.jsp" class="level-top active"><span>Home</span></a> </li>
-                    <li class="drop-menu"> <a href="#"> <span>Pages</span> </a>
+                    <li class="drop-menu"><a href="index.jsp" class="level-top active"><span>主页</span></a>
+
+                    </li>
+                    <li class="drop-menu"> <a href="#"> <span>一级1</span> </a>
                         <ul>
                             <li class="sub-cat"><a href="shop_grid.action"><span>Shop Grid</span></a>
                                 <ul>
                                     <li> <a href="#"> <span>Shop Grid Right Sidebar</span> </a> </li>
-                                    <li> <a href="regist.jsp"> <span>Shop Grid Fullwidth</span> </a> </li>
+                                    <li> <a href="#"> <span>Shop Grid Fullwidth</span> </a> </li>
                                 </ul>
                             </li>
                             <li class="sub-cat"> <a href="#"> <span>Shop List</span> </a>
@@ -343,7 +183,7 @@
                             <li><a href="#"><span>404 Error Page</span></a> </li>
                         </ul>
                     </li>
-                    <li class="mega-menu"> <a class="level-top" href="shop_grid.jsp"><span>Fruits</span></a>
+                    <li class="mega-menu"> <a class="level-top" href="shop_grid.jsp"><span>一级2</span></a>
                         <div class="jtv-menu-block-wrapper">
                             <div class="jtv-menu-block-wrapper2">
                                 <div class="nav-block jtv-nav-block-center">
@@ -406,7 +246,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="mega-menu"> <a class="level-top" href="shop_grid.jsp"><span>Vegetables</span></a>
+                    <li class="mega-menu"> <a class="level-top" href="shop_grid.jsp"><span>一级2</span></a>
                         <div class="jtv-menu-block-wrapper">
                             <div class="jtv-menu-block-wrapper2">
                                 <div class="nav-block jtv-nav-block-center">
@@ -446,7 +286,7 @@
                                         <li class="parent item"> <a href="shop_grid.jsp"><span>Haricot bean</span></a>
                                             <ul class="level1">
                                                 <li> <a href="shop_grid.jsp"><span>Nectarine</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Charles & Keith</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Charles &amp; Keith</span></a> </li>
                                                 <li> <a href="shop_grid.jsp"><span>Fruits</span></a> </li>
                                                 <li> <a href="shop_grid.jsp"><span>Rhubarb</span></a> </li>
                                             </ul>
@@ -475,7 +315,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="mega-menu"> <a class="level-top" href="shop_grid.jsp"><span>Healthy Eating</span></a>
+                    <li class="mega-menu"> <a class="level-top" href="shop_grid.jsp"><span>一级3</span></a>
                         <div class="jtv-menu-block-wrapper">
                             <div class="jtv-menu-block-wrapper2">
                                 <div class="nav-block jtv-nav-block-center">
@@ -533,7 +373,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="mega-menu"> <a class="level-top" href="shop_grid.jsp"><span>Drinks</span></a>
+                    <li class="mega-menu"> <a class="level-top" href="shop_grid.jsp"><span>一级4</span></a>
                         <div class="jtv-menu-block-wrapper">
                             <div class="jtv-menu-block-wrapper2">
                                 <div class="nav-block jtv-nav-block-center jtv-menu-box-left">
@@ -544,8 +384,7 @@
                                                 <li> <a href="shop_grid.jsp"><span>Mirinda</span></a> </li>
                                                 <li> <a href="shop_grid.jsp"><span>AMP Energy</span></a> </li>
                                                 <li> <a href="shop_grid.jsp"><span>Mountain Dew</span></a> </li>
-                                            </ul>
-                                        </li>
+                                            </ul>               </li>
                                         <li class="parent item"> <a href="shop_grid.jsp"><span>Hot drinks</span></a>
                                             <ul class="level1">
                                                 <li> <a href="shop_grid.jsp"><span>Apple cider</span></a> </li>
@@ -560,8 +399,7 @@
                                                 <li> <a href="shop_grid.jsp"><span>Apple Cider</span></a> </li>
                                                 <li> <a href="shop_grid.jsp"><span>Watermelontinis</span></a> </li>
                                                 <li> <a href="shop_grid.jsp"><span>Sparkling Sangria</span></a> </li>
-                                            </ul>
-                                        </li>
+                                            </ul></li>
                                         <li class="parent item"> <a href="shop_grid.jsp"><span>Mixed drinks</span></a>
                                             <ul class="level1">
                                                 <li> <a href="shop_grid.jsp"><span>Like Hand Grenade</span></a> </li>
@@ -576,8 +414,8 @@
                             </div>
                         </div>
                     </li>
-                    <li class="mega-menu"> <a class="level-top" href="#"><span>Blog</span></a> </li>
-                    <li class="nav-custom-link mega-menu"> <a href="#" class="level-top"> <span>Buy this theme</span> </a>
+                    <li class="mega-menu"> <a class="level-top" href="#"><span>一级5</span></a> </li>
+                    <li class="nav-custom-link mega-menu"> <a href="#" class="level-top"> <span>一级6</span> </a>
                         <div class="jtv-menu-block-wrapper custom-menu">
                             <div class="header-nav-dropdown-wrapper">
                                 <div class="jtv-custom-box"> <i class="fa fa-laptop"></i>
@@ -612,28 +450,28 @@
                 <div class="col-md-3 col-xs-12 col-sm-6">
                     <div class="feature-box first"> <i class="icon-plane icons"></i>
                         <div class="content">
-                            <h6>Free & Next Day Delivery</h6>
+                            <h6>承诺第二天送达</h6>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 col-xs-12 col-sm-6">
                     <div class="feature-box"> <i class="icon-earphones-alt icons"></i>
                         <div class="content">
-                            <h6>Support 24/7 For Clients</h6>
+                            <h6>7*24小时客服</h6>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 col-xs-12 col-sm-6">
                     <div class="feature-box"> <i class="icon-like icons"></i>
                         <div class="content">
-                            <h6>100% Satisfaction Guarantee</h6>
+                            <h6>100%好评</h6>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 col-xs-12 col-sm-6">
                     <div class="feature-box last"> <i class="icon-tag icons"></i>
                         <div class="content">
-                            <h6>Great Daily Deals Discount</h6>
+                            <h6>每日折扣</h6>
                         </div>
                     </div>
                 </div>
@@ -651,26 +489,26 @@
                             <ul>
                                 <li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb='images/slider/slide-img1.jpg'><img src="images/slider/slide-img1.jpg" alt="slide-img" data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' />
                                     <div class="info">
-                                        <div class='tp-caption jtv-sub-title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:2;max-width:auto;max-height:auto;white-space:nowrap;'><span>Growing Organic Together</span> </div>
-                                        <div class='tp-caption jtv-large-title sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:3;max-width:auto;max-height:auto;white-space:nowrap;'><span>100% Natural</span> </div>
-                                        <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1450' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;max-width:auto;max-height:auto;white-space:nowrap;'>Quality & Freshness Guaranteed! Good Health.</div>
-                                        <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;max-width:auto;max-height:auto;white-space:nowrap;'><a href='#' class="jtv-shop-now-btn">Shop Now</a> </div>
+                                        <div class='tp-caption jtv-sub-title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:2;white-space:nowrap;'><span>配件限时直降</span> </div>
+                                        <div class='tp-caption jtv-large-title sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:3;white-space:nowrap;'><span>女王节性价比来袭</span> </div>
+                                        <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1450' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;white-space:nowrap;'>FASHION QUEEN'S DAY SHOPPING</div>
+                                        <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;white-space:nowrap;'><a href='#' class="jtv-shop-now-btn">立即购买</a> </div>
                                     </div>
                                 </li>
                                 <li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb='images/slider/slide-img2.jpg'><img src="images/slider/slide-img2.jpg" alt="slide-img" data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' />
                                     <div class="info">
-                                        <div class='tp-caption jtv-sub-title sft slide2  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:2;max-width:auto;max-height:auto;white-space:nowrap;padding-right:0px'><span>Daily Fresh Organic Food</span> </div>
-                                        <div class='tp-caption jtv-large-title sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:3;max-width:auto;max-height:auto;white-space:nowrap;'>Fresh Vegetables</div>
-                                        <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;max-width:auto;max-height:auto;white-space:nowrap;'>Forn the Greatest Health Benefits! Refreshing & Tasty!</div>
-                                        <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;max-width:auto;max-height:auto;white-space:nowrap;'><a href='#' class="jtv-shop-now-btn">Find out more</a> </div>
+                                        <div class='tp-caption jtv-sub-title sft slide2  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:2;white-space:nowrap;padding-right:0px'><span>每日新鲜时蔬</span> </div>
+                                        <div class='tp-caption jtv-large-title sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:3;white-space:nowrap;'>领400元券</div>
+                                        <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;white-space:nowrap;'>乐鲜每一秒！</div>
+                                        <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;white-space:nowrap;'><a href='#' class="jtv-shop-now-btn">立即抢购</a> </div>
                                     </div>
                                 </li>
                                 <li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb='images/slider/slide-img3.jpg'><img src="images/slider/slide-img3.jpg" alt="slide-img" data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' />
                                     <div class="info">
-                                        <div class='tp-caption jtv-sub-title sft slide2  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:2;max-width:auto;max-height:auto;white-space:nowrap;padding-right:0px'><span>Save up to 35% off</span> </div>
-                                        <div class='tp-caption jtv-large-title sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:3;max-width:auto;max-height:auto;white-space:nowrap;'>Fruit Flavoured</div>
-                                        <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;max-width:auto;max-height:auto;white-space:nowrap;'>Most Popular Ecommerce jsp Template.</div>
-                                        <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;max-width:auto;max-height:auto;white-space:nowrap;'><a href='#' class="jtv-shop-now-btn">Order now</a> </div>
+                                        <div class='tp-caption jtv-sub-title sft slide2  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:2;white-space:nowrap;padding-right:0px'><span>下单立减35%</span> </div>
+                                        <div class='tp-caption jtv-large-title sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:3;white-space:nowrap;'>品牌乐器大放价</div>
+                                        <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;white-space:nowrap;'>礼券叠加享折上折</div>
+                                        <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;white-space:nowrap;'><a href='#' class="jtv-shop-now-btn">立即抢券</a> </div>
                                     </div>
                                 </li>
                             </ul>
@@ -735,7 +573,7 @@
                                             <div class="jtv-box-hover">
                                                 <ul class="add-to-links">
                                                     <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                    <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
+                                                    <li><a class="link-wishlist" href="/getUserOrder.html"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
                                                     <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
                                                 </ul>
                                             </div>
@@ -764,7 +602,7 @@
                                             <div class="jtv-box-hover">
                                                 <ul class="add-to-links">
                                                     <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                    <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
+                                                    <li><a class="link-wishlist" href="/getUserOrder.html"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
                                                     <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
                                                 </ul>
                                             </div>
