@@ -32,10 +32,88 @@
         <result column="unit" property="unit"/>
     </resultMap>
 
+    <!--默认方式显示-->
     <!--模糊商品搜索-->
     <select id="selectProductsSearch" resultMap="ProductsDisplayMap">
         select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
-        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1 limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+    </select>
+
+    <!--模糊商品搜索_类别-->
+    <select id="selectProductsSearchCd" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} and third_category in
+        <foreach collection="cdclass" open="(" separator="," close=")" item="it">#{it}
+        </foreach>
+        limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+    </select>
+
+    <!--价格升序显示-->
+    <!--模糊商品搜索-->
+    <select id="selectProductsSearchAP" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id  where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} order by original_price*discount asc limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+    </select>
+
+    <!--模糊商品搜索_类别-->
+    <select id="selectProductsSearchCdAP" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} and third_category in
+        <foreach collection="cdclass" open="(" separator="," close=")" item="it">#{it}
+        </foreach>
+        order by original_price*discount asc
+        limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+    </select>
+
+    <!--价格降序显示-->
+    <!--模糊商品搜索-->
+    <select id="selectProductsSearchDP" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id  where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} order by original_price*discount desc limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+    </select>
+
+    <!--模糊商品搜索_类别-->
+    <select id="selectProductsSearchCdDP" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} and third_category in
+        <foreach collection="cdclass" open="(" separator="," close=")" item="it">#{it}
+        </foreach>
+        order by original_price*discount desc
+        limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+    </select>
+
+    <!--销量升序显示-->
+    <!--模糊商品搜索-->
+    <select id="selectProductsSearchAS" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id  where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} order by inventory asc limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+    </select>
+
+    <!--模糊商品搜索_类别-->
+    <select id="selectProductsSearchCdAS" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} and third_category in
+        <foreach collection="cdclass" open="(" separator="," close=")" item="it">#{it}
+        </foreach>
+        order by inventory asc
+        limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+    </select>
+
+    <!--销量降序显示-->
+    <!--模糊商品搜索-->
+    <select id="selectProductsSearchDS" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id  where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} order by inventory desc limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+    </select>
+
+    <!--模糊商品搜索_类别-->
+    <select id="selectProductsSearchCdDS" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} and third_category in
+        <foreach collection="cdclass" open="(" separator="," close=")" item="it">#{it}
+        </foreach>
+        order by inventory desc
+        limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
     </select>
 
     <!--返回所有商品-->
@@ -57,13 +135,13 @@
     <!-- 模糊查询商品总数 -->
     <select id="getSelectProductsCount" resultType="int">
         select count(*)
-        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1;
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]};
     </select>
 
     <!-- 模糊查询商品总数_类别 -->
     <select id="getSelectProductsCountCd" resultType="int">
         select count(*)
-        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1 and third_category not in
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} and third_category in
         <foreach collection="cdclass" open="(" separator="," close=")" item="it">#{it}
         </foreach>
     </select>

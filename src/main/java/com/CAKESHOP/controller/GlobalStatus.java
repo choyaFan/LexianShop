@@ -1,8 +1,8 @@
 package com.CAKESHOP.controller;
 
 public class GlobalStatus {
-    private static int status = 0;//å®šä¹‰åˆå§‹ç™»é™†çŠ¶æ€
-    private static int storeId = 0;//é€‰æ‹©é—¨åº—ID
+    private static int status = 0;//¶¨Òå³õÊ¼µÇÂ½×´Ì¬
+    private static int storeId = 0;//Ñ¡ÔñÃÅµêID
 
     public int log_in(){
         return status = 1;

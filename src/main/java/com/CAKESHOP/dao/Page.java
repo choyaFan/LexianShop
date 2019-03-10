@@ -23,9 +23,10 @@ public class Page implements Serializable {
      * @param totalCount
      * @param pageNow
      */
-    public Page(int totalCount, int pageNow) {
+    public Page(int totalCount, int pageNow, int pageSize) {
         this.totalCount = totalCount;
         this.pageNow = pageNow;
+        this.pageSize = pageSize;
     }
 
     public int getProductsPerPage() {
