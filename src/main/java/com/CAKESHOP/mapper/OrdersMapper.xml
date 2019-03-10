@@ -115,7 +115,7 @@
             <if test="pojo.orderStatus != null"> AND order_status = #{pojo.orderStatus} </if>
             <if test="pojo.timeStamp != null"> AND time_stamp = #{pojo.timeStamp} </if>
         </where>
-        LIMIT 1000 
+        LIMIT 1000
     </select>
 
     <select id="selectAllOrders" resultMap="AllColumnMap">

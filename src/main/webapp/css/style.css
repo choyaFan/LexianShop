@@ -444,6 +444,17 @@ header .header-top-links {
 	outline: none;
 	border: none;
 }
+#search2 {
+	margin: 0;
+	width: 250px;
+	font-size: 13px;
+	height: 40px;
+	color: #333;
+	padding: 0 12px;
+	background: none;
+	outline: none;
+	border: none;
+}
 .search-btn-bg {
 	cursor: pointer;
 	display: inline-block;
@@ -689,7 +700,7 @@ ul.lang {
 	text-align: left;
 	display: block;
 	margin: 0;
-	padding: 0;
+	padding: 0x;
 	list-style: none;
 	float: left;
 	padding: 0px;
@@ -944,7 +955,7 @@ ul#cart-sidebar {
 .button.btn-checkout:hover {
 	background: #339900;
 }
-.button:hover {
+.button:btn-bag:hover {
 background:#f6f6f6
 }
 .jtv-btn-remove {
@@ -3931,7 +3942,7 @@ figure.effect p {
 	position: absolute;
 	top: 0;
 	left: 0;
-	/*background-image: url(../images/header-shop-men.jpg);*/
+	background-image: url(../images/header-shop-men.jpg);
 	background-position-x: 50%;
 }
 .shop_header.has_big_img {
@@ -3957,7 +3968,7 @@ figure.effect p {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	/*background: rgba(0,0,0,0.3) url(../images/category-img-overlay.png) repeat top left;*/
+	background: rgba(0,0,0,0.3) url(../images/category-img-overlay.png) repeat top left;
 }
 /*------- 18. Sidebar ---------*/
 
