@@ -32,6 +32,14 @@
   <link rel="stylesheet" href="css/jquery-ui.css">
   <link rel="stylesheet" href="css/jquery.fancybox.css">
   <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+
+  <!-- import Vue.js -->
+  <script src="js/vue.min.js"></script>
+  <!-- import stylesheet -->
+  <link rel="stylesheet" href="css/iview.css">
+  <!-- import iView -->
+  <script src="js/iview.min.js"></script>
+
 </head>
 
 <body class="single-product-page">
@@ -652,7 +660,6 @@
     </div>
   </nav>
   <!-- end nav -->
-  
   <!-- Main Container -->
   <section class="main-container col1-layout">
     <div class="main">
@@ -661,20 +668,18 @@
           <div class="col-main">
             <div class="product-view">
               <div class="product-essential">
-                <form action="#" method="post" id="product">
                   <div class="product-img-box col-lg-5 col-sm-6 col-xs-12">
                     <div class="new-label new-top-left"> New </div>
                     <div class="product-image">
-                      <div class="product-full"> <img id="product-zoom" src="images/products/img02.jpg" data-zoom-image="images/products/img02.jpg" alt="product-image"> </div>
+                      <div class="product-full"> <img id="product-zoom" src=${singleProduct.pic1Url} data-zoom-image=${singleProduct.pic1Url} alt="product-image"> </div>
                       <div class="more-views">
                         <div class="slider-items-products">
                           <div id="gallery_01" class="product-flexslider hidden-buttons product-img-thumb">
                             <div class="slider-items slider-width-col4 block-content">
-                              <div class="more-views-items"> <a href="#" data-image="images/products/img02.jpg" data-zoom-image="images/products/img02.jpg"> <img id="product-zoom"  src="images/products/img02.jpg" alt="product-image"> </a></div>
-                              <div class="more-views-items"> <a href="#" data-image="images/products/img03.jpg" data-zoom-image="images/products/img03.jpg"> <img id="product-zoom"  src="images/products/img03.jpg" alt="product-image"> </a></div>
-                              <div class="more-views-items"> <a href="#" data-image="images/products/img04.jpg" data-zoom-image="images/products/img04.jpg"> <img id="product-zoom"  src="images/products/img04.jpg" alt="product-image"> </a></div>
-                              <div class="more-views-items"> <a href="#" data-image="images/products/img05.jpg" data-zoom-image="images/products/img05.jpg"> <img id="product-zoom"  src="images/products/img05.jpg" alt="product-image"> </a> </div>
-                              <div class="more-views-items"> <a href="#" data-image="images/products/img06.jpg" data-zoom-image="images/products/img06.jpg"> <img id="product-zoom"  src="images/products/img06.jpg" alt="product-image" /> </a></div>
+                              <div class="more-views-items"> <a href="#" data-image=${singleProduct.pic1Url} data-zoom-image=${singleProduct.pic1Url}> <img id="product-zoom"  src=${singleProduct.pic1Url} alt="product-image"> </a></div>
+                              <div class="more-views-items"> <a href="#" data-image=${singleProduct.pic2Url} data-zoom-image=${singleProduct.pic2Url}> <img id="product-zoom"  src=${singleProduct.pic2Url} alt="product-image"> </a></div>
+                              <div class="more-views-items"> <a href="#" data-image=${singleProduct.pic3Url} data-zoom-image=${singleProduct.pic3Url}> <img id="product-zoom"  src=${singleProduct.pic3Url} alt="product-image"> </a></div>
+                              <div class="more-views-items"> <a href="#" data-image=${singleProduct.pic4Url} data-zoom-image=${singleProduct.pic4Url}> <img id="product-zoom"  src=${singleProduct.pic4Url} alt="product-image"> </a> </div>
                             </div>
                           </div>
                         </div>
@@ -685,22 +690,27 @@
                   <div class="product-shop col-lg-7 col-sm-6 col-xs-12">
 
                     <div class="product-name">
-                      <h1>商品名称</h1>
+                      <h1>${singleProduct.productName}</h1>
                     </div>
                     <div class="price-block">
                       <div class="price-box">
-                        <p class="special-price"> <span class="price-label">Special Price</span> <span id="product-price-48" class="price"> ¥100.00 / 件 </span> </p>
-                        <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $120.00 </span> </p>
+                        <p class="special-price"> <span class="price-label">现价</span> <span id="product-price-48" class="price">
+                          <fmt:formatNumber value="${singleProduct.originalPrice*singleProduct.discount}" type="currency" pattern="¥.00"/> / ${singleProduct.unit}
+                        </span> </p>
+                        <p class="old-price"> <span class="price-label">原价:</span> <span class="price">
+                          <fmt:formatNumber value="${singleProduct.originalPrice}" type="currency" pattern="¥.00"/>
+                        </span> </p>
                       </div>
                     </div>
                     <div class="info-orther">
-                      <p>库存: <span class="in-stock">2件</span></p>
-                      <p>所属类别: 1级/2级/3级</p>
+                      <p>库存: <span class="in-stock">${singleProduct.inventory}件</span></p>
+                      <p>所属类别: ${singleProduct.firstCategory}/${singleProduct.secondCategory}/${singleProduct.secondCategory}</p>
                     </div>
                     <div class="short-description">
-                      <h2>Quick Overview</h2>
-                      <p>商品简要介绍商品简要介绍商品简要介绍商品简要介绍商品简要介绍商品简要介绍商品简要介绍商品简要介绍商品简要介绍商品简要介绍商品简要介绍商品简要介绍商品简要介绍商品简要介绍商品简要介绍</p>
+                      <h2>简要介绍</h2>
+                      <p>${singleProduct.productBriefIntroduction}</p>
                     </div>
+                    <form>
                     <div class="form-option">
                       <p class="form-option-title">选择:</p>
                       <div class="attributes">
@@ -815,7 +825,7 @@
                                 var cName = $("#city option:selected").text();
                                 var dName = $("#district option:selected").text();
 
-                                window.location.href = "select_stores" + "?province=" + pName + "&city=" + cName + "&district=" + dName;
+                                window.location.href = "select_stores_single" + "?province=" + pName + "&city=" + cName + "&district=" + dName;
                               });
 
                               store.change(function () {
@@ -834,24 +844,30 @@
                             <div class="custom pull-left">
                               <label>数量: </label>
                               <button onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="fa fa-minus">&nbsp;</i></button>
-                              <input type="text" class="input-text qty" title="Qty" value="1" maxlength="12" id="qty" name="qty">
+                              <input type="text" class="input-text qty" title="Qty" value="1" maxlength=${singleProduct.inventory} id="qty" name="qty">
                               <button onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="increase items-count" type="button"><i class="fa fa-plus">&nbsp;</i></button>
                             </div>
                           </div>
-                          <button onClick="productAddToCartForm.submit(this)" class="button btn-cart" title="Add to Cart" type="button">加入购物车</span></button>
+                          <button @click="success(true)" id="app" onClick="wait_and_go()" class="button btn-cart" title="Add to Cart" type="button">加入购物车</button>
+                          <script>
+                            function wait_and_go() {
+                              setTimeout("window.location.href=('add_shopping_cart?productId=${singleProduct.productId}'+'&amount='+document.getElementById('qty').value)",3000);
+                            }
+                          </script>
                         </div>
                         <div class="email-addto-box">
                           <ul class="add-to-links">
-                            <li> <a class="link-wishlist" href="#"><span>Add to Wishlist</span></a></li>
+                            <li> <a class="link-wishlist" href="#"><span>添加到收藏夹</span></a></li>
                           </ul>
                         </div>
                       </div>
                     </div>
+                    </form>
                     <div class="form-share">
                       <div class="sendtofriend-print"> <a href="javascript:print();"><i class="fa fa-print"></i> 打印</a>
                     </div>
                   </div>
-                </form>
+
               </div>
             </div>
           </div>
@@ -869,28 +885,7 @@
               <div id="productTabContent" class="tab-content">
                 <div class="tab-pane fade in active" id="product_tabs_description">
                   <div class="std">
-                    <p>这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍。</p>
-                    <p>这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，这里是商品介绍，</p>
-                  </div>
-                </div>
-
-                <div class="tab-pane fade" id="product_tabs_tags">
-                  <div class="box-collateral box-tags">
-                    <div class="tags">
-                      <form id="addTagForm" action="#" method="get">
-                        <div class="form-add-tags">
-                          <label for="productTagName">Add Tags:</label>
-                          <div class="input-box">
-                            <input class="input-text" name="productTagName" id="productTagName" type="text">
-                            <button type="button" title="Add Tags" class=" button btn-add" onClick="submitTagForm()"> <span>Add Tags</span> </button>
-                          </div>
-
-                          <!--input-box-->
-                        </div>
-                      </form>
-                    </div>
-                    <!--tags-->
-                    <p class="note">Use spaces to separate tags. Use single quotes (') for phrases.</p>
+                    ${singleProduct.productDetail}
                   </div>
                 </div>
                 <!--
@@ -1146,181 +1141,92 @@
           </div>
           <div id="related-products-slider" class="product-flexslider hidden-buttons">
             <div class="slider-items slider-width-col4 products-grid block-content">
-              <div class="item">
-                <div class="item-inner">
-                  <div class="item-img">
-                    <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.single_product.jsp"> <img alt="Product Title Here" src="images/products/img15.jpg"> </a>
-                      <div class="jtv-box-hover">
-                        <ul class="add-to-links">
-                          <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                          <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                          <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item-info">
-                    <div class="info-inner">
-                      <div class="item-title"><h6> <a title="Product Title Here" href="single_product.single_product.jsp"> 热卖商品1 </a></h6> </div>
-                      <div class="item-content">
-                        <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                        <div class="item-price">
-                          <div class="price-box"> <span class="regular-price"> <span class="price">¥225.00</span> </span> </div>
-                        </div>
-                        <div class="action">
-                          <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>加入购物车</span> </button>
+              <c:forEach items="${displayProductsList}" var="displayproduct">
+                <div class="item">
+                  <!--
+                  <div class="item-inner">
+                    <div class="item-img">
+                      <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.single_product.jsp"> <img alt="Product Title Here" src="images/products/img15.jpg"> </a>
+                        <div class="jtv-box-hover">
+                          <ul class="add-to-links">
+                            <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
+                            <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
+                            <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
+                          </ul>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="item-inner">
-                  <div class="item-img">
-                    <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.single_product.jsp"> <img alt="Product Title Here" src="images/products/img15.jpg"> </a>
-                      <div class="jtv-box-hover">
-                        <ul class="add-to-links">
-                          <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                          <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                          <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item-info">
-                    <div class="info-inner">
-                      <div class="item-title"><h6> <a title="Product Title Here" href="single_product.single_product.jsp"> 热卖商品2 </a></h6> </div>
-                      <div class="item-content">
-                        <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                        <div class="item-price">
-                          <div class="price-box"> <span class="regular-price"> <span class="price">¥225.00</span> </span> </div>
-                        </div>
-                        <div class="action">
-                          <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>加入购物车</span> </button>
+                    <div class="item-info">
+                      <div class="info-inner">
+                        <div class="item-title"><h6> <a title="Product Title Here" href="single_product.single_product.jsp"> 热卖商品1 </a></h6> </div>
+                        <div class="item-content">
+                          <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                          <div class="item-price">
+                            <div class="price-box"> <span class="regular-price"> <span class="price">¥225.00</span> </span> </div>
+                          </div>
+                          <div class="action">
+                            <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>加入购物车</span> </button>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="item-inner">
-                  <div class="item-img">
-                    <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.single_product.jsp"> <img alt="Product Title Here" src="images/products/img15.jpg"> </a>
-                      <div class="jtv-box-hover">
-                        <ul class="add-to-links">
-                          <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                          <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                          <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item-info">
-                    <div class="info-inner">
-                      <div class="item-title"><h6> <a title="Product Title Here" href="single_product.single_product.jsp"> 热卖商品3 </a></h6> </div>
-                      <div class="item-content">
-                        <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                        <div class="item-price">
-                          <div class="price-box"> <span class="regular-price"> <span class="price">¥225.00</span> </span> </div>
-                        </div>
-                        <div class="action">
-                          <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>加入购物车</span> </button>
+                  -->
+                  <div class="item-inner">
+                    <div class="item-img">
+                      <div class="item-img-info"><a class="product-image"
+                                                    title="Product Title Here"
+                                                    href="single_pro?productId=${displayproduct.productId}"> <img
+                              alt="Product Title Here" src=${displayproduct.pic1Url}> </a>
+                        <div class="jtv-box-hover">
+                          <ul class="add-to-links">
+                            <li><a class="link-quickview" href="single_pro?productId=${displayproduct.productId}"><i
+                                    class="icon-magnifier-add icons"></i><span
+                                    class="hidden">Quick View</span></a></li>
+                            <li><a class="link-wishlist" href="#"><i
+                                    class="icon-heart icons"></i><span
+                                    class="hidden">Wishlist</span></a></li>
+                          </ul>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="item-inner">
-                  <div class="item-img">
-                    <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.single_product.jsp"> <img alt="Product Title Here" src="images/products/img15.jpg"> </a>
-                      <div class="jtv-box-hover">
-                        <ul class="add-to-links">
-                          <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                          <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                          <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item-info">
-                    <div class="info-inner">
-                      <div class="item-title"><h6> <a title="Product Title Here" href="single_product.single_product.jsp"> 热卖商品4 </a></h6> </div>
-                      <div class="item-content">
-                        <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                        <div class="item-price">
-                          <div class="price-box"> <span class="regular-price"> <span class="price">¥225.00</span> </span> </div>
-                        </div>
-                        <div class="action">
-                          <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>加入购物车</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="item-inner">
-                  <div class="item-img">
-                    <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.single_product.jsp"> <img alt="Product Title Here" src="images/products/img15.jpg"> </a>
-                      <div class="jtv-box-hover">
-                        <ul class="add-to-links">
-                          <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                          <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                          <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item-info">
-                    <div class="info-inner">
-                      <div class="item-title"><h6> <a title="Product Title Here" href="single_product.single_product.jsp"> 热卖商品5 </a></h6> </div>
-                      <div class="item-content">
-                        <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                        <div class="item-price">
-                          <div class="price-box"> <span class="regular-price"> <span class="price">¥225.00</span> </span> </div>
-                        </div>
-                        <div class="action">
-                          <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>加入购物车</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="item-inner">
-                  <div class="item-img">
-                    <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.single_product.jsp"> <img alt="Product Title Here" src="images/products/img15.jpg"> </a>
-                      <div class="jtv-box-hover">
-                        <ul class="add-to-links">
-                          <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                          <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                          <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item-info">
-                    <div class="info-inner">
-                      <div class="item-title"><h6> <a title="Product Title Here" href="single_product.single_product.jsp"> 热卖商品6 </a></h6> </div>
-                      <div class="item-content">
-                        <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                        <div class="item-price">
-                          <div class="price-box"> <span class="regular-price"> <span class="price">¥225.00</span> </span> </div>
-                        </div>
-                        <div class="action">
-                          <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>加入购物车</span> </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
+                    <div class="item-info">
+                      <div class="info-inner">
+                        <div class="item-title"><h6><a title="Product Title Here"
+                                                       href="single_product.jsp">${displayproduct.productName}</a>
+                        </h6></div>
+                        <div class="item-content">
+                          <div class="rating"><h6>
+                            <c:choose>
+                              <c:when test="${displayproduct.inventory gt 0}">
+                                有货
+                              </c:when>
+                              <c:otherwise>
+                                无货
+                              </c:otherwise>
+                            </c:choose>
+                          </h6></div>
+                          <div class="item-price">
+                            <div class="price-box"> <span class="regular-price"> <span
+                                    class="price">
+                                                <c:set var="productprice"
+                                                       value="${displayproduct.originalPrice*displayproduct.discount}"/>
+                                                <fmt:formatNumber value="${productprice}" type="currency"
+                                                                  pattern="¥.00"/>/${displayproduct.unit}
+                                              </span> </span></div>
+                          </div>
+                          <div class="action">
+                            <button class="button btn-cart" type="button"
+                                    title="" data-original-title="Add to Cart">
+                              <span>加入购物车</span></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </c:forEach>
 
             </div>
           </div>
@@ -1378,5 +1284,42 @@
 
 <!-- cloud zoom js --> 
 <script type="text/javascript" src="js/cloud-zoom.js"></script>
+
+<script>
+  new Vue({
+    el: '#app',
+    data() {
+    },
+    methods: {
+      info (nodesc) {
+        this.$Notice.info({
+          title: 'Notification title',
+          desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
+        });
+      },
+      success (nodesc) {
+        this.$Notice.success({
+          title: '添加购物车成功',
+          desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
+        });
+      },
+      warning (nodesc) {
+        this.$Notice.warning({
+          title: 'Notification title',
+          desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
+        });
+      },
+      error (nodesc) {
+        this.$Notice.error({
+          title: 'Notification title',
+          desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
+        });
+      }
+    },
+    events: {
+
+    }
+  })
+</script>
 </body>
 </html>

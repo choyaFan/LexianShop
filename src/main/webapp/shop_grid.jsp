@@ -1077,19 +1077,16 @@
                                                     <div class="item-img">
                                                         <div class="item-img-info"><a class="product-image"
                                                                                       title="Product Title Here"
-                                                                                      href="single_product.jsp"> <img
+                                                                                      href="single_pro?productId=${product.productId}"> <img
                                                                 alt="Product Title Here" src=${product.pic1Url}> </a>
                                                             <div class="jtv-box-hover">
                                                                 <ul class="add-to-links">
-                                                                    <li><a class="link-quickview" href="#"><i
+                                                                    <li><a class="link-quickview" href="single_pro?productId=${product.productId}"><i
                                                                             class="icon-magnifier-add icons"></i><span
                                                                             class="hidden">Quick View</span></a></li>
                                                                     <li><a class="link-wishlist" href="#"><i
                                                                             class="icon-heart icons"></i><span
                                                                             class="hidden">Wishlist</span></a></li>
-                                                                    <li><a class="link-compare" href="#"><i
-                                                                            class="icon-shuffle icons"></i><span
-                                                                            class="hidden">Compare</span></a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>

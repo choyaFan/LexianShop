@@ -3,13 +3,11 @@ package com.CAKESHOP.dao;
 import java.sql.Timestamp;
 
 public class ShoppingCart {
-    private int id;
+    private int id=-1;
     private String userPhone;
     private int productId;
     private int storeId;
-    private int amount;
-    private double singlePrice;
-    private double totalPrice;
+    private int amount=-1;
     private Timestamp createTime;
 
     public int getId() {
@@ -52,22 +50,6 @@ public class ShoppingCart {
         this.amount = amount;
     }
 
-    public double getSinglePrice() {
-        return singlePrice;
-    }
-
-    public void setSinglePrice(double singlePrice) {
-        this.singlePrice = singlePrice;
-    }
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
     public Timestamp getCreateTime() {
         return createTime;
     }
@@ -87,8 +69,6 @@ public class ShoppingCart {
         if (productId != that.productId) return false;
         if (storeId != that.storeId) return false;
         if (amount != that.amount) return false;
-        if (Double.compare(that.singlePrice, singlePrice) != 0) return false;
-        if (Double.compare(that.totalPrice, totalPrice) != 0) return false;
         if (userPhone != null ? !userPhone.equals(that.userPhone) : that.userPhone != null) return false;
         if (createTime != null ? !createTime.equals(that.createTime) : that.createTime != null) return false;
 
@@ -104,10 +84,6 @@ public class ShoppingCart {
         result = 31 * result + productId;
         result = 31 * result + storeId;
         result = 31 * result + amount;
-        temp = Double.doubleToLongBits(singlePrice);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(totalPrice);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (createTime != null ? createTime.hashCode() : 0);
         return result;
     }

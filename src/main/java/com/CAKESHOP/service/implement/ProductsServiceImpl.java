@@ -1,9 +1,8 @@
 package com.CAKESHOP.service.implement;
 
 
-import com.CAKESHOP.dao.DisplayProducts;
-import com.CAKESHOP.dao.Page;
-import com.CAKESHOP.dao.Products;
+import com.CAKESHOP.dao.*;
+import com.CAKESHOP.mapper.ShoppingCartMapper;
 import com.CAKESHOP.mapper.ProductsMapper;
 import com.CAKESHOP.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +21,8 @@ import java.util.List;
 public class ProductsServiceImpl implements ProductsService {
     @Resource
     ProductsMapper productsMapper;
+    @Resource
+    ShoppingCartMapper shoppingCartMapper;
 
     @Override
     public void queryselectProducts(HttpServletRequest request, ModelAndView modelAndView) {
@@ -123,6 +125,47 @@ public class ProductsServiceImpl implements ProductsService {
 
         modelAndView.addObject("productsList", productsList);
         modelAndView.addObject("page", page);
+    }
+
+    @Override
+    public void querygetSingleProduct(HttpServletRequest request, ModelAndView modelAndView) throws Exception {
+        HttpSession session = request.getSession(true);
+        String storeId = (String) session.getAttribute("storeId");
+        String productId = request.getParameter("productId");
+        SingleProduct singleProduct = productsMapper.getSingleProduct(storeId, productId);
+        List<DisplayProducts> displayProductsList = productsMapper.selectHotProductsByCategory(storeId, singleProduct.getThirdCategory());
+
+        modelAndView.addObject("singleProduct", singleProduct);
+        modelAndView.addObject("displayProductsList",displayProductsList);
+    }
+
+    @Override
+    public void queryaddShoppingCart(HttpServletRequest request, ModelAndView modelAndView) throws Exception {
+        HttpSession session = request.getSession(true);
+
+        String storeId = String.valueOf(session.getAttribute("storeId"));
+        String productId = request.getParameter("productId");
+        int amount = Integer.parseInt(request.getParameter("amount"));
+        SingleProduct singleProduct = productsMapper.getSingleProduct(storeId,productId);
+        Timestamp d = new Timestamp(System.currentTimeMillis());
+
+
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.setUserPhone("13700000000");
+        shoppingCart.setProductId(Integer.parseInt(productId));
+        shoppingCart.setStoreId(Integer.parseInt(storeId));
+        List<ShoppingCart> shoppingCartListPerProduct = shoppingCartMapper.select(shoppingCart);
+
+        shoppingCart.setCreateTime(d);
+        if(shoppingCartListPerProduct!=null && !shoppingCartListPerProduct.isEmpty()){
+            shoppingCart.setAmount(shoppingCartListPerProduct.get(0).getAmount()+amount);
+            shoppingCart.setId(shoppingCartListPerProduct.get(0).getId());
+            shoppingCartMapper.update(shoppingCart);
+        }
+        else{
+            shoppingCart.setAmount(amount);
+            shoppingCartMapper.insert(shoppingCart);
+        }
     }
 
 

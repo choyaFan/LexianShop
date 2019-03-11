@@ -13,4 +13,7 @@ public interface ProductsService {
     void queryshowProductsByPage(HttpServletRequest request, ModelAndView model) throws Exception;
 
     Products searchById(int id);
+
+    void querygetSingleProduct(HttpServletRequest request, ModelAndView modelAndView) throws Exception;
+    void queryaddShoppingCart(HttpServletRequest request, ModelAndView modelAndView) throws Exception;
 }
