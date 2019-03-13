@@ -22,4 +22,6 @@ public interface OrdersMapper {
     List<Orders> selectByUserId(@Param("userPhone") String userPhone);
 
     List<Orders> selectByOrderId(@Param("orderId")int orderId);
+
+    void deleteOrder(@Param("orderId")int orderId);
 }

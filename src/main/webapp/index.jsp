@@ -1,3 +1,5 @@
+<%@ page import="org.springframework.beans.factory.annotation.Autowired" %>
+<%@ page import="com.CAKESHOP.service.SectorService" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -21,7 +23,6 @@
 </head>
 
 <body class="cms-index-index cms-home-page">
-
 <div id="page">
     <!--[if lt IE 8]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -523,31 +524,7 @@
     </div>
     <!-- jtv bottom banner section -->
     <div class="jtv-bottom-banner-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="jtv-img-box"> <a href="#"> <img src="images/jtv-banner1.jpg" alt="bottom banner">
-                        <div class="jtv-banner-info"><span>Natural 100% Organic</span>
-                            <h3>Organic Food</h3>
-                        </div>
-                    </a> </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="jtv-img-box"> <a href="#"> <img src="images/jtv-banner2.jpg" alt="bottom banner">
-                        <div class="jtv-banner-info"> <span>New Arrivals</span>
-                            <h3>garlic cloves</h3>
-                        </div>
-                    </a> </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="jtv-img-box"> <a href="#"> <img src="images/jtv-banner3.jpg" alt="bottom banner">
-                        <div class="jtv-banner-info"> <span>Discount - 45% OFF</span>
-                            <h3>strawberry</h3>
-                        </div>
-                    </a> </div>
-                </div>
-            </div>
-        </div>
+
     </div>
     <!-- Special Product slider -->
 
@@ -700,7 +677,7 @@
                 <div class="navbar nav-menu">
                     <div class="navbar-collapse">
                         <div class="jtv-title">
-                            <h3>Featured Products</h3>
+                            <h3>门店推荐</h3>
                         </div>
                     </div>
                     <!-- /.navbar-collapse -->
@@ -710,15 +687,20 @@
                     <!-- tab product -->
                     <div class="tab-panel active" id="tab-1">
                         <div class="category-products">
-                            <a href="/getStoreProducts.html?storeId=1">刷新</a>
+                            <c:if test="${empty productsByStoreList}">
+                                <div class="storeAlert">
+                                    <h5>您还未登录，请登录并选择门店后再尝试
+                                    <a href="/getStoreProducts.html?storeId=1">刷新</a></h5>
+                                </div>
+                            </c:if>
                             <ul class="products-grid">
-                                <c:if test="${not empty storeId}">
+                                <c:if test="${not empty productsByStoreList}">
                                     <%int i = 0; pageContext.setAttribute("i", i);%>
                                     <c:forEach items="${productsByStoreList}" var="list">
                                         <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                             <div class="item-inner">
                                                 <div class="item-img">
-                                                    <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img10.jpg"> </a>
+                                                    <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src=${productsList.get(i).pic1Url}> </a>
                                                         <div class="jtv-box-hover">
                                                             <ul class="add-to-links">
                                                                 <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -759,23 +741,23 @@
             <div class="imgbox"><img src="images/banner1.jpg" alt=""></div>
             <div class="jtv-cont-box">
                 <h3>100% <br>
-                    Natural</h3>
+                    天然</h3>
                 <div class="jtv-line-bg"></div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                <p>精选全球3000多种生鲜果蔬品质食材，在体验网上购物新模式的同时享尽各国新鲜美味</p>
             </div>
             <div class="imgbox"><img src="images/banner2.jpg" alt=""></div>
             <div class="jtv-cont-box2">
-                <h3>Alway <br>
-                    Fresh</h3>
+                <h3>时刻 <br>
+                    保鲜</h3>
                 <div class="jtv-line-bg"></div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                <p>90%的果蔬都是产地直供，销售的果蔬零售价比市场果蔬零售价低10%-15%</p>
             </div>
             <div class="imgbox"><img src="images/banner3.jpg" alt=""></div>
             <div class="jtv-cont-box3">
-                <h3>Healthy <br>
-                    Cooking</h3>
+                <h3>健康 <br>
+                    处理</h3>
                 <div class="jtv-line-bg"></div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                <p>为消费者打造社区化的一站式新零售体验中心，用科技和人情味带给人们“鲜美生活”</p>
             </div>
         </div>
     </div>
@@ -786,16 +768,16 @@
             <div class="row">
                 <div class="col-md-12" data-wow-delay="0.2s">
                     <div class="block-title">
-                        <h3>What People are saying</h3>
+                        <h3>今日上新</h3>
                     </div>
                     <div class="carousel slide" data-ride="carousel" id="quote-carousel">
                         <!-- Bottom Carousel Indicators -->
                         <ol class="carousel-indicators">
-                            <li data-target="#quote-carousel" data-slide-to="0"><img class="img-responsive " src="images/testimonials-img1.jpg" alt=""> </li>
-                            <li data-target="#quote-carousel" data-slide-to="1"><img class="img-responsive" src="images/testimonials-img2.jpg" alt=""> </li>
-                            <li data-target="#quote-carousel" data-slide-to="2" class="active"><img class="img-responsive" src="images/testimonials-img3.jpg" alt=""> </li>
-                            <li data-target="#quote-carousel" data-slide-to="3"><img class="img-responsive" src="images/testimonials-img4.jpg" alt=""> </li>
-                            <li data-target="#quote-carousel" data-slide-to="4"><img class="img-responsive" src="images/testimonials-img5.jpg" alt=""> </li>
+                            <li data-target="#quote-carousel" data-slide-to="0"><img class="img-responsive " src="images/products/img05.jpg" alt=""> </li>
+                            <li data-target="#quote-carousel" data-slide-to="1"><img class="img-responsive" src="images/products/img14.jpg" alt=""> </li>
+                            <li data-target="#quote-carousel" data-slide-to="2" class="active"><img class="img-responsive" src="images/products/img10.jpg" alt=""> </li>
+                            <li data-target="#quote-carousel" data-slide-to="3"><img class="img-responsive" src="images/products/img02.jpg" alt=""> </li>
+                            <li data-target="#quote-carousel" data-slide-to="4"><img class="img-responsive" src="images/products/img07.jpg" alt=""> </li>
                         </ol>
 
                         <!-- Carousel Slides / Quotes -->
@@ -806,8 +788,8 @@
                                 <blockquote>
                                     <div class="row">
                                         <div class="col-sm-8 col-sm-offset-2">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. !</p>
-                                            <div class="holder-info"> <strong class="name">Vince Roy</strong> <strong class="designation">CEO, XYZ Softwear</strong></div>
+                                            <p>荔枝为无患子科植物荔枝的果实，别名丹荔，荔枝。原产于中国南部，以广东、广西、福建、四川、台湾、云南等地栽培最多。每年6～7月间果实成熟时采收，剥去外壳，取假种皮（荔枝肉）鲜用或干燥后备用。 </p>
+                                            <div class="holder-info"> <strong class="name">荔枝</strong> <strong class="designation">Li Zhi</strong></div>
                                         </div>
                                     </div>
                                 </blockquote>
@@ -817,8 +799,8 @@
                                 <blockquote>
                                     <div class="row">
                                         <div class="col-sm-8 col-sm-offset-2">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-                                            <div class="holder-info"><strong class="name">John Doe</strong> <strong class="designation">CEO, ABC Softwear</strong></div>
+                                            <p>苹果，落叶乔木，叶子 椭圆形，花白色带有红晕。果实圆形，味甜或略酸，是常见水果，具有丰富营养成分，有食疗、辅助治疗功能。苹果原产于欧洲、中亚、西亚和土耳其一带，于十九世纪传入中国。中国是世界最大的苹果生产国，在东北、华北、华东、西北和四川、云南等地均有栽培。</p>
+                                            <div class="holder-info"><strong class="name">苹果</strong> <strong class="designation">Ping Guo</strong></div>
                                         </div>
                                     </div>
                                 </blockquote>
@@ -828,8 +810,8 @@
                                 <blockquote>
                                     <div class="row">
                                         <div class="col-sm-8 col-sm-offset-2">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. .</p>
-                                            <div class="holder-info"> <strong class="name">John Doe</strong> <strong class="designation">Managing Director</strong></div>
+                                            <p>樱桃的品种有：红灯、早红、先锋、大紫、拉宾斯、早大果、针 叶。其中，红灯和先锋是最常见的品种，也是樱桃中优质的两个品种，红灯颜色略带浅红，果把短小，熟透的"红灯"口感甜中略点酸味；先锋颜色深红，果把较长，熟透的“先锋”口感纯甜。</p>
+                                            <div class="holder-info"> <strong class="name">樱桃</strong> <strong class="designation">Ying Tao</strong></div>
                                         </div>
                                     </div>
                                 </blockquote>
@@ -839,8 +821,8 @@
                                 <blockquote>
                                     <div class="row">
                                         <div class="col-sm-8 col-sm-offset-2">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. .</p>
-                                            <div class="holder-info"> <strong class="name">Vince Roy</strong> <strong class="designation">CEO, XYZ Softwear</strong></div>
+                                            <p>柑桔是凉性水果，也是世界上最重要的商品水果，是中国亚热带地区栽培面积最广的果树，也是广西最重要的果树。它包括的种类很多，广西主要栽培的有甜橙、宽皮柑桔、柚、金桔、柠檬等，而每一种类又有许多优良品种。中国西部有果城四川南充，主产柑桔等水果。</p>
+                                            <div class="holder-info"> <strong class="name">柑橘</strong> <strong class="designation">Gan Ju</strong></div>
                                         </div>
                                     </div>
                                 </blockquote>
@@ -850,8 +832,8 @@
                                 <blockquote>
                                     <div class="row">
                                         <div class="col-sm-8 col-sm-offset-2">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. .</p>
-                                            <div class="holder-info"><strong class="name">John Doe</strong> <strong class="designation">CEO, ABC Softwear</strong></div>
+                                            <p>龙眼有壮阳益气、补益心脾、养血安神、润肤美容等多种功效，可治疗贫血、心悸、失眠、健忘、神经衰弱及病后、产后身体虚弱等症。现代医学实践证明 ，它还有美容、延年益寿之功效。俗称“桂圆”，是中国南亚热带名贵特产，历史上南方“桂圆”北“人参”之称。</p>
+                                            <div class="holder-info"><strong class="name">龙眼</strong> <strong class="designation">Long Yan</strong></div>
                                         </div>
                                     </div>
                                 </blockquote>
@@ -864,6 +846,68 @@
             </div>
         </div>
     </div>
+
+    <c:if test="${not empty sectorsList}">
+        <c:forEach items="${sectorsList}" var="sectors">
+            <div class="content-page">
+                <div class="container">
+                    <!-- Product Tabs-->
+                    <div class="category-product">
+                        <div class="navbar nav-menu">
+                            <div class="navbar-collapse">
+                                <div class="jtv-title">
+                                    <h3>${sectors.sectorName}</h3>
+                                </div>
+                            </div>
+                            <!-- /.navbar-collapse -->
+                        </div>
+                        <%int i = 0; pageContext.setAttribute("i", i);%>
+                        <c:forEach items="${specialProductsList}" var="products" end="${num.get(i) - 1}">
+                            <div class="tab-container">
+                                <!-- tab product -->
+                                <div class="tab-panel active">
+                                    <div class="category-products">
+                                        <ul class="products-grid">
+                                                    <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                                                        <div class="item-inner">
+                                                            <div class="item-img">
+                                                                <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src=${products.pic1Url}> </a>
+                                                                    <div class="jtv-box-hover">
+                                                                        <ul class="add-to-links">
+                                                                            <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
+                                                                            <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
+                                                                            <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="item-info">
+                                                                <div class="info-inner">
+                                                                    <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp">${products.productName}</a></h6> </div>
+                                                                    <div class="item-content">
+                                                                        <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                                        <div class="item-price">
+                                                                            <div class="price-box"> <span class="regular-price"> <span class="price">$${productsByStores.get(i).originalPrice}</span> </span> </div>
+                                                                        </div>
+                                                                        <div class="action">
+                                                                            <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <%i++; pageContext.setAttribute("i", i);%>
+                        </c:forEach>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
+    </c:if>
 
     <!-- Footer -->
     <footer>

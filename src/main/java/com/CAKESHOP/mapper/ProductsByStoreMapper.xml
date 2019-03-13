@@ -102,4 +102,20 @@
         where store_id = #{storeId}
     </select>
 
+    <select id="searchByProductId" resultMap="AllColumnMap">
+        select * from products_by_store
+        where product_id = #{productId}
+    </select>
+
+    <select id="searchByProductAndStore" resultMap="AllColumnMap">
+        select * from products_by_store
+        where product_id=${productId}
+        and store_id=${storeId}
+    </select>
+
+    <update id="updateInventory">
+        update products_by_store
+        set inventory=#{inventory}
+        where store_id=#{storeId} and product_id=#{productId}
+    </update>
 </mapper>

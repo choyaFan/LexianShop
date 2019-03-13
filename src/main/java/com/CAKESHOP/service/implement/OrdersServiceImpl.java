@@ -28,5 +28,8 @@ public class OrdersServiceImpl implements OrdersService{
     public List<Orders> selectByOrderId(int orderId){
         return ordersMapper.selectByOrderId(orderId);
     }
-
+    @Override
+    public void deleteOrder(int orderId){
+        ordersMapper.deleteOrder(orderId);
+    }
 }

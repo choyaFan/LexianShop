@@ -16,4 +16,16 @@ public class ProductsByStoreServiceImpl implements ProductsByStoreService {
     public List<ProductsByStore> selectByStoreId(int storeId){
         return productsByStoreMapper.searchByStoreId(storeId);
     }
+    @Override
+    public List<ProductsByStore> selectByProductId(int productId){
+        return productsByStoreMapper.searchByProductId(productId);
+    }
+    @Override
+    public ProductsByStore selectByProductAndStore(int productId, int storeId){
+        return productsByStoreMapper.searchByProductAndStore(productId, storeId);
+    }
+    @Override
+    public void updateInventory(int storeId, int productId, int inventory){
+        productsByStoreMapper.updateInventory(storeId, productId, inventory);
+    }
 }

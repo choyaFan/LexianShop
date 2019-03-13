@@ -9,4 +9,5 @@ public interface OrdersService {
     List<Orders> selectOrdersList();
     List<Orders> selectByUserId(String userPhone);
     List<Orders> selectByOrderId(int orderId);
+    void deleteOrder(int orderId);
 }
