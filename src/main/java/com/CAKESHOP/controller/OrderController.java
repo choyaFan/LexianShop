@@ -2,7 +2,9 @@ package com.CAKESHOP.controller;
 
 import com.CAKESHOP.dao.Orders;
 import com.CAKESHOP.dao.Products;
+import com.CAKESHOP.dao.ProductsByStore;
 import com.CAKESHOP.service.OrdersService;
+import com.CAKESHOP.service.ProductsByStoreService;
 import com.CAKESHOP.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +28,9 @@ public class OrderController {
 
     @Autowired
     private ProductsService productsService = null;
+
+    @Autowired
+    private ProductsByStoreService productsByStoreService = null;
 
     @RequestMapping("/getUserOrder")
     public ModelAndView getUserOrders(String userPhone){
@@ -64,12 +71,19 @@ public class OrderController {
     }
 
     @RequestMapping("/getOrderProducts")
-    public ModelAndView getOrderProducts(@RequestParam("orderId") int orderId){
+    public ModelAndView getOrderProducts(HttpServletRequest request, @RequestParam("orderId") int orderId){
         ModelAndView mv = new ModelAndView();
         List<Orders> ordersList = ordersService.selectByOrderId(orderId);
         List<Products> productsList = new ArrayList<Products>();
+        Products product;
+        ProductsByStore productsByStore;
+        HttpSession session = request.getSession();
         for(Orders orders : ordersList){
-            productsList.add(productsService.searchById(orders.getProductId()));
+            product = productsService.searchById(orders.getProductId());
+            productsByStore = productsByStoreService.selectByProductAndStore(product.getId(), 1);
+            int inventory = productsByStore.getInventory() - orders.getAmount();
+            productsByStoreService.updateInventory(1,product.getId(), inventory);
+            productsList.add(product);
         }
         mv.addObject("productsList", productsList);
         mv.addObject("ordersList", ordersList);
@@ -78,8 +92,8 @@ public class OrderController {
     }
 
     @RequestMapping("/getOrderDetail")
-    public ModelAndView getOrderDetail(@RequestParam("orderId") int orderId){
-        ModelAndView mv = getOrderProducts(orderId);
+    public ModelAndView getOrderDetail(HttpServletRequest request, @RequestParam("orderId") int orderId){
+        ModelAndView mv = getOrderProducts(request, orderId);
         mv.setViewName("orderDetail.jsp");
         return mv;
     }

@@ -16,4 +16,9 @@ public interface ProductsByStoreMapper {
 
     List<ProductsByStore> searchByStoreId(@Param("storeId")int storeId);
 
+    List<ProductsByStore> searchByProductId(@Param("productId")int productId);
+
+    ProductsByStore searchByProductAndStore(@Param("productId")int productId, @Param("storeId")int storeId);
+
+    void updateInventory(@Param("storeId")int storeId, @Param("productId")int productId, @Param("inventory")int inventory);
 }

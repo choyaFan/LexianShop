@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: 63583
@@ -459,7 +460,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 col-xs-12 col-sm-6">
-                    <div class="feature-box last"> <i class="icon-tag icons"></i>
+                    <div class="feature-box last"> <i class="icon-like icons"></i>
                         <div class="content">
                             <h6>Great Daily Deals Discount</h6>
                         </div>
@@ -471,30 +472,6 @@
 
 <!--收货地址body部分开始-->
 <div class="border_top_cart">
-    <script type="text/javascript">
-        var checkoutConfig={
-            addressMatch:'common',
-            addressMatchVarName:'data',
-            hasPresales:false,
-            hasBigTv:false,
-            hasAir:false,
-            hasScales:false,
-            hasGiftcard:false,
-            totalPrice:244.00,
-            postage:10,//运费
-            postFree:true,//活动是否免邮了
-            bcPrice:150,//计算界值
-            activityDiscountMoney:0.00,//活动优惠
-            showCouponBox:0,
-            invoice:{
-                NA:"0",
-                personal:"1",
-                company:"2",
-                electronic:"4"
-            }
-        };
-        var miniCartDisable=true;
-    </script>
     <div class="container">
         <div class="checkout-box">
             <form  id="checkoutForm" action="#" method="post">
@@ -511,13 +488,13 @@
                             <div class="clearfix xm-address-list" id="checkoutAddrList">
                                 <dl class="item" >
                                     <dt>
-                                        <strong class="itemConsignee">潘骏杰</strong>
+                                        <strong class="itemConsignee">？？？</strong>
                                         <span class="itemTag tag">已选择</span>
                                     </dt>
                                     <dd>
                                         <p class="tel itemTel">15961726437</p>
-                                        <p class="itemRegion">江苏 无锡市 北塘区</p>
-                                        <p class="itemStreet">民丰西苑82号202室(214045)</p>
+                                        <p class="itemRegion">？？？？？？</p>
+                                        <p class="itemStreet">？？？？？？？？？(214045)</p>
                                     </dd>
                                 </dl>
                             </div>
@@ -561,11 +538,11 @@
                     <!-- 送货时间 -->
                     <div class="xm-box">
                         <div class="box-hd">
-                            <h2 class="title">送货时间</h2>
+                            <h2 class="title">提货时间</h2>
                         </div>
                         <div class="box-bd">
                             <ul class="checkout-option-list clearfix J_optionList">
-                                <li class="item selected"><input type="radio" checked="checked" name="Checkout[best_time]" value="1"><p>不限送货时间<span>周一至周日</span></p></li><li class="item "><input type="radio"  name="Checkout[best_time]" value="2"><p>工作日送货<span>周一至周五</span></p></li><li class="item "><input type="radio"  name="Checkout[best_time]" value="3"><p>双休日、假日送货<span>周六至周日</span></p></li>                        </ul>
+                                <li class="item selected"><input type="radio" checked="checked" name="Checkout[best_time]" value="1"><p>不限提货时间<span>周一至周日</span></p></li><li class="item "><input type="radio"  name="Checkout[best_time]" value="2"><p>工作日提货<span>周一至周五</span></p></li><li class="item "><input type="radio"  name="Checkout[best_time]" value="3"><p>双休日、假日提货<span>周六至周日</span></p></li>                        </ul>
                         </div>
                     </div>
                     <!-- 送货时间 END-->
@@ -710,7 +687,8 @@
                     <div class="checkout-confirm">
 
                         <a href="#" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
-                        <input type="submit" class="btn btn-primary" value="立即下单" id="checkoutToPay" />
+                        <%%>
+                        <a href="/payment.html?totalPrice=<fmt:formatNumber value="${ordersList.get(0).totalPrice}"/>&orderId=<fmt:formatNumber value="${ordersList.get(0).orderId}"/> " class="btn btn-primary" id="checkoutToPay">立即下单</a>
                     </div>
                 </div>
             </form>
@@ -723,51 +701,6 @@
     <script type="text/javascript" src="js/checkout.min.js"></script>
 </div>
 
-
-<!-- Brand Logo -->
-<div class="brand-logo">
-    <div class="container">
-        <div class="slider-items-products">
-            <div id="brand-logo-slider" class="product-flexslider hidden-buttons">
-                <div class="slider-items slider-width-col6">
-
-                    <!-- Item -->
-                    <div class="item"> <a href="#"><img src="images/brand3.png" alt="Image"> </a> </div>
-                    <!-- End Item -->
-
-                    <!-- Item -->
-                    <div class="item"> <a href="#"><img src="images/brand1.png" alt="Image"> </a> </div>
-                    <!-- End Item -->
-
-                    <!-- Item -->
-                    <div class="item"> <a href="#"><img src="images/brand2.png" alt="Image"> </a> </div>
-                    <!-- End Item -->
-
-                    <!-- Item -->
-                    <div class="item"> <a href="#"><img src="images/brand4.png" alt="Image"> </a> </div>
-                    <!-- End Item -->
-
-                    <!-- Item -->
-                    <div class="item"> <a href="#"><img src="images/brand5.png" alt="Image"> </a> </div>
-                    <!-- End Item -->
-
-                    <!-- Item -->
-                    <div class="item"> <a href="#"><img src="images/brand6.png" alt="Image"> </a> </div>
-                    <!-- End Item -->
-
-                    <!-- Item -->
-                    <div class="item"> <a href="#"><img src="images/brand2.png" alt="Image"> </a> </div>
-                    <!-- End Item -->
-
-                    <!-- Item -->
-                    <div class="item"> <a href="#"><img src="images/brand4.png" alt="Image"> </a> </div>
-                    <!-- End Item -->
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- Footer -->
 <footer>
     <div class="footer-top">

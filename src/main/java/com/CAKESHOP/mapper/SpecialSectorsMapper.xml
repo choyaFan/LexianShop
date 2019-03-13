@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.CAKESHOP.mapper.SpecialSectorsMapper">
+
+<!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.CAKESHOP.dao.SpecialSectors">
+        <result column="id" property="id"/>
+        <result column="sector_name" property="sectorName"/>
+    </resultMap>
+
+<!--auto generated Code-->
+    <sql id="all_column">
+        id,
+        sector_name
+    </sql>
+
+<!--auto generated Code-->
+    <insert id="insert">
+        INSERT INTO special_sectors
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> id, </if>
+            <if test="pojo.sectorName != null"> sector_name, </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> #{pojo.id}, </if>
+            <if test="pojo.sectorName != null"> #{pojo.sectorName}, </if>
+        </trim>
+    </insert>
+
+<!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO special_sectors(
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.sectorName}
+            )
+        </foreach>
+    </insert>
+
+<!--auto generated Code-->
+    <update id="update">
+        UPDATE special_sectors
+        <set>
+            <if test="pojo.id != null"> id = #{pojo.id}, </if>
+            <if test="pojo.sectorName != null"> sector_name = #{pojo.sectorName} </if>
+        </set>
+         WHERE id = #{pojo.id}
+    </update>
+
+<!--auto generated Code-->
+    <select id="select" resultMap="AllColumnMap">
+        SELECT <include refid="all_column"/>
+        FROM special_sectors
+        <where>
+            <if test="pojo.id != null"> AND id = #{pojo.id} </if>
+            <if test="pojo.sectorName != null"> AND sector_name = #{pojo.sectorName} </if>
+        </where>
+        LIMIT 1000 
+    </select>
+
+    <select id="selectAll" resultMap="AllColumnMap">
+        select * from special_sectors;
+    </select>
+
+</mapper>
