@@ -59,6 +59,10 @@
 </head>
 <body class="category-page">
 <!-- mobile menu -->
+<script>
+    let minMoneyNow=${minMoney};
+    let maxMoneyNow=${maxMoney};
+</script>
 <div id="jtv-mobile-menu" style="left: -250px; width: 250px;">
     <ul class="jtv-mobile-menu">
         <li>
@@ -275,6 +279,14 @@
                                     <c:choose>
                                         <c:when test="${!empty storeName}">
                                             <option value="" hidden>${storeName}</option>
+                                            <c:if test="${!empty branchStoreList}">
+                                                <c:forEach items="${branchStoreList}" varStatus="storesStatues"
+                                                           var="storelist">
+                                                    <c:if test="${storelist.storeStatus eq 1}">
+                                                        <option value=${storesStatues.index}>${storelist.storeName}</option>
+                                                    </c:if>
+                                                </c:forEach>
+                                            </c:if>
                                         </c:when>
                                         <c:otherwise>
                                             <option value="" hidden>请选择门店</option>
@@ -963,45 +975,95 @@
                             <c:otherwise>
 
 
-                                <h3 class="page-heading"><span class="page-heading-title">搜索关键词</span></h3>
+                                <h3 class="page-heading"><span class="page-heading-title">
+
+                                            搜索🔍  ${searchkey}
+                                </span></h3>
                                 <div class="toolbar">
                                     <div class="row">
                                         <div class="col-md-4 col-sm-8">
                                             <div class="btn-group">
-                                                <div id="grid-view" class="btn btn-default active" data-toggle="tooltip"
-                                                     title="" data-original-title="Grid"><a href="shop_grid.jsp"><i
-                                                        class="fa fa-th"></i></a></div>
-                                                <div id="list-view" class="btn btn-default" data-toggle="tooltip"
-                                                     title="" data-original-title="List"><a href="#"><i
-                                                        class="fa fa-th-list"></i></a></div>
                                             </div>
-                                            <a href="#" id="compare-total">不知道放什么</a></div>
+                                            <a href="#" id="compare-total"> </a></div>
                                         <div class="col-sm-2 text-right sort-by hidden-sm">
                                             <label class="control-label" for="input-sort">排序方式: </label>
                                         </div>
                                         <div class="col-md-3 col-sm-6 text-right">
                                             <select id="input-sort" class="form-control col-sm-3">
-                                                <option value="" selected="selected">默认</option>
-                                                <option value="">销量(从高到低)</option>
-                                                <option value="">销量(从低到高)</option>
-                                                <option value="">价格(从高到低)</option>
-                                                <option value="">价格(从低到高)</option>
+                                                <c:if test="${!empty sortWay}">
+                                                    <c:choose>
+                                                        <c:when test="${sortWay eq 0}">
+                                                            <option value="0" selected="selected">目前:默认</option>
+                                                        </c:when>
+                                                        <c:when test="${sortWay eq 1}">
+                                                            <option value="1" selected="selected">目前:销量(从高到低)</option>
+                                                        </c:when>
+                                                        <c:when test="${sortWay eq 2}">
+                                                            <option value="2" selected="selected">目前:销量(从低到高)</option>
+                                                        </c:when>
+                                                        <c:when test="${sortWay eq 3}">
+                                                            <option value="3" selected="selected">目前:价格(从高到低)</option>
+                                                        </c:when>
+                                                        <c:when test="${sortWay eq 4}">
+                                                            <option value="4" selected="selected">目前:价格(从低到高)</option>
+                                                        </c:when>
 
-
+                                                    </c:choose>
+                                                </c:if>
+                                                <option value="0">默认</option>
+                                                <option value="1">销量(从高到低)</option>
+                                                <option value="2">销量(从低到高)</option>
+                                                <option value="3">价格(从高到低)</option>
+                                                <option value="4">价格(从低到高)</option>
                                             </select>
                                         </div>
+                                        <script type="text/javascript">
+                                            var inputSort = $("#input-sort");
+                                            inputSort.change(function () {
+                                                var sortOption = inputSort.val();
+                                                window.location.href = "sort_products?sortWay="+sortOption;
+                                            });
+                                        </script>
                                         <div class="col-sm-1 text-right show-limit hidden-sm">
                                             <label class="control-label" for="input-limit">显示: </label>
                                         </div>
                                         <div class="col-md-2 col-sm-6 text-right">
                                             <select id="input-limit" class="form-control">
-                                                <option value="" selected="selected">15</option>
-                                                <option value="">20</option>
-                                                <option value="">30</option>
-                                                <option value="">40</option>
-                                                <option value="">50</option>
+                                                <c:if test="${!empty limitWay}">
+                                                    <c:choose>
+                                                        <c:when test="${limitWay eq 15}">
+                                                            <option value="0" selected="selected">目前:15</option>
+                                                        </c:when>
+                                                        <c:when test="${limitWay eq 21}">
+                                                            <option value="1" selected="selected">目前:21</option>
+                                                        </c:when>
+                                                        <c:when test="${limitWay eq 30}">
+                                                            <option value="2" selected="selected">目前:30</option>
+                                                        </c:when>
+                                                        <c:when test="${limitWay eq 39}">
+                                                            <option value="3" selected="selected">目前:39</option>
+                                                        </c:when>
+                                                        <c:when test="${limitWay eq 48}">
+                                                            <option value="4" selected="selected">目前:48</option>
+                                                        </c:when>
+
+                                                    </c:choose>
+                                                </c:if>
+                                                <option value="15">15</option>
+                                                <option value="21">21</option>
+                                                <option value="30">30</option>
+                                                <option value="39">39</option>
+                                                <option value="48">48</option>
                                             </select>
                                         </div>
+                                        <script type="text/javascript">
+                                            var inputLimit = $("#input-limit");
+                                            inputLimit.change(function () {
+                                                var limitOption = inputLimit.val();
+                                                window.location.href = "limit_products?limitWay="+limitOption;
+                                            });
+                                        </script>
+
                                     </div>
                                 </div>
                                 <div class="category-products">
@@ -1015,19 +1077,16 @@
                                                     <div class="item-img">
                                                         <div class="item-img-info"><a class="product-image"
                                                                                       title="Product Title Here"
-                                                                                      href="single_product.jsp"> <img
+                                                                                      href="single_pro?productId=${product.productId}"> <img
                                                                 alt="Product Title Here" src=${product.pic1Url}> </a>
                                                             <div class="jtv-box-hover">
                                                                 <ul class="add-to-links">
-                                                                    <li><a class="link-quickview" href="#"><i
+                                                                    <li><a class="link-quickview" href="single_pro?productId=${product.productId}"><i
                                                                             class="icon-magnifier-add icons"></i><span
                                                                             class="hidden">Quick View</span></a></li>
                                                                     <li><a class="link-wishlist" href="#"><i
                                                                             class="icon-heart icons"></i><span
                                                                             class="hidden">Wishlist</span></a></li>
-                                                                    <li><a class="link-compare" href="#"><i
-                                                                            class="icon-shuffle icons"></i><span
-                                                                            class="hidden">Compare</span></a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -1170,7 +1229,7 @@
                                         <a href="add_condition?condition=${productLabel.third_category}">${productLabel.third_category}</a>
                                     </c:forEach>
                                 </div>
-                                <div class="actions"><a href="#" class="view-all">查看所有类别</a></div>
+                                <div class="actions"><a href="refresh" class="view-all">查看所有类别</a></div>
                             </div>
                         </div>
                         <div class="block product-price-range ">
@@ -1187,12 +1246,12 @@
                                               style="left: 10%;"/>
                                     </div>
                                     -->
-                                        <Slider v-model="value1" range :min="${minMoney}" :max="${maxMoney}" ></Slider>
+                                        <Slider v-model="value1" @on-change="setMoney" range :min="${minMoney}" :max="${maxMoney}"></Slider>
 
                                 </div>
                                 <div class="amount-range-price">范围: <fmt:formatNumber value="${minMoney}" type="currency" pattern="¥.00"/>
                                      - <fmt:formatNumber value="${maxMoney}" type="currency" pattern="¥.00"/></div>
-                                <button type="submit" title="Submit" class="button button-clear"><span>确定</span>
+                                <button type="submit" title="Submit" class="button button-clear" onclick="location.href='money_condition?minMoney='+minMoneyNow+'&maxMoney='+maxMoneyNow"><span>确定</span>
                                 <!-- 复选框
                                 <ul class="check-box-list">
                                     <li>
@@ -1220,33 +1279,31 @@
                             <div class="block-title ">已选条件</div>
                             <div class="block-content">
                                 <ol id="compare-items">
+                                    <c:forEach items="${cdclass}" var="clas">
                                     <li class="item">
                                         <input type="hidden" value="2173" class="compare-item-id">
-                                        <a class="jtv-btn-remove" title="Remove This Item" href="#"
+                                        <a class="jtv-btn-remove" title="Remove This Item" href="remove_condition?condition=${clas}"
                                            class="product-name"></a>
                                         <a href="#" class="product-name">
-                                            <i class="fa fa-angle-right"></i>条件1</a></li>
-                                    <li class="item">
-                                        <input type="hidden" value="2173" class="compare-item-id">
-                                        <a class="jtv-btn-remove" title="Remove This Item" href="#"
-                                           class="product-name"></a>
-                                        <a href="#" class="product-name">
-                                            <i class="fa fa-angle-right"></i>条件2</a></li>
-                                    <li class="item">
-                                        <input type="hidden" value="2173" class="compare-item-id">
-                                        <a class="jtv-btn-remove" title="Remove This Item" href="#"
-                                           class="product-name"></a>
-                                        <a href="#" class="product-name">
-                                            <i class="fa fa-angle-right"></i>条件3</a></li>
+                                            <i class="fa fa-angle-right"></i>${clas}</a></li>
+                                    </c:forEach>
+                                    <c:if test="${!empty cdmoney}" >
+                                        <li class="item">
+                                            <input type="hidden" value="2173" class="compare-item-id">
+                                            <a class="jtv-btn-remove" title="Remove This Item" href="remove_money_condition"
+                                               class="product-name"></a>
+                                            <a href="#" class="product-name">
+                                                <i class="fa fa-angle-right"></i>¥${cdmoney[0]}--¥${cdmoney[1]}</a></li>
+                                    </c:if>
+
                                 </ol>
                                 <div class="ajax-checkout">
-                                    <button type="submit" title="Submit" class="button button-compare"><span>重置</span>
-                                    </button>
-                                    <button type="submit" title="Submit" class="button button-clear"><span>筛选</span>
+                                    <button type="submit" title="Submit" class="button button-compare" onclick="location.href='empty_condition'"><span>重置</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
+                        <!--
                         <div class="block block-layered-nav">
                             <div class="block-title"><h3>所有类别</h3></div>
                             <div class="block-content">
@@ -1288,6 +1345,7 @@
                                 </dl>
                             </div>
                         </div>
+                        -->
 
                         <div class="block block-cart">
                             <div class="block-title "><h3>我的购物车</h3></div>
@@ -1374,6 +1432,7 @@
                                     </a></div>
                             </div>
                         </div>
+                        <!--
                         <div class="block block-list block-viewed">
                             <div class="block-title"><h3>不知道干啥</h3></div>
                             <div class="block-content">
@@ -1429,6 +1488,7 @@
                                 </div>
                             </form>
                         </div>
+                        -->
 
                     </aside>
                 </div>
@@ -1439,50 +1499,6 @@
     </section>
     <!-- Main Container End -->
 
-    <!-- Brand Logo -->
-    <div class="brand-logo">
-        <div class="container">
-            <div class="slider-items-products">
-                <div id="brand-logo-slider" class="product-flexslider hidden-buttons">
-                    <div class="slider-items slider-width-col6">
-
-                        <!-- Item -->
-                        <div class="item"><a href="#"><img src="images/brand3.png" alt="Image"> </a></div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"><a href="#"><img src="images/brand1.png" alt="Image"> </a></div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"><a href="#"><img src="images/brand2.png" alt="Image"> </a></div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"><a href="#"><img src="images/brand4.png" alt="Image"> </a></div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"><a href="#"><img src="images/brand5.png" alt="Image"> </a></div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"><a href="#"><img src="images/brand6.png" alt="Image"> </a></div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"><a href="#"><img src="images/brand2.png" alt="Image"> </a></div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"><a href="#"><img src="images/brand4.png" alt="Image"> </a></div>
-                        <!-- End Item -->
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer>
@@ -1623,6 +1639,7 @@
 <script type="text/javascript" src="js/main.js"></script>
 
 <a href="#" id="toTop"></a>
+<div>${minMoney}</div>
 
 <script>
     new Vue({
@@ -1633,6 +1650,10 @@
             }
         },
         methods: {
+            setMoney(value){
+                minMoneyNow = value[0];
+                maxMoneyNow = value[1];
+            }
         },
         events: {
 
