@@ -1,8 +1,8 @@
 package com.CAKESHOP.controller;
 
-import com.CAKESHOP.dao.BranchStore;
 import com.CAKESHOP.service.ProductsService;
 import com.CAKESHOP.service.StoresService;
+import com.CAKESHOP.service.WishProductService;
 import com.sun.xml.internal.ws.resources.HttpserverMessages;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +28,9 @@ public class SearchProducts {
     @Resource
     StoresService storesService;
 
+    @Resource
+    WishProductService wishProductService;
+
     @RequestMapping(value = "shop_grid.action")
     public ModelAndView shop_grid(HttpServletRequest request) throws Exception {//默认界面，按照商品名组织商品
         ModelAndView modelAndView = new ModelAndView();
@@ -35,6 +38,17 @@ public class SearchProducts {
         //List<Products> products = productsService.queryallProducts();
         //分页显示
         productsService.queryshowProductsByPage(request, modelAndView);
+        modelAndView.addObject("minMoney",0);
+        modelAndView.addObject("maxMoney",100);
+        modelAndView.addObject("storeId",100);
+
+        List<String> cdmoney = new ArrayList<String>();
+        String minMoney = "0";
+        String maxMoney = "100";
+        cdmoney.add(minMoney);
+        cdmoney.add(maxMoney);
+        HttpSession session = request.getSession(true);
+        session.setAttribute("cdmoney", cdmoney);
         modelAndView.setViewName("shop_grid.jsp");
         return modelAndView;
     }
@@ -61,27 +75,8 @@ public class SearchProducts {
     @RequestMapping(value = "select_stores")
     public ModelAndView select_stores(HttpServletRequest request) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
-
-        BranchStore branchStore = new BranchStore();
-
-
-        branchStore.setProvince(request.getParameter("province"));
-        branchStore.setCity(request.getParameter("city"));
-        branchStore.setDistrict(request.getParameter("district"));
-
-        HttpSession session = request.getSession(true);
-        session.setAttribute("province", request.getParameter("province"));
-        session.setAttribute("city", request.getParameter("city"));
-        session.setAttribute("district", request.getParameter("district"));
-
-        List<BranchStore> branchStoreList = storesService.queryselectStoresByCity(branchStore);
-
-        System.out.println(session.getAttribute("city"));
-        System.out.println(branchStore.getCity());
+        storesService.queryselectStoresByCity(request,modelAndView);
         productsService.queryshowProductsByPage(request, modelAndView);
-        modelAndView.addObject("branchStoreList", branchStoreList);
-        modelAndView.addObject("province", session.getAttribute("province"));
-        modelAndView.addObject("city", session.getAttribute("city"));
         modelAndView.setViewName("shop_grid.jsp");
         return modelAndView;
     }
@@ -89,25 +84,7 @@ public class SearchProducts {
     @RequestMapping(value = "stores_changed")
     public ModelAndView stores_changed(HttpServletRequest request) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
-        BranchStore branchStore = new BranchStore();
-        HttpSession session = request.getSession(true);
-
-        branchStore.setProvince((String) session.getAttribute("province"));
-        branchStore.setCity((String) session.getAttribute("city"));
-        branchStore.setDistrict((String) session.getAttribute("district"));
-
-        branchStore.setStoreName(request.getParameter("store"));
-        List<BranchStore> branchStoreList = storesService.queryselectStoresByCity(branchStore);
-
-        session.setAttribute("storeName", request.getParameter("store"));
-        session.setAttribute("storeId", Integer.toString(branchStoreList.get(0).getId()));
-
-        modelAndView.addObject("province", session.getAttribute("province"));
-        modelAndView.addObject("city", session.getAttribute("city"));
-        modelAndView.addObject("district", session.getAttribute("district"));
-        modelAndView.addObject("store", session.getAttribute("storeName"));
-
-        System.out.println(session.getAttribute("district"));
+        storesService.queryselectStoresByCity(request,modelAndView);
         modelAndView.setViewName("show_products_by_condition");
         return modelAndView;
     }
@@ -163,9 +140,15 @@ public class SearchProducts {
     public ModelAndView money_condition(HttpServletRequest request) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         HttpSession session = request.getSession(true);
-        List<String> cdmoney = new ArrayList<String>();
+        List<String> cdmoney = (List<String>) session.getAttribute("cdmoney");
+        if(session.getAttribute("cdmoney")==null)
+            cdmoney = new ArrayList<String>();
         String minMoney = request.getParameter("minMoney");
+        if(minMoney==null)
+            minMoney = cdmoney.get(0);
         String maxMoney = request.getParameter("maxMoney");
+        if(maxMoney==null)
+            maxMoney = cdmoney.get(1);
         cdmoney.add(minMoney);
         cdmoney.add(maxMoney);
         session.setAttribute("cdmoney", cdmoney);
@@ -197,6 +180,14 @@ public class SearchProducts {
         HttpSession session = request.getSession(true);
         session.setAttribute("limitWay",Integer.parseInt(request.getParameter("limitWay")));
         modelAndView.setViewName("show_products_by_condition");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "add_to_wish")
+    public ModelAndView add_to_wish(HttpServletRequest request) throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        wishProductService.queryaddWish(request,modelAndView);
+        modelAndView.setViewName("");
         return modelAndView;
     }
 

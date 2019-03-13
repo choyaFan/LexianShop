@@ -16,4 +16,6 @@ public interface ProductsService {
 
     void querygetSingleProduct(HttpServletRequest request, ModelAndView modelAndView) throws Exception;
     void queryaddShoppingCart(HttpServletRequest request, ModelAndView modelAndView) throws Exception;
+
+
 }

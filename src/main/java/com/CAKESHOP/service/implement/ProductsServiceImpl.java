@@ -143,7 +143,7 @@ public class ProductsServiceImpl implements ProductsService {
     public void queryaddShoppingCart(HttpServletRequest request, ModelAndView modelAndView) throws Exception {
         HttpSession session = request.getSession(true);
 
-        String storeId = String.valueOf(session.getAttribute("storeId"));
+        String storeId = request.getParameter("storeId");
         String productId = request.getParameter("productId");
         int amount = Integer.parseInt(request.getParameter("amount"));
         SingleProduct singleProduct = productsMapper.getSingleProduct(storeId,productId);
@@ -167,6 +167,7 @@ public class ProductsServiceImpl implements ProductsService {
             shoppingCartMapper.insert(shoppingCart);
         }
     }
+
 
 
 }

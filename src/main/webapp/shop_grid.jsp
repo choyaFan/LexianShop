@@ -369,7 +369,7 @@
                                 <div class="links">
                                     <ul>
 
-                                        <li><a title="Favorites" href="#">收藏夹</a></li>
+                                        <li><a title="Favorites" href="look_wish_list">收藏夹</a></li>
 
                                         <li>
                                             <div class="dropdown block-company-wrapper hidden-xs"><a role="button"
@@ -817,7 +817,13 @@
     <!-- Breadcrumbs End -->
 
     <!-- Main Container -->
-    <section class="main-container col2-left-layout">
+    <section class="main-container col2-left-layout" id="mainpage">
+        <div hidden="true" id="jud">
+            <button id="succ1" @click="success1(true)" hidde="true"/>
+            <button id="succ" @click="success(true)" hidde="true"/>
+            <button id="warn" @click="warning(true)" hidde="true"/>
+            <button id="err" @click="error(true)" hidde="true"/>
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col-sm-9 col-sm-push-3">
@@ -1021,7 +1027,15 @@
                                             var inputSort = $("#input-sort");
                                             inputSort.change(function () {
                                                 var sortOption = inputSort.val();
-                                                window.location.href = "sort_products?sortWay="+sortOption;
+                                                <c:choose>
+                                                <c:when test="${!empty searchkey}">
+                                                window.location.href = "sort_products?sortWay="+sortOption+"&searchKey="+${searchkey};
+                                                </c:when>
+                                                <c:otherwise>
+                                                window.location.href = "sort_products?sortWay="+sortOption+"&searchKey=";
+                                                </c:otherwise>
+                                                </c:choose>
+
                                             });
                                         </script>
                                         <div class="col-sm-1 text-right show-limit hidden-sm">
@@ -1083,10 +1097,10 @@
                                                                 <ul class="add-to-links">
                                                                     <li><a class="link-quickview" href="single_pro?productId=${product.productId}"><i
                                                                             class="icon-magnifier-add icons"></i><span
-                                                                            class="hidden">Quick View</span></a></li>
-                                                                    <li><a class="link-wishlist" href="#"><i
+                                                                            class="hidden">查看商品</span></a></li>
+                                                                    <li><a class="link-wishlist" name="${product.productId}"><i
                                                                             class="icon-heart icons"></i><span
-                                                                            class="hidden">Wishlist</span></a></li>
+                                                                            class="hidden">加入收藏夹</span></a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -1095,7 +1109,7 @@
                                                     <div class="item-info">
                                                         <div class="info-inner">
                                                             <div class="item-title"><h6><a title="Product Title Here"
-                                                                                           href="single_product.jsp">${product.productName}</a>
+                                                                                           href="single_pro?productId=${product.productId}">${product.productName}</a>
                                                             </h6></div>
                                                             <div class="item-content">
                                                                 <div class="rating"><h6>
@@ -1113,13 +1127,16 @@
                                                                             class="price">
                                                 <c:set var="productprice"
                                                        value="${product.originalPrice*product.discount}"/>
-                                                <fmt:formatNumber value="${productprice}" type="currency"
-                                                                   pattern="¥.00"/>/${product.unit}
+                                                 <fmt:formatNumber value="${product.originalPrice*product.discount}" type="currency" pattern="¥.00"/> / ${product.unit}
+
                                               </span> </span></div>
+                                                                    <p class="old-price"> <span class="price">
+                          <fmt:formatNumber value="${product.originalPrice}" type="currency" pattern="¥.00"/>
+                        </span> </p>
                                                                 </div>
                                                                 <div class="action">
                                                                     <button class="button btn-cart" type="button"
-                                                                            title="" data-original-title="Add to Cart">
+                                                                            title="" data-original-title="Add to Cart" name="${product.productId}">
                                                                         <span>加入购物车</span></button>
                                                                 </div>
                                                             </div>
@@ -1643,16 +1660,48 @@
 
 <script>
     new Vue({
-        el: '#app',
+        el: ".category-products",
         data() {
-            return {
-                value1: [${minMoney}, ${maxMoney}]
-            }
+          return {
+            value1: [${minMoney}, ${maxMoney}]
+          }
         },
         methods: {
-            setMoney(value){
-                minMoneyNow = value[0];
-                maxMoneyNow = value[1];
+            info (nodesc) {
+                this.$Notice.info({
+                    title: 'Notification title',
+                    desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
+                });
+            },
+            success1 (nodesc) {
+                this.$Notice.success({
+
+                    title: '添加收藏夹成功',
+                    desc: nodesc ? '' : 'Hefre is the notification description. Here is the notification description. '
+                });
+            },
+            success (nodesc) {
+                this.$Notice.success({
+
+                    title: '添加购物车成功',
+                    desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
+                });
+            },
+            warning (nodesc) {
+                this.$Notice.warning({
+                    title: '已经添加该商品',
+                    desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
+                });
+            },
+            error (nodesc) {
+                this.$Notice.error({
+                    title: '添加购物车失败',
+                    desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
+                });
+            },
+            setMoney(data){
+                minMoneyNow = data[0];
+                maxMoneyNow = data[1];
             }
         },
         events: {
@@ -1661,4 +1710,51 @@
     })
 </script>
 </body>
+
+
+
+<script type="text/javascript">
+    $(function () {
+        $(".link-wishlist").click(function () {
+            $.ajax({
+                url: "/add_wish",
+                data: {
+                    storeId: ${storeId},
+                    productId: $(this).context.name
+                },
+                type: "POST",
+                dataType: "json",//如果接受不到json对象，即总是进入error函数，也可以将json换为text,就一定可以进到success里面了
+                success: function (data) {
+                    if(data['succ'] === 'success')
+                        $("#succ1").click();
+                    else
+                        $('#warn').click();
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.readyState + "-" + XMLHttpRequest.status + "-" + XMLHttpRequest.responseText);
+                }
+            });
+        })
+        $(".btn-cart").click(function () {
+            $.ajax({
+                url: "/add_shopping_cart",
+                data: {
+                    storeId: ${storeId},
+                    productId: $(this).context.name,
+                    amount: 1
+                },
+                type: "POST",
+                dataType: "json",//如果接受不到json对象，即总是进入error函数，也可以将json换为text,就一定可以进到success里面了
+                success: function (data) {
+                    $("#succ").click();
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $("#err").click();
+                }
+            });
+        })
+    })
+
+</script>
+
 </html>

@@ -92,7 +92,7 @@
             <li> <a href="shop_grid.shop_grid.jsp"><span>Gravenstein</span></a> </li>
             <li> <a href="shop_grid.shop_grid.jsp"><span>Orange Pippin</span></a> </li>
           </ul>
-        </li>
+        </li>f
         <li> <a href="shop_grid.shop_grid.jsp"><span>Grapes</span></a>
           <ul>
             <li> <a href="shop_grid.shop_grid.jsp"><span>Raw Honey</span></a> </li>
@@ -231,7 +231,7 @@
                 <div class="links">
                   <ul>
 
-                    <li><a title="Favorites" href="#">收藏夹</a></li>
+                    <li><a title="Favorites" href="look_wish_list">收藏夹</a></li>
 
                     <li>
                       <div class="dropdown block-company-wrapper hidden-xs"><a role="button"
@@ -660,6 +660,23 @@
     </div>
   </nav>
   <!-- end nav -->
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumbs">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul>
+            <li class="home"><a href="index.jsp" title="Go to Home Page">主页</a> <span>/</span></li>
+            <li><a href="return_products_list" title="">商品列表</a> <span>/ </span></li>
+            <li><strong>商品详情</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Breadcrumbs End -->
+
   <!-- Main Container -->
   <section class="main-container col1-layout">
     <div class="main">
@@ -766,6 +783,14 @@
                                 <c:choose>
                                   <c:when test="${!empty storeName}">
                                     <option value="" hidden>${storeName}</option>
+                                    <c:forEach items="${branchStoreList}" varStatus="storesStatues"
+                                               var="storelist">
+                                      outer loop
+                                      <c:if test="${storelist.storeStatus eq 1}">
+                                        inner loop
+                                        <option value=${storesStatues.index}>${storelist.storeName}</option>
+                                      </c:if>
+                                    </c:forEach>
                                   </c:when>
                                   <c:otherwise>
                                     <option value="" hidden>请选择门店</option>
@@ -775,7 +800,6 @@
                                         <option value=${storesStatues.index}>${storelist.storeName}</option>
                                       </c:if>
                                     </c:forEach>
-
                                   </c:otherwise>
                                 </c:choose>
 
@@ -825,13 +849,13 @@
                                 var cName = $("#city option:selected").text();
                                 var dName = $("#district option:selected").text();
 
-                                window.location.href = "select_stores_single" + "?province=" + pName + "&city=" + cName + "&district=" + dName;
+                                window.location.href = "select_stores_single" + "?province=" + pName + "&city=" + cName + "&district=" + dName + "&productId=" + ${singleProduct.productId};
                               });
 
                               store.change(function () {
                                 var sName = $("#stores option:selected").text();
 
-                                window.location.href = "stores_changed" + "?store=" + sName;
+                                window.location.href = "update_store?province=" + "${province}" + "&city=" + "${city}" + "&district=" + "${district}"  + "&store=" + sName + "&productId=" + "${singleProduct.productId}";
                               });
                             </script>
 
@@ -851,7 +875,7 @@
                           <button @click="success(true)" id="app" onClick="wait_and_go()" class="button btn-cart" title="Add to Cart" type="button">加入购物车</button>
                           <script>
                             function wait_and_go() {
-                              setTimeout("window.location.href=('add_shopping_cart?productId=${singleProduct.productId}'+'&amount='+document.getElementById('qty').value)",3000);
+                              setTimeout("window.location.href=('add_shopping_cart?productId=${singleProduct.productId}&storeId=${singleProduct.storeId}'+'&amount='+document.getElementById('qty').value)+'&direction=0'",3000);
                             }
                           </script>
                         </div>
@@ -1183,7 +1207,7 @@
                             <li><a class="link-quickview" href="single_pro?productId=${displayproduct.productId}"><i
                                     class="icon-magnifier-add icons"></i><span
                                     class="hidden">Quick View</span></a></li>
-                            <li><a class="link-wishlist" href="#"><i
+                            <li><a class="link-wishlist1" name="${displayproduct.productId}"><i
                                     class="icon-heart icons"></i><span
                                     class="hidden">Wishlist</span></a></li>
                           </ul>
@@ -1260,7 +1284,13 @@
       </div>
     </div>
   </footer>
+  <div hidden="true">
+    <button id="succ" @click="success1(true)" hidde="true"/>
+    <button id="warn" @click="warning(true)" hidde="true"/>
+  </div>
 </div>
+
+
 
 <!-- End Footer --> 
 
@@ -1287,7 +1317,7 @@
 
 <script>
   new Vue({
-    el: '#app',
+    el: '#page',
     data() {
     },
     methods: {
@@ -1303,9 +1333,15 @@
           desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
         });
       },
+      success1 (nodesc) {
+        this.$Notice.success({
+          title: '添加收藏夹成功',
+          desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
+        });
+      },
       warning (nodesc) {
         this.$Notice.warning({
-          title: 'Notification title',
+          title: '已经添加该商品',
           desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
         });
       },
@@ -1322,4 +1358,49 @@
   })
 </script>
 </body>
+<script type="text/javascript">
+  $(function () {
+    $(".link-wishlist").click(function () {
+      $.ajax({
+        url: "/add_wish",
+        data: {
+          storeId: ${singleProduct.storeId},
+          productId: ${singleProduct.productId}
+        },
+        type: "POST",
+        dataType: "json",//如果接受不到json对象，即总是进入error函数，也可以将json换为text,就一定可以进到success里面了
+        success: function (data) {
+          if(data['succ'] === 'success')
+            $("#succ").click();
+          else
+            $('#warn').click();
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+          alert(XMLHttpRequest.readyState + "-" + XMLHttpRequest.status + "-" + XMLHttpRequest.responseText);
+        }
+      });
+    })
+    $(".link-wishlist1").click(function () {
+      $.ajax({
+        url: "/add_wish",
+        data: {
+          storeId: ${storeId},
+          productId: $(this).context.name
+        },
+        type: "POST",
+        dataType: "json",//如果接受不到json对象，即总是进入error函数，也可以将json换为text,就一定可以进到success里面了
+        success: function (data) {
+          if(data['succ'] === 'success')
+            $("#succ").click();
+          else
+            $('#warn').click();
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+          alert(XMLHttpRequest.readyState + "-" + XMLHttpRequest.status + "-" + XMLHttpRequest.responseText);
+        }
+      });
+    })
+  })
+
+</script>
 </html>
