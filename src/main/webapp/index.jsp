@@ -218,7 +218,7 @@
                             <div class="jtv-top-links">
                                 <div class="links">
                                     <ul>
-                                        <li> <a title="My Account" href="#"><span class="hidden-xs">My Account</span></a> </li>
+                                        <li> <a title="My Account" href="ShowPersonalInformation.action"><span class="hidden-xs">My Account</span></a> </li>
                                         <li> <a title="Wishlist" href="#">Wishlist</a> </li>
                                         <li> <a title="Checkout" href="#"><span class="hidden-xs">Checkout</span></a> </li>
                                         <li>
@@ -233,7 +233,7 @@
                                                 </ul>
                                             </div>
                                         </li>
-                                        <li> <a href="#"><span class="hidden-xs">Log In</span></a> </li>
+                                        <li> <a href="sign_in.jsp"><span class="hidden-xs">Log In</span></a> </li>
                                     </ul>
                                 </div>
                             </div>
@@ -306,7 +306,7 @@
             </div>
         </div>
     </header>
-    <!-- end header -->
+    <!-- end hhttp://htmlmystore.justthemevalley.com/organic/index.htmleader -->
 
     <!-- Navigation -->
 
@@ -333,7 +333,7 @@
                                 </ul>
                             </li>
                             <li> <a href="single_product.html"> <span>Single Product</span> </a> </li>
-                            <li> <a href="#"> <span>Shopping Cart</span> </a> </li>
+                            <li> <a href="shoppingCart.action"> <span>Shopping Cart</span> </a> </li>
                             <li><a href="#"><span>Checkout</span></a> </li>
                             <li> <a href="#"> <span>Wishlist</span> </a> </li>
                             <li><a href="#"><span>Compare</span></a> </li>

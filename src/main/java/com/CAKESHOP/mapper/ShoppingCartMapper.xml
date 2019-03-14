@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.CAKESHOP.mapper.ShoppingCartMapper">
+
+    <select id="selectCartInformation" resultMap="ShoppingCartMap" >
+      select product_id,store_id,amount,single_price,total_price,create_time from Shopping_Cart
+      where user_phone like '%${userPhone}%';
+    </select>
+
+    <select id="selectPictureUrl" resultMap="PictureUrlMap" >
+      select pic1_url from products
+      where id like '%${id}%';
+    </select>
+
+    <select id="selectProductName" resultMap="PictureUrlMap" >
+      select product_name from products
+      where id like '%${id}%';
+    </select>
+
+    <select id="selectStoreName" resultMap="StoreMap" >
+      select store_name from branch_store
+      where id like '%${id}%';
+    </select>
+
+    <delete id="deleteCartInformation">
+        delete from Shopping_Cart
+        where product_id like '${productId}';
+    </delete>
+
+    <update id="amountAddCartInformation">
+        update shopping_cart set amount = (amount + 1)
+        where product_id like '${productId}';
+    </update>
+
+    <update id="amountSubtractCartInformation">
+        update shopping_cart set amount = (amount - 1)
+        where product_id like '${productId}';
+    </update>
+    
+    <insert id="insertOrder">
+        insert into orders(order_id,user_phone,product_id,store_id,amount,single_price,total_price,order_status,time_stamp)
+        values(#{orderId},#{userPhone},#{productId},#{storeId},#{amount},#{singlePrice},#{totalPrice},#{orderStatus},#{timeStamp});
+    </insert>
+
+
+    <!-- 下面的SQL语句实现数据库信息向Product类的传输（即数据库——>DAO层） -->
+    <resultMap id="ShoppingCartMap" type="com.CAKESHOP.dao.ShoppingCart">
+        <!-- 下面"result"标签中，"column"与数据库表中的列名对应，"property"与DAO层定义的类中的属性对应（在这里指"Product.java"），一般取同名 -->
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="user_phone" property="userPhone" jdbcType="VARCHAR"/>
+        <result column="product_id" property="productId" jdbcType="INTEGER"/>
+        <result column="store_id" property="storeId" jdbcType="INTEGER"/>
+        <result column="amount" property="amount" jdbcType="INTEGER"/>
+        <result column="single_price" property="singlePrice" jdbcType="DOUBLE"/>
+        <result column="total_price" property="totalPrice" jdbcType="DOUBLE"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <resultMap id="PictureUrlMap" type="com.CAKESHOP.dao.Products">
+        <!-- 下面"result"标签中，"column"与数据库表中的列名对应，"property"与DAO层定义的类中的属性对应（在这里指"Product.java"），一般取同名 -->
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="product_name" property="productName" jdbcType="VARCHAR"/>
+        <result column="first_category" property="firstCategory" jdbcType="VARCHAR"/>
+        <result column="second_category" property="secondCategory" jdbcType="VARCHAR"/>
+        <result column="third_category" property="thirdCategory" jdbcType="VARCHAR"/>
+        <result column="product_brief_introduction" property="productBriefIntroduction" jdbcType="VARCHAR"/>
+        <result column="product_detail" property="productDetail" jdbcType="VARCHAR"/>
+        <result column="pic1_url" property="pic1Url" jdbcType="VARCHAR"/>
+        <result column="pic2_url" property="pic2Url" jdbcType="VARCHAR"/>
+        <result column="pic3_url" property="pic3Url" jdbcType="VARCHAR"/>
+        <result column="pic4_url" property="pic4Url" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP"/>
+        <result column="unit" property="unit" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="StoreMap" type="com.CAKESHOP.dao.BranchStore">
+        <!-- 下面"result"标签中，"column"与数据库表中的列名对应，"property"与DAO层定义的类中的属性对应（在这里指"Product.java"），一般取同名 -->
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="store_name" property="storeName" jdbcType="VARCHAR"/>
+        <result column="store_tel" property="storeTel" jdbcType="VARCHAR"/>
+        <result column="province" property="province" jdbcType="VARCHAR"/>
+        <result column="city" property="city" jdbcType="VARCHAR"/>
+        <result column="district" property="district" jdbcType="VARCHAR"/>
+        <result column="store_address" property="storeAddress" jdbcType="VARCHAR"/>
+        <result column="longitude" property="longitude" jdbcType="DOUBLE"/>
+        <result column="latitude" property="latitude" jdbcType="DOUBLE"/>
+        <result column="store_introduction" property="storeIntroduction" jdbcType="VARCHAR"/>
+        <result column="store_start_time" property="storeStartTime" jdbcType="TIMESTAMP"/>
+        <result column="store_close_time" property="storeCloseTime" jdbcType="TIMESTAMP"/>
+        <result column="store_status" property="storeStatus" jdbcType="INTEGER"/>
+    </resultMap>
+
+</mapper>
