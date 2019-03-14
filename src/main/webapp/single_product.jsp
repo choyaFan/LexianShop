@@ -206,7 +206,11 @@
   <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-
+  <div hidden="true">
+    <button id="succ" @click="success(true)" hidden="true"></button>
+    <button id="succ1" @click="success1(true) hidden="true"></button>
+    <button id="warn" @click="warning(true)" hidden="true"></button>
+  </div>
   <!-- Header -->
   <header>
     <div class="header-container">
@@ -872,16 +876,11 @@
                               <button onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="increase items-count" type="button"><i class="fa fa-plus">&nbsp;</i></button>
                             </div>
                           </div>
-                          <button @click="success(true)" id="app" onClick="wait_and_go()" class="button btn-cart" title="Add to Cart" type="button">加入购物车</button>
-                          <script>
-                            function wait_and_go() {
-                              setTimeout("window.location.href=('add_shopping_cart?productId=${singleProduct.productId}&storeId=${singleProduct.storeId}'+'&amount='+document.getElementById('qty').value)+'&direction=0'",3000);
-                            }
-                          </script>
+                          <button id="app" class="button btn-cart" title="Add to Cart" type="button">加入购物车</button>
                         </div>
                         <div class="email-addto-box">
                           <ul class="add-to-links">
-                            <li> <a class="link-wishlist" href="#"><span>添加到收藏夹</span></a></li>
+                            <li> <a class="link-wishlist"><span>添加到收藏夹</span></a></li>
                           </ul>
                         </div>
                       </div>
@@ -1284,10 +1283,7 @@
       </div>
     </div>
   </footer>
-  <div hidden="true">
-    <button id="succ" @click="success1(true)" hidde="true"/>
-    <button id="warn" @click="warning(true)" hidde="true"/>
-  </div>
+
 </div>
 
 
@@ -1397,6 +1393,42 @@
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
           alert(XMLHttpRequest.readyState + "-" + XMLHttpRequest.status + "-" + XMLHttpRequest.responseText);
+        }
+      });
+    })
+    $(".btn-cart").click(function () {
+      $.ajax({
+        url: "/add_shopping_cart",
+        data: {
+          storeId: ${singleProduct.storeId},
+          productId: ${singleProduct.productId},
+          amount: document.getElementById("qty").value
+        },
+        type: "POST",
+        dataType: "json",//如果接受不到json对象，即总是进入error函数，也可以将json换为text,就一定可以进到success里面了
+        success: function (data) {
+          $("#succ").click();
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+          $("#err").click();
+        }
+      });
+    })
+    $(".btn-cart1").click(function () {
+      $.ajax({
+        url: "/add_shopping_cart",
+        data: {
+          storeId: ${storeId},
+          productId: $(this).context.name,
+          amount: 1
+        },
+        type: "POST",
+        dataType: "json",//如果接受不到json对象，即总是进入error函数，也可以将json换为text,就一定可以进到success里面了
+        success: function (data) {
+          $("#succ").click();
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+          $("#err").click();
         }
       });
     })

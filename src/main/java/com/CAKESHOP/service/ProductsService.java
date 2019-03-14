@@ -17,5 +17,11 @@ public interface ProductsService {
     void querygetSingleProduct(HttpServletRequest request, ModelAndView modelAndView) throws Exception;
     void queryaddShoppingCart(HttpServletRequest request, ModelAndView modelAndView) throws Exception;
 
+    int querycountProducts();
+
+    List<String> queryselectThirdCategory();
+
+    String querygetProductThirdCategory(int productId);
+
 
 }

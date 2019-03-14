@@ -2,6 +2,7 @@ package com.CAKESHOP.service.implement;
 
 
 import com.CAKESHOP.dao.*;
+import com.CAKESHOP.mapper.BrowseMapper;
 import com.CAKESHOP.mapper.ShoppingCartMapper;
 import com.CAKESHOP.mapper.ProductsMapper;
 import com.CAKESHOP.service.ProductsService;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class ProductsServiceImpl implements ProductsService {
@@ -23,6 +25,9 @@ public class ProductsServiceImpl implements ProductsService {
     ProductsMapper productsMapper;
     @Resource
     ShoppingCartMapper shoppingCartMapper;
+    @Resource
+    BrowseMapper browseMapper;
+
 
     @Override
     public void queryselectProducts(HttpServletRequest request, ModelAndView modelAndView) {
@@ -133,6 +138,21 @@ public class ProductsServiceImpl implements ProductsService {
         String storeId = (String) session.getAttribute("storeId");
         String productId = request.getParameter("productId");
         SingleProduct singleProduct = productsMapper.getSingleProduct(storeId, productId);
+
+        Timestamp d = new Timestamp(System.currentTimeMillis()+28800);
+
+
+        Browse browse = new Browse();
+        Random random = new Random();
+        browse.setId((int)(System.currentTimeMillis()%100000)+100000*(random.nextInt((1000 - 100) + 1)+100));
+
+        browse.setProductId(Integer.parseInt(productId));
+        browse.setStoreId(Integer.parseInt(storeId));
+        browse.setUserPhone("13700000000");
+        browse.setBrowseTime(d);
+
+        browseMapper.insert(browse);
+
         List<DisplayProducts> displayProductsList = productsMapper.selectHotProductsByCategory(storeId, singleProduct.getThirdCategory());
 
         modelAndView.addObject("singleProduct", singleProduct);
@@ -147,7 +167,9 @@ public class ProductsServiceImpl implements ProductsService {
         String productId = request.getParameter("productId");
         int amount = Integer.parseInt(request.getParameter("amount"));
         SingleProduct singleProduct = productsMapper.getSingleProduct(storeId,productId);
-        Timestamp d = new Timestamp(System.currentTimeMillis());
+
+        System.setProperty("user.timezone","GMT+8");
+        Timestamp d = new Timestamp(System.currentTimeMillis()+28800);
 
 
         ShoppingCart shoppingCart = new ShoppingCart();
@@ -167,6 +189,24 @@ public class ProductsServiceImpl implements ProductsService {
             shoppingCartMapper.insert(shoppingCart);
         }
     }
+
+    @Override
+    public int querycountProducts() {
+        return productsMapper.countProducts();
+    }
+
+    @Override
+    public List<String> queryselectThirdCategory() {
+        return productsMapper.selectThirdCategory();
+    }
+
+    @Override
+    public String querygetProductThirdCategory(int productId) {
+        return productsMapper.getProductThirdCategory(productId);
+    }
+
+
+
 
 
 

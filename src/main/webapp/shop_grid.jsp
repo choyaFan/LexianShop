@@ -799,31 +799,9 @@
     </nav>
     <!-- end nav -->
 
-    <!-- Breadcrumbs -->
-    <div class="breadcrumbs">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <ul>
-                        <li class="home"><a href="index.jsp" title="Go to Home Page">主页</a> <span>/</span></li>
-                        <li><a href="shop_grid.jsp" title="">一级类别</a> <span>/ </span></li>
-                        <li><a href="shop_grid.jsp" title="">二级类别</a> <span>/</span></li>
-                        <li><strong>三级类别</strong></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Breadcrumbs End -->
 
     <!-- Main Container -->
     <section class="main-container col2-left-layout" id="mainpage">
-        <div hidden="true" id="jud">
-            <button id="succ1" @click="success1(true)" hidde="true"/>
-            <button id="succ" @click="success(true)" hidde="true"/>
-            <button id="warn" @click="warning(true)" hidde="true"/>
-            <button id="err" @click="error(true)" hidde="true"/>
-        </div>
         <div class="container">
             <div class="row">
                 <div class="col-sm-9 col-sm-push-3">
@@ -835,8 +813,8 @@
                                     <!-- Item -->
                                     <div class="item"><a href="#"><img alt="" src="images/category-img1.jpg"></a>
                                         <div class="cat-img-title cat-bg cat-box">
-                                            <div class="small-tag">标签1</div>
-                                            <h1 class="cat-heading">板块1</h1>
+                                            <div class="small-tag">广告商品</div>
+                                            <h1 class="cat-heading">广告商品1</h1>
                                             <p>描述1</p>
                                         </div>
                                     </div>
@@ -845,8 +823,8 @@
                                     <!-- Item -->
                                     <div class="item"><a href="#"><img alt="" src="images/category-img2.jpg"></a>
                                         <div class="cat-img-title cat-bg cat-box">
-                                            <div class="small-tag">标签2</div>
-                                            <h1 class="cat-heading">板块2</h1>
+                                            <div class="small-tag">广告商品</div>
+                                            <h1 class="cat-heading">广告商品2</h1>
                                             <p>描述2 </p>
                                         </div>
                                         <!-- End Item -->
@@ -1023,21 +1001,7 @@
                                                 <option value="4">价格(从低到高)</option>
                                             </select>
                                         </div>
-                                        <script type="text/javascript">
-                                            var inputSort = $("#input-sort");
-                                            inputSort.change(function () {
-                                                var sortOption = inputSort.val();
-                                                <c:choose>
-                                                <c:when test="${!empty searchkey}">
-                                                window.location.href = "sort_products?sortWay="+sortOption+"&searchKey="+${searchkey};
-                                                </c:when>
-                                                <c:otherwise>
-                                                window.location.href = "sort_products?sortWay="+sortOption+"&searchKey=";
-                                                </c:otherwise>
-                                                </c:choose>
 
-                                            });
-                                        </script>
                                         <div class="col-sm-1 text-right show-limit hidden-sm">
                                             <label class="control-label" for="input-limit">显示: </label>
                                         </div>
@@ -1070,13 +1034,6 @@
                                                 <option value="48">48</option>
                                             </select>
                                         </div>
-                                        <script type="text/javascript">
-                                            var inputLimit = $("#input-limit");
-                                            inputLimit.change(function () {
-                                                var limitOption = inputLimit.val();
-                                                window.location.href = "limit_products?limitWay="+limitOption;
-                                            });
-                                        </script>
 
                                     </div>
                                 </div>
@@ -1084,6 +1041,12 @@
                                     <ul class="products-grid">
                                         <!--依次显示商品-->
 
+                                        <div hidden="true" id="jud">
+                                            <button id="succ1" @click="success1(true)" hidde="true"/>
+                                            <button id="succ" @click="success(true)" hidde="true"/>
+                                            <button id="warn" @click="warning(true)" hidde="true"/>
+                                            <button id="err" @click="error(true)" hidde="true"/>
+                                        </div>
 
                                         <c:forEach items="${productsList}" var="product">
                                             <li class="item col-lg-4 col-md-4 col-sm-4 col-xs-6">
@@ -1250,7 +1213,7 @@
                             </div>
                         </div>
                         <div class="block product-price-range ">
-                            <div class="block-title"><h3>价格区间</h3></div>
+                            <div class="block-title" class="category-products"><h3>价格区间</h3></div>
                             <div class="block-content">
                                 <div id="app">
                                     <!--
@@ -1365,53 +1328,19 @@
                         -->
 
                         <div class="block block-cart">
-                            <div class="block-title "><h3>我的购物车</h3></div>
+                            <div class="block-title "><h3>为您推荐</h3></div>
                             <div class="block-content">
-                                <div class="summary">
-                                    <p class="amount">购物车中共有<a href="#">5</a>件商品</p>
-                                    <p class="subtotal"><span class="label">总价: </span> <span
-                                            class="price">¥227.99</span></p>
-                                </div>
-                                <div class="ajax-checkout">
-                                    <button class="button button-checkout" title="Submit" type="submit"><span>下单</span>
-                                    </button>
-                                </div>
-                                <p class="block-subtitle">最近添加商品</p>
+
+                                <p class="block-subtitle">根据您的购买记录推荐商品</p>
                                 <ul>
                                     <li class="item"><a href="#" title="Product Title Here" class="product-image"><img
                                             src="images/products/img10.jpg" alt="Product Title Here"></a>
                                         <div class="product-details">
-                                            <div class="access"><a href="#" title="Remove This Item"
-                                                                   class="jtv-btn-remove"> <span class="icon"></span>
-                                                Remove </a></div>
                                             <strong>1</strong> x <span class="price">¥99.99</span>
                                             <p class="product-name"><a href="#">商品1</a></p>
                                         </div>
                                     </li>
-                                    <li class="item"><a href="#" title="Product Title Here" class="product-image"><img
-                                            src="images/products/img01.jpg" alt="Product Title Here"></a>
-                                        <div class="product-details">
-                                            <div class="access"><a href="#" title="Remove This Item"
-                                                                   class="jtv-btn-remove"> <span class="icon"></span>
-                                                Remove </a></div>
-                                            <strong>1</strong> x <span class="price">¥88.00</span>
-                                            <p class="product-name"><a href="#">商品2</a></p>
 
-                                            <!--access clearfix-->
-                                        </div>
-                                    </li>
-                                    <li class="item"><a href="#" title="Product Title Here" class="product-image"><img
-                                            src="images/products/img05.jpg" alt="Product Title Here"></a>
-                                        <div class="product-details">
-                                            <div class="access"><a href="#" title="Remove This Item"
-                                                                   class="jtv-btn-remove"> <span class="icon"></span>
-                                                Remove </a></div>
-                                            <strong>1</strong> x <span class="price">¥98.00</span>
-                                            <p class="product-name"><a href="#">商品3</a></p>
-
-                                            <!--access clearfix-->
-                                        </div>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -1660,14 +1589,14 @@
 
 <script>
     new Vue({
-        el: ".category-products",
+        el: "#mainpage",
         data() {
           return {
             value1: [${minMoney}, ${maxMoney}]
           }
         },
         methods: {
-            info (nodesc) {
+                info (nodesc) {
                 this.$Notice.info({
                     title: 'Notification title',
                     desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
@@ -1709,9 +1638,31 @@
         }
     })
 </script>
+<script type="text/javascript">
+    var inputSort = $("#input-sort");
+    inputSort.change(function () {
+        var sortOption = inputSort.val();
+        <c:choose>
+        <c:when test="${!empty searchkey}">
+        window.location.href = "sort_products?sortWay="+sortOption+"&searchKey="+${searchkey};
+        </c:when>
+        <c:otherwise>
+        window.location.href = "sort_products?sortWay="+sortOption+"&searchKey=";
+        </c:otherwise>
+        </c:choose>
+
+    });
+</script>
 </body>
 
 
+<script type="text/javascript">
+    var inputLimit = $("#input-limit");
+    inputLimit.change(function () {
+        var limitOption = inputLimit.val();
+        window.location.href = "limit_products?limitWay="+limitOption;
+    });
+</script>
 
 <script type="text/javascript">
     $(function () {
@@ -1753,6 +1704,7 @@
                 }
             });
         })
+
     })
 
 </script>

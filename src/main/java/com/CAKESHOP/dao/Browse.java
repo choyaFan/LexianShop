@@ -3,7 +3,7 @@ package com.CAKESHOP.dao;
 import java.sql.Timestamp;
 
 public class Browse {
-    private int id;
+    private int id=-1;
     private String userPhone;
     private int productId;
     private int storeId;

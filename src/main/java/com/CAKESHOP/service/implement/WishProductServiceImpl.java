@@ -49,6 +49,9 @@ public class WishProductServiceImpl implements WishProductService {
         String userPhone = "13700000000";
         String productId = request.getParameter("productId");
         String storeId = request.getParameter("storeId");
+
+        System.setProperty("user.timezone","GMT+8");
+
         Timestamp d = new Timestamp(System.currentTimeMillis());
         if(favouriteMapper.findWish(userPhone,productId,storeId)==0) {
             favouriteMapper.insertWish(userPhone, productId, storeId, d);

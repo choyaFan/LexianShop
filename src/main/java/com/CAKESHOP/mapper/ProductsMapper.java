@@ -63,4 +63,13 @@ public interface ProductsMapper {
     //查找某门店单一类别下的商品排名
     List<DisplayProducts> selectHotProductsByCategory(@Param(value="storeId") String storeId, @Param(value = "category") String category);
 
+    //返回商品数量
+    int countProducts();
+
+    //返回所有三级类别
+    List<String> selectThirdCategory();
+
+    //返回某商品的三级类别
+    String getProductThirdCategory( @Param(value ="productId")int productId);
+
 }

@@ -206,4 +206,19 @@
         where third_category=#{category} order by cont desc;
         </select>
 
+    <!--返回商品数量-->
+    <select id="countProducts" resultType="int">
+        select count(*) from products;
+    </select>
+
+    <!--返回商品所有三级类别-->
+    <select id="selectThirdCategory" resultType="java.util.Map">
+        select distinct third_category from products;
+    </select>
+
+    <!--返回某商品三级类别-->
+    <select id="getProductThirdCategory" resultType="String">
+        select distinct third_category from products where id=${productId}
+    </select>
+
 </mapper>
