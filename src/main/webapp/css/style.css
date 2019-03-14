@@ -2,7 +2,7 @@
 
   File Name: style.css
   Template Name: Organic
-  Created By: justthemevalley 
+  Created By: justthemevalley
  
  [Table of contents]
 
@@ -14,7 +14,7 @@
 	6. hot deal
 	7. jtv top banner
 	8. Featured Products
-	9. bottom banner section 
+	9. bottom banner section
 	10. Best Sellers Slider
 	11. testimonials slider
 	12. special product slider
@@ -36,14 +36,14 @@
 		18k. Block: Tags
 		18l. Block: Subscribe
 		18m Block: Recently Viewed
-		18n. Block: Reorder 
+		18n. Block: Reorder
 		18m. Block: Banner
-	
+
 	19. custom-slider
 	21. Product View
 	22. Product Collatera
-	23. related slider 
-	24. upsell slider 
+	23. related slider
+	24. upsell slider
 	25. Global Messages
 	26. Shopping Cart Table
 	27. Wishlist Table
@@ -51,19 +51,19 @@
 	29. checkout pages
 	30. Compare Table
 	31. Multiple Addresses Checkout
-	32. Account Login 
+	32. Account Login
 	33. 404 Page
 	34. Delivery page
 	35. Data Table
 	36. Footer
 
 
-################################################################# */ 
+################################################################# */
 
 /*Google Fonts*/
-@import 'http://fonts.googleapis.com/css?family=Open+Sans:700,600,800,400';
-@import 'https://fonts.googleapis.com/css?family=Raleway:400,300,600,500,700,800';
-@import 'https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700';
+@import 'css1.css';
+@import 'css2.css';
+@import 'css3.css';
 /*----------- 1. Body --------------*/
 
 body {
@@ -434,6 +434,17 @@ header .header-top-links {
 	border-radius: 3px 0px 0px 3px;
 }
 #search {
+	margin: 0;
+	width: 250px;
+	font-size: 13px;
+	height: 40px;
+	color: #333;
+	padding: 0 12px;
+	background: none;
+	outline: none;
+	border: none;
+}
+#search2 {
 	margin: 0;
 	width: 250px;
 	font-size: 13px;
@@ -5263,7 +5274,7 @@ a#compare-total:hover {
 .product-view .short-description {
 	font-size: 13px;
 	padding: 15px 0px 15px 0px; border-top:1px solid #eaeaea;border-bottom:1px solid #eaeaea; margin-bottom:12px;
-	
+
 }
 .product-view .rating .separator {
     color: #999; margin:0px 5px;
@@ -6458,7 +6469,7 @@ button.button.submit:before {
   width: 100%;
   clear: both;
   overflow: hidden; padding:0px;
-  
+
 }
 .shopping-cart-inner ul.step li{
   display: inline;
@@ -6537,8 +6548,8 @@ button.button.submit:before {
   vertical-align: middle!important;
   padding: 20px;
 }
-.jtv-cart-summary .table>tbody>tr>td, .table>tbody>tr>th, 
-.jtv-cart-summary .table>tfoot>tr>td, .table>tfoot>tr>th, 
+.jtv-cart-summary .table>tbody>tr>td, .table>tbody>tr>th,
+.jtv-cart-summary .table>tfoot>tr>td, .table>tfoot>tr>th,
 .jtv-cart-summary .table>thead>tr>td, .table>thead>tr>th{
   padding: 15px;font-weight:600;font-size: 13px;
 }
@@ -6548,7 +6559,7 @@ button.button.submit:before {
 .jtv-cart-summary td.cart_product{
   width: 120px;
   padding: 15px;
-} 
+}
 .jtv-cart-summary .price{
   text-align: right; font-weight:600; font-size:13px;
 }
@@ -6576,7 +6587,7 @@ button.button.submit:before {
 }
 .jtv-cart-summary .action{
   text-align: center;
-    
+
 }
 
 .jtv-cart-summary .action a{
@@ -6830,7 +6841,7 @@ button.button.btn-proceed-checkout span {
 }
 .crosssel .category-products ul.products-grid li.item {
     margin-bottom: 15px!important;
- 
+
 }
 .crosssel .jtv-title {
     color: #333;
@@ -7911,7 +7922,7 @@ a.button.wishlist {
 	padding: 0px;
 	display: inline-block;
 }
-/*---------- 36. Footer ------------ */	
+/*---------- 36. Footer ------------ */
 .footer-top {
 	padding-top: 30px;
 	background-color: #ddd;
@@ -7975,7 +7986,7 @@ footer p {
 }
 footer .footer-links a {
 	display: inline-block;
-	color: ##717171
+	color: #717171
 }
 footer a {
 	line-height: normal;

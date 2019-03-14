@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.CAKESHOP.mapper.BrowseMapper">
+
+<!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.CAKESHOP.dao.Browse">
+        <result column="id" property="id"/>
+        <result column="user_phone" property="userPhone"/>
+        <result column="product_id" property="productId"/>
+        <result column="store_id" property="storeId"/>
+        <result column="browse_time" property="browseTime"/>
+    </resultMap>
+
+<!--auto generated Code-->
+    <sql id="all_column">
+        id,
+        user_phone,
+        product_id,
+        store_id,
+        browse_time
+    </sql>
+
+<!--auto generated Code-->
+    <insert id="insert">
+        INSERT INTO browse
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != -1"> id, </if>
+            <if test="pojo.userPhone != null"> user_phone, </if>
+            <if test="pojo.productId != null"> product_id, </if>
+            <if test="pojo.storeId != null"> store_id, </if>
+            <if test="pojo.browseTime != null"> browse_time, </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != -1"> #{pojo.id}, </if>
+            <if test="pojo.userPhone != null"> #{pojo.userPhone}, </if>
+            <if test="pojo.productId != null"> #{pojo.productId}, </if>
+            <if test="pojo.storeId != null"> #{pojo.storeId}, </if>
+            <if test="pojo.browseTime != null"> #{pojo.browseTime}, </if>
+        </trim>
+    </insert>
+
+<!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO browse(
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.userPhone},
+            #{pojo.productId},
+            #{pojo.storeId},
+            #{pojo.browseTime}
+            )
+        </foreach>
+    </insert>
+
+<!--auto generated Code-->
+    <update id="update">
+        UPDATE browse
+        <set>
+            <if test="pojo.id != -1"> id = #{pojo.id}, </if>
+            <if test="pojo.userPhone != null"> user_phone = #{pojo.userPhone}, </if>
+            <if test="pojo.productId != null"> product_id = #{pojo.productId}, </if>
+            <if test="pojo.storeId != null"> store_id = #{pojo.storeId}, </if>
+            <if test="pojo.browseTime != null"> browse_time = #{pojo.browseTime} </if>
+        </set>
+         WHERE id = #{pojo.id}
+    </update>
+
+<!--auto generated Code-->
+    <select id="select" resultMap="AllColumnMap">
+        SELECT <include refid="all_column"/>
+        FROM browse
+        <where>
+            <if test="pojo.id != -1"> AND id = #{pojo.id} </if>
+            <if test="pojo.userPhone != null"> AND user_phone = #{pojo.userPhone} </if>
+            <if test="pojo.productId != null"> AND product_id = #{pojo.productId} </if>
+            <if test="pojo.storeId != null"> AND store_id = #{pojo.storeId} </if>
+            <if test="pojo.browseTime != null"> AND browse_time = #{pojo.browseTime} </if>
+        </where>
+        LIMIT 1000 
+    </select>
+
+<!--auto generated Code-->
+    <delete id="delete">
+        DELETE FROM browse where id = #{id}
+    </delete>
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.CAKESHOP.mapper.WishProductMapper">
+    <resultMap id="AllColumnMap" type="com.CAKESHOP.dao.WishProduct">
+        <result column="product_id" property="productId"/>
+        <result column="store_id" property="storeId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="product_name" property="productName"/>
+        <result column="product_brief_introduction" property="productBriefIntroduction"/>
+        <result column="pic1_url" property="pic1Url"/>
+        <result column="inventory" property="inventory"/>
+        <result column="original_price" property="originalPrice"/>
+        <result column="discount" property="discount"/>
+        <result column="product_status" property="productStatus"/>
+        <result column="store_name" property="storeName"/>
+    </resultMap>
+
+    <select id="getWishList" resultMap="AllColumnMap">
+select product_id, store_id, create_time, product_name, product_brief_introduction, pic1_url, inventory, original_price, discount, product_status, store_name
+from (select favourite.product_id, favourite.store_id, favourite.create_time, product_name, product_brief_introduction, pic1_url, inventory, original_price, discount, product_status
+from favourite left join
+(select * from (select store_id,product_id,inventory,original_price,discount,product_status from products_by_store) as products_by_store_dist left join products on products_by_store_dist.product_id=products.id) as store_prize
+on favourite.store_id=store_prize.store_id and favourite.product_id=store_prize.product_id
+where user_phone=${userPhone}) as product_name_inf left join branch_store on product_name_inf.store_id = branch_store.id;
+    </select>
+
+    <delete id="deleteWish">
+        delete from favourite
+        where user_phone=${userPhone} and product_id=${productId} and store_id=${storeId};
+    </delete>
+
+    <delete id="deleteAllWish">
+        delete from favourite
+        where user_phone=${userPhone};
+    </delete>
+
+
+</mapper>

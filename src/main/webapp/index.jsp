@@ -1,5 +1,9 @@
+<%@ page import="org.springframework.beans.factory.annotation.Autowired" %>
+<%@ page import="com.CAKESHOP.service.SectorService" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <!-- Basic page needs -->
     <meta charset="utf-8">
@@ -19,163 +23,6 @@
 </head>
 
 <body class="cms-index-index cms-home-page">
-<!-- mobile menu -->
-<div id="jtv-mobile-menu">
-    <ul>
-        <li>
-            <div class="jtv-search-mob">
-                <form id="search1" name="search">
-                    <div class="input-group">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i> </button>
-                        </div>
-                        <input type="text" class="form-control simple" placeholder="Search ..." name="srch-term" id="srch-term">
-                    </div>
-                </form>
-            </div>
-        </li>
-        <li><a href="index.html">Home</a> </li>
-        <li><a href="#">Pages</a>
-            <ul>
-                <li><a href="shop_grid.html"><span>Shop Grid</span></a>
-                    <ul>
-                        <li> <a href="#"> <span>Shop Grid Right Sidebar</span> </a> </li>
-                        <li> <a href="#"> <span>Shop Grid Fullwidth</span> </a> </li>
-                    </ul>
-                </li>
-                <li> <a href="#"> <span>Shop List</span> </a>
-                    <ul>
-                        <li> <a href="#"> <span>Shop List Right Sidebar</span> </a> </li>
-                    </ul>
-                </li>
-                <li> <a href="single_product.html"> <span>Single Product</span> </a> </li>
-                <li> <a href="#"> <span>Shopping Cart</span> </a> </li>
-                <li><a href="#"><span>Checkout</span></a> </li>
-                <li> <a href="#"> <span>Wishlist</span> </a> </li>
-                <li><a href="#"><span>Compare</span></a> </li>
-                <li><a href="#"><span>Quick View</span></a> </li>
-                <li><a href="#"><span>404 Error Page</span></a> </li>
-            </ul>
-        </li>
-        <li><a href="#">Fruits</a>
-            <ul>
-                <li> <a href="shop_grid.html"><span>Apples</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.html"><span>Aurore Grape</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Super Sweet</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Gravenstein</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Orange Pippin</span></a> </li>
-                    </ul>
-                </li>
-                <li> <a href="shop_grid.html"><span>Grapes</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.html"><span>Raw Honey</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Flavored Honey</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Propolis</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Exotic Honey</span></a> </li>
-                    </ul>
-                </li>
-                <li> <a href="shop_grid.html"><span>Citruses</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.html"><span>Potatoes</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Tomatoes</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Pickles</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Cauliflowers</span></a> </li>
-                    </ul>
-                </li>
-                <li> <a href="shop_grid.html"><span>Exotic Fruits</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.html"><span>Spinach</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Pumpkin</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Kohlrabi</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Green Cabbage</span></a> </li>
-                    </ul>
-                </li>
-                <li> <a href="shop_grid.html"><span>Summer Berries</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.html"><span>Avocado</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Paprika</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Cheese Holand</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Cheese</span></a> </li>
-                    </ul>
-                </li>
-                <li> <a href="shop_grid.html"><span>Green Cabbage</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.html"><span>Сauliflower</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Tomato</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Oranges</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Carrots</span></a> </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li><a href="shop_grid.html">Vegetables</a>
-            <ul>
-                <li> <a href="shop_grid.html"><span>Herbs and spices</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.html"><span>Lemon Grass</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Rosemary</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Chamomile</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Oregano</span></a> </li>
-                    </ul>
-                </li>
-                <li> <a href="shop_grid.html"><span>Root vegetables</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.html"><span>Celeriac</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Daikon</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Rutabaga</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Parsnip</span></a> </li>
-                    </ul>
-                </li>
-                <li> <a href="shop_grid.html"><span>Onion family</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.html"><span>Chives</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Shallot</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Onion</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Garlic</span></a> </li>
-                    </ul>
-                </li>
-                <li> <a href="shop_grid.html"><span>Legumes</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.html"><span>Black beans</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Kidney beans</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Green beans</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Soy beans</span></a> </li>
-                    </ul>
-                </li>
-                <li> <a href="shop_grid.html"><span>Haricot bean</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.html"><span>Nectarine</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Charles & Keith</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Fruits</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Rhubarb</span></a> </li>
-                    </ul>
-                </li>
-                <li> <a href="shop_grid.html"><span>Kiwi fruit</span></a>
-                    <ul>
-                        <li> <a href="shop_grid.html"><span>Mango</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Orange</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Pepper</span></a> </li>
-                        <li> <a href="shop_grid.html"><span>Quince</span></a> </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li><a href="shop_grid.html">Healthy Eating</a> </li>
-        <li><a href="shop_grid.html">Drinks</a> </li>
-        <li><a href="#">Blog</a> </li>
-        <li><a href="#">Contact us</a> </li>
-    </ul>
-    <div class="jtv-top-link-mob">
-        <ul class="links">
-            <li><a title="My Account" href="#">My Account</a> </li>
-            <li><a title="Wishlist" href="#">Wishlist</a> </li>
-            <li><a title="Checkout" href="#">Checkout</a> </li>
-            <li><a title="Blog" href="#"><span>Blog</span></a> </li>
-            <li class="last"><a title="Login" href="#"><span>Login</span></a> </li>
-        </ul>
-    </div>
-</div>
 <div id="page">
     <!--[if lt IE 8]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -189,8 +36,8 @@
                     <div class="row">
                         <!-- Header Language -->
                         <div class="col-xs-12 col-sm-6">
-                            <div class="welcome-msg">Welcome to Organic! </div>
-                            <div class="dropdown jtv-language-box"> <a role="button" data-toggle="dropdown" data-target="#" class="block-language dropdown-toggle" href="#"> <img src="images/flag-english.jpg" alt="language"> English <span class="caret"></span> </a>
+                            <div class="welcome-msg">欢迎来到派氏乐鲜生活馆</div>
+                            <div class="dropdown jtv-language-box"> <a role="button" data-toggle="dropdown" data-target="#" class="block-language dropdown-toggle" href="#" aria-expanded="false"> <img src="images/flag-english.jpg" alt="language">中软中心店<span class="caret"></span> </a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li> <a class="selected" href="#"> <img src="images/flag-english.jpg" alt="flag"> <span>English</span> </a> </li>
                                     <li> <a href="#"> <img src="images/flag-default.jpg" alt="flag"> <span>French</span> </a> </li>
@@ -203,13 +50,7 @@
                             <!-- End Header Language -->
 
                             <!-- Header Currency -->
-                            <div class="dropdown jtv-currency-box"> <a role="button" data-toggle="dropdown" data-target="#" class="block-currency dropdown-toggle" href="#"> USD <span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#"> $ - Dollar </a> </li>
-                                    <li><a href="#"> £ - Pound </a> </li>
-                                    <li><a href="#"> € - Euro </a> </li>
-                                </ul>
-                            </div>
+
                             <!-- End Header Currency -->
 
                         </div>
@@ -218,11 +59,12 @@
                             <div class="jtv-top-links">
                                 <div class="links">
                                     <ul>
-                                        <li> <a title="My Account" href="ShowPersonalInformation.action"><span class="hidden-xs">My Account</span></a> </li>
-                                        <li> <a title="Wishlist" href="#">Wishlist</a> </li>
-                                        <li> <a title="Checkout" href="#"><span class="hidden-xs">Checkout</span></a> </li>
+
+                                        <li> <a title="Favorites" href="/getUserOrder">订单</a> </li>
+                                        <li> <a title="Favorites" href="#">收藏夹</a> </li>
+
                                         <li>
-                                            <div class="dropdown block-company-wrapper hidden-xs"> <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#"> More <span class="caret"></span></a>
+                                            <div class="dropdown block-company-wrapper hidden-xs"> <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#">其他功能<span class="caret"></span></a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="about_us.html"> About Us </a> </li>
                                                     <li><a href="#"> Customer Service </a> </li>
@@ -233,7 +75,7 @@
                                                 </ul>
                                             </div>
                                         </li>
-                                        <li> <a href="sign_in.jsp"><span class="hidden-xs">Log In</span></a> </li>
+                                        <li> <a href="#"><span class="hidden-xs">登陆</span></a> </li>
                                     </ul>
                                 </div>
                             </div>
@@ -248,32 +90,32 @@
                         <div class="jtv-top-cart-box">
                             <!-- Top Cart -->
                             <div class="mini-cart">
-                                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="#"> <span class="cart_count">2</span><span class="price">My Bag / $259.00</span> </a> </div>
+                                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="#"> <span class="cart_count">2</span><span class="price">购物车 / ¥259.00</span> </a> </div>
                                 <div>
                                     <div class="jtv-top-cart-content">
 
                                         <!--block-subtitle-->
                                         <ul class="mini-products-list" id="cart-sidebar">
                                             <li class="item first">
-                                                <div class="item-inner"> <a class="product-image" title="Product Title Here" href="single_product.html"><img alt="Product Title Here" src="images/products/img01.jpg"> </a>
+                                                <div class="item-inner"> <a class="product-image" title="Product Title Here" href="single_product.jsp"><img alt="Product Title Here" src="images/products/img01.jpg"> </a>
                                                     <div class="product-details">
-                                                        <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
+                                                        <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
                                                         <p class="product-name"><a href="#">Product Title Here</a> </p>
                                                         <strong>1</strong> x <span class="price">$79.99</span> </div>
                                                 </div>
                                             </li>
                                             <li class="item">
-                                                <div class="item-inner"> <a class="product-image" title="Product Title Here" href="single_product.html"><img alt="Product Title Here" src="images/products/img02.jpg"> </a>
+                                                <div class="item-inner"> <a class="product-image" title="Product Title Here" href="single_product.jsp"><img alt="Product Title Here" src="images/products/img02.jpg"> </a>
                                                     <div class="product-details">
-                                                        <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
+                                                        <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
                                                         <p class="product-name"><a href="#">Product Title Here</a> </p>
                                                         <strong>1</strong> x <span class="price">$88.89</span> </div>
                                                 </div>
                                             </li>
                                             <li class="item last">
-                                                <div class="item-inner"> <a class="product-image" title="Product Title Here" href="single_product.html"><img alt="Product Title Here" src="images/products/img04.jpg"> </a>
+                                                <div class="item-inner"> <a class="product-image" title="Product Title Here" href="single_product.jsp"><img alt="Product Title Here" src="images/products/img04.jpg"> </a>
                                                     <div class="product-details">
-                                                        <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
+                                                        <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
                                                         <p class="product-name"><a href="#">Product Title Here</a> </p>
                                                         <strong>1</strong> x <span class="price">$85.99</span> </div>
                                                 </div>
@@ -282,8 +124,8 @@
 
                                         <!--actions-->
                                         <div class="actions">
-                                            <button class="btn-checkout" title="Checkout" type="button" onClick="#"><span>Checkout</span> </button>
-                                            <a href="#" class="view-cart"><span>View Cart</span></a> </div>
+                                            <button class="btn-checkout" title="Checkout" type="button" onclick="#"><span>Checkout</span> </button>
+                                            <a href="/getOrderProducts?orderId=1" class="view-cart"><span>View Cart</span></a> </div>
                                     </div>
                                 </div>
                             </div>
@@ -291,13 +133,13 @@
                     </div>
                     <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12 jtv-logo-box">
                         <!-- Header Logo -->
-                        <div class="logo"> <h1><a title="eCommerce" href="index.html"><img alt="eCommerce" src="images/logo.png"> </a></h1> </div>
+                        <div class="logo"> <h1><a title="eCommerce" href="index.jsp"><img alt="eCommerce" src="images/name2.png"> </a></h1> </div>
                         <!-- End Header Logo -->
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 hidden-xs">
                         <div class="search-box">
                             <form action="cat" method="POST" id="search_mini_form" name="Categories">
-                                <input type="text" placeholder="Search here..." value="" maxlength="70" name="search" id="search">
+                                <input type="text" placeholder="搜索商品..." value="" maxlength="70" name="search" id="search">
                                 <button type="button" class="search-btn-bg"><span class="glyphicon glyphicon-search"></span>&nbsp;</button>
                             </form>
                         </div>
@@ -306,11 +148,11 @@
             </div>
         </div>
     </header>
-    <!-- end hhttp://htmlmystore.justthemevalley.com/organic/index.htmleader -->
+    <!-- end header -->
 
     <!-- Navigation -->
 
-    <nav>
+    <nav class="jtv-sticky-header">
         <div class="container">
             <div class="mm-toggle-wrap">
                 <div class="mm-toggle"><i class="fa fa-align-justify"></i><span class="mm-label">Menu</span> </div>
@@ -318,10 +160,12 @@
             <div class="nav-inner">
                 <!-- BEGIN NAV -->
                 <ul id="nav" class="hidden-xs">
-                    <li class="drop-menu"><a href="index.html" class="level-top active"><span>Home</span></a> </li>
-                    <li class="drop-menu"> <a href="#"> <span>Pages</span> </a>
+                    <li class="drop-menu"><a href="index.jsp" class="level-top active"><span>主页</span></a>
+
+                    </li>
+                    <li class="drop-menu"> <a href="#"> <span>一级1</span> </a>
                         <ul>
-                            <li class="sub-cat"><a href="shop_grid.html"><span>Shop Grid</span></a>
+                            <li class="sub-cat"><a href="shop_grid.action"><span>Shop Grid</span></a>
                                 <ul>
                                     <li> <a href="#"> <span>Shop Grid Right Sidebar</span> </a> </li>
                                     <li> <a href="#"> <span>Shop Grid Fullwidth</span> </a> </li>
@@ -332,8 +176,8 @@
                                     <li> <a href="#"> <span>Shop List Right Sidebar</span> </a> </li>
                                 </ul>
                             </li>
-                            <li> <a href="single_product.html"> <span>Single Product</span> </a> </li>
-                            <li> <a href="shoppingCart.action"> <span>Shopping Cart</span> </a> </li>
+                            <li> <a href="single_product.jsp"> <span>Single Product</span> </a> </li>
+                            <li> <a href="#"> <span>Shopping Cart</span> </a> </li>
                             <li><a href="#"><span>Checkout</span></a> </li>
                             <li> <a href="#"> <span>Wishlist</span> </a> </li>
                             <li><a href="#"><span>Compare</span></a> </li>
@@ -341,58 +185,58 @@
                             <li><a href="#"><span>404 Error Page</span></a> </li>
                         </ul>
                     </li>
-                    <li class="mega-menu"> <a class="level-top" href="shop_grid.html"><span>Fruits</span></a>
+                    <li class="mega-menu"> <a class="level-top" href="shop_grid.jsp"><span>一级2</span></a>
                         <div class="jtv-menu-block-wrapper">
                             <div class="jtv-menu-block-wrapper2">
                                 <div class="nav-block jtv-nav-block-center">
                                     <div class="col-1">
                                         <ul class="level0">
-                                            <li class="parent item"> <a href="shop_grid.html"><span>Apples</span></a>
+                                            <li class="parent item"> <a href="shop_grid.jsp"><span>Apples</span></a>
                                                 <ul class="level1">
-                                                    <li> <a href="shop_grid.html"><span>Aurore Grape</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Super Sweet</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Gravenstein</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Orange Pippin</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Aurore Grape</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Super Sweet</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Gravenstein</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Orange Pippin</span></a> </li>
                                                 </ul>
                                             </li>
-                                            <li class="parent item"> <a href="shop_grid.html"><span>Grapes</span></a>
+                                            <li class="parent item"> <a href="shop_grid.jsp"><span>Grapes</span></a>
                                                 <ul class="level1">
-                                                    <li> <a href="shop_grid.html"><span>Raw Honey</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Flavored Honey</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Propolis</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Exotic Honey</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Raw Honey</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Flavored Honey</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Propolis</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Exotic Honey</span></a> </li>
                                                 </ul>
                                             </li>
-                                            <li class="parent item"> <a href="shop_grid.html"><span>Citruses</span></a>
+                                            <li class="parent item"> <a href="shop_grid.jsp"><span>Citruses</span></a>
                                                 <ul class="level1">
-                                                    <li> <a href="shop_grid.html"><span>Potatoes</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Tomatoes</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Pickles</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Cauliflowers</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Potatoes</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Tomatoes</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Pickles</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Cauliflowers</span></a> </li>
                                                 </ul>
                                             </li>
-                                            <li class="parent item"> <a href="shop_grid.html"><span>Exotic Fruits</span></a>
+                                            <li class="parent item"> <a href="shop_grid.jsp"><span>Exotic Fruits</span></a>
                                                 <ul class="level1">
-                                                    <li> <a href="shop_grid.html"><span>Spinach</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Pumpkin</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Kohlrabi</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Green Cabbage</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Spinach</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Pumpkin</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Kohlrabi</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Green Cabbage</span></a> </li>
                                                 </ul>
                                             </li>
-                                            <li class="parent item"> <a href="shop_grid.html"><span>Summer Berries</span></a>
+                                            <li class="parent item"> <a href="shop_grid.jsp"><span>Summer Berries</span></a>
                                                 <ul class="level1">
-                                                    <li> <a href="shop_grid.html"><span>Avocado</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Paprika</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Cheese Holand</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Cheese</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Avocado</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Paprika</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Cheese Holand</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Cheese</span></a> </li>
                                                 </ul>
                                             </li>
-                                            <li class="parent item"> <a href="shop_grid.html"><span>Green Cabbage</span></a>
+                                            <li class="parent item"> <a href="shop_grid.jsp"><span>Green Cabbage</span></a>
                                                 <ul class="level1">
-                                                    <li> <a href="shop_grid.html"><span>Сauliflower</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Tomato</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Oranges</span></a> </li>
-                                                    <li> <a href="shop_grid.html"><span>Carrots</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Сauliflower</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Tomato</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Oranges</span></a> </li>
+                                                    <li> <a href="shop_grid.jsp"><span>Carrots</span></a> </li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -404,57 +248,57 @@
                             </div>
                         </div>
                     </li>
-                    <li class="mega-menu"> <a class="level-top" href="shop_grid.html"><span>Vegetables</span></a>
+                    <li class="mega-menu"> <a class="level-top" href="shop_grid.jsp"><span>一级2</span></a>
                         <div class="jtv-menu-block-wrapper">
                             <div class="jtv-menu-block-wrapper2">
                                 <div class="nav-block jtv-nav-block-center">
                                     <ul class="level0">
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Herbs and spices</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Herbs and spices</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Lemon Grass</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Rosemary</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Chamomile</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Oregano</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Lemon Grass</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Rosemary</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Chamomile</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Oregano</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Root vegetables</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Root vegetables</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Celeriac</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Daikon</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Rutabaga</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Parsnip</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Celeriac</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Daikon</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Rutabaga</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Parsnip</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Onion family</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Onion family</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Chives</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Shallot</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Onion</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Garlic</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Chives</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Shallot</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Onion</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Garlic</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Legumes</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Legumes</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Black beans</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Kidney beans</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Green beans</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Soy beans</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Black beans</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Kidney beans</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Green beans</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Soy beans</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Haricot bean</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Haricot bean</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Nectarine</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Charles & Keith</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Fruits</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Rhubarb</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Nectarine</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Charles &amp; Keith</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Fruits</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Rhubarb</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Kiwi fruit</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Kiwi fruit</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Mango</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Orange</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Pepper</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Quince</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Mango</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Orange</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Pepper</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Quince</span></a> </li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -473,57 +317,57 @@
                             </div>
                         </div>
                     </li>
-                    <li class="mega-menu"> <a class="level-top" href="shop_grid.html"><span>Healthy Eating</span></a>
+                    <li class="mega-menu"> <a class="level-top" href="shop_grid.jsp"><span>一级3</span></a>
                         <div class="jtv-menu-block-wrapper">
                             <div class="jtv-menu-block-wrapper2">
                                 <div class="nav-block jtv-nav-block-center">
                                     <ul class="level0">
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Vegetables</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Vegetables</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Tomatoes</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Potatoes</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Carrots</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Cauliflowers</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Tomatoes</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Potatoes</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Carrots</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Cauliflowers</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Fruit</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Fruit</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Mango</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Orange</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Pepper</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Quince</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Mango</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Orange</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Pepper</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Quince</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Whole Grains</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Whole Grains</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Cereals</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Noodles</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Rice</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Pasta</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Cereals</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Noodles</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Rice</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Pasta</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Protein</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Protein</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Nutrition</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Biosynthesis</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Enzymes</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Chronic Diseases</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Nutrition</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Biosynthesis</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Enzymes</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Chronic Diseases</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Low-Fat Dairy</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Low-Fat Dairy</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Skim milk</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Fat-free cheese</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Strawberries</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Salad with olives</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Skim milk</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Fat-free cheese</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Strawberries</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Salad with olives</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Healthy Snack Food</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Healthy Snack Food</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Pumpkin Seeds</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>String Cheese</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Celery</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Cottage Cheese</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Pumpkin Seeds</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>String Cheese</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Celery</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Cottage Cheese</span></a> </li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -531,41 +375,39 @@
                             </div>
                         </div>
                     </li>
-                    <li class="mega-menu"> <a class="level-top" href="shop_grid.html"><span>Drinks</span></a>
+                    <li class="mega-menu"> <a class="level-top" href="shop_grid.jsp"><span>一级4</span></a>
                         <div class="jtv-menu-block-wrapper">
                             <div class="jtv-menu-block-wrapper2">
                                 <div class="nav-block jtv-nav-block-center jtv-menu-box-left">
                                     <ul class="level0">
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Cold drinks</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Cold drinks</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Fayrouz</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Mirinda</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>AMP Energy</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Mountain Dew</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Fayrouz</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Mirinda</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>AMP Energy</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Mountain Dew</span></a> </li>
+                                            </ul>               </li>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Hot drinks</span></a>
+                                            <ul class="level1">
+                                                <li> <a href="shop_grid.jsp"><span>Apple cider</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Butter tea</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Irish coffee</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Mate cocido</span></a> </li>
                                             </ul>
                                         </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Hot drinks</span></a>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Fruit drinks</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Apple cider</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Butter tea</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Irish coffee</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Mate cocido</span></a> </li>
-                                            </ul>
-                                        </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Fruit drinks</span></a>
+                                                <li> <a href="shop_grid.jsp"><span>Strawberry Lemonade</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Apple Cider</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Watermelontinis</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Sparkling Sangria</span></a> </li>
+                                            </ul></li>
+                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Mixed drinks</span></a>
                                             <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Strawberry Lemonade</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Apple Cider</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Watermelontinis</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Sparkling Sangria</span></a> </li>
-                                            </ul>
-                                        </li>
-                                        <li class="parent item"> <a href="shop_grid.html"><span>Mixed drinks</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.html"><span>Like Hand Grenade</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Miami Vice</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Blue Lagoon</span></a> </li>
-                                                <li> <a href="shop_grid.html"><span>Jungle Juice</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Like Hand Grenade</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Miami Vice</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Blue Lagoon</span></a> </li>
+                                                <li> <a href="shop_grid.jsp"><span>Jungle Juice</span></a> </li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -574,8 +416,8 @@
                             </div>
                         </div>
                     </li>
-                    <li class="mega-menu"> <a class="level-top" href="#"><span>Blog</span></a> </li>
-                    <li class="nav-custom-link mega-menu"> <a href="#" class="level-top"> <span>Buy this theme</span> </a>
+                    <li class="mega-menu"> <a class="level-top" href="#"><span>一级5</span></a> </li>
+                    <li class="nav-custom-link mega-menu"> <a href="#" class="level-top"> <span>一级6</span> </a>
                         <div class="jtv-menu-block-wrapper custom-menu">
                             <div class="header-nav-dropdown-wrapper">
                                 <div class="jtv-custom-box"> <i class="fa fa-laptop"></i>
@@ -610,28 +452,28 @@
                 <div class="col-md-3 col-xs-12 col-sm-6">
                     <div class="feature-box first"> <i class="icon-plane icons"></i>
                         <div class="content">
-                            <h6>Free & Next Day Delivery</h6>
+                            <h6>承诺第二天送达</h6>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 col-xs-12 col-sm-6">
                     <div class="feature-box"> <i class="icon-earphones-alt icons"></i>
                         <div class="content">
-                            <h6>Support 24/7 For Clients</h6>
+                            <h6>7*24小时客服</h6>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 col-xs-12 col-sm-6">
                     <div class="feature-box"> <i class="icon-like icons"></i>
                         <div class="content">
-                            <h6>100% Satisfaction Guarantee</h6>
+                            <h6>100%好评</h6>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 col-xs-12 col-sm-6">
                     <div class="feature-box last"> <i class="icon-tag icons"></i>
                         <div class="content">
-                            <h6>Great Daily Deals Discount</h6>
+                            <h6>每日折扣</h6>
                         </div>
                     </div>
                 </div>
@@ -649,26 +491,26 @@
                             <ul>
                                 <li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb='images/slider/slide-img1.jpg'><img src="images/slider/slide-img1.jpg" alt="slide-img" data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' />
                                     <div class="info">
-                                        <div class='tp-caption jtv-sub-title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:2;max-width:auto;max-height:auto;white-space:nowrap;'><span>Growing Organic Together</span> </div>
-                                        <div class='tp-caption jtv-large-title sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:3;max-width:auto;max-height:auto;white-space:nowrap;'><span>100% Natural</span> </div>
-                                        <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1450' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;max-width:auto;max-height:auto;white-space:nowrap;'>Quality & Freshness Guaranteed! Good Health.</div>
-                                        <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;white-space:nowrap;'><a href='#' class="jtv-shop-now-btn">Shop Now</a> </div>
+                                        <div class='tp-caption jtv-sub-title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:2;white-space:nowrap;'><span>配件限时直降</span> </div>
+                                        <div class='tp-caption jtv-large-title sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:3;white-space:nowrap;'><span>女王节性价比来袭</span> </div>
+                                        <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1450' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;white-space:nowrap;'>FASHION QUEEN'S DAY SHOPPING</div>
+                                        <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;white-space:nowrap;'><a href='#' class="jtv-shop-now-btn">立即购买</a> </div>
                                     </div>
                                 </li>
                                 <li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb='images/slider/slide-img2.jpg'><img src="images/slider/slide-img2.jpg" alt="slide-img" data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' />
                                     <div class="info">
-                                        <div class='tp-caption jtv-sub-title sft slide2  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:2;white-space:nowrap;padding-right:0px'><span>Daily Fresh Organic Food</span> </div>
-                                        <div class='tp-caption jtv-large-title sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:3;white-space:nowrap;'>Fresh Vegetables</div>
-                                        <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;max-width:auto;max-height:auto;white-space:nowrap;'>Forn the Greatest Health Benefits! Refreshing & Tasty!</div>
-                                        <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;max-width:auto;max-height:auto;white-space:nowrap;'><a href='#' class="jtv-shop-now-btn">Find out more</a> </div>
+                                        <div class='tp-caption jtv-sub-title sft slide2  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:2;white-space:nowrap;padding-right:0px'><span>每日新鲜时蔬</span> </div>
+                                        <div class='tp-caption jtv-large-title sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:3;white-space:nowrap;'>领400元券</div>
+                                        <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;white-space:nowrap;'>乐鲜每一秒！</div>
+                                        <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;white-space:nowrap;'><a href='#' class="jtv-shop-now-btn">立即抢购</a> </div>
                                     </div>
                                 </li>
                                 <li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb='images/slider/slide-img3.jpg'><img src="images/slider/slide-img3.jpg" alt="slide-img" data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' />
                                     <div class="info">
-                                        <div class='tp-caption jtv-sub-title sft slide2  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:2;max-width:auto;max-height:auto;white-space:nowrap;padding-right:0px'><span>Save up to 35% off</span> </div>
-                                        <div class='tp-caption jtv-large-title sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:3;max-width:auto;max-height:auto;white-space:nowrap;'>Fruit Flavoured</div>
-                                        <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;max-width:auto;max-height:auto;white-space:nowrap;'>Most Popular Ecommerce HTML Template.</div>
-                                        <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;max-width:auto;max-height:auto;white-space:nowrap;'><a href='#' class="jtv-shop-now-btn">Order now</a> </div>
+                                        <div class='tp-caption jtv-sub-title sft slide2  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:2;white-space:nowrap;padding-right:0px'><span>下单立减35%</span> </div>
+                                        <div class='tp-caption jtv-large-title sfl  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:3;white-space:nowrap;'>品牌乐器大放价</div>
+                                        <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;white-space:nowrap;'>礼券叠加享折上折</div>
+                                        <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4;white-space:nowrap;'><a href='#' class="jtv-shop-now-btn">立即抢券</a> </div>
                                     </div>
                                 </li>
                             </ul>
@@ -682,31 +524,7 @@
     </div>
     <!-- jtv bottom banner section -->
     <div class="jtv-bottom-banner-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="jtv-img-box"> <a href="#"> <img src="images/jtv-banner1.jpg" alt="bottom banner">
-                        <div class="jtv-banner-info"><span>Natural 100% Organic</span>
-                            <h3>Organic Food</h3>
-                        </div>
-                    </a> </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="jtv-img-box"> <a href="#"> <img src="images/jtv-banner2.jpg" alt="bottom banner">
-                        <div class="jtv-banner-info"> <span>New Arrivals</span>
-                            <h3>garlic cloves</h3>
-                        </div>
-                    </a> </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="jtv-img-box"> <a href="#"> <img src="images/jtv-banner3.jpg" alt="bottom banner">
-                        <div class="jtv-banner-info"> <span>Discount - 45% OFF</span>
-                            <h3>strawberry</h3>
-                        </div>
-                    </a> </div>
-                </div>
-            </div>
-        </div>
+
     </div>
     <!-- Special Product slider -->
 
@@ -719,7 +537,7 @@
                             <h3>Best Selling</h3>
                         </div>
                         <div class="jtv-decs-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</div>
-                        <a href="shop_grid.html" class="jtv-more-bnt">More Products</a>
+                        <a href="shop_grid.jsp" class="jtv-more-bnt">More Products</a>
                         <div class="jtv-box-timer">
                             <div class="countbox_1 timer-grid"></div>
                         </div>
@@ -729,11 +547,11 @@
                             <div class="item">
                                 <div class="item-inner">
                                     <div class="item-img">
-                                        <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img12.jpg"> </a>
+                                        <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img12.jpg"> </a>
                                             <div class="jtv-box-hover">
                                                 <ul class="add-to-links">
                                                     <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                    <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
+                                                    <li><a class="link-wishlist" href="/getUserOrder.html"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
                                                     <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
                                                 </ul>
                                             </div>
@@ -741,7 +559,7 @@
                                     </div>
                                     <div class="item-info">
                                         <div class="info-inner">
-                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                             <div class="item-content">
                                                 <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                 <div class="item-price">
@@ -758,11 +576,11 @@
                             <div class="item">
                                 <div class="item-inner">
                                     <div class="item-img">
-                                        <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img15.jpg"> </a>
+                                        <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img15.jpg"> </a>
                                             <div class="jtv-box-hover">
                                                 <ul class="add-to-links">
                                                     <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                    <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
+                                                    <li><a class="link-wishlist" href="/getUserOrder.html"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
                                                     <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
                                                 </ul>
                                             </div>
@@ -770,7 +588,7 @@
                                     </div>
                                     <div class="item-info">
                                         <div class="info-inner">
-                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                             <div class="item-content">
                                                 <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                 <div class="item-price">
@@ -787,7 +605,7 @@
                             <div class="item">
                                 <div class="item-inner">
                                     <div class="item-img">
-                                        <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img05.jpg"> </a>
+                                        <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img05.jpg"> </a>
                                             <div class="jtv-box-hover">
                                                 <ul class="add-to-links">
                                                     <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -799,7 +617,7 @@
                                     </div>
                                     <div class="item-info">
                                         <div class="info-inner">
-                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                             <div class="item-content">
                                                 <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                 <div class="item-price">
@@ -816,7 +634,7 @@
                             <div class="item">
                                 <div class="item-inner">
                                     <div class="item-img">
-                                        <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img06.jpg"> </a>
+                                        <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img06.jpg"> </a>
                                             <div class="new-label new-top-left">new</div>
                                             <div class="jtv-box-hover">
                                                 <ul class="add-to-links">
@@ -829,7 +647,7 @@
                                     </div>
                                     <div class="item-info">
                                         <div class="info-inner">
-                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
+                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
                                             <div class="item-content">
                                                 <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                 <div class="item-price">
@@ -859,15 +677,8 @@
                 <div class="navbar nav-menu">
                     <div class="navbar-collapse">
                         <div class="jtv-title">
-                            <h3>Featured Products</h3>
+                            <h3>门店推荐</h3>
                         </div>
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a data-toggle="tab" href="#tab-1">Vegetables</a> </li>
-                            <li><a data-toggle="tab" href="#tab-2">Apples</a> </li>
-                            <li><a data-toggle="tab" href="#tab-3">Fruits</a> </li>
-                            <li><a data-toggle="tab" href="#tab-4">Hot Drinks</a> </li>
-                            <li><a data-toggle="tab" href="#tab-5">Meats</a> </li>
-                        </ul>
                     </div>
                     <!-- /.navbar-collapse -->
 
@@ -876,632 +687,48 @@
                     <!-- tab product -->
                     <div class="tab-panel active" id="tab-1">
                         <div class="category-products">
+                            <c:if test="${empty productsByStoreList}">
+                                <div class="storeAlert">
+                                    <h5>您还未登录，请登录并选择门店后再尝试
+                                    <a href="/getStoreProducts.html?storeId=1">刷新</a></h5>
+                                </div>
+                            </c:if>
                             <ul class="products-grid">
-                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img10.jpg"> </a>
-                                                <div class="jtv-box-hover">
-                                                    <ul class="add-to-links">
-                                                        <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                        <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                                                        <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$155.00</span> </span> </div>
-                                                    </div>
-                                                    <div class="action">
-                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img01.jpg"> </a>
-                                                <div class="jtv-box-hover">
-                                                    <ul class="add-to-links">
-                                                        <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                        <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                                                        <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$225.00</span> </span> </div>
-                                                    </div>
-                                                    <div class="action">
-                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img02.jpg"> </a>
-                                                <div class="jtv-box-hover">
-                                                    <ul class="add-to-links">
-                                                        <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                        <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                                                        <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$99.00</span> </span> </div>
-                                                    </div>
-                                                    <div class="action">
-                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img03.jpg"> </a>
-                                                <div class="new-label new-top-left">new</div>
-                                                <div class="jtv-box-hover">
-                                                    <ul class="add-to-links">
-                                                        <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                        <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                                                        <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box">
-                                                            <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $156.00 </span> </p>
-                                                            <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $167.00 </span> </p>
+                                <c:if test="${not empty productsByStoreList}">
+                                    <%int i = 0; pageContext.setAttribute("i", i);%>
+                                    <c:forEach items="${productsByStoreList}" var="list">
+                                        <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                                            <div class="item-inner">
+                                                <div class="item-img">
+                                                    <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src=${productsList.get(i).pic1Url}> </a>
+                                                        <div class="jtv-box-hover">
+                                                            <ul class="add-to-links">
+                                                                <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
+                                                                <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
+                                                                <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
+                                                            </ul>
                                                         </div>
                                                     </div>
-                                                    <div class="action">
-                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- tab product -->
-                    <div class="tab-panel" id="tab-2">
-                        <div class="category-products">
-                            <ul class="products-grid">
-                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img12.jpg"> </a>
-                                                <div class="jtv-box-hover">
-                                                    <ul class="add-to-links">
-                                                        <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                        <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                                                        <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$155.00</span> </span> </div>
-                                                    </div>
-                                                    <div class="action">
-                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img11.jpg"> </a>
-                                                <div class="jtv-box-hover">
-                                                    <ul class="add-to-links">
-                                                        <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                        <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                                                        <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$225.00</span> </span> </div>
-                                                    </div>
-                                                    <div class="action">
-                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img05.jpg"> </a>
-                                                <div class="jtv-box-hover">
-                                                    <ul class="add-to-links">
-                                                        <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                        <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                                                        <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$99.00</span> </span> </div>
-                                                    </div>
-                                                    <div class="action">
-                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img06.jpg"> </a>
-                                                <div class="new-label new-top-left">new</div>
-                                                <div class="jtv-box-hover">
-                                                    <ul class="add-to-links">
-                                                        <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                        <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                                                        <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box">
-                                                            <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $156.00 </span> </p>
-                                                            <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $167.00 </span> </p>
+                                                <div class="item-info">
+                                                    <div class="info-inner">
+                                                        <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp">${productsList.get(i).productName}</a></h6> </div>
+                                                        <div class="item-content">
+                                                            <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                            <div class="item-price">
+                                                                <div class="price-box"> <span class="regular-price"> <span class="price">$${list.originalPrice}</span> </span> </div>
+                                                            </div>
+                                                            <div class="action">
+                                                                <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="action">
-                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="tab-panel" id="tab-3">
-                        <div class="category-products">
-                            <ul class="products-grid">
-                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img11.jpg"> </a>
-                                                <div class="jtv-box-hover">
-                                                    <ul class="add-to-links">
-                                                        <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                        <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                                                        <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$155.00</span> </span> </div>
-                                                    </div>
-                                                    <div class="action">
-                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img12.jpg"> </a>
-                                                <div class="jtv-box-hover">
-                                                    <ul class="add-to-links">
-                                                        <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                        <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                                                        <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$225.00</span> </span> </div>
-                                                    </div>
-                                                    <div class="action">
-                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img13.jpg"> </a>
-                                                <div class="jtv-box-hover">
-                                                    <ul class="add-to-links">
-                                                        <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                        <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                                                        <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$99.00</span> </span> </div>
-                                                    </div>
-                                                    <div class="action">
-                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img14.jpg"> </a>
-                                                <div class="new-label new-top-left">new</div>
-                                                <div class="jtv-box-hover">
-                                                    <ul class="add-to-links">
-                                                        <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                        <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                                                        <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box">
-                                                            <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $156.00 </span> </p>
-                                                            <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $167.00 </span> </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="action">
-                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="tab-panel" id="tab-4">
-                        <div class="category-products">
-                            <ul class="products-grid">
-                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img10.jpg"> </a>
-                                                <div class="jtv-box-hover">
-                                                    <ul class="add-to-links">
-                                                        <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                        <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                                                        <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$155.00</span> </span> </div>
-                                                    </div>
-                                                    <div class="action">
-                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img01.jpg"> </a>
-                                                <div class="jtv-box-hover">
-                                                    <ul class="add-to-links">
-                                                        <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                        <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                                                        <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$225.00</span> </span> </div>
-                                                    </div>
-                                                    <div class="action">
-                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img02.jpg"> </a>
-                                                <div class="jtv-box-hover">
-                                                    <ul class="add-to-links">
-                                                        <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                        <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                                                        <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$99.00</span> </span> </div>
-                                                    </div>
-                                                    <div class="action">
-                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img03.jpg"> </a>
-                                                <div class="new-label new-top-left">new</div>
-                                                <div class="jtv-box-hover">
-                                                    <ul class="add-to-links">
-                                                        <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                        <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                                                        <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box">
-                                                            <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $156.00 </span> </p>
-                                                            <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $167.00 </span> </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="action">
-                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="tab-panel" id="tab-5">
-                        <div class="category-products">
-                            <ul class="products-grid">
-                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img02.jpg"> </a>
-                                                <div class="jtv-box-hover">
-                                                    <ul class="add-to-links">
-                                                        <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                        <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                                                        <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$155.00</span> </span> </div>
-                                                    </div>
-                                                    <div class="action">
-                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img06.jpg"> </a>
-                                                <div class="jtv-box-hover">
-                                                    <ul class="add-to-links">
-                                                        <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                        <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                                                        <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$225.00</span> </span> </div>
-                                                    </div>
-                                                    <div class="action">
-                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img10.jpg"> </a>
-                                                <div class="jtv-box-hover">
-                                                    <ul class="add-to-links">
-                                                        <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                        <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                                                        <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span class="price">$99.00</span> </span> </div>
-                                                    </div>
-                                                    <div class="action">
-                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.html"> <img alt="Product Title Here" src="images/products/img07.jpg"> </a>
-                                                <div class="new-label new-top-left">new</div>
-                                                <div class="jtv-box-hover">
-                                                    <ul class="add-to-links">
-                                                        <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
-                                                        <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
-                                                        <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"><h6> <a title="Product Title Here" href="single_product.html"> Product Title Here </a></h6> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box">
-                                                            <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $156.00 </span> </p>
-                                                            <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $167.00 </span> </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="action">
-                                                        <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                                        </li>
+                                        <%i++; pageContext.setAttribute("i", i);%>
+                                    </c:forEach>
+                                </c:if>
                             </ul>
                         </div>
                     </div>
@@ -1514,23 +741,23 @@
             <div class="imgbox"><img src="images/banner1.jpg" alt=""></div>
             <div class="jtv-cont-box">
                 <h3>100% <br>
-                    Natural</h3>
+                    天然</h3>
                 <div class="jtv-line-bg"></div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                <p>精选全球3000多种生鲜果蔬品质食材，在体验网上购物新模式的同时享尽各国新鲜美味</p>
             </div>
             <div class="imgbox"><img src="images/banner2.jpg" alt=""></div>
             <div class="jtv-cont-box2">
-                <h3>Alway <br>
-                    Fresh</h3>
+                <h3>时刻 <br>
+                    保鲜</h3>
                 <div class="jtv-line-bg"></div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                <p>90%的果蔬都是产地直供，销售的果蔬零售价比市场果蔬零售价低10%-15%</p>
             </div>
             <div class="imgbox"><img src="images/banner3.jpg" alt=""></div>
             <div class="jtv-cont-box3">
-                <h3>Healthy <br>
-                    Cooking</h3>
+                <h3>健康 <br>
+                    处理</h3>
                 <div class="jtv-line-bg"></div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                <p>为消费者打造社区化的一站式新零售体验中心，用科技和人情味带给人们“鲜美生活”</p>
             </div>
         </div>
     </div>
@@ -1541,16 +768,16 @@
             <div class="row">
                 <div class="col-md-12" data-wow-delay="0.2s">
                     <div class="block-title">
-                        <h3>What People are saying</h3>
+                        <h3>今日上新</h3>
                     </div>
                     <div class="carousel slide" data-ride="carousel" id="quote-carousel">
                         <!-- Bottom Carousel Indicators -->
                         <ol class="carousel-indicators">
-                            <li data-target="#quote-carousel" data-slide-to="0"><img class="img-responsive " src="images/testimonials-img1.jpg" alt=""> </li>
-                            <li data-target="#quote-carousel" data-slide-to="1"><img class="img-responsive" src="images/testimonials-img2.jpg" alt=""> </li>
-                            <li data-target="#quote-carousel" data-slide-to="2" class="active"><img class="img-responsive" src="images/testimonials-img3.jpg" alt=""> </li>
-                            <li data-target="#quote-carousel" data-slide-to="3"><img class="img-responsive" src="images/testimonials-img4.jpg" alt=""> </li>
-                            <li data-target="#quote-carousel" data-slide-to="4"><img class="img-responsive" src="images/testimonials-img5.jpg" alt=""> </li>
+                            <li data-target="#quote-carousel" data-slide-to="0"><img class="img-responsive " src="images/products/img05.jpg" alt=""> </li>
+                            <li data-target="#quote-carousel" data-slide-to="1"><img class="img-responsive" src="images/products/img14.jpg" alt=""> </li>
+                            <li data-target="#quote-carousel" data-slide-to="2" class="active"><img class="img-responsive" src="images/products/img10.jpg" alt=""> </li>
+                            <li data-target="#quote-carousel" data-slide-to="3"><img class="img-responsive" src="images/products/img02.jpg" alt=""> </li>
+                            <li data-target="#quote-carousel" data-slide-to="4"><img class="img-responsive" src="images/products/img07.jpg" alt=""> </li>
                         </ol>
 
                         <!-- Carousel Slides / Quotes -->
@@ -1561,8 +788,8 @@
                                 <blockquote>
                                     <div class="row">
                                         <div class="col-sm-8 col-sm-offset-2">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. !</p>
-                                            <div class="holder-info"> <strong class="name">Vince Roy</strong> <strong class="designation">CEO, XYZ Softwear</strong></div>
+                                            <p>荔枝为无患子科植物荔枝的果实，别名丹荔，荔枝。原产于中国南部，以广东、广西、福建、四川、台湾、云南等地栽培最多。每年6～7月间果实成熟时采收，剥去外壳，取假种皮（荔枝肉）鲜用或干燥后备用。 </p>
+                                            <div class="holder-info"> <strong class="name">荔枝</strong> <strong class="designation">Li Zhi</strong></div>
                                         </div>
                                     </div>
                                 </blockquote>
@@ -1572,8 +799,8 @@
                                 <blockquote>
                                     <div class="row">
                                         <div class="col-sm-8 col-sm-offset-2">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-                                            <div class="holder-info"><strong class="name">John Doe</strong> <strong class="designation">CEO, ABC Softwear</strong></div>
+                                            <p>苹果，落叶乔木，叶子 椭圆形，花白色带有红晕。果实圆形，味甜或略酸，是常见水果，具有丰富营养成分，有食疗、辅助治疗功能。苹果原产于欧洲、中亚、西亚和土耳其一带，于十九世纪传入中国。中国是世界最大的苹果生产国，在东北、华北、华东、西北和四川、云南等地均有栽培。</p>
+                                            <div class="holder-info"><strong class="name">苹果</strong> <strong class="designation">Ping Guo</strong></div>
                                         </div>
                                     </div>
                                 </blockquote>
@@ -1583,8 +810,8 @@
                                 <blockquote>
                                     <div class="row">
                                         <div class="col-sm-8 col-sm-offset-2">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. .</p>
-                                            <div class="holder-info"> <strong class="name">John Doe</strong> <strong class="designation">Managing Director</strong></div>
+                                            <p>樱桃的品种有：红灯、早红、先锋、大紫、拉宾斯、早大果、针 叶。其中，红灯和先锋是最常见的品种，也是樱桃中优质的两个品种，红灯颜色略带浅红，果把短小，熟透的"红灯"口感甜中略点酸味；先锋颜色深红，果把较长，熟透的“先锋”口感纯甜。</p>
+                                            <div class="holder-info"> <strong class="name">樱桃</strong> <strong class="designation">Ying Tao</strong></div>
                                         </div>
                                     </div>
                                 </blockquote>
@@ -1594,8 +821,8 @@
                                 <blockquote>
                                     <div class="row">
                                         <div class="col-sm-8 col-sm-offset-2">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. .</p>
-                                            <div class="holder-info"> <strong class="name">Vince Roy</strong> <strong class="designation">CEO, XYZ Softwear</strong></div>
+                                            <p>柑桔是凉性水果，也是世界上最重要的商品水果，是中国亚热带地区栽培面积最广的果树，也是广西最重要的果树。它包括的种类很多，广西主要栽培的有甜橙、宽皮柑桔、柚、金桔、柠檬等，而每一种类又有许多优良品种。中国西部有果城四川南充，主产柑桔等水果。</p>
+                                            <div class="holder-info"> <strong class="name">柑橘</strong> <strong class="designation">Gan Ju</strong></div>
                                         </div>
                                     </div>
                                 </blockquote>
@@ -1605,8 +832,8 @@
                                 <blockquote>
                                     <div class="row">
                                         <div class="col-sm-8 col-sm-offset-2">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. .</p>
-                                            <div class="holder-info"><strong class="name">John Doe</strong> <strong class="designation">CEO, ABC Softwear</strong></div>
+                                            <p>龙眼有壮阳益气、补益心脾、养血安神、润肤美容等多种功效，可治疗贫血、心悸、失眠、健忘、神经衰弱及病后、产后身体虚弱等症。现代医学实践证明 ，它还有美容、延年益寿之功效。俗称“桂圆”，是中国南亚热带名贵特产，历史上南方“桂圆”北“人参”之称。</p>
+                                            <div class="holder-info"><strong class="name">龙眼</strong> <strong class="designation">Long Yan</strong></div>
                                         </div>
                                     </div>
                                 </blockquote>
@@ -1620,115 +847,78 @@
         </div>
     </div>
 
-    <!-- Latest Blog -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="blog-outer-container">
-                    <div class="jtv-title">
-                        <h3>Latest Blog</h3>
-                    </div>
-                    <div class="blog-inner">
-                        <div class="col-sm-4">
-                            <div class="entry-thumb"> <a href="blog_single_post.html"> <img alt="Blog" src="images/blog-img1.jpg"> </a> </div>
-                            <div class="blog-preview_info">
-                                <h4><a href="blog_single_post.html">Winter Morning Organic</a></h4>
-                                <ul class="post-meta">
-                                    <li><i class="fa fa-user"></i><a href="#">admin</a> </li>
-                                    <li><i class="fa fa-comments"></i><a href="#">12 comments</a> </li>
-                                    <li><i class="fa fa-calendar"></i>2017-02-25</li>
-                                </ul>
-                                <div class="blog-preview_desc">Lorem ipsum dolor sit ame consetur adipisicing elit. Voluptate, consetur adipisicing elit.Lorem ipsum dolor.</div>
-                                <a class="blog-preview_btn" href="blog_single_post.html">Read More <i class="fa fa-long-arrow-right"></i></a> </div>
+    <c:if test="${not empty sectorsList}">
+        <c:forEach items="${sectorsList}" var="sectors">
+            <div class="content-page">
+                <div class="container">
+                    <!-- Product Tabs-->
+                    <div class="category-product">
+                        <div class="navbar nav-menu">
+                            <div class="navbar-collapse">
+                                <div class="jtv-title">
+                                    <h3>${sectors.sectorName}</h3>
+                                </div>
+                            </div>
+                            <!-- /.navbar-collapse -->
                         </div>
-                        <div class="col-sm-4">
-                            <div class="entry-thumb"> <a href="blog_single_post.html"> <img alt="Blog" src="images/blog-img2.jpg"> </a> </div>
-                            <div class="blog-preview_info">
-                                <h4><a href="blog_single_post.html">Perfect for promoting</a></h4>
-                                <ul class="post-meta">
-                                    <li><i class="fa fa-user"></i><a href="#">admin</a> </li>
-                                    <li><i class="fa fa-comments"></i><a href="#">45 comments</a> </li>
-                                    <li><i class="fa fa-calendar"></i>2017-04-05</li>
-                                </ul>
-                                <div class="blog-preview_desc">Lorem ipsum dolor sit ame consetur adipisicing elit. Voluptate, consetur adipisicing elit.Lorem ipsum dolor.</div>
-                                <a class="blog-preview_btn" href="blog_single_post.html">Read More <i class="fa fa-long-arrow-right"></i></a> </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="entry-thumb"> <a href="blog_single_post.html"> <img alt="Blog" src="images/blog-img3.jpg"> </a> </div>
-                            <div class="blog-preview_info">
-                                <h4><a href="blog_single_post.html">Sed do eiusmod sit amet</a></h4>
-                                <ul class="post-meta">
-                                    <li><i class="fa fa-user"></i><a href="#">admin</a> </li>
-                                    <li><i class="fa fa-comments"></i><a href="#">85 comments</a> </li>
-                                    <li><i class="fa fa-calendar"></i>2017-05-05</li>
-                                </ul>
-                                <div class="blog-preview_desc">Lorem ipsum dolor sit ame consetur adipisicing elit. Voluptate, consetur adipisicing elit.Lorem ipsum dolor.</div>
-                                <a class="blog-preview_btn" href="blog_single_post.html">Read More <i class="fa fa-long-arrow-right"></i></a> </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- End Latest Blog -->
-
-    <!-- Brand Logo -->
-
-    <div class="brand-logo">
-        <div class="container">
-            <div class="slider-items-products">
-                <div id="brand-logo-slider" class="product-flexslider hidden-buttons">
-                    <div class="slider-items slider-width-col6">
-
-                        <!-- Item -->
-                        <div class="item"> <a href="#"><img src="images/brand3.png" alt="Image"> </a> </div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"> <a href="#"><img src="images/brand1.png" alt="Image"> </a> </div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"> <a href="#"><img src="images/brand2.png" alt="Image"> </a> </div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"> <a href="#"><img src="images/brand4.png" alt="Image"> </a> </div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"> <a href="#"><img src="images/brand5.png" alt="Image"> </a> </div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"> <a href="#"><img src="images/brand6.png" alt="Image"> </a> </div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"> <a href="#"><img src="images/brand2.png" alt="Image"> </a> </div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"> <a href="#"><img src="images/brand4.png" alt="Image"> </a> </div>
-                        <!-- End Item -->
-
+                        <%int i = 0; pageContext.setAttribute("i", i);%>
+                        <c:forEach items="${specialProductsList}" var="products" end="${num.get(i) - 1}">
+                            <div class="tab-container">
+                                <!-- tab product -->
+                                <div class="tab-panel active">
+                                    <div class="category-products">
+                                        <ul class="products-grid">
+                                                    <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                                                        <div class="item-inner">
+                                                            <div class="item-img">
+                                                                <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src=${products.pic1Url}> </a>
+                                                                    <div class="jtv-box-hover">
+                                                                        <ul class="add-to-links">
+                                                                            <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
+                                                                            <li><a class="link-wishlist" href="#"><i class="icon-heart icons"></i><span class="hidden">Wishlist</span></a></li>
+                                                                            <li><a class="link-compare" href="#"><i class="icon-shuffle icons"></i><span class="hidden">Compare</span></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="item-info">
+                                                                <div class="info-inner">
+                                                                    <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp">${products.productName}</a></h6> </div>
+                                                                    <div class="item-content">
+                                                                        <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                                        <div class="item-price">
+                                                                            <div class="price-box"> <span class="regular-price"> <span class="price">$${productsByStores.get(i).originalPrice}</span> </span> </div>
+                                                                        </div>
+                                                                        <div class="action">
+                                                                            <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <%i++; pageContext.setAttribute("i", i);%>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </c:forEach>
+    </c:if>
 
     <!-- Footer -->
     <footer>
         <div class="footer-top">
             <div class="container">
                 <div class="row">
-                    <div style="text-align:center"> <a href="index.html"><img src="images/footer-logo.png" alt="logo"> </a> </div>
+                    <div style="text-align:center"> <a href="index.jsp"><img src="images/logo2.png" alt="logo"> </a> </div>
                     <address>
-                        <p> <i class="fa fa-map-marker"></i>Company, 12/34 - West 21st Street, New York, USA </p>
-                        <p><i class="fa fa-mobile"></i><span>+ (800) 0123 456 789</span> </p>
-                        <p> <i class="fa fa-envelope"></i><span><a href="mailto:email@domain.com">support@themes.com</a></span></p>
+                        <p> <i class="fa fa-map-marker"></i>中软国际（重庆）卓睿有限公司</p>
+                        <p><i class="fa fa-mobile"></i><span>+ (86) 0123 456 789</span> </p>
+                        <p> <i class="fa fa-envelope"></i><span><a href="mailto:email@domain.com">635837756@qq.com</a></span></p>
                     </address>
                 </div>
             </div>
@@ -1738,64 +928,63 @@
                 <div class="row">
                     <div class="col-sm-4 col-xs-12 col-md-3">
                         <div class="footer-links">
-                            <h5>Useful links</h5>
+                            <h5>功能链接</h5>
                             <ul class="links">
-                                <li><a href="#" title="Product Recall">Product Recall</a></li>
-                                <li><a href="#" title="Gift Vouchers">Gift Vouchers</a></li>
-                                <li><a href="#" title="Returns &amp; Exchange">Returns &amp; Exchange</a></li>
-                                <li><a href="#" title="Shipping Options">Shipping Options</a></li>
-                                <li><a href="#" title="Help &amp; FAQs">Help &amp; FAQs</a></li>
-                                <li><a href="#" title="Order history">Order history</a></li>
+                                <li><a href="#" title="Product Recall">商品召回</a></li>
+                                <li><a href="#" title="Gift Vouchers">礼品卡</a></li>
+                                <li><a href="#" title="Returns &amp; Exchange">退货 &amp; 换货</a></li>
+                                <li><a href="#" title="Shipping Options">快递服务</a></li>
+                                <li><a href="#" title="Help &amp; FAQs">帮助 &amp; 提问</a></li>
+                                <li><a href="#" title="Order history">订单历史</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-4 col-xs-12 col-md-3">
                         <div class="footer-links">
-                            <h5>Service</h5>
+                            <h5>服务</h5>
                             <ul class="links">
-                                <li><a href="#">Account</a></li>
-                                <li><a href="#">Wishlist</a></li>
-                                <li><a href="#">Shopping Cart</a></li>
-                                <li><a href="#">Return Policy</a></li>
-                                <li><a href="#">Special</a></li>
-                                <li><a href="#">Lookbook</a></li>
+                                <li><a href="#">账户</a></li>
+                                <li><a href="#">愿望单</a></li>
+                                <li><a href="#">购物车</a></li>
+                                <li><a href="#">退货政策</a></li>
+                                <li><a href="#">其他</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-4 col-xs-12 col-md-2">
                         <div class="footer-links">
-                            <h5>Information</h5>
+                            <h5>信息</h5>
                             <ul class="links">
-                                <li><a href="#">Sites Map </a></li>
-                                <li><a href="#">News</a></li>
-                                <li><a href="#">Trends</a></li>
-                                <li><a href="about_us.html">About Us</a></li>
-                                <li><a href="contact_us.html">Contact Us</a></li>
-                                <li><a href="#">My Orders</a></li>
+                                <li><a href="#">网站导航</a></li>
+                                <li><a href="#">新闻</a></li>
+                                <li><a href="#">潮流</a></li>
+                                <li><a href="about_us.jsp">关于我们</a></li>
+                                <li><a href="contact_us.jsp">联系我们</a></li>
+                                <li><a href="#">我的订单</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4">
                         <div class="footer-links">
                             <div class="footer-newsletter">
-                                <h5>Subscribe to our news</h5>
+                                <h5>订阅我们的新闻</h5>
                                 <form id="newsletter-validate-detail" method="post" action="#">
                                     <div class="newsletter-inner">
-                                        <p>Subscribe to be the first to know about Sales, Events, and Exclusive Offers!</p>
+                                        <p>订阅我们，第一时间获取折扣信息！</p>
                                         <input class="newsletter-email" name='Email' placeholder='Enter Your Email'>
-                                        <button class="button subscribe" type="submit" title="Subscribe">Subscribe</button>
+                                        <button class="button subscribe" type="submit" title="Subscribe">订阅</button>
                                     </div>
                                 </form>
                             </div>
                             <div class="social">
-                                <h5>Follow Us</h5>
+                                <h5>订阅我们</h5>
                                 <ul class="inline-mode">
-                                    <li class="social-network fb"><a title="Connect us on Facebook" target="_blank" href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li class="social-network googleplus"><a title="Connect us on Google+" target="_blank" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li class="social-network tw"><a title="Connect us on Twitter" target="_blank" href="#"><i class="icon-social-twitter icons"></i></a></li>
-                                    <li class="social-network linkedin"><a title="Connect us on Linkedin" target="_blank" href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    <li class="social-network rss"><a title="Connect us on rss" target="_blank" href="#"><i class="fa fa-rss"></i></a></li>
-                                    <li class="social-network instagram"><a title="Connect us on Instagram" target="_blank" href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li class="social-network fb"><a title="Connect us" target="_blank" href="#"><i class="fa fa-firefox"></i></a></li>
+                                    <li class="social-network googleplus"><a title="Connect us" target="_blank" href="#"><i class="fa fa-github"></i></a></li>
+                                    <li class="social-network tw"><a title="Connect us" target="_blank" href="#"><i class="fa fa-flag"></i></a></li>
+                                    <li class="social-network linkedin"><a title="Connect us" target="_blank" href="#"><i class="fa fa-weibo"></i></a></li>
+                                    <li class="social-network rss"><a title="Connect us" target="_blank" href="#"><i class="fa fa-qq"></i></a></li>
+                                    <li class="social-network instagram"><a title="Connect us" target="_blank" href="#"><i class="fa fa-wechat"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -1806,7 +995,7 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-5 col-xs-12 coppyright">Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></div>
+                    <div class="col-sm-5 col-xs-12 coppyright">版权所有 &copy; 2019.派德里克小组保留所有权利.</div>
                     <div class="col-sm-7 col-xs-12 payment-accept">
                         <ul>
                             <li> <a href="#"><img src="images/payment-1.png" alt="Payment Card"></a> </li>
@@ -1926,13 +1115,13 @@
                 <form id="newsletter-form" method="post" action="#">
                     <div class="content-subscribe">
                         <div class="form-subscribe-header">
-                            <label>Subscribe to be the first to know about Sales, Events, and Exclusive Offers!</label>
+                            <label>订阅我们的频道，可以第一时间获取最新折扣信息</label>
                         </div>
                         <div class="input-box">
                             <input type="text" class="input-text newsletter-subscribe" title="Sign up for our newsletter" name="email" placeholder="Enter your email address">
                         </div>
                         <div class="actions">
-                            <button class="button-subscribe" title="Subscribe" type="submit">Subscribe</button>
+                            <button class="button-subscribe" title="Subscribe" type="submit">订阅</button>
                         </div>
                     </div>
                 </form>

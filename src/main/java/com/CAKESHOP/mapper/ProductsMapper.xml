@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.CAKESHOP.mapper.ProductsMapper">
+
+    <!--auto generated Code-->
+    <resultMap id="ProductsMap" type="com.CAKESHOP.dao.Products">
+        <result column="id" property="id"/>
+        <result column="product_name" property="productName"/>
+        <result column="first_category" property="firstCategory"/>
+        <result column="second_category" property="secondCategory"/>
+        <result column="third_category" property="thirdCategory"/>
+        <result column="product_brief_introduction" property="productBriefIntroduction"/>
+        <result column="product_detail" property="productDetail"/>
+        <result column="pic1_url" property="pic1Url"/>
+        <result column="pic2_url" property="pic2Url"/>
+        <result column="pic3_url" property="pic3Url"/>
+        <result column="pic4_url" property="pic4Url"/>
+        <result column="create_time" property="createTime"/>
+        <result column="updatatime" property="updatetime"/>
+        <result column="unit" property="unit"/>
+    </resultMap>
+
+    <resultMap id="ProductsDisplayMap" type="com.CAKESHOP.dao.DisplayProducts">
+        <result column="product_id" property="productId"/>
+        <result column="inventory" property="inventory"/>
+        <result column="original_price" property="originalPrice"/>
+        <result column="discount" property="discount"/>
+        <result column="product_status" property="productStatus"/>
+        <result column="product_name" property="productName"/>
+        <result column="third_category" property="thirdCategory"/>
+        <result column="pic1_url" property="pic1Url"/>
+        <result column="unit" property="unit"/>
+    </resultMap>
+
+    <resultMap id="SingleProductMap" type="com.CAKESHOP.dao.SingleProduct">
+        <result column="store_id" property="storeId"/>
+        <result column="product_id" property="productId"/>
+        <result column="inventory" property="inventory"/>
+        <result column="original_price" property="originalPrice"/>
+        <result column="discount" property="discount"/>
+        <result column="product_name" property="productName"/>
+        <result column="first_category" property="firstCategory"/>
+        <result column="second_category" property="secondCategory"/>
+        <result column="third_category" property="thirdCategory"/>
+        <result column="product_brief_introduction" property="productBriefIntroduction"/>
+        <result column="product_detail" property="productDetail"/>
+        <result column="pic1_url" property="pic1Url"/>
+        <result column="pic2_url" property="pic2Url"/>
+        <result column="pic3_url" property="pic3Url"/>
+        <result column="pic4_url" property="pic4Url"/>
+        <result column="unit" property="unit"/>
+    </resultMap>
+
+    <!--默认方式显示-->
+    <!--模糊商品搜索-->
+    <select id="selectProductsSearch" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+    </select>
+
+    <!--模糊商品搜索_类别-->
+    <select id="selectProductsSearchCd" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} and third_category in
+        <foreach collection="cdclass" open="(" separator="," close=")" item="it">#{it}
+        </foreach>
+        limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+    </select>
+
+    <!--价格升序显示-->
+    <!--模糊商品搜索-->
+    <select id="selectProductsSearchAP" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id  where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} order by original_price*discount asc limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+    </select>
+
+    <!--模糊商品搜索_类别-->
+    <select id="selectProductsSearchCdAP" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} and third_category in
+        <foreach collection="cdclass" open="(" separator="," close=")" item="it">#{it}
+        </foreach>
+        order by original_price*discount asc
+        limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+    </select>
+
+    <!--价格降序显示-->
+    <!--模糊商品搜索-->
+    <select id="selectProductsSearchDP" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id  where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} order by original_price*discount desc limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+    </select>
+
+    <!--模糊商品搜索_类别-->
+    <select id="selectProductsSearchCdDP" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} and third_category in
+        <foreach collection="cdclass" open="(" separator="," close=")" item="it">#{it}
+        </foreach>
+        order by original_price*discount desc
+        limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+    </select>
+
+    <!--销量升序显示-->
+    <!--模糊商品搜索-->
+    <select id="selectProductsSearchAS" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id  where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} order by inventory asc limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+    </select>
+
+    <!--模糊商品搜索_类别-->
+    <select id="selectProductsSearchCdAS" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} and third_category in
+        <foreach collection="cdclass" open="(" separator="," close=")" item="it">#{it}
+        </foreach>
+        order by inventory asc
+        limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+    </select>
+
+    <!--销量降序显示-->
+    <!--模糊商品搜索-->
+    <select id="selectProductsSearchDS" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id  where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} order by inventory desc limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+    </select>
+
+    <!--模糊商品搜索_类别-->
+    <select id="selectProductsSearchCdDS" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} and third_category in
+        <foreach collection="cdclass" open="(" separator="," close=")" item="it">#{it}
+        </foreach>
+        order by inventory desc
+        limit #{startPos},#{pageSize};<!-- 在这里引用WebMapper.java中传入的参数"searchKey" -->
+    </select>
+
+    <!--返回所有商品-->
+    <select id="selectAllProducts" resultType="java.util.Map">
+        select *
+        from products;
+    </select>
+
+    <!--通过分页查询商品-->
+    <select id="selectProductsByPage" resultType="java.util.Map">
+    select * from products limit #{startPos},#{pageSize}
+    </select>
+
+    <!-- 查询商品总数 -->
+    <select id="getProductsCount" resultType="int">
+    select count(*) from products;
+</select>
+
+    <!-- 模糊查询商品总数 -->
+    <select id="getSelectProductsCount" resultType="int">
+        select count(*)
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]};
+    </select>
+
+    <!-- 模糊查询商品总数_类别 -->
+    <select id="getSelectProductsCountCd" resultType="int">
+        select count(*)
+        from (select * from products_by_store where store_id=${storeId}) as products_in_store left join products on products_in_store.product_id=products.id where product_name like "%${searchKey}%" and product_status=1 and original_price*discount &gt;= ${cdmoney[0]} and original_price*discount &lt;= ${cdmoney[1]} and third_category in
+        <foreach collection="cdclass" open="(" separator="," close=")" item="it">#{it}
+        </foreach>
+    </select>
+
+
+    <!-- 查询商品所有类别 -->
+    <select id="getProductsCategory" resultType="java.util.Map">
+        select distinct third_category
+        from (select * from products_by_store where store_id=#{storeId}) as products_in_store left join products on products_in_store.product_id=products.id
+        where product_name like"%${searchKey}%";
+    </select>
+
+    <select id="getMinMoney" resultType="double">
+        select ifnull(min(original_price*discount),0)
+        from (select * from products_by_store where store_id=#{storeId}) as products_in_store left join products on products_in_store.product_id=products.id
+        where product_name like"%${searchKey}%";
+    </select>
+
+    <select id="getMaxMoney" resultType="double">
+        select ifnull(max(original_price*discount),0)
+        from (select * from products_by_store where store_id=#{storeId}) as products_in_store left join products on products_in_store.product_id=products.id
+        where product_name like"%${searchKey}%";
+    </select>
+
+    <select id="selectById" resultMap="ProductsMap">
+        SELECT *
+        FROM products
+        WHERE id=#{id};
+    </select>
+
+    <!--查找单个商品用于门店显示-->
+    <select id="getSingleProduct" resultMap="SingleProductMap">
+        select *
+        from (select * from products_by_store where store_id=${storeId} and product_id=${productId}) as products_in_store left join products on products_in_store.product_id=products.id;
+    </select>
+
+    <!--查找类别热卖商品-->
+    <select id="selectHotProductsByCategory" resultMap="ProductsDisplayMap">
+        select order_product.product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit from (select product_id, third_category, product_name, pic1_url, unit, count(amount) as cont
+        from ((select * from orders where store_id=${storeId} and user_phone="13700000000" and order_status=4) as orders_in_store
+        join products on orders_in_store.product_id=products.id) group by product_id) as order_product
+        left join (select * from products_by_store where store_id=${storeId}) as products_in_store on order_product.product_id=products_in_store.product_id
+        where third_category=#{category} order by cont desc;
+        </select>
+
+    <!--返回商品数量-->
+    <select id="countProducts" resultType="int">
+        select count(*) from products;
+    </select>
+
+    <!--返回商品所有三级类别-->
+    <select id="selectThirdCategory" resultType="java.util.Map">
+        select distinct third_category from products;
+    </select>
+
+    <!--返回某商品三级类别-->
+    <select id="getProductThirdCategory" resultType="String">
+        select distinct third_category from products where id=${productId}
+    </select>
+
+</mapper>
