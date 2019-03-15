@@ -41,11 +41,11 @@ public class SearchProducts {
     OrdersService ordersService;
 
     @RequestMapping(value = "shop_grid.action")
-    public ModelAndView shop_grid(HttpServletRequest request) throws Exception {//Ä¬ÈÏ½çÃæ£¬°´ÕÕÉÌÆ·Ãû×éÖ¯ÉÌÆ·
+    public ModelAndView shop_grid(HttpServletRequest request) throws Exception {//Ä¬ï¿½Ï½ï¿½ï¿½æ£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½Ö¯ï¿½ï¿½Æ·
         ModelAndView modelAndView = new ModelAndView();
-        //²»·ÖÒ³ÏÔÊ¾
+        //ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Ê¾
         //List<Products> products = productsService.queryallProducts();
-        //·ÖÒ³ÏÔÊ¾
+        //ï¿½ï¿½Ò³ï¿½ï¿½Ê¾
         productsService.queryshowProductsByPage(request, modelAndView);
         modelAndView.addObject("minMoney",0);
         modelAndView.addObject("maxMoney",100);
@@ -102,7 +102,9 @@ public class SearchProducts {
     public ModelAndView stores_changed(HttpServletRequest request) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         storesService.queryselectStoresByCity(request,modelAndView);
-        modelAndView.setViewName("show_products_by_condition");
+        JSONObject jsonObject = productsService.getCategoriesMapperJson();
+        modelAndView.addObject("categoryjson", jsonObject);
+        modelAndView.setViewName("getSector.html");
         getRecommandList(request);
         return modelAndView;
     }

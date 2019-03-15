@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface SignInMapper {
 
-    List<PersonalInformation> selectUser(@Param("user_phone") String user_phone);
+    PersonalInformation selectUser(@Param("user_phone") String user_phone);
 }

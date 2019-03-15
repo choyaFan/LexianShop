@@ -7,8 +7,30 @@ public class ShoppingCart {
     private String userPhone;
     private int productId;
     private int storeId;
+
+    public double getSinglePrice() {
+        return singlePrice;
+    }
+
+    public void setSinglePrice(double singlePrice) {
+        this.singlePrice = singlePrice;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    private double singlePrice;
+    private double totalPrice;
     private int amount=-1;
     private Timestamp createTime;
+
+    public ShoppingCart() {
+    }
 
     public int getId() {
         return id;

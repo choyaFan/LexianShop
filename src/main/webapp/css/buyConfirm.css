@@ -83,7 +83,7 @@ em {
 	background:#fafafa;
 	zoom:1
 }
-.order-info .icon-box .iconfont {
+.order-info .icon-box .iconfont .iconfont2{
 	display:block;
 	width:90px;
 	height:90px;
@@ -100,6 +100,7 @@ em {
 	border-radius:50%
 }
 .iconfont img{ margin-top:20px;}
+.iconfont2 img{ margin-top:20px;}
 .payment-box {
 	border-bottom:1px solid #dfdfdf;
 	position:relative
@@ -281,7 +282,7 @@ em {
 	margin-top:12px;
 	cursor:pointer
 }
-.payment-balance .item1 .iconfont {
+.payment-balance .item1 .iconfont .iconfont2{
 	display:inline-block;
 	width:14px;
 	height:14px;
@@ -293,6 +294,9 @@ em {
 }
 .payment-balance .selected .iconfont {
 	color:#90ce36
+}
+.iconfont2{
+	color: #7c1212;
 }
 .balance-pay h3 {
 	margin-bottom:10px;

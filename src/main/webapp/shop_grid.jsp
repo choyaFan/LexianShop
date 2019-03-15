@@ -257,11 +257,11 @@
                                             <c:when test="${empty city}">
                                                 请选择城市
                                             </c:when>
-                                            <c:otherwise>
-                                                ${city}
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </option>
+                                <c:otherwise>
+                                    ${city}
+                                </c:otherwise>
+                                </c:choose>
+                                </option>
                                 </select>
                                 <select id="district">
                                     <option value="" hidden>

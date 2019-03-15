@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,17 +40,15 @@ public class IndexController {
         for(ProductsByStore productsByStore : productsByStoreList){
             productsList.add(productsService.searchById(productsByStore.getProductId()));
         }
-        ModelAndView mv = getSector();
+        ModelAndView mv = new ModelAndView();
         mv.addObject("productsByStoreList",productsByStoreList);
         mv.addObject("productsList", productsList);
-        mv.setViewName("index.jsp");
         return mv;
     }
 
     @RequestMapping("/getSector")
-    public ModelAndView getSector(){
-        System.out.println("inter into the controller");
-        ModelAndView mv = new ModelAndView();
+    public ModelAndView getSector(HttpServletRequest request){
+        ModelAndView mv;
         List<SpecialSectors> sectorsList = sectorService.getAllSpecialSector();
         List<Products> products = new ArrayList<>();
         List<SpecialProducts> specialProducts;
@@ -64,6 +64,12 @@ public class IndexController {
             }
             num.add(i);
         }
+        HttpSession session = request.getSession();
+        int storeId = 0;
+        Object obj = session.getAttribute("storeId");
+        if(obj != null)storeId = (int)session.getAttribute("storeId");
+        if(storeId != 0) mv = getIndexProduct(storeId);
+        else mv = new ModelAndView();
         mv.addObject("num", num);
         mv.addObject("specialProductsList", products);
         mv.addObject("sectorsList",sectorsList);
