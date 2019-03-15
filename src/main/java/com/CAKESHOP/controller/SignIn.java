@@ -2,12 +2,14 @@ package com.CAKESHOP.controller;
 
 
 import com.CAKESHOP.dao.PersonalInformation;
+import com.CAKESHOP.service.ShoppingCartService;
 import com.CAKESHOP.service.SignInService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -18,6 +20,9 @@ public class SignIn {
     public PersonalInformation user = new PersonalInformation();
     public GlobalStatus globalStatus = new GlobalStatus();
     public User userTransfer = new User();
+    @Resource
+    ShoppingCartService shoppingCartService;
+
 
     @RequestMapping(value = "sign_in.action")
     public ModelAndView signIn(HttpServletRequest request) {
@@ -41,6 +46,7 @@ public class SignIn {
             HttpSession session = request.getSession();
             session.setAttribute("userPhone",user_phone);
             session.setAttribute("userName", user_name);
+
             globalStatus.log_in();
             modelAndView.setViewName("getSector.html");
         }

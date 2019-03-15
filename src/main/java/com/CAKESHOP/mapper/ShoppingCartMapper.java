@@ -34,4 +34,6 @@ public interface ShoppingCartMapper {
     List<ShoppingCart> select(@Param("pojo") ShoppingCart pojo);
 
     int update(@Param("pojo") ShoppingCart pojo);
+
+    int countShoppingCartProducts(@Param("userPhone")String userPhone);
 }

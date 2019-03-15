@@ -7,5 +7,5 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface StoresService {
-    void queryselectStoresByCity(HttpServletRequest request, ModelAndView modelAndView) throws Exception;
+    List<BranchStore> queryselectStoresByCity(HttpServletRequest request, ModelAndView modelAndView) throws Exception;
 }

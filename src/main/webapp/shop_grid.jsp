@@ -257,11 +257,11 @@
                                             <c:when test="${empty city}">
                                                 请选择城市
                                             </c:when>
-                                <c:otherwise>
-                                    ${city}
-                                </c:otherwise>
-                                </c:choose>
-                                </option>
+                                            <c:otherwise>
+                                                ${city}
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </option>
                                 </select>
                                 <select id="district">
                                     <option value="" hidden>
@@ -275,7 +275,7 @@
                                         </c:choose>
                                     </option>
                                 </select>
-                                <select id="stores">
+                                <select id="stores" id="sto">
                                     <c:choose>
                                         <c:when test="${!empty storeName}">
                                             <option value="" hidden>${storeName}</option>
@@ -346,7 +346,7 @@
                                     var cName = $("#city option:selected").text();
                                     var dName = $("#district option:selected").text();
 
-                                    window.location.href = "select_stores" + "?province=" + pName + "&city=" + cName + "&district=" + dName;
+                                    //window.location.href = "select_stores" + "?province=" + pName + "&city=" + cName + "&district=" + dName;
                                 });
 
                                 store.change(function () {
@@ -369,26 +369,29 @@
                                 <div class="links">
                                     <ul>
 
-                                        <li><a title="Favorites" href="look_wish_list">收藏夹</a></li>
+                                        <li> <a title="Favorites" href="/getUserOrder">订单</a> </li>
+                                        <li> <a title="Favorites" href="look_wish_list">收藏夹</a> </li>
 
                                         <li>
-                                            <div class="dropdown block-company-wrapper hidden-xs"><a role="button"
-                                                                                                     data-toggle="dropdown"
-                                                                                                     data-target="#"
-                                                                                                     class="block-company dropdown-toggle"
-                                                                                                     href="#">其他功能<span
-                                                    class="caret"></span></a>
+                                            <div class="dropdown block-company-wrapper hidden-xs"> <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#">其他功能<span class="caret"></span></a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="about_us.html"> About Us </a></li>
-                                                    <li><a href="#"> Customer Service </a></li>
-                                                    <li><a href="#"> Privacy Policy </a></li>
-                                                    <li><a href="#">Site Map </a></li>
-                                                    <li><a href="#">Search Terms </a></li>
-                                                    <li><a href="#">Advanced Search </a></li>
+                                                    <li><a href="about_us.html"> About Us </a> </li>
+                                                    <li><a href="#"> Customer Service </a> </li>
+                                                    <li><a href="#"> Privacy Policy </a> </li>
+                                                    <li><a href="#">Site Map </a> </li>
+                                                    <li><a href="#">Search Terms </a> </li>
+                                                    <li><a href="#">Advanced Search </a> </li>
                                                 </ul>
                                             </div>
                                         </li>
-                                        <li><a href="#"><span class="hidden-xs">登陆</span></a></li>
+                                        <c:choose>
+                                            <c:when test="${not empty sessionScope.userName}">
+                                                <li> <a href="ShowPersonalInformation.action"><span class="hidden-xs">${sessionScope.userName}</span></a> </li>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li> <a href="sign_in.jsp"><span class="hidden-xs">登录</span></a> </li>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </ul>
                                 </div>
                             </div>
@@ -403,63 +406,31 @@
                         <div class="jtv-top-cart-box">
                             <!-- Top Cart -->
                             <div class="mini-cart">
-                                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a
-                                        href="#"> <span class="cart_count">2</span><span
-                                        class="price">购物车 / ¥259.00</span> </a></div>
+                                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="#"> <span class="cart_count">${shoppingCartsList.size()}</span><span class="price">购物车 / ${totalPrice}</span> </a> </div>
                                 <div>
                                     <div class="jtv-top-cart-content">
 
                                         <!--block-subtitle-->
                                         <ul class="mini-products-list" id="cart-sidebar">
-                                            <li class="item first">
-                                                <div class="item-inner"><a class="product-image"
-                                                                           title="Product Title Here"
-                                                                           href="single_product.jsp"><img
-                                                        alt="Product Title Here" src="images/products/img01.jpg"> </a>
-                                                    <div class="product-details">
-                                                        <div class="access"><a class="jtv-btn-remove"
-                                                                               title="Remove This Item" href="#"><i
-                                                                class="icon-pencil"></i><span
-                                                                class="hidden">Edit item</span></a></div>
-                                                        <p class="product-name"><a href="#">Product Title Here</a></p>
-                                                        <strong>1</strong> x <span class="price">$79.99</span></div>
-                                                </div>
-                                            </li>
-                                            <li class="item">
-                                                <div class="item-inner"><a class="product-image"
-                                                                           title="Product Title Here"
-                                                                           href="single_product.jsp"><img
-                                                        alt="Product Title Here" src="images/products/img02.jpg"> </a>
-                                                    <div class="product-details">
-                                                        <div class="access"><a class="jtv-btn-remove"
-                                                                               title="Remove This Item" href="#"><i
-                                                                class="icon-pencil"></i><span
-                                                                class="hidden">Edit item</span></a></div>
-                                                        <p class="product-name"><a href="#">Product Title Here</a></p>
-                                                        <strong>1</strong> x <span class="price">$88.89</span></div>
-                                                </div>
-                                            </li>
-                                            <li class="item last">
-                                                <div class="item-inner"><a class="product-image"
-                                                                           title="Product Title Here"
-                                                                           href="single_product.jsp"><img
-                                                        alt="Product Title Here" src="images/products/img04.jpg"> </a>
-                                                    <div class="product-details">
-                                                        <div class="access"><a class="jtv-btn-remove"
-                                                                               title="Remove This Item" href="#"><i
-                                                                class="icon-pencil"></i><span
-                                                                class="hidden">Edit item</span></a></div>
-                                                        <p class="product-name"><a href="#">Product Title Here</a></p>
-                                                        <strong>1</strong> x <span class="price">$85.99</span></div>
-                                                </div>
-                                            </li>
+                                            <c:forEach items="${shoppingCartsList}" var="cartData" varStatus="loop">
+                                                <li class="item">
+                                                    <div class="item-inner"> <a class="product-image" title="${productNameArrayList[loop.count-1]}" href="single_pro?productId=${cartData.productId}"><img alt="${productNameArrayList[loop.count-1]}" src="${pictureUrlArrayList[loop.count-1]}"> </a>
+                                                        <div class="product-details">
+                                                            <p class="product-name"><a href="single_pro?productId=${cartData.productId}">${productNameArrayList[loop.count-1]}</a> </p>
+                                                            <strong>${cartData.amount}</strong> x <span class="price">
+                                                            <fmt:formatNumber value="${productPriceArray[loop.count-1]}" type="currency" pattern="¥.00"/>
+                                                        </span> </div>
+                                                    </div>
+                                                </li>
+                                            </c:forEach>
+
+
                                         </ul>
 
                                         <!--actions-->
                                         <div class="actions">
-                                            <button class="btn-checkout" title="Checkout" type="button" onclick="#">
-                                                <span>Checkout</span></button>
-                                            <a href="#" class="view-cart"><span>View Cart</span></a></div>
+                                            <button class="btn-checkout" title="Checkout" type="button" href="checkOut.action"><span>下单</span> </button>
+                                            <a href="/shoppingCart.action" class="view-cart"><span>进入购物车</span></a> </div>
                                     </div>
                                 </div>
                             </div>
@@ -467,9 +438,7 @@
                     </div>
                     <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12 jtv-logo-box">
                         <!-- Header Logo -->
-                        <div class="logo"><h1><a title="eCommerce" href="index.jsp"><img alt="eCommerce"
-                                                                                         src="images/logo.png"> </a>
-                        </h1></div>
+                        <div class="logo"> <h1><a title="eCommerce" href="index.jsp"><img alt="eCommerce" src="images/name2.png"> </a></h1> </div>
                         <!-- End Header Logo -->
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 hidden-xs">
@@ -499,7 +468,7 @@
             <div class="nav-inner">
                 <!-- BEGIN NAV -->
                 <ul id="nav" class="hidden-xs">
-                    <li class="drop-menu"><a href="index.jsp" class="level-top active"><span>主页</span></a></li>
+                    <li class="drop-menu"><a href="getSector" class="level-top active"><span>主页</span></a></li>
                     <c:forEach items="${categoryjson}" var="category1">
                         <li class="mega-menu"><a class="level-top"><span>${category1.key}</span></a>
                             <div class="jtv-menu-block-wrapper">
@@ -1419,6 +1388,27 @@
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     $("#err").click();
+                }
+            });
+        })
+        $("#district").change(function () {
+            $.ajax({
+                url: "/select_stores",
+                data: {
+                    province: $("#province option:selected").text(),
+                    city: $("#city option:selected").text(),
+                    disctrict: $("#province option:selected").text()
+                },
+                type: "POST",
+                dataType: "json",//如果接受不到json对象，即总是进入error函数，也可以将json换为text,就一定可以进到success里面了
+                success: function (data) {
+                    for(let i=0;i<data['branchStoreList'].length;i++) {
+                        if(data['branchStoreList'][i].storeStatus == 1)
+                            $("#stores").append("<option value='"+i+"'>"+data['branchStoreList'][i].storeName+"</option>");
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("abc");
                 }
             });
         })

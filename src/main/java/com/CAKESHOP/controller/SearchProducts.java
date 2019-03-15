@@ -1,17 +1,15 @@
 package com.CAKESHOP.controller;
 
-import com.CAKESHOP.dao.DisplayProducts;
-import com.CAKESHOP.dao.Orders;
-import com.CAKESHOP.service.OrdersService;
-import com.CAKESHOP.service.ProductsService;
-import com.CAKESHOP.service.StoresService;
-import com.CAKESHOP.service.WishProductService;
+import com.CAKESHOP.dao.*;
+import com.CAKESHOP.service.*;
 import com.sun.xml.internal.ws.resources.HttpserverMessages;
 import net.sf.json.JSONObject;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -20,10 +18,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.lang.String;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 @RestController
@@ -40,6 +35,12 @@ public class SearchProducts {
     @Resource
     OrdersService ordersService;
 
+    @Resource
+    ShoppingCartService shoppingCartService;
+
+    @Resource
+    ProductsByStoreService productsByStoreService;
+
     @RequestMapping(value = "shop_grid.action")
     public ModelAndView shop_grid(HttpServletRequest request) throws Exception {//Ĭ�Ͻ��棬������Ʒ����֯��Ʒ
         ModelAndView modelAndView = new ModelAndView();
@@ -51,12 +52,15 @@ public class SearchProducts {
         modelAndView.addObject("maxMoney",100);
         modelAndView.addObject("storeId",100);
 
+        //添加购物车
+        HttpSession session = request.getSession(true);
+        displayShoppingCart(request, modelAndView);
+
         List<String> cdmoney = new ArrayList<String>();
         String minMoney = "0";
         String maxMoney = "100";
         cdmoney.add(minMoney);
         cdmoney.add(maxMoney);
-        HttpSession session = request.getSession(true);
         session.setAttribute("cdmoney", cdmoney);
         JSONObject jsonObject = productsService.getCategoriesMapperJson();
         modelAndView.addObject("categoryjson", jsonObject);
@@ -65,37 +69,44 @@ public class SearchProducts {
     }
 
     @RequestMapping(value = "search_products")
-    public ModelAndView search_products(HttpServletRequest request) {
+    public ModelAndView search_products(HttpServletRequest request) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         HttpSession session = request.getSession(true);
         session.setAttribute("searchkey",request.getParameter("searchKey"));
         productsService.queryselectProducts(request, modelAndView);
         JSONObject jsonObject = productsService.getCategoriesMapperJson();
         modelAndView.addObject("categoryjson", jsonObject);
+
+        //添加购物车
+        displayShoppingCart(request, modelAndView);
+
         modelAndView.setViewName("shop_grid.jsp");
         return modelAndView;
     }
 
     @RequestMapping(value = "show_products_by_condition")
-    public ModelAndView show_products_by_condition(HttpServletRequest request) {
+    public ModelAndView show_products_by_condition(HttpServletRequest request) throws Exception{
         ModelAndView modelAndView = new ModelAndView();
         productsService.queryselectProducts(request, modelAndView);
         JSONObject jsonObject = productsService.getCategoriesMapperJson();
         modelAndView.addObject("categoryjson", jsonObject);
+
+        //添加购物车
+        HttpSession session = request.getSession(true);
+        displayShoppingCart(request, modelAndView);
+
         modelAndView.setViewName("shop_grid.jsp");
         return modelAndView;
     }
 
 
-    @RequestMapping(value = "select_stores")
-    public ModelAndView select_stores(HttpServletRequest request) throws Exception {
+    @RequestMapping(value = "select_stores", method = RequestMethod.POST)
+    public Map<String,List<BranchStore>> select_stores(HttpServletRequest request) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
-        storesService.queryselectStoresByCity(request,modelAndView);
-        productsService.queryshowProductsByPage(request, modelAndView);
-        JSONObject jsonObject = productsService.getCategoriesMapperJson();
-        modelAndView.addObject("categoryjson", jsonObject);
-        modelAndView.setViewName("shop_grid.jsp");
-        return modelAndView;
+        List<BranchStore> branchStoreList = storesService.queryselectStoresByCity(request,modelAndView);
+        Map<String, List<BranchStore>> map =  new HashMap<String, List<BranchStore>>();
+        map.put("branchStoreList",branchStoreList);
+        return map;
     }
 
     @RequestMapping(value = "stores_changed")
@@ -104,7 +115,7 @@ public class SearchProducts {
         storesService.queryselectStoresByCity(request,modelAndView);
         JSONObject jsonObject = productsService.getCategoriesMapperJson();
         modelAndView.addObject("categoryjson", jsonObject);
-        modelAndView.setViewName("getSector.html");
+        modelAndView.setViewName("getSector");
         getRecommandList(request);
         return modelAndView;
     }
@@ -249,6 +260,45 @@ public class SearchProducts {
         session.setAttribute("recommandTrueList",recommandTrueList);
     }
 
+    public void displayShoppingCart(HttpServletRequest request, ModelAndView mv) throws Exception {
+        int i=0;
+        HttpSession session = request.getSession(true);
+        String userPhone = (String)session.getAttribute("userPhone");
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.setUserPhone(userPhone);
+        List<ShoppingCart> shoppingCartsList = shoppingCartService.queryCartInformation(shoppingCart);
+        int shoppingCartProductsNum = shoppingCartsList.size();
+        mv.addObject("shoppingCartsList",shoppingCartsList);
+
+        int productIdArray[] = new int[shoppingCartProductsNum];// 从返回值中获取商品ID
+        int StoreIdArray[] = new int[shoppingCartProductsNum];
+        String pictureUrlArray[] = new String[shoppingCartProductsNum];//通过商品ID获得图片的url，准备传到界面上显示
+        String productNameArray[] = new String[shoppingCartProductsNum];
+        String storeNameArray[] = new String[shoppingCartProductsNum];
+        double productPriceArray[] = new double[shoppingCartProductsNum];
+        double totalPrice = 0;
+
+        for(i = 0;i < shoppingCartProductsNum;i++){
+            productIdArray[i] = shoppingCartsList.get(i).getProductId();
+            StoreIdArray[i] = shoppingCartsList.get(i).getStoreId();
+            pictureUrlArray[i] = shoppingCartService.queryPictureUrl(productIdArray[i]);
+            productNameArray[i] = shoppingCartService.queryProductName(productIdArray[i]);
+            storeNameArray[i] = shoppingCartService.queryStoreName(StoreIdArray[i]);
+            ProductsByStore tmp = productsByStoreService.selectByProductAndStore(shoppingCartsList.get(i).getProductId(),shoppingCartsList.get(i).getStoreId());
+            productPriceArray[i] = tmp.getOriginalPrice()*tmp.getDiscount();
+            totalPrice+=productPriceArray[i]*shoppingCartsList.get(i).getAmount();
+        }
+        List<String> pictureUrlArrayList = Arrays.asList(pictureUrlArray);
+        List<String> productNameArrayList = Arrays.asList(productNameArray);
+        List<String> storeNameArrayList = Arrays.asList(storeNameArray);
+
+        mv.addObject("pictureUrlArrayList", pictureUrlArrayList);
+        mv.addObject("productNameArrayList", productNameArrayList);
+        mv.addObject("storeNameArrayList", storeNameArrayList);
+        mv.addObject("shoppingCartsList", shoppingCartsList);
+        mv.addObject("productPriceArray",productPriceArray);
+        mv.addObject("totalPrice",totalPrice);
+    }
 
 
 }

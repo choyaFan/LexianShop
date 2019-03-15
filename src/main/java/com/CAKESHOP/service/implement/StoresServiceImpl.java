@@ -17,7 +17,7 @@ public class StoresServiceImpl implements StoresService {
     @Resource
     private BranchStoreMapper branchStoreMapper;
     @Override
-    public void queryselectStoresByCity(HttpServletRequest request, ModelAndView modelAndView) throws Exception {
+    public List<BranchStore> queryselectStoresByCity(HttpServletRequest request, ModelAndView modelAndView) throws Exception {
         HttpSession session = request.getSession(true);
         BranchStore branchStore = new BranchStore();
 
@@ -52,7 +52,7 @@ public class StoresServiceImpl implements StoresService {
             session.setAttribute("storeId", Integer.toString(branchStoreList.get(0).getId()));
             modelAndView.addObject("store", session.getAttribute("storeName"));
         }
-        modelAndView.addObject("branchStoreList", branchStoreListAll);
+        return branchStoreListAll;
     }
 
 }

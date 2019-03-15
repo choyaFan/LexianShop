@@ -185,4 +185,10 @@
     <delete id="delete">
         DELETE FROM shopping_cart where id = #{id}
     </delete>
+
+    <!-- 计算购物车商品总数-->
+    <select id="countShoppingCartProducts" resultType="int">
+        select count(*) from shopping_cart where user_phone=${userPhone};
+    </select>
+
 </mapper>

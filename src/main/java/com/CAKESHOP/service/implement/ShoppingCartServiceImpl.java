@@ -46,4 +46,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         shoppingCartMapper.insertOrder(order.getOrderId(),order.getUserPhone(),order.getProductId(), order.getStoreId(),
                 order.getAmount(),order.getSinglePrice(),order.getTotalPrice(),order.getOrderStatus(),order.getTimeStamp());
     }
+
+    @Override
+    public int querygetShoppingCartProductsNum(String userPhone) {
+        return shoppingCartMapper.countShoppingCartProducts(userPhone);
+    }
 }

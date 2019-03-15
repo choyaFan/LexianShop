@@ -15,4 +15,5 @@ public interface ShoppingCartService {
     void addCartInformation(ShoppingCart shoppingCart);
     void subtractCartInformation(ShoppingCart shoppingCart);
     void createOrder(Orders order);
+    int querygetShoppingCartProductsNum(String userPhone);
 }

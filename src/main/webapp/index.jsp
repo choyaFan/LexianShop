@@ -22,6 +22,24 @@
 
     <!-- CSS Style -->
     <link rel="stylesheet" href="css/style3.css">
+    <script>
+        function EnterButtonPress(e) { //传入 event
+            var e = e || window.event;
+
+            if (e.keyCode == 13) {
+                document.getElementById('searchbutton').focus();
+            }
+        }
+
+        function EnterAPress(e) {
+            var e = e || window.event;
+
+            if (e.keyCode == 13) {
+
+                $("#searcha").click();
+            }
+        }
+    </script>
 
     <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
     <!-- import Vue.js -->
@@ -45,8 +63,8 @@
                 <div class="container">
                     <div class="row">
                         <!-- Header Language -->
-                        <div class="col-xs-12 col-sm-6">
-                            <div class="welcome-msg">欢迎来到派氏乐鲜生活馆</div>
+                        <div class="col-xs-12 col-sm-9">
+                            <div class="welcome-msg col-sm-3">欢迎来到派氏乐鲜生活馆</div>
                             <div class="col-sm-8">
                                 <select id="province">
                                     <option value="" hidden>
@@ -84,7 +102,7 @@
                                         </c:choose>
                                     </option>
                                 </select>
-                                <select id="stores">
+                                <select id="stores" id="sto">
                                     <c:choose>
                                         <c:when test="${!empty storeName}">
                                             <option value="" hidden>${storeName}</option>
@@ -155,7 +173,7 @@
                                     var cName = $("#city option:selected").text();
                                     var dName = $("#district option:selected").text();
 
-                                    window.location.href = "select_stores" + "?province=" + pName + "&city=" + cName + "&district=" + dName;
+                                    //window.location.href = "select_stores" + "?province=" + pName + "&city=" + cName + "&district=" + dName;
                                 });
 
                                 store.change(function () {
@@ -164,19 +182,22 @@
                                     window.location.href = "stores_changed" + "?store=" + sName;
                                 });
                             </script>
+                            <!-- End Header Language -->
+
+
                             <!-- Header Currency -->
 
                             <!-- End Header Currency -->
 
                         </div>
-                        <div class="col-xs-6 hidden-xs">
+                        <div class="col-sm-3">
                             <!-- Header Top Links -->
                             <div class="jtv-top-links">
                                 <div class="links">
                                     <ul>
 
                                         <li> <a title="Favorites" href="/getUserOrder">订单</a> </li>
-                                        <li> <a title="Favorites" href="#">收藏夹</a> </li>
+                                        <li> <a title="Favorites" href="look_wish_list">收藏夹</a> </li>
 
                                         <li>
                                             <div class="dropdown block-company-wrapper hidden-xs"> <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#">其他功能<span class="caret"></span></a>
@@ -212,42 +233,33 @@
                         <div class="jtv-top-cart-box">
                             <!-- Top Cart -->
                             <div class="mini-cart">
-                                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="#"> <span class="cart_count">2</span><span class="price">购物车 / ¥259.00</span> </a> </div>
+                                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="#"> <span class="cart_count">${shoppingCartsList.size()}</span><span class="price">购物车 /
+                                    <fmt:formatNumber value="${totalPrice}" type="currency" pattern="¥.00"/>
+                                </span> </a> </div>
                                 <div>
                                     <div class="jtv-top-cart-content">
 
                                         <!--block-subtitle-->
                                         <ul class="mini-products-list" id="cart-sidebar">
-                                            <li class="item first">
-                                                <div class="item-inner"> <a class="product-image" title="Product Title Here" href="single_product.jsp"><img alt="Product Title Here" src="images/products/img01.jpg"> </a>
-                                                    <div class="product-details">
-                                                        <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
-                                                        <p class="product-name"><a href="#">Product Title Here</a> </p>
-                                                        <strong>1</strong> x <span class="price">$79.99</span> </div>
-                                                </div>
-                                            </li>
-                                            <li class="item">
-                                                <div class="item-inner"> <a class="product-image" title="Product Title Here" href="single_product.jsp"><img alt="Product Title Here" src="images/products/img02.jpg"> </a>
-                                                    <div class="product-details">
-                                                        <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
-                                                        <p class="product-name"><a href="#">Product Title Here</a> </p>
-                                                        <strong>1</strong> x <span class="price">$88.89</span> </div>
-                                                </div>
-                                            </li>
-                                            <li class="item last">
-                                                <div class="item-inner"> <a class="product-image" title="Product Title Here" href="single_product.jsp"><img alt="Product Title Here" src="images/products/img04.jpg"> </a>
-                                                    <div class="product-details">
-                                                        <div class="access"><a class="jtv-btn-remove" title="Remove This Item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
-                                                        <p class="product-name"><a href="#">Product Title Here</a> </p>
-                                                        <strong>1</strong> x <span class="price">$85.99</span> </div>
-                                                </div>
-                                            </li>
+                                            <c:forEach items="${shoppingCartsList}" var="cartData" varStatus="loop">
+                                                <li class="item">
+                                                    <div class="item-inner"> <a class="product-image" title="${productNameArrayList[loop.count-1]}" href="single_pro?productId=${cartData.productId}"><img alt="${productNameArrayList[loop.count-1]}" src="${pictureUrlArrayList[loop.count-1]}"> </a>
+                                                        <div class="product-details">
+                                                            <p class="product-name"><a href="single_pro?productId=${cartData.productId}">${productNameArrayList[loop.count-1]}</a> </p>
+                                                            <strong>${cartData.amount}</strong> x <span class="price">
+                                                            <fmt:formatNumber value="${productPriceArray[loop.count-1]}" type="currency" pattern="¥.00"/>
+                                                        </span> </div>
+                                                    </div>
+                                                </li>
+                                            </c:forEach>
+
+
                                         </ul>
 
                                         <!--actions-->
                                         <div class="actions">
-                                            <button class="btn-checkout" title="Checkout" type="button" onclick="#"><span>Checkout</span> </button>
-                                            <a href="/getOrderProducts?orderId=1" class="view-cart"><span>View Cart</span></a> </div>
+                                            <button class="btn-checkout" title="Checkout" type="button" href="checkOut.action"><span>下单</span> </button>
+                                            <a href="/shoppingCart.action" class="view-cart"><span>进入购物车</span></a> </div>
                                     </div>
                                 </div>
                             </div>
@@ -260,10 +272,13 @@
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 hidden-xs">
                         <div class="search-box">
-                            <form action="cat" method="POST" id="search_mini_form" name="Categories">
-                                <input type="text" placeholder="搜索商品..." value="" maxlength="70" name="search" id="search">
-                                <button type="button" class="search-btn-bg"><span class="glyphicon glyphicon-search"></span>&nbsp;</button>
-                            </form>
+                            <input type="text" placeholder="搜索商品..." value="" maxlength="70" name="search" id="search"
+                                   onkeypress="EnterButtonPress()" onkeydown="EnterButtonPress()">
+                            <!--<button type="button" class="search-btn-bg"><span class="glyphicon glyphicon-search"></span>&nbsp;</button>-->
+                            <button id="searchbutton" type="button" class="search-btn-bg"
+                                    onclick="location.href = 'search_products?'+'&searchKey='+document.getElementById('search').value">
+                                <span class="glyphicon glyphicon-search"></span>&nbsp;
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -277,290 +292,38 @@
     <nav>
         <div class="container">
             <div class="mm-toggle-wrap">
-                <div class="mm-toggle"><i class="fa fa-align-justify"></i><span class="mm-label">Menu</span> </div>
+                <div class="mm-toggle"><i class="fa fa-align-justify"></i><span class="mm-label">Menu</span></div>
             </div>
             <div class="nav-inner">
                 <!-- BEGIN NAV -->
                 <ul id="nav" class="hidden-xs">
-                    <li class="drop-menu"><a href="index.jsp" class="level-top active"><span>主页</span></a>
-
-                    </li>
-                    <li class="drop-menu"> <a href="#"> <span>一级1</span> </a>
-                        <ul>
-                            <li class="sub-cat"><a href="shop_grid.action"><span>Shop Grid</span></a>
-                                <ul>
-                                    <li> <a href="#"> <span>Shop Grid Right Sidebar</span> </a> </li>
-                                    <li> <a href="#"> <span>Shop Grid Fullwidth</span> </a> </li>
-                                </ul>
-                            </li>
-                            <li class="sub-cat"> <a href="#"> <span>Shop List</span> </a>
-                                <ul>
-                                    <li> <a href="#"> <span>Shop List Right Sidebar</span> </a> </li>
-                                </ul>
-                            </li>
-                            <li> <a href="single_product.jsp"> <span>Single Product</span> </a> </li>
-                            <li> <a href="#"> <span>Shopping Cart</span> </a> </li>
-                            <li><a href="#"><span>Checkout</span></a> </li>
-                            <li> <a href="#"> <span>Wishlist</span> </a> </li>
-                            <li><a href="#"><span>Compare</span></a> </li>
-                            <li><a href="#"><span>Quick View</span></a> </li>
-                            <li><a href="#"><span>404 Error Page</span></a> </li>
-                        </ul>
-                    </li>
-                    <li class="mega-menu"> <a class="level-top" href="shop_grid.jsp"><span>一级2</span></a>
-                        <div class="jtv-menu-block-wrapper">
-                            <div class="jtv-menu-block-wrapper2">
-                                <div class="nav-block jtv-nav-block-center">
-                                    <div class="col-1">
+                    <li class="drop-menu"><a href="getSector" class="level-top active"><span>主页</span></a></li>
+                    <c:forEach items="${categoryjson}" var="category1">
+                        <li class="mega-menu"><a class="level-top"><span>${category1.key}</span></a>
+                            <div class="jtv-menu-block-wrapper">
+                                <div class="jtv-menu-block-wrapper2">
+                                    <div class="nav-block jtv-nav-block-center">
                                         <ul class="level0">
-                                            <li class="parent item"> <a href="shop_grid.jsp"><span>Apples</span></a>
-                                                <ul class="level1">
-                                                    <li> <a href="shop_grid.jsp"><span>Aurore Grape</span></a> </li>
-                                                    <li> <a href="shop_grid.jsp"><span>Super Sweet</span></a> </li>
-                                                    <li> <a href="shop_grid.jsp"><span>Gravenstein</span></a> </li>
-                                                    <li> <a href="shop_grid.jsp"><span>Orange Pippin</span></a> </li>
-                                                </ul>
-                                            </li>
-                                            <li class="parent item"> <a href="shop_grid.jsp"><span>Grapes</span></a>
-                                                <ul class="level1">
-                                                    <li> <a href="shop_grid.jsp"><span>Raw Honey</span></a> </li>
-                                                    <li> <a href="shop_grid.jsp"><span>Flavored Honey</span></a> </li>
-                                                    <li> <a href="shop_grid.jsp"><span>Propolis</span></a> </li>
-                                                    <li> <a href="shop_grid.jsp"><span>Exotic Honey</span></a> </li>
-                                                </ul>
-                                            </li>
-                                            <li class="parent item"> <a href="shop_grid.jsp"><span>Citruses</span></a>
-                                                <ul class="level1">
-                                                    <li> <a href="shop_grid.jsp"><span>Potatoes</span></a> </li>
-                                                    <li> <a href="shop_grid.jsp"><span>Tomatoes</span></a> </li>
-                                                    <li> <a href="shop_grid.jsp"><span>Pickles</span></a> </li>
-                                                    <li> <a href="shop_grid.jsp"><span>Cauliflowers</span></a> </li>
-                                                </ul>
-                                            </li>
-                                            <li class="parent item"> <a href="shop_grid.jsp"><span>Exotic Fruits</span></a>
-                                                <ul class="level1">
-                                                    <li> <a href="shop_grid.jsp"><span>Spinach</span></a> </li>
-                                                    <li> <a href="shop_grid.jsp"><span>Pumpkin</span></a> </li>
-                                                    <li> <a href="shop_grid.jsp"><span>Kohlrabi</span></a> </li>
-                                                    <li> <a href="shop_grid.jsp"><span>Green Cabbage</span></a> </li>
-                                                </ul>
-                                            </li>
-                                            <li class="parent item"> <a href="shop_grid.jsp"><span>Summer Berries</span></a>
-                                                <ul class="level1">
-                                                    <li> <a href="shop_grid.jsp"><span>Avocado</span></a> </li>
-                                                    <li> <a href="shop_grid.jsp"><span>Paprika</span></a> </li>
-                                                    <li> <a href="shop_grid.jsp"><span>Cheese Holand</span></a> </li>
-                                                    <li> <a href="shop_grid.jsp"><span>Cheese</span></a> </li>
-                                                </ul>
-                                            </li>
-                                            <li class="parent item"> <a href="shop_grid.jsp"><span>Green Cabbage</span></a>
-                                                <ul class="level1">
-                                                    <li> <a href="shop_grid.jsp"><span>Сauliflower</span></a> </li>
-                                                    <li> <a href="shop_grid.jsp"><span>Tomato</span></a> </li>
-                                                    <li> <a href="shop_grid.jsp"><span>Oranges</span></a> </li>
-                                                    <li> <a href="shop_grid.jsp"><span>Carrots</span></a> </li>
-                                                </ul>
-                                            </li>
+                                            <c:forEach items="${category1.value}" var="tmp1">
+                                                <c:forEach items="${tmp1}" var="category2">
+                                                    <li class="parent item"><span><a>${category2.key}</a></span>
+                                                        <ul class="level1">
+                                                            <c:forEach items="${category2.value}" var="category3">
+                                                                <li><a href="add_condition?condition=${category3.value}"><span>${category3.value}</span></a></li>
+                                                            </c:forEach>
+
+                                                        </ul>
+                                                    </li>
+                                                </c:forEach>
+                                            </c:forEach>
                                         </ul>
                                     </div>
-                                    <div class="col-2">
-                                        <div class="jtv-nav-image1"> <a title="" href="#"><img alt="menu_image" src="images/menu-img1.jpg"> </a> </div>
-                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                    <li class="mega-menu"> <a class="level-top" href="shop_grid.jsp"><span>一级2</span></a>
-                        <div class="jtv-menu-block-wrapper">
-                            <div class="jtv-menu-block-wrapper2">
-                                <div class="nav-block jtv-nav-block-center">
-                                    <ul class="level0">
-                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Herbs and spices</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.jsp"><span>Lemon Grass</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Rosemary</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Chamomile</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Oregano</span></a> </li>
-                                            </ul>
-                                        </li>
-                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Root vegetables</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.jsp"><span>Celeriac</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Daikon</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Rutabaga</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Parsnip</span></a> </li>
-                                            </ul>
-                                        </li>
-                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Onion family</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.jsp"><span>Chives</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Shallot</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Onion</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Garlic</span></a> </li>
-                                            </ul>
-                                        </li>
-                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Legumes</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.jsp"><span>Black beans</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Kidney beans</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Green beans</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Soy beans</span></a> </li>
-                                            </ul>
-                                        </li>
-                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Haricot bean</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.jsp"><span>Nectarine</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Charles &amp; Keith</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Fruits</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Rhubarb</span></a> </li>
-                                            </ul>
-                                        </li>
-                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Kiwi fruit</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.jsp"><span>Mango</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Orange</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Pepper</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Quince</span></a> </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="jtv-nav-banner">
-                                    <div class="jtv-banner-box">
-                                        <div class="jtv-nav-banner-img"> <a href="#"><img src="images/menu-img2.jpg" alt="Handbag"> </a> </div>
-                                    </div>
-                                    <div class="jtv-banner-box">
-                                        <div class="jtv-nav-banner-img"> <a href="#"><img src="images/menu-img3.jpg" alt="Handbag"> </a> </div>
-                                    </div>
-                                    <div class="jtv-banner-box jtv-banner-box_last">
-                                        <div class="jtv-nav-banner-img"> <a href="#"><img src="images/menu-img4.jpg" alt="Handbag"> </a> </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="mega-menu"> <a class="level-top" href="shop_grid.jsp"><span>一级3</span></a>
-                        <div class="jtv-menu-block-wrapper">
-                            <div class="jtv-menu-block-wrapper2">
-                                <div class="nav-block jtv-nav-block-center">
-                                    <ul class="level0">
-                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Vegetables</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.jsp"><span>Tomatoes</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Potatoes</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Carrots</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Cauliflowers</span></a> </li>
-                                            </ul>
-                                        </li>
-                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Fruit</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.jsp"><span>Mango</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Orange</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Pepper</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Quince</span></a> </li>
-                                            </ul>
-                                        </li>
-                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Whole Grains</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.jsp"><span>Cereals</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Noodles</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Rice</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Pasta</span></a> </li>
-                                            </ul>
-                                        </li>
-                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Protein</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.jsp"><span>Nutrition</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Biosynthesis</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Enzymes</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Chronic Diseases</span></a> </li>
-                                            </ul>
-                                        </li>
-                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Low-Fat Dairy</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.jsp"><span>Skim milk</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Fat-free cheese</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Strawberries</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Salad with olives</span></a> </li>
-                                            </ul>
-                                        </li>
-                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Healthy Snack Food</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.jsp"><span>Pumpkin Seeds</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>String Cheese</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Celery</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Cottage Cheese</span></a> </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="mega-menu"> <a class="level-top" href="shop_grid.jsp"><span>一级4</span></a>
-                        <div class="jtv-menu-block-wrapper">
-                            <div class="jtv-menu-block-wrapper2">
-                                <div class="nav-block jtv-nav-block-center jtv-menu-box-left">
-                                    <ul class="level0">
-                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Cold drinks</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.jsp"><span>Fayrouz</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Mirinda</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>AMP Energy</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Mountain Dew</span></a> </li>
-                                            </ul>               </li>
-                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Hot drinks</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.jsp"><span>Apple cider</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Butter tea</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Irish coffee</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Mate cocido</span></a> </li>
-                                            </ul>
-                                        </li>
-                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Fruit drinks</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.jsp"><span>Strawberry Lemonade</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Apple Cider</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Watermelontinis</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Sparkling Sangria</span></a> </li>
-                                            </ul></li>
-                                        <li class="parent item"> <a href="shop_grid.jsp"><span>Mixed drinks</span></a>
-                                            <ul class="level1">
-                                                <li> <a href="shop_grid.jsp"><span>Like Hand Grenade</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Miami Vice</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Blue Lagoon</span></a> </li>
-                                                <li> <a href="shop_grid.jsp"><span>Jungle Juice</span></a> </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="nav-block nav-block-right std jtv-menu-box-right"><img src="images/menu-img5.jpg" alt="menu img"> </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="mega-menu"> <a class="level-top" href="#"><span>一级5</span></a> </li>
-                    <li class="nav-custom-link mega-menu"> <a href="#" class="level-top"> <span>一级6</span> </a>
-                        <div class="jtv-menu-block-wrapper custom-menu">
-                            <div class="header-nav-dropdown-wrapper">
-                                <div class="jtv-custom-box"> <i class="fa fa-laptop"></i>
-                                    <h6 class="heading">100% Responsive Design</h6>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
-                                </div>
-                                <div class="jtv-custom-box"> <i class="fa fa-book"></i>
-                                    <h6 class="heading">Easy Document</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dignissim erat ut laoreet pharetra.</p>
-                                </div>
-                                <div class="jtv-custom-box"> <i class="fa fa-fort-awesome"></i>
-                                    <h6 class="heading">Awesome Icon Fonts</h6>
-                                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                </div>
-                                <div class="jtv-custom-box"> <i class="fa fa-home"></i>
-                                    <h6 class="heading">1 Layout Home Pages</h6>
-                                    <p>Duis aute irure dolor in reprehenderit in voluptate velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
+                    </c:forEach>
+
+
                 </ul>
             </div>
         </div>
@@ -1255,6 +1018,34 @@
     </div>
 </div>
 <!--End of Newsletter Popup-->
+
+<script type="text/javascript">
+    $(function () {
+        $("#district").change(function () {
+            $.ajax({
+                url: "/select_stores",
+                data: {
+                    province: $("#province option:selected").text(),
+                    city: $("#city option:selected").text(),
+                    disctrict: $("#province option:selected").text()
+                },
+                type: "POST",
+                dataType: "json",//如果接受不到json对象，即总是进入error函数，也可以将json换为text,就一定可以进到success里面了
+                success: function (data) {
+                    for(let i=0;i<data['branchStoreList'].length;i++) {
+                        if(data['branchStoreList'][i].storeStatus == 1)
+                            $("#stores").append("<option value='"+i+"'>"+data['branchStoreList'][i].storeName+"</option>");
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("abc");
+                }
+            });
+        })
+
+    })
+
+</script>
 
 </body>
 </html>
