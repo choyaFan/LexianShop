@@ -5,8 +5,8 @@
 <mapper namespace="com.CAKESHOP.mapper.SignInMapper">
 
     <select id="selectUser" resultMap="PersonalInformationMap" >
-      select user_password from users
-      where user_phone like '%${user_phone}%';
+      select * from users
+      where user_phone=#{user_phone};
     </select>
 
 

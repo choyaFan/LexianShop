@@ -85,7 +85,7 @@ public class SearchProducts {
     public ModelAndView stores_changed(HttpServletRequest request) throws Exception {
         ModelAndView modelAndView = new ModelAndView();
         storesService.queryselectStoresByCity(request,modelAndView);
-        modelAndView.setViewName("show_products_by_condition");
+        modelAndView.setViewName("getSector.html");
         return modelAndView;
     }
 

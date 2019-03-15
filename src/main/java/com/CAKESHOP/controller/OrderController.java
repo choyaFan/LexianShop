@@ -33,9 +33,11 @@ public class OrderController {
     private ProductsByStoreService productsByStoreService = null;
 
     @RequestMapping("/getUserOrder")
-    public ModelAndView getUserOrders(String userPhone){
+    public ModelAndView getUserOrders(HttpServletRequest request){
         ModelAndView mv = new ModelAndView();
-        List<Orders> ordersList = ordersService.selectByUserId("1");
+        HttpSession session = request.getSession();
+        String userPhone = (String)session.getAttribute("userPhone");
+        List<Orders> ordersList = ordersService.selectByUserId(userPhone);
         int orderId = ordersList.get(0).getOrderId();
         int i = 1;
         String orderName = productsService.searchById(ordersList.get(0).getProductId()).getProductName();
@@ -78,11 +80,12 @@ public class OrderController {
         Products product;
         ProductsByStore productsByStore;
         HttpSession session = request.getSession();
+        int storeId = (int)session.getAttribute("storeId");
         for(Orders orders : ordersList){
             product = productsService.searchById(orders.getProductId());
             productsByStore = productsByStoreService.selectByProductAndStore(product.getId(), 1);
             int inventory = productsByStore.getInventory() - orders.getAmount();
-            productsByStoreService.updateInventory(1,product.getId(), inventory);
+            productsByStoreService.updateInventory(storeId,product.getId(), inventory);
             productsList.add(product);
         }
         mv.addObject("productsList", productsList);

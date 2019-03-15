@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class PersonalInformation {
     public int user_id = 0;//用户id
     private String user_phone = "432";//用户手机号
-    private String user_name = "xiaoming";//用户名
+    private String user_name;//用户名
     private String user_password = "45643";//密码
     private String email = "087@";//邮箱
     private char gender = 'm';//性别

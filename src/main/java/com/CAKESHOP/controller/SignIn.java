@@ -24,10 +24,12 @@ public class SignIn {
         ModelAndView modelAndView =new ModelAndView();
 
         String user_phone = request.getParameter("user_phone");//获取输入电话号码
+        String user_name = signinService.getUserName(user_phone);
         userTransfer.user_phone_transfer=user_phone;//保存在User中，便于在ShowPersonalInformation中获取用户在登陆界面输入的电话号
 
         String user_password_input = request.getParameter("user_password");//获取界面输入密码
         System.out.println("密码输入"+user_password_input);
+        System.out.println("用户名: " + user_name);
 
         user.setUser_phone(user_phone);
         user.setUser_password(user_password_input);
@@ -38,8 +40,9 @@ public class SignIn {
             System.out.println("success");
             HttpSession session = request.getSession();
             session.setAttribute("userPhone",user_phone);
+            session.setAttribute("userName", user_name);
             globalStatus.log_in();
-            modelAndView.setViewName("index.jsp");
+            modelAndView.setViewName("getSector.html");
         }
         else{
             System.out.println("fail");

@@ -14,6 +14,10 @@ public class SignInServiceImpl implements SignInService {
     @Override
     public String login(PersonalInformation user){
         System.out.println(signinMapper.selectUser(user.getUser_phone()));
-        return signinMapper.selectUser(user.getUser_phone()).get(0).getUser_password();
+        return signinMapper.selectUser(user.getUser_phone()).getUser_password();
+    }
+    @Override
+    public String getUserName(String userPhone){
+        return signinMapper.selectUser(userPhone).getUser_name();
     }
 }

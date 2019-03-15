@@ -1,6 +1,8 @@
 <%@ page import="org.springframework.beans.factory.annotation.Autowired" %>
 <%@ page import="com.CAKESHOP.service.SectorService" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="width" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +22,14 @@
 
     <!-- CSS Style -->
     <link rel="stylesheet" href="css/style3.css">
+
+    <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+    <!-- import Vue.js -->
+    <script src="js/vue.min.js"></script>
+    <!-- import stylesheet -->
+    <link rel="stylesheet" href="css/iview.css">
+    <!-- import iView -->
+    <script src="js/iview.min.js"></script>
 </head>
 
 <body class="cms-index-index cms-home-page">
@@ -37,18 +47,123 @@
                         <!-- Header Language -->
                         <div class="col-xs-12 col-sm-6">
                             <div class="welcome-msg">欢迎来到派氏乐鲜生活馆</div>
-                            <div class="dropdown jtv-language-box"> <a role="button" data-toggle="dropdown" data-target="#" class="block-language dropdown-toggle" href="#" aria-expanded="false"> <img src="images/flag-english.jpg" alt="language">中软中心店<span class="caret"></span> </a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li> <a class="selected" href="#"> <img src="images/flag-english.jpg" alt="flag"> <span>English</span> </a> </li>
-                                    <li> <a href="#"> <img src="images/flag-default.jpg" alt="flag"> <span>French</span> </a> </li>
-                                    <li> <a href="#"> <img src="images/flag-german.jpg" alt="flag"> <span>German</span> </a> </li>
-                                    <li> <a href="#"> <img src="images/flag-brazil.jpg" alt="flag"> <span>Brazil</span> </a> </li>
-                                    <li> <a href="#"> <img src="images/flag-chile.jpg" alt="flag"> <span>Chile</span> </a> </li>
-                                    <li> <a href="#"> <img src="images/flag-spain.jpg" alt="flag"> <span>Spain</span> </a> </li>
-                                </ul>
-                            </div>
-                            <!-- End Header Language -->
+                            <div class="col-sm-8">
+                                <select id="province">
+                                    <option value="" hidden>
+                                        <c:choose>
+                                            <c:when test="${empty province}">
+                                                请选择省份
+                                            </c:when>
+                                            <c:otherwise>
+                                                ${province}
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </option>
+                                </select>
+                                <select id="city">
+                                    <option value="" hidden>
+                                        <c:choose>
+                                            <c:when test="${empty city}">
+                                                请选择城市
+                                            </c:when>
+                                            <c:otherwise>
+                                                ${city}
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </option>
+                                </select>
+                                <select id="district">
+                                    <option value="" hidden>
+                                        <c:choose>
+                                            <c:when test="${empty district}">
+                                                请选择区县
+                                            </c:when>
+                                            <c:otherwise>
+                                                ${district}
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </option>
+                                </select>
+                                <select id="stores">
+                                    <c:choose>
+                                        <c:when test="${!empty storeName}">
+                                            <option value="" hidden>${storeName}</option>
+                                            <c:if test="${!empty branchStoreList}">
+                                                <c:forEach items="${branchStoreList}" varStatus="storesStatues"
+                                                           var="storelist">
+                                                    <c:if test="${storelist.storeStatus eq 1}">
+                                                        <option value=${storesStatues.index}>${storelist.storeName}</option>
+                                                    </c:if>
+                                                </c:forEach>
+                                            </c:if>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <option value="" hidden>请选择门店</option>
+                                            <c:forEach items="${branchStoreList}" varStatus="storesStatues"
+                                                       var="storelist">
+                                                <c:if test="${storelist.storeStatus eq 1}">
+                                                    <option value=${storesStatues.index}>${storelist.storeName}</option>
+                                                </c:if>
+                                            </c:forEach>
 
+                                        </c:otherwise>
+                                    </c:choose>
+
+                                </select>
+                            </div>
+                            <script type="text/javascript" src="js/data.js"></script>
+                            <script type="text/javascript">
+                                var province = $("#province");
+                                var city = $("#city");
+                                var district = $("#district");
+                                var store = $("#stores");
+                                //初始化省份下拉选择框选项
+                                $(function () {
+                                    //遍历对象,data为data.js中的对象
+                                    data.forEach(function (value, index) {
+                                        var provinceName = value.name;//省份名
+                                        province.append("<option value='" + index + "'>" + provinceName + "</option>");
+                                    });
+                                });
+                                //省份下拉框切换事件,加载城市下拉框值
+                                province.change(function () {
+                                    //先清除城市区县两个下拉框的选项
+                                    $("#city option:not(:first)").remove();
+                                    $("#district option:not(:first)").remove();
+                                    var cityList = data[province.val()].city;
+                                    cityList.forEach(function (value, index) {
+                                        var cityName = value.name;//城市名
+                                        city.append("<option value='" + index + "'>" + cityName + "</option>");
+                                    });
+                                });
+                                //城市下拉框切换事件,加载区县下拉框值
+                                city.change(function () {
+                                    $("#district option:not(:first)").remove();
+                                    var cityList = data[province.val()].city;
+                                    var districtList = cityList[city.val()].area;
+                                    districtList.forEach(function (value, index) {
+                                        district.append("<option value='" + index + "'>" + value + "</option>");
+                                    });
+                                });
+
+                                district.change(function () {
+                                    var provinceVal = province.val();
+                                    var cityVal = city.val();
+                                    var districtVal = district.val();
+                                    //获取省市区选中的值的文本
+                                    var pName = $("#province option:selected").text();
+                                    var cName = $("#city option:selected").text();
+                                    var dName = $("#district option:selected").text();
+
+                                    window.location.href = "select_stores" + "?province=" + pName + "&city=" + cName + "&district=" + dName;
+                                });
+
+                                store.change(function () {
+                                    var sName = $("#stores option:selected").text();
+
+                                    window.location.href = "stores_changed" + "?store=" + sName;
+                                });
+                            </script>
                             <!-- Header Currency -->
 
                             <!-- End Header Currency -->
@@ -75,7 +190,14 @@
                                                 </ul>
                                             </div>
                                         </li>
-                                        <li> <a href="#"><span class="hidden-xs">登陆</span></a> </li>
+                                        <c:choose>
+                                            <c:when test="${not empty sessionScope.userName}">
+                                                <li> <a href="ShowPersonalInformation.action"><span class="hidden-xs">${sessionScope.userName}</span></a> </li>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li> <a href="sign_in.jsp"><span class="hidden-xs">登录</span></a> </li>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </ul>
                                 </div>
                             </div>
@@ -152,7 +274,7 @@
 
     <!-- Navigation -->
 
-    <nav class="jtv-sticky-header">
+    <nav>
         <div class="container">
             <div class="mm-toggle-wrap">
                 <div class="mm-toggle"><i class="fa fa-align-justify"></i><span class="mm-label">Menu</span> </div>
@@ -690,7 +812,7 @@
                             <c:if test="${empty productsByStoreList}">
                                 <div class="storeAlert">
                                     <h5>您还未登录，请登录并选择门店后再尝试
-                                    <a href="/getStoreProducts.html?storeId=1">刷新</a></h5>
+                                    <a href="/getStoreProducts.html?storeId=${sessionScope.storeId}">刷新</a></h5>
                                 </div>
                             </c:if>
                             <ul class="products-grid">
