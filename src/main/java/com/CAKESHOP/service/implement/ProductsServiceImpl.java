@@ -150,12 +150,12 @@ public class ProductsServiceImpl implements ProductsService {
 
         browse.setProductId(Integer.parseInt(productId));
         browse.setStoreId(Integer.parseInt(storeId));
-        browse.setUserPhone("13700000000");
+        String userPhone = (String) session.getAttribute("userPhone");
+        browse.setUserPhone(userPhone);
         browse.setBrowseTime(d);
 
         browseMapper.insert(browse);
-
-        List<DisplayProducts> displayProductsList = productsMapper.selectHotProductsByCategory(storeId, singleProduct.getThirdCategory());
+        List<DisplayProducts> displayProductsList = productsMapper.selectHotProductsByCategory(storeId, singleProduct.getThirdCategory(),userPhone);
 
         modelAndView.addObject("singleProduct", singleProduct);
         modelAndView.addObject("displayProductsList",displayProductsList);
@@ -175,7 +175,9 @@ public class ProductsServiceImpl implements ProductsService {
 
 
         ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.setUserPhone("13700000000");
+
+        String userPhone = (String) session.getAttribute("userPhone");
+        shoppingCart.setUserPhone(userPhone);
         shoppingCart.setProductId(Integer.parseInt(productId));
         shoppingCart.setStoreId(Integer.parseInt(storeId));
         List<ShoppingCart> shoppingCartListPerProduct = shoppingCartMapper.select(shoppingCart);
@@ -188,6 +190,8 @@ public class ProductsServiceImpl implements ProductsService {
         }
         else{
             shoppingCart.setAmount(amount);
+            shoppingCart.setSinglePrice(1.0);
+            shoppingCart.setTotalPrice(2.0);
             shoppingCartMapper.insert(shoppingCart);
         }
     }

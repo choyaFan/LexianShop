@@ -235,9 +235,10 @@ public class SearchProducts {
         HttpSession session = request.getSession(true);
         int storeId = Integer.parseInt((String)session.getAttribute("storeId"));
         Map<String,Object> recommandMap = RecommandationSystem.getTemp();
-        LinkedList<Map.Entry<String,Double>> recommandList = (LinkedList<Map.Entry<String,Double>>) recommandMap.get("13700000000");
+        String userPhone = (String)session.getAttribute("userPhone");
+        LinkedList<Map.Entry<String,Double>> recommandList = (LinkedList<Map.Entry<String,Double>>) recommandMap.get(userPhone);
         List<DisplayProducts> recommandTrueList = new ArrayList<DisplayProducts>();
-        List<Orders> ordersList = ordersService.selectByUserId("13700000000");
+        List<Orders> ordersList = ordersService.selectByUserId(userPhone);
         boolean flag=false;
         for(Map.Entry<String, Double> tmp: recommandList) {
             String productIdFromRecommand = tmp.getKey();

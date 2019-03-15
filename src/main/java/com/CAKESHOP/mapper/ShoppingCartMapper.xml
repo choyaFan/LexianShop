@@ -121,6 +121,8 @@
             <if test="pojo.userPhone != null"> user_phone, </if>
             <if test="pojo.productId != null"> product_id, </if>
             <if test="pojo.storeId != null"> store_id, </if>
+            <if test="pojo.singlePrice != null"> single_price, </if>
+            <if test="pojo.totalPrice != null"> total_price, </if>
             <if test="pojo.amount != -1"> amount, </if>
             <if test="pojo.createTime != null"> create_time, </if>
         </trim>
@@ -130,6 +132,8 @@
             <if test="pojo.userPhone != null"> #{pojo.userPhone}, </if>
             <if test="pojo.productId != null"> #{pojo.productId}, </if>
             <if test="pojo.storeId != null"> #{pojo.storeId}, </if>
+            <if test="pojo.singlePrice != null"> #{pojo.singlePrice}, </if>
+            <if test="pojo.totalPrice != null"> #{pojo.totalPrice}, </if>
             <if test="pojo.amount != -1"> #{pojo.amount}, </if>
             <if test="pojo.createTime != null"> #{pojo.createTime}, </if>
         </trim>
@@ -160,6 +164,8 @@
             <if test="pojo.userPhone != null"> user_phone = #{pojo.userPhone}, </if>
             <if test="pojo.productId != null"> product_id = #{pojo.productId}, </if>
             <if test="pojo.storeId != null"> store_id = #{pojo.storeId}, </if>
+            <if test="pojo.singlePrice != null"> single_price = #{pojo.singlePrice}, </if>
+            <if test="pojo.totalPrice != null"> total_price = #{pojo.totalPrice}, </if>
             <if test="pojo.amount != -1"> amount = #{pojo.amount}, </if>
             <if test="pojo.createTime != null"> create_time = #{pojo.createTime} </if>
         </set>

@@ -22,7 +22,6 @@ public class BrowseHistory {
 
     @RequestMapping(value = "browsehistory.action")
     public ModelAndView browseGet(HttpServletRequest request) {
-        System.out.println("啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦");
         GlobalStatus globalStatus = new GlobalStatus();
         ModelAndView modelAndView =new ModelAndView();
 

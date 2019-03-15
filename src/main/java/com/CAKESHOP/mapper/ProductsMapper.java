@@ -63,7 +63,7 @@ public interface ProductsMapper {
     SingleProduct getSingleProduct(@Param(value = "storeId") String storeId, @Param(value = "productId") String productId);
 
     //查找某门店单一类别下的商品排名
-    List<DisplayProducts> selectHotProductsByCategory(@Param(value="storeId") String storeId, @Param(value = "category") String category);
+    List<DisplayProducts> selectHotProductsByCategory(@Param(value="storeId") String storeId, @Param(value = "category") String category, @Param(value = "userPhone")String userPhone);
 
     //返回商品数量
     int countThirdCategory();
