@@ -25,8 +25,7 @@ public class PaymentController {
         System.out.println(orderId);
         ModelAndView mv = new ModelAndView();
         HttpSession session = request.getSession();
-//        String userPhone = (String)session.getAttribute("userPhone");
-        String userPhone = "123";
+        String userPhone = (String)session.getAttribute("userPhone");
         if(paymentService.paymentJudge(userPhone, totalPrice)){
             mv.setViewName("paymentSuccess.jsp");
         }

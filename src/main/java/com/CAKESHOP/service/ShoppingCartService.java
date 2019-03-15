@@ -15,5 +15,6 @@ public interface ShoppingCartService {
     void addCartInformation(ShoppingCart shoppingCart);
     void subtractCartInformation(ShoppingCart shoppingCart);
     void createOrder(Orders order);
+    void updateTotalPrice(int totalPrice, int orderId);
     int querygetShoppingCartProductsNum(String userPhone);
 }

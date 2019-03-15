@@ -144,7 +144,8 @@ public class ShoppingCartController {
         int second = c.get(Calendar.SECOND);
         int order_id = month*((int)Math.pow(10,8))+date*((int)Math.pow(10,6))+ hour*((int)Math.pow(10,4))+minute*((int)Math.pow(10,2))+second;
         System.out.println("订单号"+order_id);
-
+        ProductsByStore productsByStore;
+        int totalPrice = 0;
         for(int i = 0;i<num;i++){
             Orders order = new Orders();
             order.setOrderId(order_id);
@@ -152,14 +153,18 @@ public class ShoppingCartController {
             order.setProductId(cartData.get(i).getProductId());
             order.setStoreId(cartData.get(i).getStoreId());
             order.setAmount(cartData.get(i).getAmount());
-            order.setSinglePrice(cartData.get(i).getSinglePrice());
-            order.setTotalPrice(cartData.get(i).getTotalPrice());
+            productsByStore = productsByStoreService.selectByProductAndStore(order.getProductId(), order.getStoreId());
+            order.setSinglePrice(productsByStore.getOriginalPrice() * productsByStore.getDiscount());
+            order.setTotalPrice(0);
+            totalPrice += order.getSinglePrice() * order.getAmount();
             order.setOrderStatus(1);
             order.setTimeStamp(new Timestamp(System.currentTimeMillis()));
             shoppingCartService.createOrder(order);
+            shoppingCartService.deleteCart(cartData.get(i));
         }
-
-        modelAndView.setViewName("shoppingCart.action");
+        shoppingCartService.updateTotalPrice(totalPrice, order_id);
+        modelAndView.addObject("orderId", order_id);
+        modelAndView.setViewName("getOrderProducts.html?orderId=" + order_id);
         return modelAndView;
     }
 

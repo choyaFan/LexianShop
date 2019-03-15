@@ -44,6 +44,7 @@ public class IndexController {
     @RequestMapping("/getSector")
     public ModelAndView getSector(HttpServletRequest request) throws  Exception{
         ModelAndView mv;
+        System.out.println("inter into getSector");
         List<SpecialSectors> sectorsList = sectorService.getAllSpecialSector();
         List<Products> products = new ArrayList<>();
         List<SpecialProducts> specialProducts;
@@ -62,7 +63,10 @@ public class IndexController {
         HttpSession session = request.getSession();
         int storeId = 0;
         Object obj = session.getAttribute("storeId");
-        if(obj != null)storeId = Integer.parseInt((String)session.getAttribute("storeId"));
+        if(obj != null){
+            System.out.println("obj != null");
+            storeId = Integer.parseInt((String)session.getAttribute("storeId"));
+        }
         if(storeId != 0) mv = getIndexProduct(storeId);
         else mv = new ModelAndView();
         mv.addObject("num", num);

@@ -90,10 +90,10 @@ public class OrderController {
         Products product;
         ProductsByStore productsByStore;
         HttpSession session = request.getSession();
-        int storeId = (int)session.getAttribute("storeId");
+        int storeId = Integer.parseInt((String)session.getAttribute("storeId"));
         for(Orders orders : ordersList){
             product = productsService.searchById(orders.getProductId());
-            productsByStore = productsByStoreService.selectByProductAndStore(product.getId(), 1);
+            productsByStore = productsByStoreService.selectByProductAndStore(product.getId(), storeId);
             int inventory = productsByStore.getInventory() - orders.getAmount();
             productsByStoreService.updateInventory(storeId,product.getId(), inventory);
             productsList.add(product);

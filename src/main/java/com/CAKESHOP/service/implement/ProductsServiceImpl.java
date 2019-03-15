@@ -46,7 +46,7 @@ public class ProductsServiceImpl implements ProductsService {
             limitWay = (int) session.getAttribute("limitWay");
 
 
-        //获取最低价格
+        //锟斤拷取锟斤拷锟酵价革拷
         double minMoney = productsMapper.getMinMoney(request.getParameter("searchKey"), storeId);
         double maxMoney = productsMapper.getMaxMoney(request.getParameter("searchKey"), storeId);
 
@@ -191,7 +191,7 @@ public class ProductsServiceImpl implements ProductsService {
         else{
             shoppingCart.setAmount(amount);
             shoppingCart.setSinglePrice(1.0);
-            shoppingCart.setTotalPrice(2.0);
+            shoppingCart.setTotalPrice(1.0);
             shoppingCartMapper.insert(shoppingCart);
         }
     }
@@ -224,7 +224,7 @@ public class ProductsServiceImpl implements ProductsService {
                 if(mapper1.getSonCategory().equals(mapper2.getFatherCategory())){
                     tempThirdParam.put(Integer.toString(mapper2.getId()),mapper2.getSonCategory());
                     tempSecondParam.put(mapper1.getSonCategory(),tempThirdParam);
-//                    获取了三级目录的数组
+//                    锟斤拷取锟斤拷锟斤拷锟斤拷目录锟斤拷锟斤拷锟斤拷
                 }
             }
             if(tempFirstParam.containsKey(mapper1.getFatherCategory())){
@@ -240,9 +240,9 @@ public class ProductsServiceImpl implements ProductsService {
         }
         JSONObject jsonObject= JSONObject.fromObject(tempFirstParam);
 //        String jsonString = jsonObject.toString();
-//        System.out.println("我获取了json： "+jsonString);
+//        System.out.println("锟揭伙拷取锟斤拷json锟斤拷 "+jsonString);
 //        JsonFileGenerator.createJsonFile(jsonString,"F:/json","test");
-//        这句话用于利用util类获取商品类别的json，然后打印成json文件
+//        锟斤拷锟戒话锟斤拷锟斤拷锟斤拷锟斤拷util锟斤拷锟斤拷取锟斤拷品锟斤拷锟斤拷锟斤拷json锟斤拷然锟斤拷锟斤拷印锟斤拷json锟侥硷拷
         return jsonObject;
     }
 

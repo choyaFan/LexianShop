@@ -28,7 +28,7 @@ public class RecommandationSystem {
         return temp;
     }
 
-    @Scheduled(cron = "* * * * * ?")
+    @Scheduled(cron = "* 42 20 * * ?")
     public void RSDriver(){
         //RecommandationSystem rs = new RecommandationSystem();
         this.getAllSimilarity();
