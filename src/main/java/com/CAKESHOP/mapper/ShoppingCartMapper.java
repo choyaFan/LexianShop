@@ -27,6 +27,8 @@ public interface ShoppingCartMapper {
                      @Param("storeId") int storeId, @Param("amount") int amount, @Param("singlePrice") double singlePrice,
                      @Param("totalPrice") double totalPrice, @Param("orderStatus") int orderStatus, @Param("timeStamp") Timestamp timeStamp);
 
+    void updateTotalPrice(@Param("totalPrice")int totalPrice, @Param("orderId")int orderId);
+
     int insert(@Param("pojo") ShoppingCart pojo);
 
     int insertList(@Param("pojos") List<ShoppingCart> pojo);

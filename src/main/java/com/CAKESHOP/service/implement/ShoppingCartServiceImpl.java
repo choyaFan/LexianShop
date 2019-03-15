@@ -46,6 +46,10 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         shoppingCartMapper.insertOrder(order.getOrderId(),order.getUserPhone(),order.getProductId(), order.getStoreId(),
                 order.getAmount(),order.getSinglePrice(),order.getTotalPrice(),order.getOrderStatus(),order.getTimeStamp());
     }
+    @Override
+    public void updateTotalPrice(int totalPrice, int orderId){
+        shoppingCartMapper.updateTotalPrice(totalPrice, orderId);
+    }
 
     @Override
     public int querygetShoppingCartProductsNum(String userPhone) {

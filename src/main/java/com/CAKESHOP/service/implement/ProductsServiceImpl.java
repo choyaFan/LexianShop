@@ -188,6 +188,8 @@ public class ProductsServiceImpl implements ProductsService {
         }
         else{
             shoppingCart.setAmount(amount);
+            shoppingCart.setSinglePrice(1.0);
+            shoppingCart.setTotalPrice(1.0);
             shoppingCartMapper.insert(shoppingCart);
         }
     }

@@ -182,9 +182,6 @@
                                     window.location.href = "stores_changed" + "?store=" + sName;
                                 });
                             </script>
-                            <!-- End Header Language -->
-
-
                             <!-- Header Currency -->
 
                             <!-- End Header Currency -->

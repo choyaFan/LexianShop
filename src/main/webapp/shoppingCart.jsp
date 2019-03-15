@@ -200,234 +200,233 @@
     <![endif]-->
 
     <!-- Header -->
-    <header>
-        <div class="header-container">
-            <div class="header-top">
-                <div class="container">
-                    <div class="row">
-                        <!-- Header Language -->
-                        <div class="col-xs-12 col-sm-9">
-                            <div class="welcome-msg col-sm-3">欢迎来到派氏乐鲜生活馆</div>
-                            <div class="col-sm-8">
-                                <select id="province">
-                                    <option value="" hidden>
-                                        <c:choose>
-                                            <c:when test="${empty province}">
-                                                请选择省份
-                                            </c:when>
-                                            <c:otherwise>
-                                                ${province}
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </option>
-                                </select>
-                                <select id="city">
-                                    <option value="" hidden>
-                                        <c:choose>
-                                            <c:when test="${empty city}">
-                                                请选择城市
-                                            </c:when>
-                                            <c:otherwise>
-                                                ${city}
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </option>
-                                </select>
-                                <select id="district">
-                                    <option value="" hidden>
-                                        <c:choose>
-                                            <c:when test="${empty district}">
-                                                请选择区县
-                                            </c:when>
-                                            <c:otherwise>
-                                                ${district}
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </option>
-                                </select>
-                                <select id="stores" id="sto">
-                                    <c:choose>
-                                        <c:when test="${!empty storeName}">
-                                            <option value="" hidden>${storeName}</option>
-                                            <c:if test="${!empty branchStoreList}">
-                                                <c:forEach items="${branchStoreList}" varStatus="storesStatues"
-                                                           var="storelist">
-                                                    <c:if test="${storelist.storeStatus eq 1}">
-                                                        <option value=${storesStatues.index}>${storelist.storeName}</option>
-                                                    </c:if>
-                                                </c:forEach>
-                                            </c:if>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <option value="" hidden>请选择门店</option>
-                                            <c:forEach items="${branchStoreList}" varStatus="storesStatues"
-                                                       var="storelist">
-                                                <c:if test="${storelist.storeStatus eq 1}">
-                                                    <option value=${storesStatues.index}>${storelist.storeName}</option>
-                                                </c:if>
-                                            </c:forEach>
+    <%--<header>--%>
+        <%--<div class="header-container">--%>
+            <%--<div class="header-top">--%>
+                <%--<div class="container">--%>
+                    <%--<div class="row">--%>
+                        <%--<!-- Header Language -->--%>
+                        <%--<div class="col-xs-12 col-sm-9">--%>
+                            <%--<div class="welcome-msg col-sm-3">欢迎来到派氏乐鲜生活馆</div>--%>
+                            <%--<div class="col-sm-8">--%>
+                                <%--<select id="province">--%>
+                                    <%--<option value="" hidden>--%>
+                                        <%--<c:choose>--%>
+                                            <%--<c:when test="${empty province}">--%>
+                                                <%--请选择省份--%>
+                                            <%--</c:when>--%>
+                                            <%--<c:otherwise>--%>
+                                                <%--${province}--%>
+                                            <%--</c:otherwise>--%>
+                                        <%--</c:choose>--%>
+                                    <%--</option>--%>
+                                <%--</select>--%>
+                                <%--<select id="city">--%>
+                                    <%--<option value="" hidden>--%>
+                                        <%--<c:choose>--%>
+                                            <%--<c:when test="${empty city}">--%>
+                                                <%--请选择城市--%>
+                                            <%--</c:when>--%>
+                                            <%--<c:otherwise>--%>
+                                                <%--${city}--%>
+                                            <%--</c:otherwise>--%>
+                                        <%--</c:choose>--%>
+                                    <%--</option>--%>
+                                <%--</select>--%>
+                                <%--<select id="district">--%>
+                                    <%--<option value="" hidden>--%>
+                                        <%--<c:choose>--%>
+                                            <%--<c:when test="${empty district}">--%>
+                                                <%--请选择区县--%>
+                                            <%--</c:when>--%>
+                                            <%--<c:otherwise>--%>
+                                                <%--${district}--%>
+                                            <%--</c:otherwise>--%>
+                                        <%--</c:choose>--%>
+                                    <%--</option>--%>
+                                <%--</select>--%>
+                                <%--<select id="stores" id="sto">--%>
+                                    <%--<c:choose>--%>
+                                        <%--<c:when test="${!empty storeName}">--%>
+                                            <%--<option value="" hidden>${storeName}</option>--%>
+                                            <%--<c:if test="${!empty branchStoreList}">--%>
+                                                <%--<c:forEach items="${branchStoreList}" varStatus="storesStatues"--%>
+                                                           <%--var="storelist">--%>
+                                                    <%--<c:if test="${storelist.storeStatus eq 1}">--%>
+                                                        <%--<option value=${storesStatues.index}>${storelist.storeName}</option>--%>
+                                                    <%--</c:if>--%>
+                                                <%--</c:forEach>--%>
+                                            <%--</c:if>--%>
+                                        <%--</c:when>--%>
+                                        <%--<c:otherwise>--%>
+                                            <%--<option value="" hidden>请选择门店</option>--%>
+                                            <%--<c:forEach items="${branchStoreList}" varStatus="storesStatues"--%>
+                                                       <%--var="storelist">--%>
+                                                <%--<c:if test="${storelist.storeStatus eq 1}">--%>
+                                                    <%--<option value=${storesStatues.index}>${storelist.storeName}</option>--%>
+                                                <%--</c:if>--%>
+                                            <%--</c:forEach>--%>
 
-                                        </c:otherwise>
-                                    </c:choose>
+                                        <%--</c:otherwise>--%>
+                                    <%--</c:choose>--%>
 
-                                </select>
-                            </div>
-                            <script type="text/javascript" src="js/data.js"></script>
-                            <script type="text/javascript">
-                                var province = $("#province");
-                                var city = $("#city");
-                                var district = $("#district");
-                                var store = $("#stores");
-                                //初始化省份下拉选择框选项
-                                $(function () {
-                                    //遍历对象,data为data.js中的对象
-                                    data.forEach(function (value, index) {
-                                        var provinceName = value.name;//省份名
-                                        province.append("<option value='" + index + "'>" + provinceName + "</option>");
-                                    });
-                                });
-                                //省份下拉框切换事件,加载城市下拉框值
-                                province.change(function () {
-                                    //先清除城市区县两个下拉框的选项
-                                    $("#city option:not(:first)").remove();
-                                    $("#district option:not(:first)").remove();
-                                    var cityList = data[province.val()].city;
-                                    cityList.forEach(function (value, index) {
-                                        var cityName = value.name;//城市名
-                                        city.append("<option value='" + index + "'>" + cityName + "</option>");
-                                    });
-                                });
-                                //城市下拉框切换事件,加载区县下拉框值
-                                city.change(function () {
-                                    $("#district option:not(:first)").remove();
-                                    var cityList = data[province.val()].city;
-                                    var districtList = cityList[city.val()].area;
-                                    districtList.forEach(function (value, index) {
-                                        district.append("<option value='" + index + "'>" + value + "</option>");
-                                    });
-                                });
+                                <%--</select>--%>
+                            <%--</div>--%>
+                            <%--<script type="text/javascript" src="js/data.js"></script>--%>
+                            <%--<script type="text/javascript">--%>
+                                <%--var province = $("#province");--%>
+                                <%--var city = $("#city");--%>
+                                <%--var district = $("#district");--%>
+                                <%--var store = $("#stores");--%>
+                                <%--//初始化省份下拉选择框选项--%>
+                                <%--$(function () {--%>
+                                    <%--//遍历对象,data为data.js中的对象--%>
+                                    <%--data.forEach(function (value, index) {--%>
+                                        <%--var provinceName = value.name;//省份名--%>
+                                        <%--province.append("<option value='" + index + "'>" + provinceName + "</option>");--%>
+                                    <%--});--%>
+                                <%--});--%>
+                                <%--//省份下拉框切换事件,加载城市下拉框值--%>
+                                <%--province.change(function () {--%>
+                                    <%--//先清除城市区县两个下拉框的选项--%>
+                                    <%--$("#city option:not(:first)").remove();--%>
+                                    <%--$("#district option:not(:first)").remove();--%>
+                                    <%--var cityList = data[province.val()].city;--%>
+                                    <%--cityList.forEach(function (value, index) {--%>
+                                        <%--var cityName = value.name;//城市名--%>
+                                        <%--city.append("<option value='" + index + "'>" + cityName + "</option>");--%>
+                                    <%--});--%>
+                                <%--});--%>
+                                <%--//城市下拉框切换事件,加载区县下拉框值--%>
+                                <%--city.change(function () {--%>
+                                    <%--$("#district option:not(:first)").remove();--%>
+                                    <%--var cityList = data[province.val()].city;--%>
+                                    <%--var districtList = cityList[city.val()].area;--%>
+                                    <%--districtList.forEach(function (value, index) {--%>
+                                        <%--district.append("<option value='" + index + "'>" + value + "</option>");--%>
+                                    <%--});--%>
+                                <%--});--%>
 
-                                district.change(function () {
-                                    var provinceVal = province.val();
-                                    var cityVal = city.val();
-                                    var districtVal = district.val();
-                                    //获取省市区选中的值的文本
-                                    var pName = $("#province option:selected").text();
-                                    var cName = $("#city option:selected").text();
-                                    var dName = $("#district option:selected").text();
+                                <%--district.change(function () {--%>
+                                    <%--var provinceVal = province.val();--%>
+                                    <%--var cityVal = city.val();--%>
+                                    <%--var districtVal = district.val();--%>
+                                    <%--//获取省市区选中的值的文本--%>
+                                    <%--var pName = $("#province option:selected").text();--%>
+                                    <%--var cName = $("#city option:selected").text();--%>
+                                    <%--var dName = $("#district option:selected").text();--%>
 
-                                    //window.location.href = "select_stores" + "?province=" + pName + "&city=" + cName + "&district=" + dName;
-                                });
+                                    <%--//window.location.href = "select_stores" + "?province=" + pName + "&city=" + cName + "&district=" + dName;--%>
+                                <%--});--%>
 
-                                store.change(function () {
-                                    var sName = $("#stores option:selected").text();
+                                <%--store.change(function () {--%>
+                                    <%--var sName = $("#stores option:selected").text();--%>
 
-                                    window.location.href = "stores_changed" + "?store=" + sName;
-                                });
-                            </script>
-                            <!-- End Header Language -->
+                                    <%--window.location.href = "stores_changed" + "?store=" + sName;--%>
+                                <%--});--%>
+                            <%--</script>--%>
+                            <%--<!-- End Header Language -->--%>
+
+                            <%--<!-- Header Currency -->--%>
+
+                            <%--<!-- End Header Currency -->--%>
+
+                        <%--</div>--%>
+                        <%--<div class="col-sm-3">--%>
+                            <%--<!-- Header Top Links -->--%>
+                            <%--<div class="jtv-top-links">--%>
+                                <%--<div class="links">--%>
+                                    <%--<ul>--%>
+
+                                        <%--<li> <a title="Favorites" href="/getUserOrder">订单</a> </li>--%>
+                                        <%--<li> <a title="Favorites" href="look_wish_list">收藏夹</a> </li>--%>
+
+                                        <%--<li>--%>
+                                            <%--<div class="dropdown block-company-wrapper hidden-xs"> <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#">其他功能<span class="caret"></span></a>--%>
+                                                <%--<ul class="dropdown-menu">--%>
+                                                    <%--<li><a href="about_us.html"> About Us </a> </li>--%>
+                                                    <%--<li><a href="#"> Customer Service </a> </li>--%>
+                                                    <%--<li><a href="#"> Privacy Policy </a> </li>--%>
+                                                    <%--<li><a href="#">Site Map </a> </li>--%>
+                                                    <%--<li><a href="#">Search Terms </a> </li>--%>
+                                                    <%--<li><a href="#">Advanced Search </a> </li>--%>
+                                                <%--</ul>--%>
+                                            <%--</div>--%>
+                                        <%--</li>--%>
+                                        <%--<c:choose>--%>
+                                            <%--<c:when test="${not empty sessionScope.userName}">--%>
+                                                <%--<li> <a href="ShowPersonalInformation.action"><span class="hidden-xs">${sessionScope.userName}</span></a> </li>--%>
+                                            <%--</c:when>--%>
+                                            <%--<c:otherwise>--%>
+                                                <%--<li> <a href="sign_in.jsp"><span class="hidden-xs">登录</span></a> </li>--%>
+                                            <%--</c:otherwise>--%>
+                                        <%--</c:choose>--%>
+                                    <%--</ul>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                            <%--<!-- End Header Top Links -->--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <%--<div class="container">--%>
+                <%--<div class="row">--%>
+                    <%--<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">--%>
+                        <%--<div class="jtv-top-cart-box">--%>
+                            <%--<!-- Top Cart -->--%>
+                            <%--<div class="mini-cart">--%>
+                                <%--<div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="#"> <span class="cart_count">${shoppingCartsList.size()}</span><span class="price">购物车 /--%>
+                                    <%--&lt;%&ndash;<fmt:formatNumber value="${totalPrice}" type="currency" pattern="¥.00"/>&ndash;%&gt;--%>
+                                <%--</span> </a> </div>--%>
+                                <%--<div>--%>
+                                    <%--<div class="jtv-top-cart-content">--%>
+
+                                        <%--<!--block-subtitle-->--%>
+                                        <%--<ul class="mini-products-list" id="cart-sidebar">--%>
+                                            <%--<c:forEach items="${shoppingCartsList}" var="cartData" varStatus="loop">--%>
+                                                <%--<li class="item">--%>
+                                                    <%--<div class="item-inner"> <a class="product-image" title="${productNameArrayList[loop.count-1]}" href="single_pro?productId=${cartData.productId}"><img alt="${productNameArrayList[loop.count-1]}" src="${pictureUrlArrayList[loop.count-1]}"> </a>--%>
+                                                        <%--<div class="product-details">--%>
+                                                            <%--<p class="product-name"><a href="single_pro?productId=${cartData.productId}">${productNameArrayList[loop.count-1]}</a> </p>--%>
+                                                            <%--<strong>${cartData.amount}</strong> x <span class="price">--%>
+                                                            <%--<fmt:formatNumber value="${productPriceArray[loop.count-1]}" type="currency" pattern="¥.00"/>--%>
+                                                        <%--</span> </div>--%>
+                                                    <%--</div>--%>
+                                                <%--</li>--%>
+                                            <%--</c:forEach>--%>
 
 
-                            <!-- Header Currency -->
+                                        <%--</ul>--%>
 
-                            <!-- End Header Currency -->
-
-                        </div>
-                        <div class="col-sm-3">
-                            <!-- Header Top Links -->
-                            <div class="jtv-top-links">
-                                <div class="links">
-                                    <ul>
-
-                                        <li> <a title="Favorites" href="/getUserOrder">订单</a> </li>
-                                        <li> <a title="Favorites" href="look_wish_list">收藏夹</a> </li>
-
-                                        <li>
-                                            <div class="dropdown block-company-wrapper hidden-xs"> <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#">其他功能<span class="caret"></span></a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="about_us.html"> About Us </a> </li>
-                                                    <li><a href="#"> Customer Service </a> </li>
-                                                    <li><a href="#"> Privacy Policy </a> </li>
-                                                    <li><a href="#">Site Map </a> </li>
-                                                    <li><a href="#">Search Terms </a> </li>
-                                                    <li><a href="#">Advanced Search </a> </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <c:choose>
-                                            <c:when test="${not empty sessionScope.userName}">
-                                                <li> <a href="ShowPersonalInformation.action"><span class="hidden-xs">${sessionScope.userName}</span></a> </li>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <li> <a href="sign_in.jsp"><span class="hidden-xs">登录</span></a> </li>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- End Header Top Links -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <div class="jtv-top-cart-box">
-                            <!-- Top Cart -->
-                            <div class="mini-cart">
-                                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="#"> <span class="cart_count">${shoppingCartsList.size()}</span><span class="price">购物车 /
-                                    <fmt:formatNumber value="${totalPrice}" type="currency" pattern="¥.00"/>
-                                </span> </a> </div>
-                                <div>
-                                    <div class="jtv-top-cart-content">
-
-                                        <!--block-subtitle-->
-                                        <ul class="mini-products-list" id="cart-sidebar">
-                                            <c:forEach items="${shoppingCartsList}" var="cartData" varStatus="loop">
-                                                <li class="item">
-                                                    <div class="item-inner"> <a class="product-image" title="${productNameArrayList[loop.count-1]}" href="single_pro?productId=${cartData.productId}"><img alt="${productNameArrayList[loop.count-1]}" src="${pictureUrlArrayList[loop.count-1]}"> </a>
-                                                        <div class="product-details">
-                                                            <p class="product-name"><a href="single_pro?productId=${cartData.productId}">${productNameArrayList[loop.count-1]}</a> </p>
-                                                            <strong>${cartData.amount}</strong> x <span class="price">
-                                                            <fmt:formatNumber value="${productPriceArray[loop.count-1]}" type="currency" pattern="¥.00"/>
-                                                        </span> </div>
-                                                    </div>
-                                                </li>
-                                            </c:forEach>
-
-
-                                        </ul>
-
-                                        <!--actions-->
-                                        <div class="actions">
-                                            <button class="btn-checkout" title="Checkout" type="button" href="checkOut.action"><span>下单</span> </button>
-                                            <a href="/shoppingCart.action" class="view-cart"><span>进入购物车</span></a> </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12 jtv-logo-box">
-                        <!-- Header Logo -->
-                        <div class="logo"> <h1><a title="eCommerce" href="index.jsp"><img alt="eCommerce" src="images/name2.png"> </a></h1> </div>
-                        <!-- End Header Logo -->
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 hidden-xs">
-                        <div class="search-box">
-                            <input type="text" placeholder="搜索商品..." value="" maxlength="70" name="search" id="search"
-                                   onkeypress="EnterButtonPress()" onkeydown="EnterButtonPress()">
-                            <!--<button type="button" class="search-btn-bg"><span class="glyphicon glyphicon-search"></span>&nbsp;</button>-->
-                            <button id="searchbutton" type="button" class="search-btn-bg"
-                                    onclick="location.href = 'search_products?'+'&searchKey='+document.getElementById('search').value">
-                                <span class="glyphicon glyphicon-search"></span>&nbsp;
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+                                        <%--<!--actions-->--%>
+                                        <%--<div class="actions">--%>
+                                            <%--<button class="btn-checkout" title="Checkout" type="button" href="checkOut.action"><span>下单</span> </button>--%>
+                                            <%--<a href="/shoppingCart.action" class="view-cart"><span>进入购物车</span></a> </div>--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="col-lg-6 col-md-4 col-sm-4 col-xs-12 jtv-logo-box">--%>
+                        <%--<!-- Header Logo -->--%>
+                        <%--<div class="logo"> <h1><a title="eCommerce" href="index.jsp"><img alt="eCommerce" src="images/name2.png"> </a></h1> </div>--%>
+                        <%--<!-- End Header Logo -->--%>
+                    <%--</div>--%>
+                    <%--<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 hidden-xs">--%>
+                        <%--<div class="search-box">--%>
+                            <%--<input type="text" placeholder="搜索商品..." value="" maxlength="70" name="search" id="search"--%>
+                                   <%--onkeypress="EnterButtonPress()" onkeydown="EnterButtonPress()">--%>
+                            <%--<!--<button type="button" class="search-btn-bg"><span class="glyphicon glyphicon-search"></span>&nbsp;</button>-->--%>
+                            <%--<button id="searchbutton" type="button" class="search-btn-bg"--%>
+                                    <%--onclick="location.href = 'search_products?'+'&searchKey='+document.getElementById('search').value">--%>
+                                <%--<span class="glyphicon glyphicon-search"></span>&nbsp;--%>
+                            <%--</button>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</header>--%>
     <!-- end header -->
 
     <!-- Navigation -->

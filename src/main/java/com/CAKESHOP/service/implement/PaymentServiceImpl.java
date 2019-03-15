@@ -16,7 +16,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public boolean paymentJudge(String userPhone, int totalPrice){
         PersonalInformation personalInformation = paymentMapper.selectByUserPhone(userPhone);
-        System.out.println("userId:   " + personalInformation.getUser_id());
+        System.out.println("userPhone:   " + userPhone);
         if(personalInformation.getMoney() >= totalPrice){
             paymentMapper.updateInfo(personalInformation.getMoney() - totalPrice, userPhone);
             return true;

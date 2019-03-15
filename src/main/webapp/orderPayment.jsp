@@ -488,13 +488,13 @@
                             <div class="clearfix xm-address-list" id="checkoutAddrList">
                                 <dl class="item" >
                                     <dt>
-                                        <strong class="itemConsignee">？？？</strong>
+                                        <strong class="itemConsignee">${sessionScope.userName}}</strong>
                                         <span class="itemTag tag">已选择</span>
                                     </dt>
                                     <dd>
-                                        <p class="tel itemTel">15961726437</p>
-                                        <p class="itemRegion">？？？？？？</p>
-                                        <p class="itemStreet">？？？？？？？？？(214045)</p>
+                                        <p class="tel itemTel">${sessionScope.userPhone}</p>
+                                        <p class="itemRegion">${province} ${city}</p>
+                                        <p class="itemStreet">${district} ${storeName}</p>
                                     </dd>
                                 </dl>
                             </div>
@@ -688,7 +688,7 @@
 
                         <a href="#" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
                         <%%>
-                        <a href="/payment.html?totalPrice=<fmt:formatNumber value="${ordersList.get(0).totalPrice}"/>&orderId=<fmt:formatNumber value="${ordersList.get(0).orderId}"/> " class="btn btn-primary" id="checkoutToPay">立即下单</a>
+                        <a href="/payment.html?totalPrice=<fmt:formatNumber value="${ordersList.get(0).totalPrice}"/>&orderId=<fmt:formatNumber pattern="#########" value="${ordersList.get(0).orderId}"/> " class="btn btn-primary" id="checkoutToPay">立即下单</a>
                     </div>
                 </div>
             </form>

@@ -5,9 +5,17 @@ import java.sql.Timestamp;
 public class ShoppingCart {
     private int id=-1;
     private String userPhone;
+    private double singlePrice;
+    private double totalPrice;
     private int productId;
     private int storeId;
 
+
+    private int amount=-1;
+    private Timestamp createTime;
+
+    public ShoppingCart() {
+    }
     public double getSinglePrice() {
         return singlePrice;
     }
@@ -23,15 +31,6 @@ public class ShoppingCart {
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
-
-    private double singlePrice;
-    private double totalPrice;
-    private int amount=-1;
-    private Timestamp createTime;
-
-    public ShoppingCart() {
-    }
-
     public int getId() {
         return id;
     }

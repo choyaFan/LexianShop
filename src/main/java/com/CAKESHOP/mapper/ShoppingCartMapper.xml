@@ -26,7 +26,7 @@
 
     <delete id="deleteCartInformation">
         delete from Shopping_Cart
-        where product_id like '${productId}';
+        where product_id=${productId};
     </delete>
 
     <update id="amountAddCartInformation">
@@ -43,6 +43,12 @@
         insert into orders(order_id,user_phone,product_id,store_id,amount,single_price,total_price,order_status,time_stamp)
         values(#{orderId},#{userPhone},#{productId},#{storeId},#{amount},#{singlePrice},#{totalPrice},#{orderStatus},#{timeStamp});
     </insert>
+
+    <update id="updateTotalPrice">
+        update orders
+        set total_price=#{totalPrice}
+        where order_id=#{orderId}
+    </update>
 
 
     <!-- 下面的SQL语句实现数据库信息向Product类的传输（即数据库——>DAO层） -->
@@ -121,6 +127,8 @@
             <if test="pojo.userPhone != null"> user_phone, </if>
             <if test="pojo.productId != null"> product_id, </if>
             <if test="pojo.storeId != null"> store_id, </if>
+            <if test="pojo.singlePrice != 0.0"> single_price, </if>
+            <if test="pojo.totalPrice != 0.0"> total_price, </if>
             <if test="pojo.amount != -1"> amount, </if>
             <if test="pojo.createTime != null"> create_time, </if>
         </trim>
@@ -130,6 +138,8 @@
             <if test="pojo.userPhone != null"> #{pojo.userPhone}, </if>
             <if test="pojo.productId != null"> #{pojo.productId}, </if>
             <if test="pojo.storeId != null"> #{pojo.storeId}, </if>
+            <if test="pojo.singlePrice != 0.0"> #{pojo.singlePrice}, </if>
+            <if test="pojo.totalPrice != 0.0"> #{pojo.totalPrice}, </if>
             <if test="pojo.amount != -1"> #{pojo.amount}, </if>
             <if test="pojo.createTime != null"> #{pojo.createTime}, </if>
         </trim>
@@ -146,6 +156,8 @@
             #{pojo.userPhone},
             #{pojo.productId},
             #{pojo.storeId},
+            #{pojo.singlePrice},
+            #{pojo.totalPrice},
             #{pojo.amount},
             #{pojo.createTime}
             )

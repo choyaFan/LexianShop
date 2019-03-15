@@ -150,9 +150,9 @@
         <p>
             订单：1150505740045173                    </p>
         <p>
-            配送：潘骏杰                                    <span class="line">/</span>
-            159****6437                                    <span class="line">/</span>
-            江苏,无锡市,北塘区 民丰西苑82号202室                                                                <span class="line">/</span>
+            姓名：${userName}                                <span class="line">/</span>
+            ${userPhone}                                    <span class="line">/</span>
+            ${province},${city},${district} ${storeName}                                                                <span class="line">/</span>
             不限送货时间                                    <span class="line">/</span>
             个人电子发票                                                    </p>
     </div>
