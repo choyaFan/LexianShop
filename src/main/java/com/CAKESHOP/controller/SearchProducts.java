@@ -1,9 +1,13 @@
 package com.CAKESHOP.controller;
 
+import com.CAKESHOP.dao.DisplayProducts;
+import com.CAKESHOP.dao.Orders;
+import com.CAKESHOP.service.OrdersService;
 import com.CAKESHOP.service.ProductsService;
 import com.CAKESHOP.service.StoresService;
 import com.CAKESHOP.service.WishProductService;
 import com.sun.xml.internal.ws.resources.HttpserverMessages;
+import net.sf.json.JSONObject;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +21,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.lang.String;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -30,6 +36,9 @@ public class SearchProducts {
 
     @Resource
     WishProductService wishProductService;
+
+    @Resource
+    OrdersService ordersService;
 
     @RequestMapping(value = "shop_grid.action")
     public ModelAndView shop_grid(HttpServletRequest request) throws Exception {//默认界面，按照商品名组织商品
@@ -49,6 +58,8 @@ public class SearchProducts {
         cdmoney.add(maxMoney);
         HttpSession session = request.getSession(true);
         session.setAttribute("cdmoney", cdmoney);
+        JSONObject jsonObject = productsService.getCategoriesMapperJson();
+        modelAndView.addObject("categoryjson", jsonObject);
         modelAndView.setViewName("shop_grid.jsp");
         return modelAndView;
     }
@@ -59,6 +70,8 @@ public class SearchProducts {
         HttpSession session = request.getSession(true);
         session.setAttribute("searchkey",request.getParameter("searchKey"));
         productsService.queryselectProducts(request, modelAndView);
+        JSONObject jsonObject = productsService.getCategoriesMapperJson();
+        modelAndView.addObject("categoryjson", jsonObject);
         modelAndView.setViewName("shop_grid.jsp");
         return modelAndView;
     }
@@ -67,6 +80,8 @@ public class SearchProducts {
     public ModelAndView show_products_by_condition(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         productsService.queryselectProducts(request, modelAndView);
+        JSONObject jsonObject = productsService.getCategoriesMapperJson();
+        modelAndView.addObject("categoryjson", jsonObject);
         modelAndView.setViewName("shop_grid.jsp");
         return modelAndView;
     }
@@ -77,6 +92,8 @@ public class SearchProducts {
         ModelAndView modelAndView = new ModelAndView();
         storesService.queryselectStoresByCity(request,modelAndView);
         productsService.queryshowProductsByPage(request, modelAndView);
+        JSONObject jsonObject = productsService.getCategoriesMapperJson();
+        modelAndView.addObject("categoryjson", jsonObject);
         modelAndView.setViewName("shop_grid.jsp");
         return modelAndView;
     }
@@ -86,6 +103,7 @@ public class SearchProducts {
         ModelAndView modelAndView = new ModelAndView();
         storesService.queryselectStoresByCity(request,modelAndView);
         modelAndView.setViewName("show_products_by_condition");
+        getRecommandList(request);
         return modelAndView;
     }
 
@@ -198,6 +216,35 @@ public class SearchProducts {
             if (target.equals(item))
                 list.remove(item);
         }
+    }
+
+    public void getRecommandList(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        int storeId = Integer.parseInt((String)session.getAttribute("storeId"));
+        Map<String,Object> recommandMap = RecommandationSystem.getTemp();
+        LinkedList<Map.Entry<String,Double>> recommandList = (LinkedList<Map.Entry<String,Double>>) recommandMap.get("13700000000");
+        List<DisplayProducts> recommandTrueList = new ArrayList<DisplayProducts>();
+        List<Orders> ordersList = ordersService.selectByUserId("13700000000");
+        boolean flag=false;
+        for(Map.Entry<String, Double> tmp: recommandList) {
+            String productIdFromRecommand = tmp.getKey();
+            for(Orders order: ordersList) {
+                String productIdFromOrders = String.valueOf(order.getProductId());
+                if(productIdFromOrders.equals(productIdFromRecommand)) {
+                    flag=true;
+                }
+                if(flag)
+                    break;
+
+            }
+            if(!flag) {
+                DisplayProducts products = productsService.queryselectDisplayProductsById(Integer.parseInt(productIdFromRecommand), storeId);
+                recommandTrueList.add(products);
+            }
+            else
+                flag=false;
+        }
+        session.setAttribute("recommandTrueList",recommandTrueList);
     }
 
 

@@ -207,8 +207,8 @@
         </select>
 
     <!--返回商品数量-->
-    <select id="countProducts" resultType="int">
-        select count(*) from products;
+    <select id="countThirdCategory" resultType="int">
+        select count(distinct son_category) from categorymapper2_3;
     </select>
 
     <!--返回商品所有三级类别-->
@@ -219,6 +219,13 @@
     <!--返回某商品三级类别-->
     <select id="getProductThirdCategory" resultType="String">
         select distinct third_category from products where id=${productId}
+    </select>
+
+    <!--返回商品ID对应的DisplayProducts-->
+    <select id="selectDisplayProductsById" resultMap="ProductsDisplayMap">
+        select product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit
+        from (select * from products_by_store where store_id=${storeId} and product_id=${productId}) as products_in_store left join products on products_in_store.product_id=products.id where  product_status=1;
+
     </select>
 
 </mapper>

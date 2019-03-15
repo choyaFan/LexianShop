@@ -4,11 +4,16 @@ import com.CAKESHOP.dao.Orders;
 import com.CAKESHOP.service.OrdersService;
 import com.CAKESHOP.service.ProductsService;
 import com.CAKESHOP.service.UsersRSService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.io.InputStream;
+import javax.swing.*;
 import java.util.*;
 
+
+@RestController
 public class RecommandationSystem {
     @Resource
     OrdersService ordersService;
@@ -17,20 +22,33 @@ public class RecommandationSystem {
     @Resource
     UsersRSService usersRSService;
 
+    private static Map<String,Object> temp =new HashMap<String,Object>();
+
+    public static Map<String, Object> getTemp() {
+        return temp;
+    }
+
+    @Scheduled(cron = "0 17 9 * * ?")
+    public void RSDriver(){
+        //RecommandationSystem rs = new RecommandationSystem();
+        this.getAllSimilarity();
+    }
+
     //获取用户行为矩阵
     public double[] getNumByCustomer(String userPhone) {
         List<Orders> ordersList = ordersService.selectByUserId(userPhone);
-        int totalNum = productsService.querycountProducts();
-        List<String> thirdCategoryList = productsService.queryselectThirdCategory();
+        int totalNum = productsService.querycountThirdCategory();
+        List<Map<String,String>> thirdCategoryList = productsService.queryselectThirdCategory();
         int index = 0;
 
         double [] vectore =new double[totalNum];
-        for(String thirdCategory:thirdCategoryList) {
+        for(Map<String,String> thirdCategory:thirdCategoryList) {
             for(Orders order:ordersList){
-                if(productsService.querygetProductThirdCategory(order.getProductId()).equals(thirdCategory))
+                if(productsService.querygetProductThirdCategory(order.getProductId()).equals(thirdCategory.get("third_category")))
                     vectore[index]=vectore[index]+order.getAmount();
-                index++;
+
             }
+            index++;
         }
         return vectore;
     }
@@ -58,11 +76,11 @@ public class RecommandationSystem {
         int totalNum = usersRSService.querygetUsersNum();
         double vectorMain[] = getNumByCustomer(userPhone);
         Map<String,Double> result = new HashMap<String, Double>();
-        for(String everyUserPhone: usersRSService.queryselectAllUsersPhone()) {
-            if(everyUserPhone!=userPhone) {
-                double vectorEve[] = getNumByCustomer(everyUserPhone);
+        for(Map<String, String> everyUserPhone: usersRSService.queryselectAllUsersPhone()) {
+            if(everyUserPhone.get("user_phone")!=userPhone) {
+                double vectorEve[] = getNumByCustomer(everyUserPhone.get("user_phone"));
                 double similarity = countSimilarity(vectorMain, vectorEve);
-                result.put(everyUserPhone, similarity);
+                result.put(everyUserPhone.get("user_phone"), similarity);
             }
         }
         LinkedList<Map.Entry<String,Double>> list = new LinkedList<Map.Entry<String,Double>>(result.entrySet());
@@ -111,24 +129,23 @@ public class RecommandationSystem {
 
         Object content=null;
 
-        Map<Long,Object> temp =new HashMap<Long,Object>();
-        /*
-        for(String everyUserPhone: usersRSService.queryselectAllUsersPhone()){
-            List<Map.Entry<String,Double>> list =this.getMaxSimilarity(everyUserPhone);
+
+        List<Map<String, String>> tm = usersRSService.queryselectAllUsersPhone();
+
+        for(Map<String, String> everyUserPhone: tm){
+            List<Map.Entry<String,Double>> list =getMaxSimilarity(everyUserPhone.get("user_phone"));
             Map<String,ProductNumModel> result =getProducts(list);
-            List<Product> list1=sortProduct(result);
-            temp.put(c.getId(),list1);
+            LinkedList<Map.Entry<String,ProductNumModel>> result_list = new LinkedList<Map.Entry<String,ProductNumModel>>(result.entrySet());
+            Collections.sort( result_list, new Comparator<Map.Entry<String,ProductNumModel>> () {
+                public int compare( Map.Entry<String,ProductNumModel> o1, Map.Entry<String,ProductNumModel> o2 )
+                {
+                    return (o2.getValue().number > o1.getValue().number)?1:0;
+                }
+            });
+            temp.put(everyUserPhone.get("user_phone"),result_list);
         }
-            JSONObject object=new JSONObject(temp);
-            bufferedWriter.write(object.toString());
-            bufferedWriter.flush();
-            if(object!=null) {
-                content = object.get(customer.getId() + "");
-            }
-        map.put("msg","获取成功");
-        map.put("content",content);
-        */
-        return map;
+
+        return temp;
     }
 
 

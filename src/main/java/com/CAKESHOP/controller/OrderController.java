@@ -21,16 +21,15 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-//@RequestMapping("/order")
 public class OrderController {
     @Autowired
-    private OrdersService ordersService = null;
+    private OrdersService ordersService;
 
     @Autowired
-    private ProductsService productsService = null;
+    private ProductsService productsService;
 
     @Autowired
-    private ProductsByStoreService productsByStoreService = null;
+    private ProductsByStoreService productsByStoreService;
 
     @RequestMapping("/getUserOrder")
     public ModelAndView getUserOrders(String userPhone){

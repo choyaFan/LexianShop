@@ -3,7 +3,7 @@
 <mapper namespace="com.CAKESHOP.mapper.UsersRSMapper">
 
     <select id="getAllUsersPhone" resultType="java.util.Map">
-        select district user_phone from users;
+        select distinct user_phone from users;
     </select>
 
     <select id="getUsersNum" resultType="int">

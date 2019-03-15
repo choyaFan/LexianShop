@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.CAKESHOP.mapper.CategoryMapper">
+
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap1" type="com.CAKESHOP.dao.Categorymapper12">
+        <result column="id" property="id"/>
+        <result column="father_category" property="fatherCategory"/>
+        <result column="son_category" property="sonCategory"/>
+    </resultMap>
+    <resultMap id="AllColumnMap2" type="com.CAKESHOP.dao.Categorymapper23">
+        <result column="id" property="id"/>
+        <result column="father_category" property="fatherCategory"/>
+        <result column="son_category" property="sonCategory"/>
+    </resultMap>
+
+
+    <select id="getcategoryMapper1" resultMap="AllColumnMap1">
+        SELECT *
+        FROM categorymapper1_2;
+    </select>
+
+    <select id="getcategoryMapper2" resultMap="AllColumnMap2">
+        SELECT *
+        FROM categorymapper2_3;
+    </select>
+
+</mapper>

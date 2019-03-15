@@ -5,6 +5,8 @@ import com.CAKESHOP.dao.Products;
 import com.CAKESHOP.dao.SingleProduct;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -64,12 +66,15 @@ public interface ProductsMapper {
     List<DisplayProducts> selectHotProductsByCategory(@Param(value="storeId") String storeId, @Param(value = "category") String category);
 
     //返回商品数量
-    int countProducts();
+    int countThirdCategory();
 
     //返回所有三级类别
-    List<String> selectThirdCategory();
+    List<Map<String,String>> selectThirdCategory();
 
     //返回某商品的三级类别
     String getProductThirdCategory( @Param(value ="productId")int productId);
+
+    //返回商品ID对应的DisplayProducts
+    DisplayProducts selectDisplayProductsById( @Param(value="productId")int productId, @Param(value="storeId")int storeId);
 
 }

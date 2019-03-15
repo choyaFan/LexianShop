@@ -3,9 +3,11 @@ package com.CAKESHOP.service.implement;
 
 import com.CAKESHOP.dao.*;
 import com.CAKESHOP.mapper.BrowseMapper;
+import com.CAKESHOP.mapper.CategoryMapper;
 import com.CAKESHOP.mapper.ShoppingCartMapper;
 import com.CAKESHOP.mapper.ProductsMapper;
 import com.CAKESHOP.service.ProductsService;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +17,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class ProductsServiceImpl implements ProductsService {
@@ -27,6 +27,8 @@ public class ProductsServiceImpl implements ProductsService {
     ShoppingCartMapper shoppingCartMapper;
     @Resource
     BrowseMapper browseMapper;
+    @Resource
+    CategoryMapper categoryMapper;
 
 
     @Override
@@ -191,18 +193,58 @@ public class ProductsServiceImpl implements ProductsService {
     }
 
     @Override
-    public int querycountProducts() {
-        return productsMapper.countProducts();
+    public int querycountThirdCategory() {
+        return productsMapper.countThirdCategory();
     }
 
     @Override
-    public List<String> queryselectThirdCategory() {
+    public List<Map<String,String>> queryselectThirdCategory() {
         return productsMapper.selectThirdCategory();
     }
 
     @Override
     public String querygetProductThirdCategory(int productId) {
         return productsMapper.getProductThirdCategory(productId);
+    }
+
+    @Override
+    public JSONObject getCategoriesMapperJson(){
+        List<Categorymapper12> firstMapping=categoryMapper.getcategoryMapper1();
+        List<Categorymapper23> secondMapping=categoryMapper.getcategoryMapper2();
+        Map tempFirstParam=new HashMap();
+        List<Map> mysecondMapping=new ArrayList<>();
+        for(Categorymapper12 mapper1: firstMapping){
+            Map tempSecondParam=new HashMap();
+            Map tempThirdParam=new HashMap();
+            for(Categorymapper23 mapper2: secondMapping){
+                if(mapper1.getSonCategory().equals(mapper2.getFatherCategory())){
+                    tempThirdParam.put(Integer.toString(mapper2.getId()),mapper2.getSonCategory());
+                    tempSecondParam.put(mapper1.getSonCategory(),tempThirdParam);
+//                    获取了三级目录的数组
+                }
+            }
+            if(tempFirstParam.containsKey(mapper1.getFatherCategory())){
+                mysecondMapping=(List)tempFirstParam.get(mapper1.getFatherCategory());
+                mysecondMapping.add(tempSecondParam);
+                tempFirstParam.put(mapper1.getFatherCategory(),mysecondMapping);
+            }else{
+                mysecondMapping=new ArrayList<>();
+                mysecondMapping.add(tempSecondParam);
+                tempFirstParam.put(mapper1.getFatherCategory(),mysecondMapping);
+            }
+
+        }
+        JSONObject jsonObject= JSONObject.fromObject(tempFirstParam);
+//        String jsonString = jsonObject.toString();
+//        System.out.println("我获取了json： "+jsonString);
+//        JsonFileGenerator.createJsonFile(jsonString,"F:/json","test");
+//        这句话用于利用util类获取商品类别的json，然后打印成json文件
+        return jsonObject;
+    }
+
+    @Override
+    public DisplayProducts queryselectDisplayProductsById(int productId, int storeId) {
+        return productsMapper.selectDisplayProductsById(productId,storeId);
     }
 
 
