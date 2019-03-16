@@ -27,6 +27,8 @@ public class PaymentController {
         HttpSession session = request.getSession();
         String userPhone = (String)session.getAttribute("userPhone");
         if(paymentService.paymentJudge(userPhone, totalPrice)){
+            mv.addObject("orderId", orderId);
+            mv.addObject("totalPrice", totalPrice);
             mv.setViewName("paymentSuccess.jsp");
         }
         else {
