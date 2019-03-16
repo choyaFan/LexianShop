@@ -244,7 +244,7 @@
                                                         <div class="product-details">
                                                             <p class="product-name"><a href="single_pro?productId=${cartData.productId}">${productNameArrayList[loop.count-1]}</a> </p>
                                                             <strong>${cartData.amount}</strong> x <span class="price">
-                                                            <fmt:formatNumber value="${productPriceArray[loop.count-1]}" type="currency" pattern="¥.00"/>
+                                                            <fmt:formatNumber value="${productPriceArrayList[loop.count-1]}" type="currency" pattern="¥.00"/>
                                                         </span> </div>
                                                     </div>
                                                 </li>
@@ -1024,7 +1024,7 @@
                 data: {
                     province: $("#province option:selected").text(),
                     city: $("#city option:selected").text(),
-                    disctrict: $("#province option:selected").text()
+                    district: $("#district option:selected").text()
                 },
                 type: "POST",
                 dataType: "json",//如果接受不到json对象，即总是进入error函数，也可以将json换为text,就一定可以进到success里面了
@@ -1035,7 +1035,7 @@
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert("abc");
+                    alert("王子琦是大sb");
                 }
             });
         })

@@ -5,7 +5,9 @@ import com.CAKESHOP.dao.PictureUrl;
 import com.CAKESHOP.dao.ProductsByStore;
 import com.CAKESHOP.dao.ShoppingCart;
 import com.CAKESHOP.service.ProductsByStoreService;
+import com.CAKESHOP.service.ProductsService;
 import com.CAKESHOP.service.ShoppingCartService;
+import net.sf.json.JSONObject;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.OrderComparator;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
@@ -25,8 +28,11 @@ import java.util.List;
 public class ShoppingCartController {
     @Autowired
     private ShoppingCartService shoppingCartService;
-    @Autowired
-    private ProductsByStoreService productsByStoreService = null;
+    @Resource
+    ProductsByStoreService productsByStoreService;
+    @Resource
+    ProductsService productsService;
+
     private ShoppingCart shoppingCart = new ShoppingCart();
     public User userTransfer = new User();
 //    public double totalPrice = 0;
@@ -45,6 +51,9 @@ public class ShoppingCartController {
         String productNameArray[] = new String[num];
         String storeNameArray[] = new String[num];
         List<ProductsByStore> productsByStoreList = new ArrayList<>();
+        double productPriceArray[] = new double[num];
+        double totalPrice = 0;
+
         for(int i = 0;i < num;i++){
             productIdArray[i] = cartData.get(i).getProductId();
             StoreIdArray[i] = cartData.get(i).getStoreId();
@@ -52,6 +61,9 @@ public class ShoppingCartController {
             pictureUrlArray[i] = shoppingCartService.queryPictureUrl(productIdArray[i]);
             productNameArray[i] = shoppingCartService.queryProductName(productIdArray[i]);
             storeNameArray[i] = shoppingCartService.queryStoreName(StoreIdArray[i]);
+            ProductsByStore tmp = productsByStoreService.selectByProductAndStore(cartData.get(i).getProductId(),cartData.get(i).getStoreId());
+            productPriceArray[i] = tmp.getOriginalPrice()*tmp.getDiscount();
+            totalPrice+=productPriceArray[i]*cartData.get(i).getAmount();
    //         userTransfer.totalPrice += cartData.get(i).getTotalPrice();
 
         }
@@ -64,8 +76,16 @@ public class ShoppingCartController {
             modelAndView.addObject("pictureUrlArrayList",pictureUrlArrayList);
             modelAndView.addObject("productNameArrayList",productNameArrayList);
             modelAndView.addObject("storeNameArrayList",storeNameArrayList);
+
+            modelAndView.addObject("productPriceArray",productPriceArray);
+            modelAndView.addObject("totalPrice",totalPrice);
             modelAndView.addObject("cartData",cartData);
             modelAndView.addObject("productsByStoreList",productsByStoreList);
+            JSONObject jsonObject = productsService.getCategoriesMapperJson();
+            HttpSession session = request.getSession(true);
+
+            modelAndView.addObject("categoryjson", jsonObject);
+
  //           modelAndView.addObject("userTransfer ",userTransfer );
             modelAndView.setViewName("shoppingCart.jsp");
         }else{

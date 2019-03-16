@@ -23,14 +23,15 @@ public class WishProductServiceImpl implements WishProductService {
     @Override
     public void querygetWishList(HttpServletRequest request, ModelAndView modelAndView) throws Exception {
         HttpSession session = request.getSession(true);
-        String userPhone = "13700000000";
+        String userPhone = (String)session.getAttribute("userPhone");
         List<WishProduct> wishProductList = wishProductMapper.getWishList(userPhone);
         modelAndView.addObject("wishProductList", wishProductList);
     }
 
     @Override
     public void querydeleteWish(HttpServletRequest request) throws Exception {
-        String userPhone="13700000000";
+        HttpSession session = request.getSession(true);
+        String userPhone=(String)session.getAttribute("userPhone");
         String storeId = request.getParameter("storeId");
         String productId = request.getParameter("productId");
         wishProductMapper.deleteWish(userPhone, storeId, productId);
@@ -38,7 +39,8 @@ public class WishProductServiceImpl implements WishProductService {
 
     @Override
     public void querydeleteAllWish(HttpServletRequest request) throws Exception {
-        String userPhone="13700000000";
+        HttpSession session = request.getSession(true);
+        String userPhone=(String)session.getAttribute("userPhone");
         wishProductMapper.deleteAllWish(userPhone);
     }
 
@@ -46,7 +48,7 @@ public class WishProductServiceImpl implements WishProductService {
     @Override
     public int queryaddWish(HttpServletRequest request, ModelAndView modelAndView) throws Exception {
         HttpSession session = request.getSession(true);
-        String userPhone = "13700000000";
+        String userPhone=(String)session.getAttribute("userPhone");
         String productId = request.getParameter("productId");
         String storeId = request.getParameter("storeId");
 

@@ -100,7 +100,7 @@ public class IndexController {
         String pictureUrlArray[] = new String[shoppingCartProductsNum];//通过商品ID获得图片的url，准备传到界面上显示
         String productNameArray[] = new String[shoppingCartProductsNum];
         String storeNameArray[] = new String[shoppingCartProductsNum];
-        double productPriceArray[] = new double[shoppingCartProductsNum];
+        Double productPriceArray[] = new Double[shoppingCartProductsNum];
         double totalPrice = 0;
 
         for(i = 0;i < shoppingCartProductsNum;i++){
@@ -116,12 +116,13 @@ public class IndexController {
         List<String> pictureUrlArrayList = Arrays.asList(pictureUrlArray);
         List<String> productNameArrayList = Arrays.asList(productNameArray);
         List<String> storeNameArrayList = Arrays.asList(storeNameArray);
+        List<Double> productPriceArrayList = Arrays.asList(productPriceArray);
 
         mv.addObject("pictureUrlArrayList", pictureUrlArrayList);
         mv.addObject("productNameArrayList", productNameArrayList);
         mv.addObject("storeNameArrayList", storeNameArrayList);
         mv.addObject("shoppingCartsList", shoppingCartsList);
-        mv.addObject("productPriceArray",productPriceArray);
+        mv.addObject("productPriceArrayList",productPriceArrayList);
         mv.addObject("totalPrice",totalPrice);
     }
 }

@@ -46,7 +46,7 @@ public class ProductsServiceImpl implements ProductsService {
             limitWay = (int) session.getAttribute("limitWay");
 
 
-        //»ñÈ¡×îµÍ¼Û¸ñ
+        //ï¿½ï¿½È¡ï¿½ï¿½ï¿½Í¼Û¸ï¿½
         double minMoney = productsMapper.getMinMoney(request.getParameter("searchKey"), storeId);
         double maxMoney = productsMapper.getMaxMoney(request.getParameter("searchKey"), storeId);
 
@@ -150,12 +150,12 @@ public class ProductsServiceImpl implements ProductsService {
 
         browse.setProductId(Integer.parseInt(productId));
         browse.setStoreId(Integer.parseInt(storeId));
-        browse.setUserPhone("13700000000");
+        String userPhone = (String) session.getAttribute("userPhone");
+        browse.setUserPhone(userPhone);
         browse.setBrowseTime(d);
 
         browseMapper.insert(browse);
-
-        List<DisplayProducts> displayProductsList = productsMapper.selectHotProductsByCategory(storeId, singleProduct.getThirdCategory());
+        List<DisplayProducts> displayProductsList = productsMapper.selectHotProductsByCategory(storeId, singleProduct.getThirdCategory(),userPhone);
 
         modelAndView.addObject("singleProduct", singleProduct);
         modelAndView.addObject("displayProductsList",displayProductsList);
@@ -175,7 +175,9 @@ public class ProductsServiceImpl implements ProductsService {
 
 
         ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.setUserPhone("13700000000");
+
+        String userPhone = (String) session.getAttribute("userPhone");
+        shoppingCart.setUserPhone(userPhone);
         shoppingCart.setProductId(Integer.parseInt(productId));
         shoppingCart.setStoreId(Integer.parseInt(storeId));
         List<ShoppingCart> shoppingCartListPerProduct = shoppingCartMapper.select(shoppingCart);
@@ -222,7 +224,7 @@ public class ProductsServiceImpl implements ProductsService {
                 if(mapper1.getSonCategory().equals(mapper2.getFatherCategory())){
                     tempThirdParam.put(Integer.toString(mapper2.getId()),mapper2.getSonCategory());
                     tempSecondParam.put(mapper1.getSonCategory(),tempThirdParam);
-//                    »ñÈ¡ÁËÈý¼¶Ä¿Â¼µÄÊý×é
+//                    ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 }
             }
             if(tempFirstParam.containsKey(mapper1.getFatherCategory())){
@@ -238,9 +240,9 @@ public class ProductsServiceImpl implements ProductsService {
         }
         JSONObject jsonObject= JSONObject.fromObject(tempFirstParam);
 //        String jsonString = jsonObject.toString();
-//        System.out.println("ÎÒ»ñÈ¡ÁËjson£º "+jsonString);
+//        System.out.println("ï¿½Ò»ï¿½È¡ï¿½ï¿½jsonï¿½ï¿½ "+jsonString);
 //        JsonFileGenerator.createJsonFile(jsonString,"F:/json","test");
-//        Õâ¾ä»°ÓÃÓÚÀûÓÃutilÀà»ñÈ¡ÉÌÆ·Àà±ðµÄjson£¬È»ºó´òÓ¡³ÉjsonÎÄ¼þ
+//        ï¿½ï¿½ï¿½ä»°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½utilï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½jsonï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½ï¿½jsonï¿½Ä¼ï¿½
         return jsonObject;
     }
 

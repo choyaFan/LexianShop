@@ -27,6 +27,32 @@
 
     <!-- CSS Style -->
     <link rel="stylesheet" href="css/style3.css">
+
+    <script>
+        function EnterButtonPress(e) { //传入 event
+            var e = e || window.event;
+
+            if (e.keyCode == 13) {
+                document.getElementById('searchbutton').focus();
+            }
+        }
+
+        function EnterAPress(e) {
+            var e = e || window.event;
+
+            if (e.keyCode == 13) {
+
+                $("#searcha").click();
+            }
+        }
+    </script>
+    <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+    <!-- import Vue.js -->
+    <script src="js/vue.min.js"></script>
+    <!-- import stylesheet -->
+    <link rel="stylesheet" href="css/iview.css">
+    <!-- import iView -->
+    <script src="js/iview.min.js"></script>
 </head>
 
 <body class="shopping-cart-page">
@@ -194,6 +220,95 @@
     </div>
 </div>
 <div id="page">
+    <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a
+            href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Header -->
+
+    <header>
+        <div class="header-container">
+            <div class="header-top">
+                <div class="container">
+                    <div class="row">
+                        <!-- Header Language -->
+                        <div class="col-xs-12 col-sm-9">
+                            <div class="welcome-msg col-sm-3">欢迎来到派氏乐鲜生活馆</div>
+
+                            <!-- End Header Language -->
+
+
+                            <!-- Header Currency -->
+
+                            <!-- End Header Currency -->
+
+                        </div>
+                        <div class="col-sm-3">
+                            <!-- Header Top Links -->
+                            <div class="jtv-top-links">
+                                <div class="links">
+                                    <ul>
+
+                                        <li> <a title="Favorites" href="/getUserOrder">订单</a> </li>
+                                        <li> <a title="Favorites" href="look_wish_list">收藏夹</a> </li>
+
+                                        <li>
+                                            <div class="dropdown block-company-wrapper hidden-xs"> <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#">其他功能<span class="caret"></span></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="about_us.html"> About Us </a> </li>
+                                                    <li><a href="#"> Customer Service </a> </li>
+                                                    <li><a href="#"> Privacy Policy </a> </li>
+                                                    <li><a href="#">Site Map </a> </li>
+                                                    <li><a href="#">Search Terms </a> </li>
+                                                    <li><a href="#">Advanced Search </a> </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <c:choose>
+                                            <c:when test="${not empty sessionScope.userName}">
+                                                <li> <a href="ShowPersonalInformation.action"><span class="hidden-xs">${sessionScope.userName}</span></a> </li>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li> <a href="sign_in.jsp"><span class="hidden-xs">登录</span></a> </li>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- End Header Top Links -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+
+                    </div>
+                    <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12 jtv-logo-box">
+                        <!-- Header Logo -->
+                        <div class="logo"> <h1><a title="eCommerce" href="index.jsp"><img alt="eCommerce" src="images/name2.png"> </a></h1> </div>
+                        <!-- End Header Logo -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 hidden-xs">
+                        <div class="search-box">
+                            <input type="text" placeholder="搜索商品..." value="" maxlength="70" name="search" id="search"
+                                   onkeypress="EnterButtonPress()" onkeydown="EnterButtonPress()">
+                            <!--<button type="button" class="search-btn-bg"><span class="glyphicon glyphicon-search"></span>&nbsp;</button>-->
+                            <button id="searchbutton" type="button" class="search-btn-bg"
+                                    onclick="location.href = 'search_products?'+'&searchKey='+document.getElementById('search').value">
+                                <span class="glyphicon glyphicon-search"></span>&nbsp;
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- end header -->
+
     <!-- Navigation -->
 
     <nav>
@@ -316,193 +431,80 @@
                 </div>
                 <div class="crosssel">
                     <div class="jtv-title">
-                        <h2>you may be interested</h2>
+                        <h2>猜你喜欢</h2>
                     </div>
                     <div class="category-products">
-                        <ul class="products-grid">
-                            <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                <div class="item-inner">
-                                    <div class="item-img">
-                                        <div class="item-img-info"><a class="product-image" title="Product Title Here"
-                                                                      href="single_product.html"> <img
-                                                alt="Product Title Here" src="images/products/img10.jpg"> </a>
-                                            <div class="jtv-box-hover">
-                                                <ul class="add-to-links">
-                                                    <li><a class="link-quickview" href="quick_view.html"><i
-                                                            class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a>
-                                                    </li>
-                                                    <li><a class="link-wishlist" href="wishlist.html"><i
-                                                            class="icon-heart icons"></i><span
-                                                            class="hidden">Wishlist</span></a></li>
-                                                    <li><a class="link-compare" href="compare.html"><i
-                                                            class="icon-shuffle icons"></i><span
-                                                            class="hidden">Compare</span></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item-info">
-                                        <div class="info-inner">
-                                            <div class="item-title"><h6><a title="Product Title Here"
-                                                                           href="single_product.html"> Product Title
-                                                Here </a></h6></div>
-                                            <div class="item-content">
-                                                <div class="rating"><i class="fa fa-star-o"></i> <i
-                                                        class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
-                                                        class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></div>
-                                                <div class="item-price">
-                                                    <div class="price-box"><span class="regular-price"> <span
-                                                            class="price">$155.00</span> </span></div>
-                                                </div>
-                                                <div class="action">
-                                                    <button class="button btn-cart" type="button" title=""
-                                                            data-original-title="Add to Cart"><span>Add to Cart</span>
-                                                    </button>
+                        <ul class="products-grid" id="mainpage">
+                            <div hidden="true" id="jud">
+                                <button id="succ1" @click="success1(true)" hidde="true"/>
+                                <button id="succ" @click="success(true)" hidde="true"/>
+                                <button id="warn" @click="warning(true)" hidde="true"/>
+                                <button id="err" @click="error(true)" hidde="true"/>
+                            </div>
+
+                            <c:forEach items="${recommandTrueList}" var="recommandProduct">
+                                <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                                    <div class="item-inner">
+                                        <div class="item-img">
+                                            <div class="item-img-info"><a class="product-image"
+                                                                          title="Product Title Here"
+                                                                          href="single_pro?productId=${recommandProduct.productId}"> <img
+                                                    alt="Product Title Here" src=${recommandProduct.pic1Url}> </a>
+                                                <div class="jtv-box-hover">
+                                                    <ul class="add-to-links">
+                                                        <li><a class="link-quickview" href="single_pro?productId=${recommandProduct.productId}"><i
+                                                                class="icon-magnifier-add icons"></i><span
+                                                                class="hidden">查看商品</span></a></li>
+                                                        <li><a class="link-wishlist" name="${recommandProduct.productId}"><i
+                                                                class="icon-heart icons"></i><span
+                                                                class="hidden">加入收藏夹</span></a></li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                <div class="item-inner">
-                                    <div class="item-img">
-                                        <div class="item-img-info"><a class="product-image" title="Product Title Here"
-                                                                      href="single_product.html"> <img
-                                                alt="Product Title Here" src="images/products/img01.jpg"> </a>
-                                            <div class="jtv-box-hover">
-                                                <ul class="add-to-links">
-                                                    <li><a class="link-quickview" href="quick_view.html"><i
-                                                            class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a>
-                                                    </li>
-                                                    <li><a class="link-wishlist" href="wishlist.html"><i
-                                                            class="icon-heart icons"></i><span
-                                                            class="hidden">Wishlist</span></a></li>
-                                                    <li><a class="link-compare" href="compare.html"><i
-                                                            class="icon-shuffle icons"></i><span
-                                                            class="hidden">Compare</span></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item-info">
-                                        <div class="info-inner">
-                                            <div class="item-title"><h6><a title="Product Title Here"
-                                                                           href="single_product.html"> Product Title
-                                                Here </a></h6></div>
-                                            <div class="item-content">
-                                                <div class="rating"><i class="fa fa-star-o"></i> <i
-                                                        class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
-                                                        class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></div>
-                                                <div class="item-price">
-                                                    <div class="price-box"><span class="regular-price"> <span
-                                                            class="price">$225.00</span> </span></div>
-                                                </div>
-                                                <div class="action">
-                                                    <button class="button btn-cart" type="button" title=""
-                                                            data-original-title="Add to Cart"><span>Add to Cart</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                <div class="item-inner">
-                                    <div class="item-img">
-                                        <div class="item-img-info"><a class="product-image" title="Product Title Here"
-                                                                      href="single_product.html"> <img
-                                                alt="Product Title Here" src="images/products/img02.jpg"> </a>
-                                            <div class="jtv-box-hover">
-                                                <ul class="add-to-links">
-                                                    <li><a class="link-quickview" href="quick_view.html"><i
-                                                            class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a>
-                                                    </li>
-                                                    <li><a class="link-wishlist" href="wishlist.html"><i
-                                                            class="icon-heart icons"></i><span
-                                                            class="hidden">Wishlist</span></a></li>
-                                                    <li><a class="link-compare" href="compare.html"><i
-                                                            class="icon-shuffle icons"></i><span
-                                                            class="hidden">Compare</span></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item-info">
-                                        <div class="info-inner">
-                                            <div class="item-title"><h6><a title="Product Title Here"
-                                                                           href="single_product.html"> Product Title
-                                                Here </a></h6></div>
-                                            <div class="item-content">
-                                                <div class="rating"><i class="fa fa-star-o"></i> <i
-                                                        class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
-                                                        class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></div>
-                                                <div class="item-price">
-                                                    <div class="price-box"><span class="regular-price"> <span
-                                                            class="price">$99.00</span> </span></div>
-                                                </div>
-                                                <div class="action">
-                                                    <button class="button btn-cart" type="button" title=""
-                                                            data-original-title="Add to Cart"><span>Add to Cart</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                                <div class="item-inner">
-                                    <div class="item-img">
-                                        <div class="item-img-info"><a class="product-image" title="Product Title Here"
-                                                                      href="single_product.html"> <img
-                                                alt="Product Title Here" src="images/products/img03.jpg"> </a>
-                                            <div class="new-label new-top-left">new</div>
-                                            <div class="jtv-box-hover">
-                                                <ul class="add-to-links">
-                                                    <li><a class="link-quickview" href="quick_view.html"><i
-                                                            class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a>
-                                                    </li>
-                                                    <li><a class="link-wishlist" href="wishlist.html"><i
-                                                            class="icon-heart icons"></i><span
-                                                            class="hidden">Wishlist</span></a></li>
-                                                    <li><a class="link-compare" href="compare.html"><i
-                                                            class="icon-shuffle icons"></i><span
-                                                            class="hidden">Compare</span></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item-info">
-                                        <div class="info-inner">
-                                            <div class="item-title"><h6><a title="Product Title Here"
-                                                                           href="single_product.html"> Product Title
-                                                Here </a></h6></div>
-                                            <div class="item-content">
-                                                <div class="rating"><i class="fa fa-star-o"></i> <i
-                                                        class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
-                                                        class="fa fa-star-o"></i> <i class="fa fa-star-o"></i></div>
-                                                <div class="item-price">
-                                                    <div class="price-box">
-                                                        <p class="special-price"><span
-                                                                class="price-label">Special Price</span> <span
-                                                                class="price"> $156.00 </span></p>
-                                                        <p class="old-price"><span
-                                                                class="price-label">Regular Price:</span> <span
-                                                                class="price"> $167.00 </span></p>
+                                        <div class="item-info">
+                                            <div class="info-inner">
+                                                <div class="item-title"><h6><a title="Product Title Here"
+                                                                               href="single_pro?productId=${recommandProduct.productId}">${recommandProduct.productName}</a>
+                                                </h6></div>
+                                                <div class="item-content">
+                                                    <div class="rating"><h6>
+                                                        <c:choose>
+                                                            <c:when test="${recommandProduct.inventory gt 0}">
+                                                                有货
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                无货
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </h6></div>
+                                                    <div class="item-price">
+                                                        <div class="price-box"> <span class="regular-price"> <span
+                                                                class="price">
+                                                <c:set var="productprice"
+                                                       value="${recommandProduct.originalPrice*recommandProduct.discount}"/>
+                                                 <fmt:formatNumber value="${recommandProduct.originalPrice*recommandProduct.discount}" type="currency" pattern="¥.00"/> / ${recommandProduct.unit}
+
+                                              </span> </span></div>
+                                                        <p class="old-price"> <span class="price">
+                                                                        <c:if test="${recommandProduct.discount ne 1}">
+                                                                            <fmt:formatNumber value="${recommandProduct.originalPrice}" type="currency" pattern="¥.00"/>
+                                                                        </c:if>
+
+                        </span> </p>
+                                                    </div>
+                                                    <div class="action">
+                                                        <button class="button btn-cart" type="button"
+                                                                title="" data-original-title="Add to Cart" name="${recommandProduct.productId}">
+                                                            <span>加入购物车</span></button>
                                                     </div>
                                                 </div>
-                                                <div class="action">
-                                                    <button class="button btn-cart" type="button" title=""
-                                                            data-original-title="Add to Cart"><span>Add to Cart</span>
-                                                    </button>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
+                            </c:forEach>
+
                         </ul>
                     </div>
                 </div>
@@ -687,5 +689,101 @@
 
 <!-- main js -->
 <script src="js/main.js"></script>
+
+<script>
+    new Vue({
+        el: "#mainpage",
+        data() {
+            return {
+                value1: [${minMoney}, ${maxMoney}]
+            }
+        },
+        methods: {
+            info (nodesc) {
+                this.$Notice.info({
+                    title: 'Notification title',
+                    desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
+                });
+            },
+            success1 (nodesc) {
+                this.$Notice.success({
+
+                    title: '添加收藏夹成功',
+                    desc: nodesc ? '' : 'Hefre is the notification description. Here is the notification description. '
+                });
+            },
+            success (nodesc) {
+                this.$Notice.success({
+
+                    title: '添加购物车成功',
+                    desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
+                });
+            },
+            warning (nodesc) {
+                this.$Notice.warning({
+                    title: '已经添加该商品',
+                    desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
+                });
+            },
+            error (nodesc) {
+                this.$Notice.error({
+                    title: '添加购物车失败',
+                    desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
+                });
+            },
+            setMoney(data){
+                minMoneyNow = data[0];
+                maxMoneyNow = data[1];
+            }
+        },
+        events: {
+
+        }
+    })
+</script>
+
 </body>
+<script type="text/javascript">
+    $(function () {
+        $(".link-wishlist").click(function () {
+            $.ajax({
+                url: "/add_wish",
+                data: {
+                    storeId: ${storeId},
+                    productId: $(this).context.name
+                },
+                type: "POST",
+                dataType: "json",//如果接受不到json对象，即总是进入error函数，也可以将json换为text,就一定可以进到success里面了
+                success: function (data) {
+                    if(data['succ'] === 'success')
+                        $("#succ1").click();
+                    else
+                        $('#warn').click();
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.readyState + "-" + XMLHttpRequest.status + "-" + XMLHttpRequest.responseText);
+                }
+            });
+        })
+        $(".btn-cart").click(function () {
+            $.ajax({
+                url: "/add_shopping_cart",
+                data: {
+                    storeId: ${storeId},
+                    productId: $(this).context.name,
+                    amount: 1
+                },
+                type: "POST",
+                dataType: "json",//如果接受不到json对象，即总是进入error函数，也可以将json换为text,就一定可以进到success里面了
+                success: function (data) {
+                    $("#succ").click();
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $("#err").click();
+                }
+            });
+        })
+    })
+
+</script>
 </html>

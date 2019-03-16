@@ -1391,29 +1391,29 @@
                 }
             });
         })
-        $("#district").change(function () {
-            $.ajax({
-                url: "/select_stores",
-                data: {
-                    province: $("#province option:selected").text(),
-                    city: $("#city option:selected").text(),
-                    disctrict: $("#province option:selected").text()
-                },
-                type: "POST",
-                dataType: "json",//如果接受不到json对象，即总是进入error函数，也可以将json换为text,就一定可以进到success里面了
-                success: function (data) {
-                    for(let i=0;i<data['branchStoreList'].length;i++) {
-                        if(data['branchStoreList'][i].storeStatus == 1)
-                            $("#stores").append("<option value='"+i+"'>"+data['branchStoreList'][i].storeName+"</option>");
-                    }
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert("abc");
-                }
-            });
-        })
+                $("#district").change(function () {
+                    $.ajax({
+                        url: "/select_stores",
+                        data: {
+                            province: $("#province option:selected").text(),
+                            city: $("#city option:selected").text(),
+                            district: $("#district option:selected").text()
+                        },
+                        type: "POST",
+                        dataType: "json",//如果接受不到json对象，即总是进入error函数，也可以将json换为text,就一定可以进到success里面了
+                        success: function (data) {
+                            for(let i=0;i<data['branchStoreList'].length;i++) {
+                                if(data['branchStoreList'][i].storeStatus == 1)
+                                    $("#stores").append("<option value='"+i+"'>"+data['branchStoreList'][i].storeName+"</option>");
+                            }
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("王子琦是大sb");
+                        }
+                    });
+                })
 
-    })
+            })
 
 </script>
 

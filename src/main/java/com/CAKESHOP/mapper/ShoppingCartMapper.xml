@@ -38,7 +38,7 @@
         update shopping_cart set amount = (amount - 1)
         where product_id like '${productId}';
     </update>
-    
+
     <insert id="insertOrder">
         insert into orders(order_id,user_phone,product_id,store_id,amount,single_price,total_price,order_status,time_stamp)
         values(#{orderId},#{userPhone},#{productId},#{storeId},#{amount},#{singlePrice},#{totalPrice},#{orderStatus},#{timeStamp});
@@ -172,6 +172,8 @@
             <if test="pojo.userPhone != null"> user_phone = #{pojo.userPhone}, </if>
             <if test="pojo.productId != null"> product_id = #{pojo.productId}, </if>
             <if test="pojo.storeId != null"> store_id = #{pojo.storeId}, </if>
+            <if test="pojo.singlePrice != null"> single_price = #{pojo.singlePrice}, </if>
+            <if test="pojo.totalPrice != null"> total_price = #{pojo.totalPrice}, </if>
             <if test="pojo.amount != -1"> amount = #{pojo.amount}, </if>
             <if test="pojo.createTime != null"> create_time = #{pojo.createTime} </if>
         </set>

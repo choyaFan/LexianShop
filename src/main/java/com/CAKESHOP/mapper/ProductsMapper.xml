@@ -200,7 +200,7 @@
     <!--查找类别热卖商品-->
     <select id="selectHotProductsByCategory" resultMap="ProductsDisplayMap">
         select order_product.product_id, inventory, original_price, discount, product_status, product_name, third_category, pic1_url, unit from (select product_id, third_category, product_name, pic1_url, unit, count(amount) as cont
-        from ((select * from orders where store_id=${storeId} and user_phone="13700000000" and order_status=4) as orders_in_store
+        from ((select * from orders where store_id=${storeId} and user_phone=${userPhone} and order_status=4) as orders_in_store
         join products on orders_in_store.product_id=products.id) group by product_id) as order_product
         left join (select * from products_by_store where store_id=${storeId}) as products_in_store on order_product.product_id=products_in_store.product_id
         where third_category=#{category} order by cont desc;

@@ -2,8 +2,10 @@ package com.CAKESHOP.controller;
 
 
 import com.CAKESHOP.dao.PersonalInformation;
-import com.CAKESHOP.service.ShowPersonalInformationService;
-import com.CAKESHOP.service.SignInService;
+import com.CAKESHOP.dao.ProductsByStore;
+import com.CAKESHOP.dao.ShoppingCart;
+import com.CAKESHOP.service.*;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -20,11 +24,21 @@ public class ShowPersonalInformation {
     public PersonalInformation user = new PersonalInformation();
     @Resource
     public SignInService signinService;
+
+    @Resource
+    ShoppingCartService shoppingCartService;
+
+    @Resource
+    ProductsByStoreService productsByStoreService;
+
+    @Resource
+    ProductsService productsService;
+
     public User users = new User();
 
 
     @RequestMapping ("ShowPersonalInformation.action")
-    public ModelAndView personalData(){
+    public ModelAndView personalData(HttpServletRequest request) throws Exception{
         GlobalStatus globalStatus = new GlobalStatus();
         System.out.println("登陆状态查询"+globalStatus.get());
         System.out.println("登陆手机号"+users.user_phone_transfer);
@@ -34,6 +48,13 @@ public class ShowPersonalInformation {
         ModelAndView modelAndView =new ModelAndView();
         if(globalStatus.get()==1){
             modelAndView.addObject("personalData",personalData);
+            JSONObject jsonObject = productsService.getCategoriesMapperJson();
+            modelAndView.addObject("categoryjson", jsonObject);
+
+
+            //添加购物车
+            displayShoppingCart(request, modelAndView);
+
             modelAndView.setViewName("ShowPersonalInformation.jsp");
         }
         else{
@@ -78,6 +99,47 @@ public class ShowPersonalInformation {
             modelAndView.setViewName("revisePersonalInformationConfirm.jsp");
         }
         return modelAndView;
+    }
+
+    public void displayShoppingCart(HttpServletRequest request, ModelAndView mv) throws Exception {
+        int i=0;
+        HttpSession session = request.getSession(true);
+        String userPhone = (String)session.getAttribute("userPhone");
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.setUserPhone(userPhone);
+        List<ShoppingCart> shoppingCartsList = shoppingCartService.queryCartInformation(shoppingCart);
+        int shoppingCartProductsNum = shoppingCartsList.size();
+        mv.addObject("shoppingCartsList",shoppingCartsList);
+
+        int productIdArray[] = new int[shoppingCartProductsNum];// 从返回值中获取商品ID
+        int StoreIdArray[] = new int[shoppingCartProductsNum];
+        String pictureUrlArray[] = new String[shoppingCartProductsNum];//通过商品ID获得图片的url，准备传到界面上显示
+        String productNameArray[] = new String[shoppingCartProductsNum];
+        String storeNameArray[] = new String[shoppingCartProductsNum];
+        Double productPriceArray[] = new Double[shoppingCartProductsNum];
+        double totalPrice = 0;
+
+        for(i = 0;i < shoppingCartProductsNum;i++){
+            productIdArray[i] = shoppingCartsList.get(i).getProductId();
+            StoreIdArray[i] = shoppingCartsList.get(i).getStoreId();
+            pictureUrlArray[i] = shoppingCartService.queryPictureUrl(productIdArray[i]);
+            productNameArray[i] = shoppingCartService.queryProductName(productIdArray[i]);
+            storeNameArray[i] = shoppingCartService.queryStoreName(StoreIdArray[i]);
+            ProductsByStore tmp = productsByStoreService.selectByProductAndStore(shoppingCartsList.get(i).getProductId(),shoppingCartsList.get(i).getStoreId());
+            productPriceArray[i] = tmp.getOriginalPrice()*tmp.getDiscount();
+            totalPrice+=productPriceArray[i]*shoppingCartsList.get(i).getAmount();
+        }
+        List<String> pictureUrlArrayList = Arrays.asList(pictureUrlArray);
+        List<String> productNameArrayList = Arrays.asList(productNameArray);
+        List<String> storeNameArrayList = Arrays.asList(storeNameArray);
+        List<Double> productPriceArrayList = Arrays.asList(productPriceArray);
+
+        mv.addObject("pictureUrlArrayList", pictureUrlArrayList);
+        mv.addObject("productNameArrayList", productNameArrayList);
+        mv.addObject("storeNameArrayList", storeNameArrayList);
+        mv.addObject("shoppingCartsList", shoppingCartsList);
+        mv.addObject("productPriceArrayList",productPriceArrayList);
+        mv.addObject("totalPrice",totalPrice);
     }
 
 }
