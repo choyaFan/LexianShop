@@ -12,7 +12,7 @@ public class PersonalInformation {
     private Timestamp last_login = new Timestamp(System.currentTimeMillis());//最后登陆时间
     private int active = 1;//状态
     private String portrait_url = "hu";//头像图片路径
-    private int money = 0;//钱包余额
+    private double money = 0;//钱包余额
 
     public int getUser_id() { return this.user_id; }
     public String getUser_phone() { return this.user_phone; }
@@ -23,7 +23,7 @@ public class PersonalInformation {
     public Timestamp getLast_login() { return this.last_login; }
     public int getActive() { return this.active; }
     public String getPortrait_url() {return this.portrait_url; }
-    public int getMoney() { return this.money; }
+    public double getMoney() { return this.money; }
 
     public void setUser_id(int user_id) { this.user_id = user_id;}
     public void setUser_phone(String user_phone) { this.user_phone=user_phone;}
@@ -34,5 +34,5 @@ public class PersonalInformation {
     public void setLast_login(Timestamp last_login) {this.last_login=last_login;}
     public void setActive(int active) {this.active=active;}
     public void setPortrait_url(String portrait_url) { this.portrait_url=portrait_url;}
-    public void setMoney(int money) { this.money=money;}
+    public void setMoney(double money) { this.money=money;}
 }
