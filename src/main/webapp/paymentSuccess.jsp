@@ -145,12 +145,12 @@
     </div>
     <div class="info">
         <p>
-            金额：<span class="pay-total">${totalPrice}</span>
+            金额：<span class="pay-total">49.00元</span>
         </p>
         <p>
-            订单：${orderId}</p>
+            订单：1150505740045173                    </p>
         <p>
-            姓名：${sessionScope.userName}<span class="line">/</span>
+            姓名：${userName}                                <span class="line">/</span>
             ${userPhone}                                    <span class="line">/</span>
             ${province},${city},${district} ${storeName}                                                                <span class="line">/</span>
             不限送货时间                                    <span class="line">/</span>

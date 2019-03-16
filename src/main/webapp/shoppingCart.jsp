@@ -350,7 +350,9 @@
             </div>
         </div>
     </nav>
+
     <!-- end nav -->
+
 
     <section class="main-container col1-layout">
         <div class="main container">
@@ -386,7 +388,6 @@
                                 <%--*********************************************************************************************************************************--%>
                                 <form action="${pageContext.request.contextPath }shoppingCart.action" method="post">
                                     <%--<tr>--%>
-                                    <%int i = 0; pageContext.setAttribute("i", i);%>
                                     <c:forEach items="${cartData}" var="cartData" varStatus="loop">
                                     <tr>
                                         <td class="cart_product"><a href="#"><img
@@ -398,8 +399,8 @@
                                                     class="fa fa-plus"></i></a>
                                             <a href="${pageContext.request.contextPath }/shoppingCartSubtract.action?condition=${cartData.productId}"><i
                                                     class="fa fa-minus"></i></a></td>
-                                        <td><fmt:formatNumber value="${productsByStoreList.get(i).originalPrice * productsByStoreList.get(i).discount}" pattern="￥####.##"/> </td>
-                                        <td><fmt:formatNumber value="${productsByStoreList.get(i).originalPrice * productsByStoreList.get(i).discount * cartData.amount}" pattern="￥####.##"/> </td>
+                                        <td>${cartData.singlePrice}</td>
+                                        <td>${cartData.totalPrice}</td>
                                         <td>
                                             <a href="${pageContext.request.contextPath }/shoppingCartDelete.action?condition=${cartData.productId}">删除</a>
                                         </td>

@@ -15,8 +15,6 @@
     </update>
 
 
-
-
     <!-- 下面的SQL语句实现数据库信息向Product类的传输（即数据库——>DAO层） -->
     <resultMap id="PersonalInformationMap" type="com.CAKESHOP.dao.PersonalInformation">
         <!-- 下面"result"标签中，"column"与数据库表中的列名对应，"property"与DAO层定义的类中的属性对应（在这里指"Product.java"），一般取同名 -->

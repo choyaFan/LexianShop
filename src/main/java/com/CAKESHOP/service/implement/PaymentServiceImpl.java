@@ -14,7 +14,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Autowired
     private OrdersMapper ordersMapper = null;
     @Override
-    public boolean paymentJudge(String userPhone, double totalPrice){
+    public boolean paymentJudge(String userPhone, int totalPrice){
         PersonalInformation personalInformation = paymentMapper.selectByUserPhone(userPhone);
         System.out.println("userPhone:   " + userPhone);
         if(personalInformation.getMoney() >= totalPrice){
@@ -24,10 +24,5 @@ public class PaymentServiceImpl implements PaymentService {
         else{
             return false;
         }
-    }
-    @Override
-    public void addMoney(String userPhone, double money){
-        PersonalInformation personalInformation = paymentMapper.selectByUserPhone(userPhone);
-        paymentMapper.updateInfo(personalInformation.getMoney() + money, userPhone);
     }
 }

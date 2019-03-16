@@ -25,17 +25,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
     <!-- CSS Style -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/simple-line-icons.css">
     <link rel="stylesheet" href="css/style3.css">
-    <link rel="stylesheet" href="css/revolution-slider.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/quick_view_popup.css">
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/owl.transitions.css">
-    <link rel="stylesheet" href="css/jtv-mobile-menu.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/jquery.fancybox.css">
     <script>
         function EnterButtonPress(e) { //传入 event
             var e = e || window.event;
@@ -426,7 +416,7 @@
                             </table>
                             <div class="cart_navigation">
                               <button class="button btn-proceed-checkout" type="button" onclick="window.location.href='http://localhost:8081/browsehistory.action'"><span>查询浏览历史</span></button>
-                              <button class="button continue-shopping" type="button" onclick="window.location.href='walletPayment.jsp'"><span>钱包充值</span></button>
+                              <%--<button class="button btn-proceed-checkout" type="button" onclick="window.location.href='http://localhost:8081/checkOut.action'"><span>Proceed to Checkout</span></button>--%>
                             </div>
                         </div>
                     </div>

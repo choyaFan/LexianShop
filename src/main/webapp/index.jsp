@@ -21,17 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS Style -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/simple-line-icons.css">
     <link rel="stylesheet" href="css/style3.css">
-    <link rel="stylesheet" href="css/revolution-slider.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/quick_view_popup.css">
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/owl.transitions.css">
-    <link rel="stylesheet" href="css/jtv-mobile-menu.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/jquery.fancybox.css">
     <script>
         function EnterButtonPress(e) { //传入 event
             var e = e || window.event;
