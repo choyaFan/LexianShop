@@ -4,10 +4,7 @@ import com.CAKESHOP.dao.Orders;
 import com.CAKESHOP.dao.Products;
 import com.CAKESHOP.dao.ProductsByStore;
 import com.CAKESHOP.dao.ShoppingCart;
-import com.CAKESHOP.service.OrdersService;
-import com.CAKESHOP.service.ProductsByStoreService;
-import com.CAKESHOP.service.ProductsService;
-import com.CAKESHOP.service.ShoppingCartService;
+import com.CAKESHOP.service.*;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,6 +31,8 @@ public class OrderController {
 
     @Resource
     ShoppingCartService shoppingCartService;
+    @Resource
+    StoresService storesService;
 
 
 
@@ -87,28 +86,46 @@ public class OrderController {
         ModelAndView mv = new ModelAndView();
         List<Orders> ordersList = ordersService.selectByOrderId(orderId);
         List<Products> productsList = new ArrayList<Products>();
+        List<String> cityList = new ArrayList<String>();
         Products product;
         ProductsByStore productsByStore;
         HttpSession session = request.getSession();
         int storeId = Integer.parseInt((String)session.getAttribute("storeId"));
         for(Orders orders : ordersList){
             product = productsService.searchById(orders.getProductId());
-            productsByStore = productsByStoreService.selectByProductAndStore(product.getId(), storeId);
+            productsByStore = productsByStoreService.selectByProductAndStore(product.getId(), orders.getStoreId());
             int inventory = productsByStore.getInventory() - orders.getAmount();
-            productsByStoreService.updateInventory(storeId,product.getId(), inventory);
+            productsByStoreService.updateInventory(orders.getStoreId(),product.getId(), inventory);
             productsList.add(product);
+            cityList.add(storesService.querygetStoreName(orders.getStoreId()).getStoreName());
         }
         mv.addObject("productsList", productsList);
         mv.addObject("ordersList", ordersList);
+        mv.addObject("cityList",cityList);
         mv.setViewName("orderPayment.jsp");
         return mv;
     }
 
     @RequestMapping("/getOrderDetail")
-    public ModelAndView getOrderDetail(HttpServletRequest request, @RequestParam("orderId") int orderId){
+    public ModelAndView getOrderDetail(HttpServletRequest request, @RequestParam("orderId") int orderId) throws Exception{
         ModelAndView mv = getOrderProducts(request, orderId);
+        JSONObject jsonObject = productsService.getCategoriesMapperJson();
+        mv.addObject("categoryjson", jsonObject);
+
+        //添加购物车
+        displayShoppingCart(request, mv);
+
+
         mv.setViewName("orderDetail.jsp");
         return mv;
+    }
+
+    @RequestMapping("receieve_product")
+    public ModelAndView receieve_product(HttpServletRequest request) throws Exception{
+        ModelAndView modelAndView = new ModelAndView();
+        ordersService.updataOrder(Integer.parseInt(request.getParameter("orderId")),Integer.parseInt(request.getParameter("productId")));
+        modelAndView.setViewName("getUserOrder");
+        return modelAndView;
     }
 
     public void displayShoppingCart(HttpServletRequest request, ModelAndView mv) throws Exception {

@@ -145,12 +145,12 @@
     </div>
     <div class="info">
         <p>
-            金额：<span class="pay-total">49.00元</span>
+            金额：<span class="pay-total">${totalPrice}</span>
         </p>
         <p>
-            订单：1150505740045173                    </p>
+            订单：${orderId}</p>
         <p>
-            姓名：${userName}                                <span class="line">/</span>
+            姓名：${sessionScope.userName}<span class="line">/</span>
             ${userPhone}                                    <span class="line">/</span>
             ${province},${city},${district} ${storeName}                                                                <span class="line">/</span>
             不限送货时间                                    <span class="line">/</span>
@@ -166,11 +166,11 @@
     <div class="footer-top">
         <div class="container">
             <div class="row">
-                <div style="text-align:center"> <a href="index.html"><img src="images/footer-logo.png" alt="logo"> </a> </div>
+                <div style="text-align:center"> <a href="index.jsp"><img src="images/logo2.png" alt="logo"> </a> </div>
                 <address>
-                    <p> <i class="fa fa-map-marker"></i>Company, 12/34 - West 21st Street, New York, USA </p>
-                    <p><i class="fa fa-mobile"></i><span>+ (800) 0123 456 789</span> </p>
-                    <p> <i class="fa fa-envelope"></i><span><a href="mailto:email@domain.com">support@themes.com</a></span></p>
+                    <p> <i class="fa fa-map-marker"></i>中软国际（重庆）卓睿有限公司</p>
+                    <p><i class="fa fa-mobile"></i><span>+ (86) 0123 456 789</span> </p>
+                    <p> <i class="fa fa-envelope"></i><span><a href="mailto:email@domain.com">635837756@qq.com</a></span></p>
                 </address>
             </div>
         </div>
@@ -180,64 +180,63 @@
             <div class="row">
                 <div class="col-sm-4 col-xs-12 col-md-3">
                     <div class="footer-links">
-                        <h5>Useful links</h5>
+                        <h5>功能链接</h5>
                         <ul class="links">
-                            <li><a href="#" title="Product Recall">Product Recall</a></li>
-                            <li><a href="#" title="Gift Vouchers">Gift Vouchers</a></li>
-                            <li><a href="#" title="Returns &amp; Exchange">Returns &amp; Exchange</a></li>
-                            <li><a href="#" title="Shipping Options">Shipping Options</a></li>
-                            <li><a href="#" title="Help &amp; FAQs">Help &amp; FAQs</a></li>
-                            <li><a href="#" title="Order history">Order history</a></li>
+                            <li><a href="#" title="Product Recall">商品召回</a></li>
+                            <li><a href="#" title="Gift Vouchers">礼品卡</a></li>
+                            <li><a href="#" title="Returns &amp; Exchange">退货 &amp; 换货</a></li>
+                            <li><a href="#" title="Shipping Options">快递服务</a></li>
+                            <li><a href="#" title="Help &amp; FAQs">帮助 &amp; 提问</a></li>
+                            <li><a href="#" title="Order history">订单历史</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-4 col-xs-12 col-md-3">
                     <div class="footer-links">
-                        <h5>Service</h5>
+                        <h5>服务</h5>
                         <ul class="links">
-                            <li><a href="#">Account</a></li>
-                            <li><a href="#">Wishlist</a></li>
-                            <li><a href="#">Shopping Cart</a></li>
-                            <li><a href="#">Return Policy</a></li>
-                            <li><a href="#">Special</a></li>
-                            <li><a href="#">Lookbook</a></li>
+                            <li><a href="#">账户</a></li>
+                            <li><a href="#">愿望单</a></li>
+                            <li><a href="#">购物车</a></li>
+                            <li><a href="#">退货政策</a></li>
+                            <li><a href="#">其他</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-4 col-xs-12 col-md-2">
                     <div class="footer-links">
-                        <h5>Information</h5>
+                        <h5>信息</h5>
                         <ul class="links">
-                            <li><a href="#">Sites Map </a></li>
-                            <li><a href="#">News</a></li>
-                            <li><a href="#">Trends</a></li>
-                            <li><a href="about_us.html">About Us</a></li>
-                            <li><a href="contact_us.html">Contact Us</a></li>
-                            <li><a href="#">My Orders</a></li>
+                            <li><a href="#">网站导航</a></li>
+                            <li><a href="#">新闻</a></li>
+                            <li><a href="#">潮流</a></li>
+                            <li><a href="about_us.jsp">关于我们</a></li>
+                            <li><a href="contact_us.jsp">联系我们</a></li>
+                            <li><a href="#">我的订单</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-4">
                     <div class="footer-links">
                         <div class="footer-newsletter">
-                            <h5>Subscribe to our news</h5>
+                            <h5>订阅我们的新闻</h5>
                             <form id="newsletter-validate-detail" method="post" action="#">
                                 <div class="newsletter-inner">
-                                    <p>Subscribe to be the first to know about Sales, Events, and Exclusive Offers!</p>
+                                    <p>订阅我们，第一时间获取折扣信息！</p>
                                     <input class="newsletter-email" name='Email' placeholder='Enter Your Email'>
-                                    <button class="button subscribe" type="submit" title="Subscribe">Subscribe</button>
+                                    <button class="button subscribe" type="submit" title="Subscribe">订阅</button>
                                 </div>
                             </form>
                         </div>
                         <div class="social">
-                            <h5>Follow Us</h5>
+                            <h5>订阅我们</h5>
                             <ul class="inline-mode">
-                                <li class="social-network fb"><a title="Connect us on Facebook" target="_blank" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li class="social-network googleplus"><a title="Connect us on Google+" target="_blank" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li class="social-network tw"><a title="Connect us on Twitter" target="_blank" href="#"><i class="icon-social-twitter icons"></i></a></li>
-                                <li class="social-network linkedin"><a title="Connect us on Linkedin" target="_blank" href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li class="social-network rss"><a title="Connect us on rss" target="_blank" href="#"><i class="fa fa-rss"></i></a></li>
-                                <li class="social-network instagram"><a title="Connect us on Instagram" target="_blank" href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li class="social-network fb"><a title="Connect us" target="_blank" href="#"><i class="fa fa-firefox"></i></a></li>
+                                <li class="social-network googleplus"><a title="Connect us" target="_blank" href="#"><i class="fa fa-github"></i></a></li>
+                                <li class="social-network tw"><a title="Connect us" target="_blank" href="#"><i class="fa fa-flag"></i></a></li>
+                                <li class="social-network linkedin"><a title="Connect us" target="_blank" href="#"><i class="fa fa-weibo"></i></a></li>
+                                <li class="social-network rss"><a title="Connect us" target="_blank" href="#"><i class="fa fa-qq"></i></a></li>
+                                <li class="social-network instagram"><a title="Connect us" target="_blank" href="#"><i class="fa fa-wechat"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -248,7 +247,7 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
-                <div class="col-sm-5 col-xs-12 coppyright">Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></div>
+                <div class="col-sm-5 col-xs-12 coppyright">版权所有 &copy; 2019.派德里克小组保留所有权利.</div>
                 <div class="col-sm-7 col-xs-12 payment-accept">
                     <ul>
                         <li> <a href="#"><img src="images/payment-1.png" alt="Payment Card"></a> </li>

@@ -78,7 +78,7 @@
                 </form>
             </div>
         </li>
-        <li><a href="index.jsp">Home</a>
+        <li><a href="getSector">Home</a>
 
         </li>
         <li><span class="expand fa fa-plus"></span><a href="#">Pages</a>
@@ -355,9 +355,6 @@
                                     window.location.href = "stores_changed" + "?store=" + sName;
                                 });
                             </script>
-                            <!-- End Header Language -->
-
-
                             <!-- Header Currency -->
 
                             <!-- End Header Currency -->
@@ -372,18 +369,6 @@
                                         <li> <a title="Favorites" href="/getUserOrder">订单</a> </li>
                                         <li> <a title="Favorites" href="look_wish_list">收藏夹</a> </li>
 
-                                        <li>
-                                            <div class="dropdown block-company-wrapper hidden-xs"> <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#">其他功能<span class="caret"></span></a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="about_us.html"> About Us </a> </li>
-                                                    <li><a href="#"> Customer Service </a> </li>
-                                                    <li><a href="#"> Privacy Policy </a> </li>
-                                                    <li><a href="#">Site Map </a> </li>
-                                                    <li><a href="#">Search Terms </a> </li>
-                                                    <li><a href="#">Advanced Search </a> </li>
-                                                </ul>
-                                            </div>
-                                        </li>
                                         <c:choose>
                                             <c:when test="${not empty sessionScope.userName}">
                                                 <li> <a href="ShowPersonalInformation.action"><span class="hidden-xs">${sessionScope.userName}</span></a> </li>
@@ -431,7 +416,7 @@
 
                                         <!--actions-->
                                         <div class="actions">
-                                            <button class="btn-checkout" title="Checkout" type="button" href="checkOut.action"><span>下单</span> </button>
+                                            <button class="btn-checkout" title="Checkout" type="button" onclick="window.location.href='checkOut.action'" ><span>下单</span> </button>
                                             <a href="/shoppingCart.action" class="view-cart"><span>进入购物车</span></a> </div>
                                     </div>
                                 </div>
@@ -440,7 +425,7 @@
                     </div>
                     <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12 jtv-logo-box">
                         <!-- Header Logo -->
-                        <div class="logo"> <h1><a title="eCommerce" href="index.jsp"><img alt="eCommerce" src="images/name2.png"> </a></h1> </div>
+                        <div class="logo"> <h1><a title="eCommerce" href="getSector"><img alt="eCommerce" src="images/name2.png"> </a></h1> </div>
                         <!-- End Header Logo -->
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 hidden-xs">
@@ -518,8 +503,8 @@
                                     <div class="item"><a href="#"><img alt="" src="images/category-img1.jpg"></a>
                                         <div class="cat-img-title cat-bg cat-box">
                                             <div class="small-tag">广告商品</div>
-                                            <h1 class="cat-heading">广告商品1</h1>
-                                            <p>描述1</p>
+                                            <h1 class="cat-heading">春天来了，水果还会远吗</h1>
+                                            <p>水果是指多汁且有甜味的植物果实，不但含有丰富的营养且能够帮助消化，是对部分可以食用的植物果实和种子的统称。 </p>
                                         </div>
                                     </div>
                                     <!-- End Item -->
@@ -528,8 +513,8 @@
                                     <div class="item"><a href="#"><img alt="" src="images/category-img2.jpg"></a>
                                         <div class="cat-img-title cat-bg cat-box">
                                             <div class="small-tag">广告商品</div>
-                                            <h1 class="cat-heading">广告商品2</h1>
-                                            <p>描述2 </p>
+                                            <h1 class="cat-heading">干红葡萄酒</h1>
+                                            <p>葡萄酒是以葡萄为原料酿造的一种果酒。其酒精度高于啤酒而低于白酒。营养丰富，保健作用明显。有人认为，葡萄酒是最健康最卫生的饮料之一。</p>
                                         </div>
                                         <!-- End Item -->
 
@@ -736,7 +721,7 @@
                                                         <div class="item-img-info"><a class="product-image"
                                                                                       title="Product Title Here"
                                                                                       href="single_pro?productId=${product.productId}"> <img
-                                                                alt="Product Title Here" src=${product.pic1Url}> </a>
+                                                                alt="Product Title Here" src=${product.pic1Url} width="267.16px" height="267.16px"> </a>
                                                             <div class="jtv-box-hover">
                                                                 <ul class="add-to-links">
                                                                     <li><a class="link-quickview" href="single_pro?productId=${product.productId}"><i
@@ -1046,20 +1031,20 @@
                                     <div class="carousel-inner">
                                         <div class="item"><img src="images/slide3.jpg" alt="slide3">
                                             <div class="carousel-caption">
-                                                <h3><a title=" Sample Product" href="#">板块1</a></h3>
-                                                <p>板块1的描述</p>
-                                                <a class="link" href="#">按钮1</a></div>
+                                                <h3><a title=" Sample Product" href="#">食之味</a></h3>
+                                                <p>食物的魅力</p>
+                                                <a class="link" href="#">查看详情</a></div>
                                         </div>
                                         <div class="item active"><img src="images/slide1.jpg" alt="slide1">
                                             <div class="carousel-caption">
-                                                <h3><a title=" Sample Product" href="#">板块2</a></h3>
-                                                <p>板块2的描述</p>
+                                                <h3><a title=" Sample Product" href="#">今日特惠</a></h3>
+                                                <p>今日葡萄等均有优惠，欢迎选购</p>
                                             </div>
                                         </div>
                                         <div class="item"><img src="images/slide2.jpg" alt="slide2">
                                             <div class="carousel-caption">
-                                                <h3><a title=" Sample Product" href="#">板块3</a></h3>
-                                                <p>板块3的描述</p>
+                                                <h3><a title=" Sample Product" href="#">今日特价</a></h3>
+                                                <p>今日可乐特价销售</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1140,12 +1125,11 @@
         <div class="footer-top">
             <div class="container">
                 <div class="row">
-                    <div style="text-align:center"><a href="index.jsp"><img src="images/footer-logo.png" alt="logo">
-                    </a></div>
+                    <div style="text-align:center"> <a href="getSector"><img src="images/logo2.png" alt="logo"> </a> </div>
                     <address>
-                        <p><i class="fa fa-map-marker"></i>店铺地址</p>
-                        <p><i class="fa fa-envelope"></i><span><a href="mailto:email@domain.com">店名</a></span></p>
-                        <p><i class="fa fa-mobile"></i><span>此店铺电话</span></p>
+                        <p> <i class="fa fa-map-marker"></i>中软国际（重庆）卓睿有限公司</p>
+                        <p><i class="fa fa-mobile"></i><span>+ (86) 0123 456 789</span> </p>
+                        <p> <i class="fa fa-envelope"></i><span><a href="mailto:email@domain.com">635837756@qq.com</a></span></p>
                     </address>
                 </div>
             </div>
@@ -1155,76 +1139,63 @@
                 <div class="row">
                     <div class="col-sm-4 col-xs-12 col-md-3">
                         <div class="footer-links">
-                            <h5>Useful links</h5>
+                            <h5>功能链接</h5>
                             <ul class="links">
-                                <li><a href="#" title="Product Recall">Product Recall</a></li>
-                                <li><a href="#" title="Gift Vouchers">Gift Vouchers</a></li>
-                                <li><a href="#" title="Returns &amp; Exchange">Returns &amp; Exchange</a></li>
-                                <li><a href="#" title="Shipping Options">Shipping Options</a></li>
-                                <li><a href="#" title="Help &amp; FAQs">Help &amp; FAQs</a></li>
-                                <li><a href="#" title="Order history">Order history</a></li>
+                                <li><a href="#" title="Product Recall">商品召回</a></li>
+                                <li><a href="#" title="Gift Vouchers">礼品卡</a></li>
+                                <li><a href="#" title="Returns &amp; Exchange">退货 &amp; 换货</a></li>
+                                <li><a href="#" title="Shipping Options">快递服务</a></li>
+                                <li><a href="#" title="Help &amp; FAQs">帮助 &amp; 提问</a></li>
+                                <li><a href="#" title="Order history">订单历史</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-4 col-xs-12 col-md-3">
                         <div class="footer-links">
-                            <h5>Service</h5>
+                            <h5>服务</h5>
                             <ul class="links">
-                                <li><a href="#">Account</a></li>
-                                <li><a href="#">Wishlist</a></li>
-                                <li><a href="#">Shopping Cart</a></li>
-                                <li><a href="#">Return Policy</a></li>
-                                <li><a href="#">Special</a></li>
-                                <li><a href="#">Lookbook</a></li>
+                                <li><a href="#">账户</a></li>
+                                <li><a href="#">愿望单</a></li>
+                                <li><a href="#">购物车</a></li>
+                                <li><a href="#">退货政策</a></li>
+                                <li><a href="#">其他</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-4 col-xs-12 col-md-2">
                         <div class="footer-links">
-                            <h5>Information</h5>
+                            <h5>信息</h5>
                             <ul class="links">
-                                <li><a href="#">Sites Map </a></li>
-                                <li><a href="#">News</a></li>
-                                <li><a href="#">Trends</a></li>
-                                <li><a href="about_us.html">About Us</a></li>
-                                <li><a href="contact_us.html">Contact Us</a></li>
-                                <li><a href="#">My Orders</a></li>
+                                <li><a href="#">网站导航</a></li>
+                                <li><a href="#">新闻</a></li>
+                                <li><a href="#">潮流</a></li>
+                                <li><a href="about_us.jsp">关于我们</a></li>
+                                <li><a href="contact_us.jsp">联系我们</a></li>
+                                <li><a href="#">我的订单</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4">
                         <div class="footer-links">
                             <div class="footer-newsletter">
-                                <h5>Subscribe to our news</h5>
+                                <h5>订阅我们的新闻</h5>
                                 <form id="newsletter-validate-detail" method="post" action="#">
                                     <div class="newsletter-inner">
-                                        <p>Subscribe to be the first to know about Sales, Events, and Exclusive
-                                            Offers!</p>
-                                        <input class="newsletter-email" name="Email" placeholder="Enter Your Email">
-                                        <button class="button subscribe" type="submit" title="Subscribe">Subscribe
-                                        </button>
+                                        <p>订阅我们，第一时间获取折扣信息！</p>
+                                        <input class="newsletter-email" name='Email' placeholder='Enter Your Email'>
+                                        <button class="button subscribe" type="submit" title="Subscribe">订阅</button>
                                     </div>
                                 </form>
                             </div>
                             <div class="social">
-                                <h5>Follow Us</h5>
+                                <h5>订阅我们</h5>
                                 <ul class="inline-mode">
-                                    <li class="social-network fb"><a title="Connect us on Facebook" target="_blank"
-                                                                     href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li class="social-network googleplus"><a title="Connect us on Google+"
-                                                                             target="_blank" href="#"><i
-                                            class="fa fa-google-plus"></i></a></li>
-                                    <li class="social-network tw"><a title="Connect us on Twitter" target="_blank"
-                                                                     href="#"><i class="icon-social-twitter icons"></i></a>
-                                    </li>
-                                    <li class="social-network linkedin"><a title="Connect us on Linkedin"
-                                                                           target="_blank" href="#"><i
-                                            class="fa fa-linkedin"></i></a></li>
-                                    <li class="social-network rss"><a title="Connect us on rss" target="_blank"
-                                                                      href="#"><i class="fa fa-rss"></i></a></li>
-                                    <li class="social-network instagram"><a title="Connect us on Instagram"
-                                                                            target="_blank" href="#"><i
-                                            class="fa fa-instagram"></i></a></li>
+                                    <li class="social-network fb"><a title="Connect us" target="_blank" href="#"><i class="fa fa-firefox"></i></a></li>
+                                    <li class="social-network googleplus"><a title="Connect us" target="_blank" href="#"><i class="fa fa-github"></i></a></li>
+                                    <li class="social-network tw"><a title="Connect us" target="_blank" href="#"><i class="fa fa-flag"></i></a></li>
+                                    <li class="social-network linkedin"><a title="Connect us" target="_blank" href="#"><i class="fa fa-weibo"></i></a></li>
+                                    <li class="social-network rss"><a title="Connect us" target="_blank" href="#"><i class="fa fa-qq"></i></a></li>
+                                    <li class="social-network instagram"><a title="Connect us" target="_blank" href="#"><i class="fa fa-wechat"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -1235,14 +1206,13 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-5 col-xs-12 coppyright">Copyright © 2017.Company name All rights reserved.<a
-                            target="_blank" href="http://sc.chinaz.com/moban/">网页模板</a></div>
+                    <div class="col-sm-5 col-xs-12 coppyright">版权所有 &copy; 2019.派德里克小组保留所有权利.</div>
                     <div class="col-sm-7 col-xs-12 payment-accept">
                         <ul>
-                            <li><a href="#"><img src="images/payment-1.png" alt="Payment Card"></a></li>
-                            <li><a href="#"><img src="images/payment-2.png" alt="Payment Card"></a></li>
-                            <li><a href="#"><img src="images/payment-3.png" alt="Payment Card"></a></li>
-                            <li><a href="#"><img src="images/payment-4.png" alt="Payment Card"></a></li>
+                            <li> <a href="#"><img src="images/payment-1.png" alt="Payment Card"></a> </li>
+                            <li> <a href="#"><img src="images/payment-2.png" alt="Payment Card"></a> </li>
+                            <li> <a href="#"><img src="images/payment-3.png" alt="Payment Card"></a> </li>
+                            <li> <a href="#"><img src="images/payment-4.png" alt="Payment Card"></a> </li>
                         </ul>
                     </div>
                 </div>

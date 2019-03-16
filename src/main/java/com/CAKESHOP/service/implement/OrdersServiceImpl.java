@@ -32,4 +32,8 @@ public class OrdersServiceImpl implements OrdersService{
     public void deleteOrder(int orderId){
         ordersMapper.deleteOrder(orderId);
     }
+    @Override
+    public void updataOrder(int orderId, int productId) {
+        ordersMapper.updateOrderState(orderId, productId);
+    }
 }

@@ -50,12 +50,14 @@ public class ShoppingCartController {
         String pictureUrlArray[] = new String[num];//通过商品ID获得图片的url，准备传到界面上显示
         String productNameArray[] = new String[num];
         String storeNameArray[] = new String[num];
+        List<ProductsByStore> productsByStoreList = new ArrayList<>();
         double productPriceArray[] = new double[num];
         double totalPrice = 0;
 
         for(int i = 0;i < num;i++){
             productIdArray[i] = cartData.get(i).getProductId();
             StoreIdArray[i] = cartData.get(i).getStoreId();
+            productsByStoreList.add(productsByStoreService.selectByProductAndStore(productIdArray[i],StoreIdArray[i]));
             pictureUrlArray[i] = shoppingCartService.queryPictureUrl(productIdArray[i]);
             productNameArray[i] = shoppingCartService.queryProductName(productIdArray[i]);
             storeNameArray[i] = shoppingCartService.queryStoreName(StoreIdArray[i]);
@@ -78,6 +80,7 @@ public class ShoppingCartController {
             modelAndView.addObject("productPriceArray",productPriceArray);
             modelAndView.addObject("totalPrice",totalPrice);
             modelAndView.addObject("cartData",cartData);
+            modelAndView.addObject("productsByStoreList",productsByStoreList);
             JSONObject jsonObject = productsService.getCategoriesMapperJson();
             HttpSession session = request.getSession(true);
 
@@ -128,7 +131,7 @@ public class ShoppingCartController {
     }
 
     @RequestMapping(value = "checkOut.action")
-    public ModelAndView checkOut(HttpServletRequest request){
+    public ModelAndView checkOut(HttpServletRequest request) throws Exception{
         ModelAndView modelAndView = new ModelAndView();
 
         shoppingCart.setUserPhone(userTransfer.user_phone_transfer);
@@ -164,8 +167,53 @@ public class ShoppingCartController {
         }
         shoppingCartService.updateTotalPrice(totalPrice, order_id);
         modelAndView.addObject("orderId", order_id);
+
+        JSONObject jsonObject = productsService.getCategoriesMapperJson();
+        modelAndView.addObject("categoryjson", jsonObject);
+
         modelAndView.setViewName("getOrderProducts.html?orderId=" + order_id);
         return modelAndView;
+    }
+
+    public void displayShoppingCart(HttpServletRequest request, ModelAndView mv) throws Exception {
+        int i=0;
+        HttpSession session = request.getSession(true);
+        String userPhone = (String)session.getAttribute("userPhone");
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.setUserPhone(userPhone);
+        List<ShoppingCart> shoppingCartsList = shoppingCartService.queryCartInformation(shoppingCart);
+        int shoppingCartProductsNum = shoppingCartsList.size();
+        mv.addObject("shoppingCartsList",shoppingCartsList);
+
+        int productIdArray[] = new int[shoppingCartProductsNum];// 从返回值中获取商品ID
+        int StoreIdArray[] = new int[shoppingCartProductsNum];
+        String pictureUrlArray[] = new String[shoppingCartProductsNum];//通过商品ID获得图片的url，准备传到界面上显示
+        String productNameArray[] = new String[shoppingCartProductsNum];
+        String storeNameArray[] = new String[shoppingCartProductsNum];
+        Double productPriceArray[] = new Double[shoppingCartProductsNum];
+        double totalPrice = 0;
+
+        for(i = 0;i < shoppingCartProductsNum;i++){
+            productIdArray[i] = shoppingCartsList.get(i).getProductId();
+            StoreIdArray[i] = shoppingCartsList.get(i).getStoreId();
+            pictureUrlArray[i] = shoppingCartService.queryPictureUrl(productIdArray[i]);
+            productNameArray[i] = shoppingCartService.queryProductName(productIdArray[i]);
+            storeNameArray[i] = shoppingCartService.queryStoreName(StoreIdArray[i]);
+            ProductsByStore tmp = productsByStoreService.selectByProductAndStore(shoppingCartsList.get(i).getProductId(),shoppingCartsList.get(i).getStoreId());
+            productPriceArray[i] = tmp.getOriginalPrice()*tmp.getDiscount();
+            totalPrice+=productPriceArray[i]*shoppingCartsList.get(i).getAmount();
+        }
+        List<String> pictureUrlArrayList = Arrays.asList(pictureUrlArray);
+        List<String> productNameArrayList = Arrays.asList(productNameArray);
+        List<String> storeNameArrayList = Arrays.asList(storeNameArray);
+        List<Double> productPriceArrayList = Arrays.asList(productPriceArray);
+
+        mv.addObject("pictureUrlArrayList", pictureUrlArrayList);
+        mv.addObject("productNameArrayList", productNameArrayList);
+        mv.addObject("storeNameArrayList", storeNameArrayList);
+        mv.addObject("shoppingCartsList", shoppingCartsList);
+        mv.addObject("productPriceArrayList",productPriceArrayList);
+        mv.addObject("totalPrice",totalPrice);
     }
 
 }

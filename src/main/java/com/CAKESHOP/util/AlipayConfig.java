@@ -1,0 +1,20 @@
+package com.CAKESHOP.util;
+
+public class AlipayConfig {
+
+    public static String app_id = "2016092600600144";//在后台获取（必须配置）
+
+    public static String merchant_private_key = "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCCA1AHGoynnLCenRxh+LdjMd2JoPcVD1SqdeF3OTFaYZu4MyFcU+ye6x5GC2Y7ieVJ8Qp+boC67HkHT3pwVLu1V0+aAc1qDNxpiSCj5MwzD/8bLjI1GGb8JAkUbWF76rNLOpg+h2TBcHD3XWiICbazPmFme+ED9xXKkwJs8mVoSISN0+kN+3tl5Ucs3r74G/w8W5U1NgK/kuSknrXUj/idDSLELayGtbyvoyYjrRpiLXXfuBW3UI1piTx3AKoES66wD/XXWpHHeuFdRMsDaTTibEFajOQhZnUvb+9VPNZqZO7rdeZUdrLFsmGMNyHVwLBOa2w8f7hoaB7KfocVB9QVAgMBAAECggEAMvC1VHM0lR+xnBQW4NQgln8dPCWTae79z2QsmRgRnEYOS1fNRG2lkoaw7+Tbg4x+CECnSe5mBddNfG3JnWW1vlGdYMw//cNYQQl3fn/Q+ljULYQmK+OJxlUgMZ7ByVmmMl2c9TL7aUdzG5i/sj2MFiLk6tCy02jmYt7C3okC7p6cQnYtGL1+dNhRBkBWd6WXbrNQaHdDB4t2ne86pruMYBgiDCBwO92SNIXjP2bQKcB4sT+ZhF4syLztkppc/wM1KtbYNTuJMHtWqDCySG6D2GK//iBrTLqLNdQjWq10CD0g1BzZ5pRvsjzmfVzHIGJHbq+V1gsJErL5q+FdUtpUaQKBgQC6UdTavzb2LCVNPpf1QqwZyIIcsUvqmdmNEKDuvHv5XQ72AwPkWwafICQ8H/hq/Zxh/p3C3yT4Z7xTSmWxB1JftOPy9ZQ2SWC1XJcMT4dwwipDRdxEP2Z+VUWlgx1smooA3Ko0ECqtrCGgObHAPk9pA/651+zRGd2iGXs0zCE4nwKBgQCyorLzwmjO0WZuMNwqZPEUhF8nAX6/FzQL70E58cry1NWTvPibruLghorHvvl/86T4++sPWbLbvgy7t6mNXMKNtaTF2N1SvTRmjIn9OIy483fib7BFd4GCmklNUmx4sI8XHspH0RrEaQR0ktUX7KYZcNZeob0frX2+AP+4aVNSywKBgQCXOph0PMQVp9tXCTk5/zXFb7P8KgQelWW5VAfr/tz5mAjusZ/VF/UV73a5vpFZ9iOafpn6dDiDz19Sk45a1ECOIjrrF12HeqOeUVrgySR75316QRf55SQB4qC3KOcXIZBmBrW3sG+Tq6VXcbzO90RpTq7QlWxIhKAaVGhmgFFurQKBgEOt/Nr55zekgohxHpk5UVWSqXJf0KOZqPB0n2PSxi+mj5y/1fk2E2M51k7DfkgKCZED8RUJyQgUQ0LD3Qtf/54tGdaTyZbVdIr96DH2QOq548v4wPIwyvKufeM7vTkku7Hoyn7XLKsJltSL5QyBbpTo+W81HDBqTN+2BSzbSuRtAoGAToxkJvt/j7g2dJ/M483Rg7o9SZoGTvD/ILRhj9M60dLw6PsNmJug9z0F7w74XXbitNlKqWSLZaO7GvJycgpxDu0EKZT3WkRtM+TXtGisAwMzDTb0QI9N1tXCsAD/QaP/MnSHxaXMoLuj1SEM8UzlVR+lUZRIsz+U+P79TojUqBs=";//教程查看获取方式（必须配置）
+
+    public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAggNQBxqMp5ywnp0cYfi3YzHdiaD3FQ9UqnXhdzkxWmGbuDMhXFPsnuseRgtmO4nlSfEKfm6Auux5B096cFS7tVdPmgHNagzcaYkgo+TMMw//Gy4yNRhm/CQJFG1he+qzSzqYPodkwXBw911oiAm2sz5hZnvhA/cVypMCbPJlaEiEjdPpDft7ZeVHLN6++Bv8PFuVNTYCv5LkpJ611I/4nQ0ixC2shrW8r6MmI60aYi1137gVt1CNaYk8dwCqBEuusA/111qRx3rhXUTLA2k04mxBWozkIWZ1L2/vVTzWamTu63XmVHayxbJhjDch1cCwTmtsPH+4aGgeyn6HFQfUFQIDAQAB";//教程查看获取方式（必须配置）
+
+    public static String notify_url = "http://localhost:8082/alipayNotifyNotice.action";
+
+    public static String return_url = "http://localhost:8082/alipayReturnNotice.action";
+
+    public static String sign_type = "RSA2";
+
+    public static String charset = "utf-8";
+
+    public static String gatewayUrl = "https://openapi.alipaydev.com/gateway.do";//注意：沙箱测试环境，正式环境为：https://openapi.alipay.com/gateway.do
+}

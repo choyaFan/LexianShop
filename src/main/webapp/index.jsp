@@ -21,7 +21,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS Style -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/simple-line-icons.css">
     <link rel="stylesheet" href="css/style3.css">
+    <link rel="stylesheet" href="css/revolution-slider.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/quick_view_popup.css">
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/owl.transitions.css">
+    <link rel="stylesheet" href="css/jtv-mobile-menu.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.css">
     <script>
         function EnterButtonPress(e) { //传入 event
             var e = e || window.event;
@@ -196,18 +206,6 @@
                                         <li> <a title="Favorites" href="/getUserOrder">订单</a> </li>
                                         <li> <a title="Favorites" href="look_wish_list">收藏夹</a> </li>
 
-                                        <li>
-                                            <div class="dropdown block-company-wrapper hidden-xs"> <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#">其他功能<span class="caret"></span></a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="about_us.html"> About Us </a> </li>
-                                                    <li><a href="#"> Customer Service </a> </li>
-                                                    <li><a href="#"> Privacy Policy </a> </li>
-                                                    <li><a href="#">Site Map </a> </li>
-                                                    <li><a href="#">Search Terms </a> </li>
-                                                    <li><a href="#">Advanced Search </a> </li>
-                                                </ul>
-                                            </div>
-                                        </li>
                                         <c:choose>
                                             <c:when test="${not empty sessionScope.userName}">
                                                 <li> <a href="ShowPersonalInformation.action"><span class="hidden-xs">${sessionScope.userName}</span></a> </li>
@@ -255,7 +253,7 @@
 
                                         <!--actions-->
                                         <div class="actions">
-                                            <button class="btn-checkout" title="Checkout" type="button" href="checkOut.action"><span>下单</span> </button>
+                                            <button class="btn-checkout" title="Checkout" type="button" onclick="window.location.href='checkOut.action'" ><span>下单</span> </button>
                                             <a href="/shoppingCart.action" class="view-cart"><span>进入购物车</span></a> </div>
                                     </div>
                                 </div>
@@ -264,7 +262,7 @@
                     </div>
                     <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12 jtv-logo-box">
                         <!-- Header Logo -->
-                        <div class="logo"> <h1><a title="eCommerce" href="index.jsp"><img alt="eCommerce" src="images/name2.png"> </a></h1> </div>
+                        <div class="logo"> <h1><a title="eCommerce" href="getSector"><img alt="eCommerce" src="images/name2.png"> </a></h1> </div>
                         <!-- End Header Logo -->
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 hidden-xs">
@@ -416,10 +414,10 @@
                 <div class="jtv-special-block">
                     <div class="jtv-block-inner">
                         <div class="block-title">
-                            <h3>Best Selling</h3>
+                            <h3>限时抢购</h3>
                         </div>
-                        <div class="jtv-decs-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</div>
-                        <a href="shop_grid.jsp" class="jtv-more-bnt">More Products</a>
+                        <div class="jtv-decs-text">限时抢购，每天五场，限时低价，百款尖货更新抢，逛超市必抢，总有一款你想要的.</div>
+                        <a href="shop_grid.jsp" class="jtv-more-bnt">更多商品</a>
                         <div class="jtv-box-timer">
                             <div class="countbox_1 timer-grid"></div>
                         </div>
@@ -429,7 +427,7 @@
                             <div class="item">
                                 <div class="item-inner">
                                     <div class="item-img">
-                                        <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img12.jpg"> </a>
+                                        <div class="item-img-info"> <a class="product-image" title="大葱" href="single_product.jsp"> <img alt="Product Title Here" src="images/products/img12.jpg"> </a>
                                             <div class="jtv-box-hover">
                                                 <ul class="add-to-links">
                                                     <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -441,14 +439,13 @@
                                     </div>
                                     <div class="item-info">
                                         <div class="info-inner">
-                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
+                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> 大葱 </a></h6> </div>
                                             <div class="item-content">
-                                                <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                 <div class="item-price">
-                                                    <div class="price-box"> <span class="regular-price"> <span class="price">$155.00</span> </span> </div>
+                                                    <div class="price-box"> <span class="regular-price"> <span class="price">¥5.00/斤</span> </span> </div>
                                                 </div>
                                                 <div class="action">
-                                                    <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
+                                                    <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>添加购物车</span> </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -470,14 +467,14 @@
                                     </div>
                                     <div class="item-info">
                                         <div class="info-inner">
-                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
+                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> 蘑菇 </a></h6> </div>
                                             <div class="item-content">
-                                                <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+
                                                 <div class="item-price">
-                                                    <div class="price-box"> <span class="regular-price"> <span class="price">$225.00</span> </span> </div>
+                                                    <div class="price-box"> <span class="regular-price"> <span class="price">¥10.00/斤</span> </span> </div>
                                                 </div>
                                                 <div class="action">
-                                                    <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
+                                                    <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>添加购物车</span> </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -499,14 +496,14 @@
                                     </div>
                                     <div class="item-info">
                                         <div class="info-inner">
-                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
+                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> 葡萄 </a></h6> </div>
                                             <div class="item-content">
-                                                <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+
                                                 <div class="item-price">
-                                                    <div class="price-box"> <span class="regular-price"> <span class="price">$99.00</span> </span> </div>
+                                                    <div class="price-box"> <span class="regular-price"> <span class="price">¥12.45/斤</span> </span> </div>
                                                 </div>
                                                 <div class="action">
-                                                    <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
+                                                    <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>添加购物车</span> </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -529,17 +526,16 @@
                                     </div>
                                     <div class="item-info">
                                         <div class="info-inner">
-                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> Product Title Here </a></h6> </div>
+                                            <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp"> 百香果</a></h6> </div>
                                             <div class="item-content">
-                                                <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
                                                 <div class="item-price">
                                                     <div class="price-box">
-                                                        <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $156.00 </span> </p>
-                                                        <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $167.00 </span> </p>
+                                                        <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> ¥16.00/斤 </span> </p>
+                                                        <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $18.50/斤 </span> </p>
                                                     </div>
                                                 </div>
                                                 <div class="action">
-                                                    <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
+                                                    <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>添加购物车</span> </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -582,7 +578,7 @@
                                         <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                             <div class="item-inner">
                                                 <div class="item-img">
-                                                    <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src=${productsList.get(i).pic1Url}> </a>
+                                                    <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img width="268px" height="268px" alt="Product Title Here" src=${productsList.get(i).pic1Url}> </a>
                                                         <div class="jtv-box-hover">
                                                             <ul class="add-to-links">
                                                                 <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -596,12 +592,12 @@
                                                     <div class="info-inner">
                                                         <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp">${productsList.get(i).productName}</a></h6> </div>
                                                         <div class="item-content">
-                                                            <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                            
                                                             <div class="item-price">
                                                                 <div class="price-box"> <span class="regular-price"> <span class="price">$${list.originalPrice}</span> </span> </div>
                                                             </div>
                                                             <div class="action">
-                                                                <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
+                                                                <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>添加购物车</span> </button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -744,16 +740,17 @@
                             <!-- /.navbar-collapse -->
                         </div>
                         <%int i = 0; pageContext.setAttribute("i", i);%>
+                        <div class="tab-container">
+                        <div class="products-grid">
+                            <div class="tab-panel active">
+                                <div class="category-products">
+                                    <ul class="products-grid">
                         <c:forEach items="${specialProductsList}" var="products" end="${num.get(i) - 1}">
-                            <div class="tab-container">
-                                <!-- tab product -->
-                                <div class="tab-panel active">
-                                    <div class="category-products">
-                                        <ul class="products-grid">
+                            <c:if test="${!empty productsByStores.get(i).originalPrice}">
                                                     <li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                                         <div class="item-inner">
                                                             <div class="item-img">
-                                                                <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img alt="Product Title Here" src=${products.pic1Url}> </a>
+                                                                <div class="item-img-info"> <a class="product-image" title="Product Title Here" href="single_product.jsp"> <img width="268px" height="268px" alt="Product Title Here" src=${products.pic1Url}> </a>
                                                                     <div class="jtv-box-hover">
                                                                         <ul class="add-to-links">
                                                                             <li><a class="link-quickview" href="#"><i class="icon-magnifier-add icons"></i><span class="hidden">Quick View</span></a></li>
@@ -767,24 +764,25 @@
                                                                 <div class="info-inner">
                                                                     <div class="item-title"><h6> <a title="Product Title Here" href="single_product.jsp">${products.productName}</a></h6> </div>
                                                                     <div class="item-content">
-                                                                        <div class="rating"> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                                        
                                                                         <div class="item-price">
                                                                             <div class="price-box"> <span class="regular-price"> <span class="price">$${productsByStores.get(i).originalPrice}</span> </span> </div>
                                                                         </div>
                                                                         <div class="action">
-                                                                            <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span> </button>
+                                                                            <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>加入购物车</span> </button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            </c:if>
                             <%i++; pageContext.setAttribute("i", i);%>
                         </c:forEach>
+                                    </ul>
+                            </div>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>

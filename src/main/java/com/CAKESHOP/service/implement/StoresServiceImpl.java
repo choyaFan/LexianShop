@@ -55,4 +55,11 @@ public class StoresServiceImpl implements StoresService {
         return branchStoreListAll;
     }
 
+    @Override
+    public BranchStore querygetStoreName(int storeId){
+        BranchStore branchStore = new BranchStore();
+        branchStore.setId(storeId);
+        return branchStoreMapper.select(branchStore).get(0);
+    }
+
 }

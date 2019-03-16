@@ -5,5 +5,5 @@ import org.apache.ibatis.annotations.Param;
 
 public interface PaymentMapper {
     PersonalInformation selectByUserPhone(@Param("userPhone")String userPhone);
-    void updateInfo(@Param("balance") int balance, @Param("userPhone")String userPhone);
+    void updateInfo(@Param("balance") double balance, @Param("userPhone")String userPhone);
 }

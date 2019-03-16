@@ -24,4 +24,6 @@ public interface OrdersMapper {
     List<Orders> selectByOrderId(@Param("orderId")int orderId);
 
     void deleteOrder(@Param("orderId")int orderId);
+
+    void updateOrderState(@Param("orderId")int orderId, @Param("productId")int productId);
 }

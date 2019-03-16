@@ -2,7 +2,6 @@ package com.CAKESHOP.controller;
 
 import com.CAKESHOP.dao.*;
 import com.CAKESHOP.service.*;
-import com.sun.xml.internal.ws.resources.HttpserverMessages;
 import net.sf.json.JSONObject;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -253,7 +252,8 @@ public class SearchProducts {
             }
             if(!flag) {
                 DisplayProducts products = productsService.queryselectDisplayProductsById(Integer.parseInt(productIdFromRecommand), storeId);
-                recommandTrueList.add(products);
+                if(products != null)
+                    recommandTrueList.add(products);
             }
             else
                 flag=false;

@@ -3,23 +3,23 @@ package com.CAKESHOP.dao;
 import java.io.Serializable;
 public class Page implements Serializable {
     private static final long serialVersionUID = -3198048449643774660L;
-    private int pageNow = 1; // µ±Ç°Ò³Êý
-    private int pageSize = 15; // Ã¿Ò³ÏÔÊ¾¼ÇÂ¼µÄÌõÊý
-    private int totalCount; // ×ÜµÄ¼ÇÂ¼ÌõÊý
-    private int totalPageCount; // ×ÜµÄÒ³Êý
-    private int productsPerPage; //Ã¿Ò³¼ÇÂ¼Êý
+    private int pageNow = 1; // ï¿½ï¿½Ç°Ò³ï¿½ï¿½
+    private int pageSize = 15; // Ã¿Ò³ï¿½ï¿½Ê¾ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    private int totalCount; // ï¿½ÜµÄ¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
+    private int totalPageCount; // ï¿½Üµï¿½Ò³ï¿½ï¿½
+    private int productsPerPage; //Ã¿Ò³ï¿½ï¿½Â¼ï¿½ï¿½
     @SuppressWarnings("unused")
-    private int startPos; // ¿ªÊ¼Î»ÖÃ£¬´Ó0¿ªÊ¼
+    private int startPos; // ï¿½ï¿½Ê¼Î»ï¿½Ã£ï¿½ï¿½ï¿½0ï¿½ï¿½Ê¼
     @SuppressWarnings("unused")
-    private boolean hasFirst;// ÊÇ·ñÓÐÊ×Ò³
+    private boolean hasFirst;// ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ò³
     @SuppressWarnings("unused")
-    private boolean hasPre;// ÊÇ·ñÓÐÇ°Ò»Ò³
+    private boolean hasPre;// ï¿½Ç·ï¿½ï¿½ï¿½Ç°Ò»Ò³
     @SuppressWarnings("unused")
-    private boolean hasNext;// ÊÇ·ñÓÐÏÂÒ»Ò³
+    private boolean hasNext;// ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³
     @SuppressWarnings("unused")
-    private boolean hasLast;// ÊÇ·ñÓÐ×îºóÒ»Ò³
+    private boolean hasLast;// ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³
     /**
-     * Í¨¹ý¹¹Ôìº¯Êý ´«Èë  ×Ü¼ÇÂ¼Êý  ºÍ  µ±Ç°Ò³
+     * Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½  ï¿½Ü¼ï¿½Â¼ï¿½ï¿½  ï¿½ï¿½  ï¿½ï¿½Ç°Ò³
      * @param totalCount
      * @param pageNow
      */
@@ -32,7 +32,7 @@ public class Page implements Serializable {
     public int getProductsPerPage() {
         if(getPageNow()==getTotalPageCount()) {
             System.out.println("page size:"+getPageSize());
-            System.out.println("Every page£º"+getTotalCount() % getPageSize());
+            System.out.println("Every pageï¿½ï¿½"+getTotalCount() % getPageSize());
             int prodNum = getTotalCount() % getPageSize();
             if(prodNum==0)
                 prodNum=getPageSize();
@@ -73,7 +73,7 @@ public class Page implements Serializable {
         this.totalCount = totalCount;
     }
     /**
-     * È¡µÃÑ¡Ôñ¼ÇÂ¼µÄ³õÊ¼Î»ÖÃ
+     * È¡ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Â¼ï¿½Ä³ï¿½Ê¼Î»ï¿½ï¿½
      * @return
      */
     public int getStartPos() {
@@ -83,7 +83,7 @@ public class Page implements Serializable {
         this.startPos = startPos;
     }
     /**
-     * ÊÇ·ñÊÇµÚÒ»Ò³
+     * ï¿½Ç·ï¿½ï¿½Çµï¿½Ò»Ò³
      * @return
      */
     public boolean isHasFirst() {
@@ -93,33 +93,33 @@ public class Page implements Serializable {
         this.hasFirst = hasFirst;
     }
     /**
-     * ÊÇ·ñÓÐÊ×Ò³
+     * ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ò³
      * @return
      */
     public boolean isHasPre() {
-        // Èç¹ûÓÐÊ×Ò³¾ÍÓÐÇ°Ò»Ò³£¬ÒòÎªÓÐÊ×Ò³¾Í²»ÊÇµÚÒ»Ò³
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ç°Ò»Ò³ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Ò³ï¿½Í²ï¿½ï¿½Çµï¿½Ò»Ò³
         return isHasFirst() ? true : false;
     }
     public void setHasPre(boolean hasPre) {
         this.hasPre = hasPre;
     }
     /**
-     * ÊÇ·ñÓÐÏÂÒ»Ò³
+     * ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³
      * @return
      */
     public boolean isHasNext() {
-        // Èç¹ûÓÐÎ²Ò³¾ÍÓÐÏÂÒ»Ò³£¬ÒòÎªÓÐÎ²Ò³±íÃ÷²»ÊÇ×îºóÒ»Ò³
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Î²Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Î²Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³
         return isHasLast() ? true : false;
     }
     public void setHasNext(boolean hasNext) {
         this.hasNext = hasNext;
     }
     /**
-     * ÊÇ·ñÓÐÎ²Ò³
+     * ï¿½Ç·ï¿½ï¿½ï¿½Î²Ò³
      * @return
      */
     public boolean isHasLast() {
-        // Èç¹û²»ÊÇ×îºóÒ»Ò³¾ÍÓÐÎ²Ò³
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³ï¿½ï¿½ï¿½ï¿½Î²Ò³
         return (pageNow == getTotalCount()) ? false : true;
     }
     public void setHasLast(boolean hasLast) {

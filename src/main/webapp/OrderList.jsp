@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 <%--
   Created by IntelliJ IDEA.
   User: 63583
@@ -43,10 +44,123 @@
                         <!-- Header Language -->
                         <div class="col-xs-12 col-sm-9">
                             <div class="welcome-msg col-sm-3">欢迎来到派氏乐鲜生活馆</div>
+                            <div class="col-sm-8">
+                                <select id="province">
+                                    <option value="" hidden>
+                                        <c:choose>
+                                            <c:when test="${empty province}">
+                                                请选择省份
+                                            </c:when>
+                                            <c:otherwise>
+                                                ${province}
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </option>
+                                </select>
+                                <select id="city">
+                                    <option value="" hidden>
+                                        <c:choose>
+                                            <c:when test="${empty city}">
+                                                请选择城市
+                                            </c:when>
+                                            <c:otherwise>
+                                                ${city}
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </option>
+                                </select>
+                                <select id="district">
+                                    <option value="" hidden>
+                                        <c:choose>
+                                            <c:when test="${empty district}">
+                                                请选择区县
+                                            </c:when>
+                                            <c:otherwise>
+                                                ${district}
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </option>
+                                </select>
+                                <select id="stores" id="sto">
+                                    <c:choose>
+                                        <c:when test="${!empty storeName}">
+                                            <option value="" hidden>${storeName}</option>
+                                            <c:if test="${!empty branchStoreList}">
+                                                <c:forEach items="${branchStoreList}" varStatus="storesStatues"
+                                                           var="storelist">
+                                                    <c:if test="${storelist.storeStatus eq 1}">
+                                                        <option value=${storesStatues.index}>${storelist.storeName}</option>
+                                                    </c:if>
+                                                </c:forEach>
+                                            </c:if>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <option value="" hidden>请选择门店</option>
+                                            <c:forEach items="${branchStoreList}" varStatus="storesStatues"
+                                                       var="storelist">
+                                                <c:if test="${storelist.storeStatus eq 1}">
+                                                    <option value=${storesStatues.index}>${storelist.storeName}</option>
+                                                </c:if>
+                                            </c:forEach>
 
-                            <!-- End Header Language -->
+                                        </c:otherwise>
+                                    </c:choose>
 
+                                </select>
+                            </div>
+                            <script type="text/javascript" src="js/data.js"></script>
+                            <script type="text/javascript">
+                                var province = $("#province");
+                                var city = $("#city");
+                                var district = $("#district");
+                                var store = $("#stores");
+                                //初始化省份下拉选择框选项
+                                $(function () {
+                                    //遍历对象,data为data.js中的对象
+                                    data.forEach(function (value, index) {
+                                        var provinceName = value.name;//省份名
+                                        province.append("<option value='" + index + "'>" + provinceName + "</option>");
+                                    });
+                                });
+                                //省份下拉框切换事件,加载城市下拉框值
+                                province.change(function () {
+                                    //先清除城市区县两个下拉框的选项
+                                    $("#city option:not(:first)").remove();
+                                    $("#district option:not(:first)").remove();
+                                    var cityList = data[province.val()].city;
+                                    cityList.forEach(function (value, index) {
+                                        var cityName = value.name;//城市名
+                                        city.append("<option value='" + index + "'>" + cityName + "</option>");
+                                    });
+                                });
+                                //城市下拉框切换事件,加载区县下拉框值
+                                city.change(function () {
+                                    $("#district option:not(:first)").remove();
+                                    var cityList = data[province.val()].city;
+                                    var districtList = cityList[city.val()].area;
+                                    districtList.forEach(function (value, index) {
+                                        district.append("<option value='" + index + "'>" + value + "</option>");
+                                    });
+                                });
 
+                                district.change(function () {
+                                    var provinceVal = province.val();
+                                    var cityVal = city.val();
+                                    var districtVal = district.val();
+                                    //获取省市区选中的值的文本
+                                    var pName = $("#province option:selected").text();
+                                    var cName = $("#city option:selected").text();
+                                    var dName = $("#district option:selected").text();
+
+                                    //window.location.href = "select_stores" + "?province=" + pName + "&city=" + cName + "&district=" + dName;
+                                });
+
+                                store.change(function () {
+                                    var sName = $("#stores option:selected").text();
+
+                                    window.location.href = "stores_changed" + "?store=" + sName;
+                                });
+                            </script>
                             <!-- Header Currency -->
 
                             <!-- End Header Currency -->
@@ -61,18 +175,6 @@
                                         <li> <a title="Favorites" href="/getUserOrder">订单</a> </li>
                                         <li> <a title="Favorites" href="look_wish_list">收藏夹</a> </li>
 
-                                        <li>
-                                            <div class="dropdown block-company-wrapper hidden-xs"> <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#">其他功能<span class="caret"></span></a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="about_us.html"> About Us </a> </li>
-                                                    <li><a href="#"> Customer Service </a> </li>
-                                                    <li><a href="#"> Privacy Policy </a> </li>
-                                                    <li><a href="#">Site Map </a> </li>
-                                                    <li><a href="#">Search Terms </a> </li>
-                                                    <li><a href="#">Advanced Search </a> </li>
-                                                </ul>
-                                            </div>
-                                        </li>
                                         <c:choose>
                                             <c:when test="${not empty sessionScope.userName}">
                                                 <li> <a href="ShowPersonalInformation.action"><span class="hidden-xs">${sessionScope.userName}</span></a> </li>
@@ -95,7 +197,9 @@
                         <div class="jtv-top-cart-box">
                             <!-- Top Cart -->
                             <div class="mini-cart">
-                                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="#"> <span class="cart_count">${shoppingCartsList.size()}</span><span class="price">购物车 / ${totalPrice}</span> </a> </div>
+                                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="#"> <span class="cart_count">${shoppingCartsList.size()}</span><span class="price">购物车 /
+                                    <fmt:formatNumber value="${totalPrice}" type="currency" pattern="¥.00"/>
+                                </span> </a> </div>
                                 <div>
                                     <div class="jtv-top-cart-content">
 
@@ -107,7 +211,7 @@
                                                         <div class="product-details">
                                                             <p class="product-name"><a href="single_pro?productId=${cartData.productId}">${productNameArrayList[loop.count-1]}</a> </p>
                                                             <strong>${cartData.amount}</strong> x <span class="price">
-                                                            <fmt:formatNumber value="${productPriceArray[loop.count-1]}" type="currency" pattern="¥.00"/>
+                                                            <fmt:formatNumber value="${productPriceArrayList[loop.count-1]}" type="currency" pattern="¥.00"/>
                                                         </span> </div>
                                                     </div>
                                                 </li>
@@ -118,7 +222,7 @@
 
                                         <!--actions-->
                                         <div class="actions">
-                                            <button class="btn-checkout" title="Checkout" type="button" href="checkOut.action"><span>下单</span> </button>
+                                            <button class="btn-checkout" title="Checkout" type="button" onclick="window.location.href='checkOut.action'" ><span>下单</span> </button>
                                             <a href="/shoppingCart.action" class="view-cart"><span>进入购物车</span></a> </div>
                                     </div>
                                 </div>
@@ -127,7 +231,7 @@
                     </div>
                     <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12 jtv-logo-box">
                         <!-- Header Logo -->
-                        <div class="logo"> <h1><a title="eCommerce" href="index.jsp"><img alt="eCommerce" src="images/name2.png"> </a></h1> </div>
+                        <div class="logo"> <h1><a title="eCommerce" href="getSector"><img alt="eCommerce" src="images/name2.png"> </a></h1> </div>
                         <!-- End Header Logo -->
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 hidden-xs">
@@ -190,24 +294,6 @@
     </nav>
     <!-- end nav -->
 
-
-    <!-- Breadcrumbs -->
-    <div class="breadcrumbs">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <ul>
-                        <li class="home"> <a href="index.html" title="Go to Home Page">Home</a> <span>/</span> </li>
-                        <li> <a href="shop_grid.html" title="">Fruits</a> <span>/ </span> </li>
-                        <li> <a href="shop_grid.html" title="">Apples</a> <span>/</span> </li>
-                        <li> <strong>Green Apple</strong> </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Breadcrumbs End -->
-
     <!-- Main Container -->
     <section class="main-container col2-left-layout">
         <div class="container">
@@ -260,295 +346,26 @@
                                         <li><a href="#">&gt;|</a></li>
                                     </ul>
                                 </div>
-                                <div class="col-sm-6 text-right">Showing 1 to 15 of 25 (2 Pages)</div>
                             </div>
                         </div>
                     </article>
                     <!--	///*///======    End article  ========= //*/// -->
-                </div>
-                <div class="sidebar col-sm-3 col-xs-12 col-sm-pull-9">
-                    <aside class="sidebar">
-                        <div class="block block-tags">
-                            <div class="block-title"><h3>类别选择</h3></div>
-                            <div class="block-content">
-                                <div class="tags-list"> <a href="#">类别6</a> </div>
-                                <div class="actions"> <a href="#" class="view-all">查看所有类别</a> </div>
-                            </div>
-                        </div>
-                        <div class="block product-price-range ">
-                            <div class="block-title"><h3>价格区间</h3></div>
-                            <div class="block-content">
-                                <div class="slider-range">
-                                    <div data-label-reasult="Range:" data-min="0" data-max="500" data-unit="$" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="50" data-value-max="350">
-                                        <div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 10%; width: 60%;"></div>
-                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 10%;"/></div></div>
-                                <div class="amount-range-price">范围: ¥10 - ¥550</div>
-                                <ul class="check-box-list">
-                                    <li>
-                                        <input type="checkbox" id="p1" name="cc">
-                                        <label for="p1"> <span class="button"></span> ¥20 - ¥50<span class="count">(5)</span> </label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="p2" name="cc">
-                                        <label for="p2"> <span class="button"></span> ¥50 - ¥100<span class="count">(10)</span> </label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="p3" name="cc">
-                                        <label for="p3"> <span class="button"></span> ¥100 - ¥250<span class="count">(12)</span> </label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="block block-compare">
-                            <div class="block-title ">已选条件</div>
-                            <div class="block-content">
-                                <ol id="compare-items">
-                                    <li class="item">
-                                        <input type="hidden" value="2173" class="compare-item-id">
-                                        <a class="jtv-btn-remove" title="Remove This Item" href="#" class="product-name"></a>
-                                        <a href="#" class="product-name">
-                                            <i class="fa fa-angle-right"></i>条件1</a> </li>
-                                    <li class="item">
-                                        <input type="hidden" value="2173" class="compare-item-id">
-                                        <a class="jtv-btn-remove" title="Remove This Item" href="#" class="product-name"></a>
-                                        <a href="#" class="product-name">
-                                            <i class="fa fa-angle-right"></i>条件2</a> </li>
-                                    <li class="item">
-                                        <input type="hidden" value="2173" class="compare-item-id">
-                                        <a class="jtv-btn-remove" title="Remove This Item" href="#" class="product-name"></a>
-                                        <a href="#" class="product-name">
-                                            <i class="fa fa-angle-right"></i>条件3</a> </li>
-                                </ol>
-                                <div class="ajax-checkout">
-                                    <button type="submit" title="Submit" class="button button-compare"><span>重置</span></button>
-                                    <button type="submit" title="Submit" class="button button-clear"><span>筛选</span></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="block block-layered-nav">
-                            <div class="block-title"><h3>所有类别</h3></div>
-                            <div class="block-content">
-                                <p class="block-subtitle">子标题</p>
-                                <dl id="narrow-by-list">
-                                    <dt class="odd">价格</dt>
-                                    <dd class="odd">
-                                        <ol>
-                                            <li> <a href="#"><span class="price">¥0.00</span> - <span class="price">¥99.99</span></a> (6) </li>
-                                            <li> <a href="#"><span class="price">¥100.00</span>及以上</a> (6) </li>
-                                        </ol>
-                                    </dd>
-                                    <dt class="even">类别</dt>
-                                    <dd class="even">
-                                        <ol>
-                                            <li> <a href="#">类别一</a> (20) </li>
-                                            <li> <a href="#">类别二</a> (25) </li>
-                                            <li> <a href="#">类别三</a> (8) </li>
-                                            <li> <a href="#">类别四</a> (5) </li>
-                                        </ol>
-                                    </dd>
-                                    <dt class="odd">其他条件</dt>
-                                    <dd class="odd">
-                                        <ol class="bag-material">
-                                            <li> <a href="#">
-                                                <input type="checkbox" name="Material" value="Beaded">仅查询有货</a></li>
-                                            <li> <a href="#">
-                                                <input type="checkbox" name="Material" value="Beaded">其他功能1</a></li>
-                                            <li> <a href="#">
-                                                <input type="checkbox" name="Material" value="Beaded">其他功能2</a></li>
-
-
-                                        </ol>
-                                    </dd>
-
-
-                                </dl>
-                            </div>
-                        </div>
-
-                        <div class="block block-cart">
-                            <div class="block-title "><h3>我的购物车</h3></div>
-                            <div class="block-content">
-                                <div class="summary">
-                                    <p class="amount">购物车中共有<a href="#">5</a>件商品</p>
-                                    <p class="subtotal"> <span class="label">总价: </span> <span class="price">¥227.99</span> </p>
-                                </div>
-                                <div class="ajax-checkout">
-                                    <button class="button button-checkout" title="Submit" type="submit"><span>下单</span></button>
-                                </div>
-                                <p class="block-subtitle">最近添加商品</p>
-                                <ul>
-                                    <li class="item"> <a href="#" title="Product Title Here" class="product-image"><img src="images/products/img10.jpg" alt="Product Title Here"></a>
-                                        <div class="product-details">
-                                            <div class="access"> <a href="#" title="Remove This Item" class="jtv-btn-remove"> <span class="icon"></span> Remove </a> </div>
-                                            <strong>1</strong> x <span class="price">¥99.99</span>
-                                            <p class="product-name"> <a href="#">商品1</a> </p>
-                                        </div>
-                                    </li>
-                                    <li class="item"> <a href="#" title="Product Title Here" class="product-image"><img src="images/products/img01.jpg" alt="Product Title Here"></a>
-                                        <div class="product-details">
-                                            <div class="access"> <a href="#" title="Remove This Item" class="jtv-btn-remove"> <span class="icon"></span> Remove </a> </div>
-                                            <strong>1</strong> x <span class="price">¥88.00</span>
-                                            <p class="product-name"> <a href="#">商品2</a> </p>
-
-                                            <!--access clearfix-->
-                                        </div>
-                                    </li>
-                                    <li class="item"> <a href="#" title="Product Title Here" class="product-image"><img src="images/products/img05.jpg" alt="Product Title Here"></a>
-                                        <div class="product-details">
-                                            <div class="access"> <a href="#" title="Remove This Item" class="jtv-btn-remove"> <span class="icon"></span> Remove </a> </div>
-                                            <strong>1</strong> x <span class="price">¥98.00</span>
-                                            <p class="product-name"> <a href="#">商品3</a> </p>
-
-                                            <!--access clearfix-->
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="custom-slider">
-                            <div>
-                                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                    <ol class="carousel-indicators">
-                                        <li class="" data-target="#carousel-example-generic" data-slide-to="0"></li>
-                                        <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
-                                        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
-                                    </ol>
-                                    <div class="carousel-inner">
-                                        <div class="item"><img src="images/slide3.jpg" alt="slide3">
-                                            <div class="carousel-caption">
-                                                <h3><a title=" Sample Product" href="#">板块1</a></h3>
-                                                <p>板块1的描述</p>
-                                                <a class="link" href="#">按钮1</a></div>
-                                        </div>
-                                        <div class="item active"><img src="images/slide1.jpg" alt="slide1">
-                                            <div class="carousel-caption">
-                                                <h3><a title=" Sample Product" href="#">板块2</a></h3>
-                                                <p>板块2的描述</p>
-                                            </div>
-                                        </div>
-                                        <div class="item"><img src="images/slide2.jpg" alt="slide2">
-                                            <div class="carousel-caption">
-                                                <h3><a title=" Sample Product" href="#">板块3</a></h3>
-                                                <p>板块3的描述</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="left carousel-control" href="#" data-slide="next"> <span class="sr-only">Next</span> </a></div>
-                            </div>
-                        </div>
-                        <div class="block block-list block-viewed">
-                            <div class="block-title"><h3>不知道干啥</h3> </div>
-                            <div class="block-content">
-                                <ol id="recently-viewed-items">
-                                    <li class="item odd">
-                                        <p class="product-name"><a href="#"><i class="fa fa-angle-right"></i>第一行</a></p>
-                                    </li>
-                                    <li class="item even">
-                                        <p class="product-name"><a href="#"><i class="fa fa-angle-right"></i>第二行</a></p>
-                                    </li>
-                                    <li class="item last odd">
-                                        <p class="product-name"><a href="#"><i class="fa fa-angle-right"></i>第三行</a></p>
-                                    </li>
-                                </ol>
-                            </div>
-                        </div>
-                        <div class="block block-poll">
-                            <div class="block-title"><h3>调查</h3> </div>
-                            <form id="pollForm" action="#" method="post" onsubmit="return validatePollAnswerIsSelected();">
-                                <div class="block-content">
-                                    <p class="block-subtitle">对本搜索结果是否满意？</p>
-                                    <ul id="poll-answers">
-                                        <li class="odd">
-                                            <input type="radio" name="vote" class="radio poll_vote" id="vote_1" value="1">
-                                            <span class="label">
-                        <label for="vote_1">满意</label>
-                        </span> </li>
-                                        <li class="even">
-                                            <input type="radio" name="vote" class="radio poll_vote" id="vote_2" value="2">
-                                            <span class="label">
-                        <label for="vote_2">基本满意</label>
-                        </span> </li>
-                                        <li class="odd">
-                                            <input type="radio" name="vote" class="radio poll_vote" id="vote_3" value="3">
-                                            <span class="label">
-                        <label for="vote_3">不太满意</label>
-                        </span> </li>
-                                        <li class="last even">
-                                            <input type="radio" name="vote" class="radio poll_vote" id="vote_4" value="4">
-                                            <span class="label">
-                        <label for="vote_4">很不满意</label>
-                        </span> </li>
-                                    </ul>
-                                    <div class="actions">
-                                        <button type="submit" title="Vote" class="button button-vote"><span>提交</span></button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                    </aside>
                 </div>
             </div>
         </div>
     </section>
     <!-- Main Container End -->
 
-    <!-- Brand Logo -->
-    <div class="brand-logo">
-        <div class="container">
-            <div class="slider-items-products">
-                <div id="brand-logo-slider" class="product-flexslider hidden-buttons">
-                    <div class="slider-items slider-width-col6">
-
-                        <!-- Item -->
-                        <div class="item"> <a href="#"><img src="images/brand3.png" alt="Image"> </a> </div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"> <a href="#"><img src="images/brand1.png" alt="Image"> </a> </div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"> <a href="#"><img src="images/brand2.png" alt="Image"> </a> </div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"> <a href="#"><img src="images/brand4.png" alt="Image"> </a> </div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"> <a href="#"><img src="images/brand5.png" alt="Image"> </a> </div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"> <a href="#"><img src="images/brand6.png" alt="Image"> </a> </div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"> <a href="#"><img src="images/brand2.png" alt="Image"> </a> </div>
-                        <!-- End Item -->
-
-                        <!-- Item -->
-                        <div class="item"> <a href="#"><img src="images/brand4.png" alt="Image"> </a> </div>
-                        <!-- End Item -->
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Footer -->
     <footer>
         <div class="footer-top">
             <div class="container">
                 <div class="row">
-                    <div style="text-align:center"> <a href="index.html"><img src="images/footer-logo.png" alt="logo"> </a> </div>
+                    <div style="text-align:center"> <a href="index.jsp"><img src="images/logo2.png" alt="logo"> </a> </div>
                     <address>
-                        <p> <i class="fa fa-map-marker"></i>Company, 12/34 - West 21st Street, New York, USA </p>
-                        <p><i class="fa fa-mobile"></i><span>+ (800) 0123 456 789</span> </p>
-                        <p> <i class="fa fa-envelope"></i><span><a href="mailto:email@domain.com">support@themes.com</a></span></p>
+                        <p> <i class="fa fa-map-marker"></i>中软国际（重庆）卓睿有限公司</p>
+                        <p><i class="fa fa-mobile"></i><span>+ (86) 0123 456 789</span> </p>
+                        <p> <i class="fa fa-envelope"></i><span><a href="mailto:email@domain.com">635837756@qq.com</a></span></p>
                     </address>
                 </div>
             </div>
@@ -558,64 +375,63 @@
                 <div class="row">
                     <div class="col-sm-4 col-xs-12 col-md-3">
                         <div class="footer-links">
-                            <h5>Useful links</h5>
+                            <h5>功能链接</h5>
                             <ul class="links">
-                                <li><a href="#" title="Product Recall">Product Recall</a></li>
-                                <li><a href="#" title="Gift Vouchers">Gift Vouchers</a></li>
-                                <li><a href="#" title="Returns &amp; Exchange">Returns &amp; Exchange</a></li>
-                                <li><a href="#" title="Shipping Options">Shipping Options</a></li>
-                                <li><a href="#" title="Help &amp; FAQs">Help &amp; FAQs</a></li>
-                                <li><a href="#" title="Order history">Order history</a></li>
+                                <li><a href="#" title="Product Recall">商品召回</a></li>
+                                <li><a href="#" title="Gift Vouchers">礼品卡</a></li>
+                                <li><a href="#" title="Returns &amp; Exchange">退货 &amp; 换货</a></li>
+                                <li><a href="#" title="Shipping Options">快递服务</a></li>
+                                <li><a href="#" title="Help &amp; FAQs">帮助 &amp; 提问</a></li>
+                                <li><a href="#" title="Order history">订单历史</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-4 col-xs-12 col-md-3">
                         <div class="footer-links">
-                            <h5>Service</h5>
+                            <h5>服务</h5>
                             <ul class="links">
-                                <li><a href="#">Account</a></li>
-                                <li><a href="#">Wishlist</a></li>
-                                <li><a href="#">Shopping Cart</a></li>
-                                <li><a href="#">Return Policy</a></li>
-                                <li><a href="#">Special</a></li>
-                                <li><a href="#">Lookbook</a></li>
+                                <li><a href="#">账户</a></li>
+                                <li><a href="#">愿望单</a></li>
+                                <li><a href="#">购物车</a></li>
+                                <li><a href="#">退货政策</a></li>
+                                <li><a href="#">其他</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-4 col-xs-12 col-md-2">
                         <div class="footer-links">
-                            <h5>Information</h5>
+                            <h5>信息</h5>
                             <ul class="links">
-                                <li><a href="#">Sites Map </a></li>
-                                <li><a href="#">News</a></li>
-                                <li><a href="#">Trends</a></li>
-                                <li><a href="about_us.html">About Us</a></li>
-                                <li><a href="contact_us.html">Contact Us</a></li>
-                                <li><a href="#">My Orders</a></li>
+                                <li><a href="#">网站导航</a></li>
+                                <li><a href="#">新闻</a></li>
+                                <li><a href="#">潮流</a></li>
+                                <li><a href="about_us.jsp">关于我们</a></li>
+                                <li><a href="contact_us.jsp">联系我们</a></li>
+                                <li><a href="#">我的订单</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4">
                         <div class="footer-links">
                             <div class="footer-newsletter">
-                                <h5>Subscribe to our news</h5>
+                                <h5>订阅我们的新闻</h5>
                                 <form id="newsletter-validate-detail" method="post" action="#">
                                     <div class="newsletter-inner">
-                                        <p>Subscribe to be the first to know about Sales, Events, and Exclusive Offers!</p>
+                                        <p>订阅我们，第一时间获取折扣信息！</p>
                                         <input class="newsletter-email" name='Email' placeholder='Enter Your Email'>
-                                        <button class="button subscribe" type="submit" title="Subscribe">Subscribe</button>
+                                        <button class="button subscribe" type="submit" title="Subscribe">订阅</button>
                                     </div>
                                 </form>
                             </div>
                             <div class="social">
-                                <h5>Follow Us</h5>
+                                <h5>订阅我们</h5>
                                 <ul class="inline-mode">
-                                    <li class="social-network fb"><a title="Connect us on Facebook" target="_blank" href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li class="social-network googleplus"><a title="Connect us on Google+" target="_blank" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li class="social-network tw"><a title="Connect us on Twitter" target="_blank" href="#"><i class="icon-social-twitter icons"></i></a></li>
-                                    <li class="social-network linkedin"><a title="Connect us on Linkedin" target="_blank" href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    <li class="social-network rss"><a title="Connect us on rss" target="_blank" href="#"><i class="fa fa-rss"></i></a></li>
-                                    <li class="social-network instagram"><a title="Connect us on Instagram" target="_blank" href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li class="social-network fb"><a title="Connect us" target="_blank" href="#"><i class="fa fa-firefox"></i></a></li>
+                                    <li class="social-network googleplus"><a title="Connect us" target="_blank" href="#"><i class="fa fa-github"></i></a></li>
+                                    <li class="social-network tw"><a title="Connect us" target="_blank" href="#"><i class="fa fa-flag"></i></a></li>
+                                    <li class="social-network linkedin"><a title="Connect us" target="_blank" href="#"><i class="fa fa-weibo"></i></a></li>
+                                    <li class="social-network rss"><a title="Connect us" target="_blank" href="#"><i class="fa fa-qq"></i></a></li>
+                                    <li class="social-network instagram"><a title="Connect us" target="_blank" href="#"><i class="fa fa-wechat"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -626,7 +442,7 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-5 col-xs-12 coppyright">Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></div>
+                    <div class="col-sm-5 col-xs-12 coppyright">版权所有 &copy; 2019.派德里克小组保留所有权利.</div>
                     <div class="col-sm-7 col-xs-12 payment-accept">
                         <ul>
                             <li> <a href="#"><img src="images/payment-1.png" alt="Payment Card"></a> </li>

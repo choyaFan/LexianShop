@@ -10,4 +10,6 @@ public interface OrdersService {
     List<Orders> selectByUserId(String userPhone);
     List<Orders> selectByOrderId(int orderId);
     void deleteOrder(int orderId);
+
+    public void updataOrder(int orderId, int productId);
 }

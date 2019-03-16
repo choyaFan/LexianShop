@@ -137,5 +137,11 @@
         where order_id=#{orderId}
     </delete>
 
+    <update id="updateOrderState">
+        update orders
+        set order_status=3
+        where order_id=${orderId} and product_id=${productId};
+    </update>
+
     <!-- NO DELETE -->
 </mapper>

@@ -33,6 +33,24 @@
     <link rel="stylesheet" href="css/jquery-ui.css">
     <link rel="stylesheet" href="css/jquery.fancybox.css">
     <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+    <script>
+        function EnterButtonPress(e) { //传入 event
+            var e = e || window.event;
+
+            if (e.keyCode == 13) {
+                document.getElementById('searchbutton').focus();
+            }
+        }
+
+        function EnterAPress(e) {
+            var e = e || window.event;
+
+            if (e.keyCode == 13) {
+
+                $("#searcha").click();
+            }
+        }
+    </script>
 
     <!-- import Vue.js -->
     <script src="js/vue.min.js"></script>
@@ -217,6 +235,70 @@
                         <!-- Header Language -->
                         <div class="col-xs-12 col-sm-9">
                             <div class="welcome-msg col-sm-3">欢迎来到派氏乐鲜生活馆</div>
+                            <div class="col-sm-8">
+                                <select id="province">
+                                    <option value="" hidden>
+                                        <c:choose>
+                                            <c:when test="${empty province}">
+                                                请选择省份
+                                            </c:when>
+                                            <c:otherwise>
+                                                ${province}
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </option>
+                                </select>
+                                <select id="city">
+                                    <option value="" hidden>
+                                        <c:choose>
+                                            <c:when test="${empty city}">
+                                                请选择城市
+                                            </c:when>
+                                            <c:otherwise>
+                                                ${city}
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </option>
+                                </select>
+                                <select id="district">
+                                    <option value="" hidden>
+                                        <c:choose>
+                                            <c:when test="${empty district}">
+                                                请选择区县
+                                            </c:when>
+                                            <c:otherwise>
+                                                ${district}
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </option>
+                                </select>
+                                <select id="stores" id="sto">
+                                    <c:choose>
+                                        <c:when test="${!empty storeName}">
+                                            <option value="" hidden>${storeName}</option>
+                                            <c:if test="${!empty branchStoreList}">
+                                                <c:forEach items="${branchStoreList}" varStatus="storesStatues"
+                                                           var="storelist">
+                                                    <c:if test="${storelist.storeStatus eq 1}">
+                                                        <option value=${storesStatues.index}>${storelist.storeName}</option>
+                                                    </c:if>
+                                                </c:forEach>
+                                            </c:if>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <option value="" hidden>请选择门店</option>
+                                            <c:forEach items="${branchStoreList}" varStatus="storesStatues"
+                                                       var="storelist">
+                                                <c:if test="${storelist.storeStatus eq 1}">
+                                                    <option value=${storesStatues.index}>${storelist.storeName}</option>
+                                                </c:if>
+                                            </c:forEach>
+
+                                        </c:otherwise>
+                                    </c:choose>
+
+                                </select>
+                            </div>
                             <script type="text/javascript" src="js/data.js"></script>
                             <script type="text/javascript">
                                 var province = $("#province");
@@ -270,9 +352,6 @@
                                     window.location.href = "stores_changed" + "?store=" + sName;
                                 });
                             </script>
-                            <!-- End Header Language -->
-
-
                             <!-- Header Currency -->
 
                             <!-- End Header Currency -->
@@ -287,18 +366,6 @@
                                         <li> <a title="Favorites" href="/getUserOrder">订单</a> </li>
                                         <li> <a title="Favorites" href="look_wish_list">收藏夹</a> </li>
 
-                                        <li>
-                                            <div class="dropdown block-company-wrapper hidden-xs"> <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#">其他功能<span class="caret"></span></a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="about_us.html"> About Us </a> </li>
-                                                    <li><a href="#"> Customer Service </a> </li>
-                                                    <li><a href="#"> Privacy Policy </a> </li>
-                                                    <li><a href="#">Site Map </a> </li>
-                                                    <li><a href="#">Search Terms </a> </li>
-                                                    <li><a href="#">Advanced Search </a> </li>
-                                                </ul>
-                                            </div>
-                                        </li>
                                         <c:choose>
                                             <c:when test="${not empty sessionScope.userName}">
                                                 <li> <a href="ShowPersonalInformation.action"><span class="hidden-xs">${sessionScope.userName}</span></a> </li>
@@ -329,13 +396,19 @@
 
                                         <!--block-subtitle-->
                                         <ul class="mini-products-list" id="cart-sidebar">
+                                            <div hidden="true" id="jud">
+                                                <button id="succ1" @click="success1(true)" hidde="true"/>
+                                                <button id="succ" @click="success(true)" hidde="true"/>
+                                                <button id="warn" @click="warning(true)" hidde="true"/>
+                                                <button id="err" @click="error(true)" hidde="true"/>
+                                            </div>
                                             <c:forEach items="${shoppingCartsList}" var="cartData" varStatus="loop">
                                                 <li class="item">
                                                     <div class="item-inner"> <a class="product-image" title="${productNameArrayList[loop.count-1]}" href="single_pro?productId=${cartData.productId}"><img alt="${productNameArrayList[loop.count-1]}" src="${pictureUrlArrayList[loop.count-1]}"> </a>
                                                         <div class="product-details">
                                                             <p class="product-name"><a href="single_pro?productId=${cartData.productId}">${productNameArrayList[loop.count-1]}</a> </p>
                                                             <strong>${cartData.amount}</strong> x <span class="price">
-                                                            <fmt:formatNumber value="${productPriceArray[loop.count-1]}" type="currency" pattern="¥.00"/>
+                                                            <fmt:formatNumber value="${productPriceArrayList[loop.count-1]}" type="currency" pattern="¥.00"/>
                                                         </span> </div>
                                                     </div>
                                                 </li>
@@ -346,7 +419,7 @@
 
                                         <!--actions-->
                                         <div class="actions">
-                                            <button class="btn-checkout" title="Checkout" type="button" href="checkOut.action"><span>下单</span> </button>
+                                            <button class="btn-checkout" title="Checkout" type="button" onclick="window.location.href='checkOut.action'" ><span>下单</span> </button>
                                             <a href="/shoppingCart.action" class="view-cart"><span>进入购物车</span></a> </div>
                                     </div>
                                 </div>
@@ -355,7 +428,7 @@
                     </div>
                     <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12 jtv-logo-box">
                         <!-- Header Logo -->
-                        <div class="logo"> <h1><a title="eCommerce" href="index.jsp"><img alt="eCommerce" src="images/name2.png"> </a></h1> </div>
+                        <div class="logo"> <h1><a title="eCommerce" href="getSector"><img alt="eCommerce" src="images/name2.png"> </a></h1> </div>
                         <!-- End Header Logo -->
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 hidden-xs">
@@ -552,8 +625,8 @@
 
                                                         <c:forEach items="${wishProductList}" var="wishProduct" varStatus="sta">
                                                             <tr id=${wishProduct.productId} class="first">
-                                                                <td class="wishlist-cell0 customer-wishlist-item-image"><a title=${wishProduct.productName} href="single_pro?productId=${product.productId}" class="product-image"> <img width="150" alt=${wishProduct.productName} src=${wishProduct.pic1Url}> </a></td>
-                                                                <td class="wishlist-cell1 customer-wishlist-item-info"><h3 class="product-name"><a title=${wishProduct.productName} href="single_pro?productId=${product.productId}">${wishProduct.productName}</a></h3>
+                                                                <td class="wishlist-cell0 customer-wishlist-item-image"><a title=${wishProduct.productName} href="single_pro?productId=${wishProduct.productId}" class="product-image"> <img width="150" alt=${wishProduct.productName} src=${wishProduct.pic1Url}> </a></td>
+                                                                <td class="wishlist-cell1 customer-wishlist-item-info"><h3 class="product-name"><a title=${wishProduct.productName} href="single_pro?productId=${wishProduct.productId}">${wishProduct.productName}</a></h3>
                                                                     <div class="description std">
                                                                         <div class="inner">${wishProduct.productBriefIntroduction}</div>
                                                                     </div>
@@ -586,12 +659,7 @@
                                                                     </c:choose>
                                                                 </p></td>
                                                                 <td class="wishlist-cell4 customer-wishlist-item-cart"><p>
-                                                                    <a @click="success(true)" onclick="wait_and_go${sta.index}()">快速加入购物车</a>
-                                                                    <script>
-                                                                        function wait_and_go${sta.index}() {
-                                                                            setTimeout("window.location.href=('add_shopping_cart?productId=${wishProduct.productId}'+'&storeId=${wishProduct.storeId}'+'&amount=1&direction=1')",3000);
-                                                                        }
-                                                                    </script>
+                                                                    <a class="btn-cart" name="${wishProduct.productId}">快速加入购物车</a>
                                                                 </p> </td>
                                                                 <td class="wishlist-cell5 customer-wishlist-item-remove last"><a class="remove-item" title="Clear Cart" href="delete_wish?productId=${wishProduct.productId}+&storeId=${wishProduct.storeId}"><span><span></span></span></a></td>
                                                             </tr>
@@ -599,7 +667,6 @@
                                                         </tbody>
                                                     </table>
                                                     <div class="buttons-set buttons-set2">
-                                                        <button class="button btn-share" title="Share Wishlist" name="save_and_share" type="button"><span>全部加入购物车</span></button>
                                                         <button class="button btn-update" onclick="window.location.href='delete_all'" title="Update Wishlist" name="do" type="button"><span>全部删除</span></button>
                                                     </div>
                                                 </fieldset>
@@ -615,106 +682,105 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div style="text-align:center"> <a href="index.html"><img src="images/footer-logo.png" alt="logo"> </a> </div>
-                    <address>
-                        <p> <i class="fa fa-map-marker"></i>Company, 12/34 - West 21st Street, New York, USA </p>
-                        <p><i class="fa fa-mobile"></i><span>+ (800) 0123 456 789</span> </p>
-                        <p> <i class="fa fa-envelope"></i><span><a href="mailto:email@domain.com">support@themes.com</a></span></p>
-                    </address>
-                </div>
+<!-- Footer -->
+<footer>
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div style="text-align:center"> <a href="index.jsp"><img src="images/logo2.png" alt="logo"> </a> </div>
+                <address>
+                    <p> <i class="fa fa-map-marker"></i>中软国际（重庆）卓睿有限公司</p>
+                    <p><i class="fa fa-mobile"></i><span>+ (86) 0123 456 789</span> </p>
+                    <p> <i class="fa fa-envelope"></i><span><a href="mailto:email@domain.com">635837756@qq.com</a></span></p>
+                </address>
             </div>
         </div>
-        <div class="footer-inner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-4 col-xs-12 col-md-3">
-                        <div class="footer-links">
-                            <h5>Useful links</h5>
-                            <ul class="links">
-                                <li><a href="#" title="Product Recall">Product Recall</a></li>
-                                <li><a href="#" title="Gift Vouchers">Gift Vouchers</a></li>
-                                <li><a href="#" title="Returns &amp; Exchange">Returns &amp; Exchange</a></li>
-                                <li><a href="#" title="Shipping Options">Shipping Options</a></li>
-                                <li><a href="#" title="Help &amp; FAQs">Help &amp; FAQs</a></li>
-                                <li><a href="#" title="Order history">Order history</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-xs-12 col-md-3">
-                        <div class="footer-links">
-                            <h5>Service</h5>
-                            <ul class="links">
-                                <li><a href="account_page.html">Account</a></li>
-                                <li><a href="wishlist.html">Wishlist</a></li>
-                                <li><a href="shopping_cart.html">Shopping Cart</a></li>
-                                <li><a href="#">Return Policy</a></li>
-                                <li><a href="#">Special</a></li>
-                                <li><a href="#">Lookbook</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-xs-12 col-md-2">
-                        <div class="footer-links">
-                            <h5>Information</h5>
-                            <ul class="links">
-                                <li><a href="sitemap.html">Sites Map </a></li>
-                                <li><a href="#">News</a></li>
-                                <li><a href="#">Trends</a></li>
-                                <li><a href="about_us.html">About Us</a></li>
-                                <li><a href="contact_us.html">Contact Us</a></li>
-                                <li><a href="#">My Orders</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-4">
-                        <div class="footer-links">
-                            <div class="footer-newsletter">
-                                <h5>Subscribe to our news</h5>
-                                <form id="newsletter-validate-detail" method="post" action="#">
-                                    <div class="newsletter-inner">
-                                        <p>Subscribe to be the first to know about Sales, Events, and Exclusive Offers!</p>
-                                        <input class="newsletter-email" name="Email" placeholder="Enter Your Email">
-                                        <button class="button subscribe" type="submit" title="Subscribe">Subscribe</button>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="social">
-                                <h5>Follow Us</h5>
-                                <ul class="inline-mode">
-                                    <li class="social-network fb"><a title="Connect us on Facebook" target="_blank" href="https://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
-                                    <li class="social-network googleplus"><a title="Connect us on Google+" target="_blank" href="https://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
-                                    <li class="social-network tw"><a title="Connect us on Twitter" target="_blank" href="https://twitter.com/"><i class="icon-social-twitter icons"></i></a></li>
-                                    <li class="social-network linkedin"><a title="Connect us on Linkedin" target="_blank" href="https://www.pinterest.com/"><i class="fa fa-linkedin"></i></a></li>
-                                    <li class="social-network rss"><a title="Connect us on rss" target="_blank" href="https://instagram.com/"><i class="fa fa-rss"></i></a></li>
-                                    <li class="social-network instagram"><a title="Connect us on Instagram" target="_blank" href="https://instagram.com/"><i class="fa fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-5 col-xs-12 coppyright">Copyright © 2018 <a href="#"> Organic </a>. All Rights Reserved. </div>
-                    <div class="col-sm-7 col-xs-12 payment-accept">
-                        <ul>
-                            <li> <a href="#"><img src="images/payment-1.png" alt="Payment Card"></a> </li>
-                            <li> <a href="#"><img src="images/payment-2.png" alt="Payment Card"></a> </li>
-                            <li> <a href="#"><img src="images/payment-3.png" alt="Payment Card"></a> </li>
-                            <li> <a href="#"><img src="images/payment-4.png" alt="Payment Card"></a> </li>
+    </div>
+    <div class="footer-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-xs-12 col-md-3">
+                    <div class="footer-links">
+                        <h5>功能链接</h5>
+                        <ul class="links">
+                            <li><a href="#" title="Product Recall">商品召回</a></li>
+                            <li><a href="#" title="Gift Vouchers">礼品卡</a></li>
+                            <li><a href="#" title="Returns &amp; Exchange">退货 &amp; 换货</a></li>
+                            <li><a href="#" title="Shipping Options">快递服务</a></li>
+                            <li><a href="#" title="Help &amp; FAQs">帮助 &amp; 提问</a></li>
+                            <li><a href="#" title="Order history">订单历史</a></li>
                         </ul>
                     </div>
                 </div>
+                <div class="col-sm-4 col-xs-12 col-md-3">
+                    <div class="footer-links">
+                        <h5>服务</h5>
+                        <ul class="links">
+                            <li><a href="#">账户</a></li>
+                            <li><a href="#">愿望单</a></li>
+                            <li><a href="#">购物车</a></li>
+                            <li><a href="#">退货政策</a></li>
+                            <li><a href="#">其他</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12 col-md-2">
+                    <div class="footer-links">
+                        <h5>信息</h5>
+                        <ul class="links">
+                            <li><a href="#">网站导航</a></li>
+                            <li><a href="#">新闻</a></li>
+                            <li><a href="#">潮流</a></li>
+                            <li><a href="about_us.jsp">关于我们</a></li>
+                            <li><a href="contact_us.jsp">联系我们</a></li>
+                            <li><a href="#">我的订单</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4">
+                    <div class="footer-links">
+                        <div class="footer-newsletter">
+                            <h5>订阅我们的新闻</h5>
+                            <form id="newsletter-validate-detail" method="post" action="#">
+                                <div class="newsletter-inner">
+                                    <p>订阅我们，第一时间获取折扣信息！</p>
+                                    <input class="newsletter-email" name='Email' placeholder='Enter Your Email'>
+                                    <button class="button subscribe" type="submit" title="Subscribe">订阅</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="social">
+                            <h5>订阅我们</h5>
+                            <ul class="inline-mode">
+                                <li class="social-network fb"><a title="Connect us" target="_blank" href="#"><i class="fa fa-firefox"></i></a></li>
+                                <li class="social-network googleplus"><a title="Connect us" target="_blank" href="#"><i class="fa fa-github"></i></a></li>
+                                <li class="social-network tw"><a title="Connect us" target="_blank" href="#"><i class="fa fa-flag"></i></a></li>
+                                <li class="social-network linkedin"><a title="Connect us" target="_blank" href="#"><i class="fa fa-weibo"></i></a></li>
+                                <li class="social-network rss"><a title="Connect us" target="_blank" href="#"><i class="fa fa-qq"></i></a></li>
+                                <li class="social-network instagram"><a title="Connect us" target="_blank" href="#"><i class="fa fa-wechat"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </footer>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5 col-xs-12 coppyright">版权所有 &copy; 2019.派德里克小组保留所有权利.</div>
+                <div class="col-sm-7 col-xs-12 payment-accept">
+                    <ul>
+                        <li> <a href="#"><img src="images/payment-1.png" alt="Payment Card"></a> </li>
+                        <li> <a href="#"><img src="images/payment-2.png" alt="Payment Card"></a> </li>
+                        <li> <a href="#"><img src="images/payment-3.png" alt="Payment Card"></a> </li>
+                        <li> <a href="#"><img src="images/payment-4.png" alt="Payment Card"></a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 </div>
 
 <!-- End Footer -->
@@ -742,7 +808,7 @@
 
 <script>
     new Vue({
-        el: '#app',
+        el: '#jud',
         data() {
         },
         methods: {
@@ -752,28 +818,61 @@
                     desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
                 });
             },
+            success1 (nodesc) {
+                this.$Notice.success({
+
+                    title: '添加收藏夹成功',
+                    desc: nodesc ? '' : 'Hefre is the notification description. Here is the notification description. '
+                });
+            },
             success (nodesc) {
                 this.$Notice.success({
+
                     title: '添加购物车成功',
                     desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
                 });
             },
             warning (nodesc) {
                 this.$Notice.warning({
-                    title: 'Notification title',
+                    title: '已经添加该商品',
                     desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
                 });
             },
             error (nodesc) {
                 this.$Notice.error({
-                    title: 'Notification title',
+                    title: '添加购物车失败',
                     desc: nodesc ? '' : 'Here is the notification description. Here is the notification description. '
                 });
+            },
+            setMoney(data){
+                minMoneyNow = data[0];
+                maxMoneyNow = data[1];
             }
         },
         events: {
 
         }
+    })
+</script>
+
+<script>
+    $(".btn-cart").click(function () {
+        $.ajax({
+            url: "/add_shopping_cart",
+            data: {
+                storeId: ${storeId},
+                productId: $(this).context.name,
+                amount: 1
+            },
+            type: "POST",
+            dataType: "json",//如果接受不到json对象，即总是进入error函数，也可以将json换为text,就一定可以进到success里面了
+            success: function (data) {
+                $("#succ").click();
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $("#err").click();
+            }
+        });
     })
 </script>
 

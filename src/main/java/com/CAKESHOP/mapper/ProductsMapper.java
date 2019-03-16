@@ -11,70 +11,70 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProductsMapper {
-    //Ä¬ÈÏ·½Ê½ÏÔÊ¾
-    //Ä£ºıËÑË÷ÉÌÆ·
+    //é»˜è®¤æ–¹å¼æ˜¾ç¤º
+    //æ¨¡ç³Šæœç´¢å•†å“
     List<DisplayProducts> selectProductsSearch(@Param(value="startPos") Integer startPos, @Param(value="pageSize") Integer pageSize, @Param("searchKey") String searchKey, @Param("storeId") String storeId, @Param(value="cdmoney") List<String> cdmoney);
-    //Ä£ºıËÑË÷ÉÌÆ·£¬Àà±ğÏŞÖÆ
+    //æ¨¡ç³Šæœç´¢å•†å“ï¼Œç±»åˆ«é™åˆ¶
     List<DisplayProducts> selectProductsSearchCd(@Param(value="startPos") Integer startPos, @Param(value="pageSize") Integer pageSize, @Param("searchKey") String searchKey, @Param("storeId") String storeId,  @Param(value="cdclass") List<String> cdclass, @Param(value="cdmoney") List<String> cdmoney);
 
-    //¼Û¸ñÉıĞòÏÔÊ¾
-    //Ä£ºıËÑË÷ÉÌÆ·
+    //ä»·æ ¼å‡åºæ˜¾ç¤º
+    //æ¨¡ç³Šæœç´¢å•†å“
     List<DisplayProducts> selectProductsSearchAP(@Param(value="startPos") Integer startPos, @Param(value="pageSize") Integer pageSize, @Param("searchKey") String searchKey, @Param("storeId") String storeId, @Param(value="cdmoney") List<String> cdmoney);
-    //Ä£ºıËÑË÷ÉÌÆ·£¬Àà±ğÏŞÖÆ
+    //æ¨¡ç³Šæœç´¢å•†å“ï¼Œç±»åˆ«é™åˆ¶
     List<DisplayProducts> selectProductsSearchCdAP(@Param(value="startPos") Integer startPos, @Param(value="pageSize") Integer pageSize, @Param("searchKey") String searchKey, @Param("storeId") String storeId,  @Param(value="cdclass") List<String> cdclass, @Param(value="cdmoney") List<String> cdmoney);
 
-    //¼Û¸ñ½µĞòÏÔÊ¾
-    //Ä£ºıËÑË÷ÉÌÆ·
+    //ä»·æ ¼é™åºæ˜¾ç¤º
+    //æ¨¡ç³Šæœç´¢å•†å“
     List<DisplayProducts> selectProductsSearchDP(@Param(value="startPos") Integer startPos, @Param(value="pageSize") Integer pageSize, @Param("searchKey") String searchKey, @Param("storeId") String storeId, @Param(value="cdmoney") List<String> cdmoney);
-    //Ä£ºıËÑË÷ÉÌÆ·£¬Àà±ğÏŞÖÆ
+    //æ¨¡ç³Šæœç´¢å•†å“ï¼Œç±»åˆ«é™åˆ¶
     List<DisplayProducts> selectProductsSearchCdDP(@Param(value="startPos") Integer startPos, @Param(value="pageSize") Integer pageSize, @Param("searchKey") String searchKey, @Param("storeId") String storeId,  @Param(value="cdclass") List<String> cdclass, @Param(value="cdmoney") List<String> cdmoney);
 
-    //ÏúÁ¿ÉıĞòÏÔÊ¾
-    //Ä£ºıËÑË÷ÉÌÆ·
+    //é”€é‡å‡åºæ˜¾ç¤º
+    //æ¨¡ç³Šæœç´¢å•†å“
     List<DisplayProducts> selectProductsSearchAS(@Param(value="startPos") Integer startPos, @Param(value="pageSize") Integer pageSize, @Param("searchKey") String searchKey, @Param("storeId") String storeId, @Param(value="cdmoney") List<String> cdmoney);
-    //Ä£ºıËÑË÷ÉÌÆ·£¬Àà±ğÏŞÖÆ
+    //æ¨¡ç³Šæœç´¢å•†å“ï¼Œç±»åˆ«é™åˆ¶
     List<DisplayProducts> selectProductsSearchCdAS(@Param(value="startPos") Integer startPos, @Param(value="pageSize") Integer pageSize, @Param("searchKey") String searchKey, @Param("storeId") String storeId,  @Param(value="cdclass") List<String> cdclass, @Param(value="cdmoney") List<String> cdmoney);
 
-    //ÏúÁ¿½µĞòÏÔÊ¾
-    //Ä£ºıËÑË÷ÉÌÆ·
+    //é”€é‡é™åºæ˜¾ç¤º
+    //æ¨¡ç³Šæœç´¢å•†å“
     List<DisplayProducts> selectProductsSearchDS(@Param(value="startPos") Integer startPos, @Param(value="pageSize") Integer pageSize, @Param("searchKey") String searchKey, @Param("storeId") String storeId, @Param(value="cdmoney") List<String> cdmoney);
-    //Ä£ºıËÑË÷ÉÌÆ·£¬Àà±ğÏŞÖÆ
+    //æ¨¡ç³Šæœç´¢å•†å“ï¼Œç±»åˆ«é™åˆ¶
     List<DisplayProducts> selectProductsSearchCdDS(@Param(value="startPos") Integer startPos, @Param(value="pageSize") Integer pageSize, @Param("searchKey") String searchKey, @Param("storeId") String storeId,  @Param(value="cdclass") List<String> cdclass, @Param(value="cdmoney") List<String> cdmoney);
 
-    //Ä£ºıËÑË÷ÉÌÆ·×ÜÊı
+    //æ¨¡ç³Šæœç´¢å•†å“æ€»æ•°
     int getSelectProductsCount(@Param(value="searchKey") String searchKey, @Param(value="storeId") String storeId, @Param(value="cdmoney") List<String> cdmoney);
-    //Ä£ºıËÑË÷ÉÌÆ·×ÜÊı,Àà±ğÏŞÖÆ
+    //æ¨¡ç³Šæœç´¢å•†å“æ€»æ•°,ç±»åˆ«é™åˆ¶
     int getSelectProductsCountCd(@Param(value="searchKey") String searchKey, @Param(value="storeId") String storeId, @Param(value="cdclass") List<String> cdclass, @Param(value="cdmoney") List<String> cdmoney);
-    //ËÑË÷ËùÓĞÉÌÆ·
+    //æœç´¢æ‰€æœ‰å•†å“
     List<Products> selectAllProducts();
-    //·ÖÒ³²Ù×÷
+    //åˆ†é¡µæ“ä½œ
     List<Products> selectProductsByPage(@Param(value="startPos") Integer startPos,@Param(value="pageSize") Integer pageSize) throws Exception;
-    //²éÑ¯ÉÌÆ·×ÜÊı
+    //æŸ¥è¯¢å•†å“æ€»æ•°
     int getProductsCount();
-    //²éÑ¯ÉÌÆ·ËùÓĞÀà±ğ
+    //æŸ¥è¯¢å•†å“æ‰€æœ‰ç±»åˆ«
     List<String> getProductsCategory(@Param(value="searchKey") String searchKey, @Param(value="storeId") String storeId);
-    //²éÑ¯ÉÌÆ·×îµÍ¼Û¸ñ
+    //æŸ¥è¯¢å•†å“æœ€ä½ä»·æ ¼
     double getMinMoney(@Param(value="searchKey") String searchKey, @Param(value="storeId") String storeId);
-    //²éÑ¯ÉÌÆ·×î¸ß¼Û¸ñ
+    //æŸ¥è¯¢å•†å“æœ€é«˜ä»·æ ¼
     double getMaxMoney(@Param(value="searchKey") String searchKey, @Param(value="storeId") String storeId);
     Products selectById(@Param("id") int id);
 
-    //²éÕÒµ¥¸öÉÌÆ·ÓÃÓÚÃÅµêÏÔÊ¾
+    //æŸ¥æ‰¾å•ä¸ªå•†å“ç”¨äºé—¨åº—æ˜¾ç¤º
     SingleProduct getSingleProduct(@Param(value = "storeId") String storeId, @Param(value = "productId") String productId);
 
-    //²éÕÒÄ³ÃÅµêµ¥Ò»Àà±ğÏÂµÄÉÌÆ·ÅÅÃû
+    //æŸ¥æ‰¾æŸé—¨åº—å•ä¸€ç±»åˆ«ä¸‹çš„å•†å“æ’å
     List<DisplayProducts> selectHotProductsByCategory(@Param(value="storeId") String storeId, @Param(value = "category") String category, @Param(value = "userPhone")String userPhone);
 
-    //·µ»ØÉÌÆ·ÊıÁ¿
+    //è¿”å›å•†å“æ•°é‡
     int countThirdCategory();
 
-    //·µ»ØËùÓĞÈı¼¶Àà±ğ
+    //è¿”å›æ‰€æœ‰ä¸‰çº§ç±»åˆ«
     List<Map<String,String>> selectThirdCategory();
 
-    //·µ»ØÄ³ÉÌÆ·µÄÈı¼¶Àà±ğ
+    //è¿”å›æŸå•†å“çš„ä¸‰çº§ç±»åˆ«
     String getProductThirdCategory( @Param(value ="productId")int productId);
 
-    //·µ»ØÉÌÆ·ID¶ÔÓ¦µÄDisplayProducts
+    //è¿”å›å•†å“IDå¯¹åº”çš„DisplayProducts
     DisplayProducts selectDisplayProductsById( @Param(value="productId")int productId, @Param(value="storeId")int storeId);
 
 }
