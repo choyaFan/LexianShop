@@ -1,21 +1,18 @@
 <%--
   Created by IntelliJ IDEA.
   User: 63583
-  Date: 2019/3/12
-  Time: 14:58
+  Date: 2019/3/16
+  Time: 10:47
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>付款成功</title>
+    <title>钱包充值</title>
     <link rel="stylesheet" href="css/style3.css">
-    <link href="css/public.css" type="text/css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="css/base.css"/>
-    <link rel="stylesheet" type="text/css" href="css/buyConfirm.css" />
+    <link rel="stylesheet" href="css/payment.css">
 </head>
 <body id="page">
-<!-- Header -->
 <header>
     <div class="header-container">
         <div class="header-top">
@@ -134,135 +131,36 @@
         </div>
     </div>
 </header>
-<!-- end header -->
 
-<div class="order-info">
-    <div class="msg">
-        <h3>恭喜！您的订单已付款成功啦~</h3>
-        <p></p>
+<h1 class="text-center">请选择充值金额</h1>
 
-        <p class="post-date">成功付款后，7天内可在门店提货</p>
-    </div>
-    <div class="info">
-        <p>
-            金额：<span class="pay-total">${totalPrice}</span>
-        </p>
-        <p>
-            订单：${orderId}</p>
-        <p>
-            姓名：${sessionScope.userName}<span class="line">/</span>
-            ${userPhone}                                    <span class="line">/</span>
-            ${province},${city},${district} ${storeName}                                                                <span class="line">/</span>
-            不限送货时间                                    <span class="line">/</span>
-            个人电子发票                                                    </p>
-    </div>
-    <div class="icon-box">
-        <i class="iconfont"><img src="images/yes_ok.png"></i>
-    </div>
+<div class="checkbox-wrap">
+    <input type="radio" value="1" name="choose" id="yongshui">
+    <label for="yongshui">1元</label>
+    <input type="radio" value="5" name="choose" id="guangpan">
+    <label for="guangpan">5元</label>
+    <input type="radio" value="10" name="choose" id="kaiche">
+    <label for="kaiche">10元</label>
+    <input type="radio" value="20" name="choose" id="laiji">
+    <label for="laiji">20元</label>
+    <input type="radio" value="50" name="choose" id="baozhuang">
+    <label for="baozhuang">50元</label>
+    <input type="radio" value="100" name="choose" id="guandeng">
+    <label for="guandeng">100元</label>
 </div>
-
-<!-- Footer -->
-<footer>
-    <div class="footer-top">
-        <div class="container">
-            <div class="row">
-                <div style="text-align:center"> <a href="index.html"><img src="images/footer-logo.png" alt="logo"> </a> </div>
-                <address>
-                    <p> <i class="fa fa-map-marker"></i>Company, 12/34 - West 21st Street, New York, USA </p>
-                    <p><i class="fa fa-mobile"></i><span>+ (800) 0123 456 789</span> </p>
-                    <p> <i class="fa fa-envelope"></i><span><a href="mailto:email@domain.com">support@themes.com</a></span></p>
-                </address>
-            </div>
-        </div>
-    </div>
-    <div class="footer-inner">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4 col-xs-12 col-md-3">
-                    <div class="footer-links">
-                        <h5>Useful links</h5>
-                        <ul class="links">
-                            <li><a href="#" title="Product Recall">Product Recall</a></li>
-                            <li><a href="#" title="Gift Vouchers">Gift Vouchers</a></li>
-                            <li><a href="#" title="Returns &amp; Exchange">Returns &amp; Exchange</a></li>
-                            <li><a href="#" title="Shipping Options">Shipping Options</a></li>
-                            <li><a href="#" title="Help &amp; FAQs">Help &amp; FAQs</a></li>
-                            <li><a href="#" title="Order history">Order history</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-xs-12 col-md-3">
-                    <div class="footer-links">
-                        <h5>Service</h5>
-                        <ul class="links">
-                            <li><a href="#">Account</a></li>
-                            <li><a href="#">Wishlist</a></li>
-                            <li><a href="#">Shopping Cart</a></li>
-                            <li><a href="#">Return Policy</a></li>
-                            <li><a href="#">Special</a></li>
-                            <li><a href="#">Lookbook</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-xs-12 col-md-2">
-                    <div class="footer-links">
-                        <h5>Information</h5>
-                        <ul class="links">
-                            <li><a href="#">Sites Map </a></li>
-                            <li><a href="#">News</a></li>
-                            <li><a href="#">Trends</a></li>
-                            <li><a href="about_us.html">About Us</a></li>
-                            <li><a href="contact_us.html">Contact Us</a></li>
-                            <li><a href="#">My Orders</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-4">
-                    <div class="footer-links">
-                        <div class="footer-newsletter">
-                            <h5>Subscribe to our news</h5>
-                            <form id="newsletter-validate-detail" method="post" action="#">
-                                <div class="newsletter-inner">
-                                    <p>Subscribe to be the first to know about Sales, Events, and Exclusive Offers!</p>
-                                    <input class="newsletter-email" name='Email' placeholder='Enter Your Email'>
-                                    <button class="button subscribe" type="submit" title="Subscribe">Subscribe</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="social">
-                            <h5>Follow Us</h5>
-                            <ul class="inline-mode">
-                                <li class="social-network fb"><a title="Connect us on Facebook" target="_blank" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li class="social-network googleplus"><a title="Connect us on Google+" target="_blank" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li class="social-network tw"><a title="Connect us on Twitter" target="_blank" href="#"><i class="icon-social-twitter icons"></i></a></li>
-                                <li class="social-network linkedin"><a title="Connect us on Linkedin" target="_blank" href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li class="social-network rss"><a title="Connect us on rss" target="_blank" href="#"><i class="fa fa-rss"></i></a></li>
-                                <li class="social-network instagram"><a title="Connect us on Instagram" target="_blank" href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-5 col-xs-12 coppyright">Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></div>
-                <div class="col-sm-7 col-xs-12 payment-accept">
-                    <ul>
-                        <li> <a href="#"><img src="images/payment-1.png" alt="Payment Card"></a> </li>
-                        <li> <a href="#"><img src="images/payment-2.png" alt="Payment Card"></a> </li>
-                        <li> <a href="#"><img src="images/payment-3.png" alt="Payment Card"></a> </li>
-                        <li> <a href="#"><img src="images/payment-4.png" alt="Payment Card"></a> </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+<div style="margin:0 auto;width:200px;" id="aliPay">
+    <button>充值</button>
 </div>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#aliPay").click(function(){
+            var mm = $('input:radio:checked').val();
+            window.location.href="jump?money=" + mm;
+    });
 
-<!-- End Footer -->
+    })
+</script>
+
 </body>
 </html>

@@ -44,10 +44,11 @@ public class ShoppingCartController {
         String pictureUrlArray[] = new String[num];//通过商品ID获得图片的url，准备传到界面上显示
         String productNameArray[] = new String[num];
         String storeNameArray[] = new String[num];
-
+        List<ProductsByStore> productsByStoreList = new ArrayList<>();
         for(int i = 0;i < num;i++){
             productIdArray[i] = cartData.get(i).getProductId();
             StoreIdArray[i] = cartData.get(i).getStoreId();
+            productsByStoreList.add(productsByStoreService.selectByProductAndStore(productIdArray[i],StoreIdArray[i]));
             pictureUrlArray[i] = shoppingCartService.queryPictureUrl(productIdArray[i]);
             productNameArray[i] = shoppingCartService.queryProductName(productIdArray[i]);
             storeNameArray[i] = shoppingCartService.queryStoreName(StoreIdArray[i]);
@@ -64,6 +65,7 @@ public class ShoppingCartController {
             modelAndView.addObject("productNameArrayList",productNameArrayList);
             modelAndView.addObject("storeNameArrayList",storeNameArrayList);
             modelAndView.addObject("cartData",cartData);
+            modelAndView.addObject("productsByStoreList",productsByStoreList);
  //           modelAndView.addObject("userTransfer ",userTransfer );
             modelAndView.setViewName("shoppingCart.jsp");
         }else{

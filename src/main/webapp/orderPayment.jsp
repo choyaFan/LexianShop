@@ -65,7 +65,7 @@
                                                 </ul>
                                             </div>
                                         </li>
-                                        <li> <a href="#"><span class="hidden-xs">登陆</span></a> </li>
+                                        <li> <a href="#"><span class="hidden-xs">登录</span></a> </li>
                                     </ul>
                                 </div>
                             </div>
@@ -472,6 +472,30 @@
 
 <!--收货地址body部分开始-->
 <div class="border_top_cart">
+    <script type="text/javascript">
+        var checkoutConfig={
+            addressMatch:'common',
+            addressMatchVarName:'data',
+            hasPresales:false,
+            hasBigTv:false,
+            hasAir:false,
+            hasScales:false,
+            hasGiftcard:false,
+            totalPrice:244.00,
+            postage:10,//运费
+            postFree:true,//活动是否免邮了
+            bcPrice:150,//计算界值
+            activityDiscountMoney:0.00,//活动优惠
+            showCouponBox:0,
+            invoice:{
+                NA:"0",
+                personal:"1",
+                company:"2",
+                electronic:"4"
+            }
+        };
+        var miniCartDisable=true;
+    </script>
     <div class="container">
         <div class="checkout-box">
             <form  id="checkoutForm" action="#" method="post">
@@ -488,7 +512,7 @@
                             <div class="clearfix xm-address-list" id="checkoutAddrList">
                                 <dl class="item" >
                                     <dt>
-                                        <strong class="itemConsignee">${sessionScope.userName}}</strong>
+                                        <strong class="itemConsignee">${sessionScope.userName}</strong>
                                         <span class="itemTag tag">已选择</span>
                                     </dt>
                                     <dd>
@@ -635,7 +659,7 @@
                                             <div class="item-row">
                                                 <div class="col col-1">
                                                     <div class="g-pic">
-                                                        <img src="http://i1.mifile.cn/a1/T11lLgB5YT1RXrhCrK!40x40.jpg" srcset="http://i1.mifile.cn/a1/T11lLgB5YT1RXrhCrK!80x80.jpg 2x" width="40" height="40" />
+                                                        <img src="${product.pic1Url}" width="40" height="40" />
                                                     </div>
                                                     <div class="g-info">
                                                         <a href="#">
@@ -643,9 +667,9 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col col-2">${ordersList.get(i).singlePrice}</div>
+                                                <div class="col col-2"><fmt:formatNumber value="${ordersList.get(i).singlePrice}" pattern="####.##"/> </div>
                                                 <div class="col col-3">${ordersList.get(i).amount}</div>
-                                                <div class="col col-4">${ordersList.get(i).singlePrice * ordersList.get(i).amount}</div>
+                                                <div class="col col-4"><fmt:formatNumber value="${ordersList.get(i).singlePrice * ordersList.get(i).amount}" pattern="####.##"/> </div>
                                                 <% i++; pageContext.setAttribute("i", i);%>
                                             </div>
                                         </dd>
@@ -662,7 +686,7 @@
                                         <ul>
 
                                             <li>
-                                                订单总额：<span>${ordersList.get(0).totalPrice}</span>
+                                                订单总额：<span><fmt:formatNumber pattern="####.##" value="${ordersList.get(0).totalPrice}"/></span>
                                             </li>
                                             <li>
                                                 活动优惠：<span>-0元</span>
@@ -674,7 +698,7 @@
                                                 运费：<span id="postageDesc">0元</span>
                                             </li>
                                         </ul>
-                                        <p class="checkout-total">应付总额：<span><strong id="totalPrice">${ordersList.get(0).totalPrice}</strong>元</span></p>
+                                        <p class="checkout-total">应付总额：<span><strong id="totalPrice"><fmt:formatNumber pattern="####" value="${ordersList.get(0).totalPrice}"/></strong>元</span></p>
                                     </div>
                                     <!--  -->
                                 </div>
@@ -688,7 +712,7 @@
 
                         <a href="#" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
                         <%%>
-                        <a href="/payment.html?totalPrice=<fmt:formatNumber value="${ordersList.get(0).totalPrice}"/>&orderId=<fmt:formatNumber pattern="#########" value="${ordersList.get(0).orderId}"/> " class="btn btn-primary" id="checkoutToPay">立即下单</a>
+                        <a href="/payment.html?totalPrice=<fmt:formatNumber pattern="####" value="${ordersList.get(0).totalPrice}"/>&orderId=<fmt:formatNumber pattern="#########" value="${ordersList.get(0).orderId}"/> " class="btn btn-primary" id="checkoutToPay">立即下单</a>
                     </div>
                 </div>
             </form>
@@ -701,7 +725,7 @@
     <script type="text/javascript" src="js/checkout.min.js"></script>
 </div>
 
-<!-- Footer -->
+    <!-- Footer -->
 <footer>
     <div class="footer-top">
         <div class="container">
