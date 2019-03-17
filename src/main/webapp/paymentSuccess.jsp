@@ -5,7 +5,10 @@
   Time: 14:58
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="width" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+<%@page pageEncoding="utf-8" contentType="text/html;charset=utf-8" %>
 <html>
 <head>
     <title>付款成功</title>
@@ -22,46 +25,31 @@
             <div class="container">
                 <div class="row">
                     <!-- Header Language -->
-                    <div class="col-xs-12 col-sm-6">
-                        <div class="welcome-msg">欢迎来到派氏乐鲜生活馆</div>
-                        <div class="dropdown jtv-language-box"> <a role="button" data-toggle="dropdown" data-target="#" class="block-language dropdown-toggle" href="#" aria-expanded="false"> <img src="images/flag-english.jpg" alt="language">中软中心店<span class="caret"></span> </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li> <a class="selected" href="#"> <img src="images/flag-english.jpg" alt="flag"> <span>English</span> </a> </li>
-                                <li> <a href="#"> <img src="images/flag-default.jpg" alt="flag"> <span>French</span> </a> </li>
-                                <li> <a href="#"> <img src="images/flag-german.jpg" alt="flag"> <span>German</span> </a> </li>
-                                <li> <a href="#"> <img src="images/flag-brazil.jpg" alt="flag"> <span>Brazil</span> </a> </li>
-                                <li> <a href="#"> <img src="images/flag-chile.jpg" alt="flag"> <span>Chile</span> </a> </li>
-                                <li> <a href="#"> <img src="images/flag-spain.jpg" alt="flag"> <span>Spain</span> </a> </li>
-                            </ul>
+                    <div class="col-xs-12 col-sm-9">
+                        <div class="welcome-msg col-sm-3">欢迎来到派氏乐鲜生活馆</div>
+                        <div class="col-sm-8">
                         </div>
-                        <!-- End Header Language -->
-
-                        <!-- Header Currency -->
 
                         <!-- End Header Currency -->
 
                     </div>
-                    <div class="col-xs-6 hidden-xs">
+                    <div class="col-sm-3">
                         <!-- Header Top Links -->
                         <div class="jtv-top-links">
                             <div class="links">
                                 <ul>
 
-                                    <li> <a title="Favorites" href="#">收藏夹</a> </li>
+                                    <li> <a title="Favorites" href="/getUserOrder">订单</a> </li>
+                                    <li> <a title="Favorites" href="look_wish_list">收藏夹</a> </li>
 
-                                    <li>
-                                        <div class="dropdown block-company-wrapper hidden-xs"> <a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#">其他功能<span class="caret"></span></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="about_us.html"> About Us </a> </li>
-                                                <li><a href="#"> Customer Service </a> </li>
-                                                <li><a href="#"> Privacy Policy </a> </li>
-                                                <li><a href="#">Site Map </a> </li>
-                                                <li><a href="#">Search Terms </a> </li>
-                                                <li><a href="#">Advanced Search </a> </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li> <a href="#"><span class="hidden-xs">登陆</span></a> </li>
+                                    <c:choose>
+                                        <c:when test="${not empty sessionScope.userName}">
+                                            <li> <a href="ShowPersonalInformation.action"><span class="hidden-xs">${sessionScope.userName}</span></a> </li>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li> <a href="sign_in.jsp"><span class="hidden-xs">登录</span></a> </li>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </ul>
                             </div>
                         </div>
@@ -119,7 +107,7 @@
                 </div>
                 <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12 jtv-logo-box">
                     <!-- Header Logo -->
-                    <div class="logo"> <h1><a title="eCommerce" href="index.jsp"><img alt="eCommerce" src="images/logo.png"> </a></h1> </div>
+                    <div class="logo"> <h1><a title="eCommerce" href="getSector"><img alt="eCommerce" src="images/logo.png"> </a></h1> </div>
                     <!-- End Header Logo -->
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 hidden-xs">
@@ -166,7 +154,7 @@
     <div class="footer-top">
         <div class="container">
             <div class="row">
-                <div style="text-align:center"> <a href="index.jsp"><img src="images/logo2.png" alt="logo"> </a> </div>
+                <div style="text-align:center"> <a href="getSector"><img src="images/logo2.png" alt="logo"> </a> </div>
                 <address>
                     <p> <i class="fa fa-map-marker"></i>中软国际（重庆）卓睿有限公司</p>
                     <p><i class="fa fa-mobile"></i><span>+ (86) 0123 456 789</span> </p>

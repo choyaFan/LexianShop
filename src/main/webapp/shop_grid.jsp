@@ -507,8 +507,8 @@
                                             <p>水果是指多汁且有甜味的植物果实，不但含有丰富的营养且能够帮助消化，是对部分可以食用的植物果实和种子的统称。 </p>
                                         </div>
                                     </div>
-                                    <!-- End Item -->
 
+                                    <!-- End Item -->
                                     <!-- Item -->
                                     <div class="item"><a href="#"><img alt="" src="images/category-img2.jpg"></a>
                                         <div class="cat-img-title cat-bg cat-box">

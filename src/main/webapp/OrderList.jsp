@@ -321,7 +321,7 @@
                                                 <div class="info-inner">
                                                     <div class="item-title"><h6> <a title="Product Title Here" href="#"><c:out value="${orders.key}"/></a></h6> </div>
                                                     <div class="item-content">
-                                                        <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                                                        
                                                         <div class="item-price">
                                                             <div class="price-box"> <span class="regular-price"> <span class="price">¥<c:out value="${orders.value.totalPrice}"/></span> </span> </div>
                                                         </div>

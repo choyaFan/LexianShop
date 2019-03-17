@@ -225,7 +225,7 @@
   <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-  <div hidden="true">
+  <div hidden="true" id="app">
     <button id="succ" @click="success(true)" hidden="true"></button>
     <button id="succ1" @click="success1(true)" hidden="true"></button>
     <button id="warn" @click="warning(true)" hidden="true"></button>
@@ -702,7 +702,7 @@
                               <button onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="increase items-count" type="button"><i class="fa fa-plus">&nbsp;</i></button>
                             </div>
                           </div>
-                          <button id="app" class="button btn-cart" title="Add to Cart" type="button">加入购物车</button>
+                          <button class="button btn-cart" title="Add to Cart" type="button">加入购物车</button>
                         </div>
                         <div class="email-addto-box">
                           <ul class="add-to-links">
@@ -1214,7 +1214,7 @@
 
 <script>
   new Vue({
-    el: '#add-to-box',
+    el: '#app',
     data() {
     },
     methods: {

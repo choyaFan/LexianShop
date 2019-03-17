@@ -11,7 +11,7 @@
 
     <select id="selectPictureUrl" resultMap="PictureUrlMap" >
       select pic1_url from products
-      where id like '%${id}%';
+      where id = '${id}';
     </select>
 
     <select id="selectProductName" resultMap="PictureUrlMap" >

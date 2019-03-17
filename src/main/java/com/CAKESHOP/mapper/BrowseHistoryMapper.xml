@@ -5,22 +5,22 @@
 <mapper namespace="com.CAKESHOP.mapper.BrowseHistoryMapper">
     <select id="selectUserPhone" resultMap="PersonalInformationMap" >
       select user_phone from users
-      where user_name like '%${user_name}%';
+      where user_name = '${user_name}';
     </select>
 
     <select id="select" resultMap="AllColumnMap" >
       select product_id,store_id,browse_time from browse
-      where user_phone like '%${userPhone}%';
+      where user_phone = '${userPhone}';
     </select>
 
     <select id="selectProductName" resultMap="PictureUrlMap" >
       select product_name from products
-      where id like '%${id}%';
+      where id = '${id}';
     </select>
 
     <select id="selectStoreName" resultMap="StoreMap" >
       select store_name from branch_store
-      where id like '%${id}%';
+      where id = '${id}';
     </select>
 
     <resultMap id="AllColumnMap" type="com.CAKESHOP.dao.Browse">

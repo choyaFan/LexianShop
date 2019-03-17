@@ -528,7 +528,7 @@
                                 </tbody>
                             </table>
                             <div class="cart_navigation">
-                              <button class="button btn-proceed-checkout" type="button" onclick="window.location.href='http://localhost:8081/browsehistory.action'"><span>查询浏览历史</span></button>
+                              <button class="button btn-proceed-checkout" type="button" onclick="window.location.href='/browsehistory.action'"><span>查询浏览历史</span></button>
                               <button class="button continue-shopping" type="button" onclick="window.location.href='wallet'"><span>钱包充值</span></button>
                             </div>
                         </div>

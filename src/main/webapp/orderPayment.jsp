@@ -525,7 +525,7 @@
                                                 运费：<span id="postageDesc">0元</span>
                                             </li>
                                         </ul>
-                                        <p class="checkout-total">应付总额：<span><strong id="totalPrice"><fmt:formatNumber pattern="####" value="${ordersList.get(0).totalPrice}"/></strong>元</span></p>
+                                        <p class="checkout-total">应付总额：<span><strong id="totalPrice"><fmt:formatNumber pattern="####.##" value="${ordersList.get(0).totalPrice}"/></strong>元</span></p>
                                     </div>
                                     <!--  -->
                                 </div>
